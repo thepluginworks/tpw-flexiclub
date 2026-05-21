@@ -115,6 +115,7 @@ class TPW_Payments_Admin {
         $settings_mode = function_exists( 'tpw_core_get_settings_view_context' )
             ? (string) ( tpw_core_get_settings_view_context()['mode'] ?? 'admin' )
             : 'admin';
+        $frontend_mode = 'frontend' === $settings_mode;
         $sort_ajax_url = admin_url( 'admin-ajax.php' );
 
         foreach ($methods as $index => $method) {
@@ -155,7 +156,7 @@ class TPW_Payments_Admin {
                 <div class="tpw-payments-list">
                     <?php foreach ($methods as $method): ?>
                         <?php
-                            if (in_array($method->slug, ['woocommerce', 'sumup'])) { continue; }
+                            if (in_array($method->slug, ['woocommerce', 'sumup'], true)) { continue; }
                             if ($method->slug === 'cheque-cash') { continue; }
 
                             $needs_setup = false; $status_chip = '<span class="tpw-status-chip configured">Configured</span>';
@@ -188,9 +189,6 @@ class TPW_Payments_Admin {
                                 $msg = trim((string) get_option('tpw_card_on_the_day_message'));
                                 if (!$msg) { $needs_setup = true; $status_chip = '<span class="tpw-status-chip needs-setup">Needs setup</span>'; }
                                 if ($msg) { $snippet = wp_trim_words(wp_strip_all_tags($msg), 10, '…'); $summary = '<span class="tpw-pay-summary">' . esc_html($snippet) . '</span>'; }
-                            } elseif ($method->slug === 'sumup') {
-                                $access_token = get_option('tpw_sumup_access_token');
-                                $status_chip = $access_token ? '<span class="tpw-status-chip configured">Connected</span>' : '<span class="tpw-status-chip disconnected">Disconnected</span>';
                             } elseif ($method->slug === 'square' && ! $square_addon_active) {
                                 $has_square_config = class_exists( 'TPW_Payments_Manager' ) && method_exists( 'TPW_Payments_Manager', 'square_has_stored_configuration' )
                                     ? TPW_Payments_Manager::square_has_stored_configuration()
@@ -211,14 +209,25 @@ class TPW_Payments_Admin {
                                 }
 
                                 $summary = '<span class="tpw-pay-summary">' . esc_html( implode( ' ', $summary_parts ) ) . '</span>';
+                            } elseif ($method->slug === 'square') {
+                                $has_square_config = class_exists( 'TPW_Payments_Manager' ) && method_exists( 'TPW_Payments_Manager', 'square_has_stored_configuration' )
+                                    ? TPW_Payments_Manager::square_has_stored_configuration()
+                                    : false;
+                                $status_chip = $has_square_config ? '<span class="tpw-status-chip configured">Configured</span>' : '<span class="tpw-status-chip needs-setup">Needs setup</span>';
+                                $needs_setup = ! $has_square_config;
+                                $summary = '<span class="tpw-pay-summary">' . esc_html__( 'Square configuration remains on the existing settings surface.', 'tpw-core' ) . '</span>';
+                            } else {
+                                $summary = '<span class="tpw-pay-summary">' . esc_html__( 'Uses the currently registered payment method settings.', 'tpw-core' ) . '</span>';
                             }
 
                             $disabled_attr = '';
-                            if ($method->slug === 'woocommerce' && !class_exists('WooCommerce')) {
-                                $disabled_attr = 'disabled';
-                            } elseif ($method->slug === 'square' && ! $square_addon_active) {
+                            if ($method->slug === 'square' && ! $square_addon_active) {
                                 $disabled_attr = 'disabled';
                             }
+
+						$action_url = function_exists( 'tpw_core_build_payment_method_settings_url' )
+							? tpw_core_build_payment_method_settings_url( (string) $method->slug )
+							: admin_url('options-general.php?page=tpw-core-settings&tab=payment-methods');
                         ?>
                         <div class="tpw-pay-row" data-slug="<?php echo esc_attr($method->slug); ?>">
                             <div class="tpw-pay-col tpw-pay-drag" title="Drag to reorder" aria-label="Drag to reorder">
@@ -241,40 +250,29 @@ class TPW_Payments_Admin {
                                 <?php echo $summary; ?>
                             </div>
                             <div class="tpw-pay-col tpw-pay-status">
-                                <label>
-                                    <input type="checkbox" name="payment_methods[]" value="<?php echo esc_attr($method->slug); ?>" <?php checked($method->active, 1); ?> <?php echo $disabled_attr; ?> />
-                                    <?php esc_html_e('Enable', 'tpw-core'); ?>
-                                </label>
-                                <?php echo $status_chip; ?>
+                                <div class="tpw-pay-status-stack">
+                                    <label class="tpw-pay-enable">
+                                        <input type="checkbox" name="payment_methods[]" value="<?php echo esc_attr($method->slug); ?>" <?php checked($method->active, 1); ?> <?php echo $disabled_attr; ?> />
+                                        <span><?php esc_html_e('Enable', 'tpw-core'); ?></span>
+                                    </label>
+                                    <div class="tpw-pay-status-chips"><?php echo $status_chip; ?></div>
+                                </div>
                             </div>
                             <div class="tpw-pay-col tpw-pay-action">
-                                <?php if ($method->slug === 'bacs'): ?>
-                                    <?php if ($needs_setup): ?>
-                                        <a href="admin.php?page=tpw-bacs-settings" class="button button-primary">Configure Bank Transfer</a>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url(admin_url('admin.php?page=tpw-bacs-settings')); ?>" class="button">Edit</a>
-                                    <?php endif; ?>
-                                <?php elseif ($method->slug === 'cheque'): ?>
-                                    <?php if ($needs_setup): ?>
-                                        <a href="admin.php?page=tpw-cheque-settings" class="button button-primary">Configure Cheque</a>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url(admin_url('admin.php?page=tpw-cheque-settings')); ?>" class="button">Edit</a>
-                                    <?php endif; ?>
-                                <?php elseif ($method->slug === 'cash'): ?>
-                                    <?php if ($needs_setup): ?>
-                                        <a href="admin.php?page=tpw-cash-settings" class="button button-primary">Configure Cash</a>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url(admin_url('admin.php?page=tpw-cash-settings')); ?>" class="button">Edit</a>
-                                    <?php endif; ?>
-                                <?php elseif ($method->slug === 'card-on-the-day'): ?>
-                                    <?php if ($needs_setup): ?>
-                                        <a href="admin.php?page=tpw-card-on-the-day-settings" class="button button-primary">Configure Card on the day</a>
-                                    <?php else: ?>
-                                        <a href="<?php echo esc_url(admin_url('admin.php?page=tpw-card-on-the-day-settings')); ?>" class="button">Edit</a>
-                                    <?php endif; ?>
-                                <?php else: ?>
-                                    <a href="<?php echo esc_url(admin_url('admin.php?page=tpw-' . esc_attr($method->slug) . '-settings')); ?>" class="button">Edit</a>
-                                <?php endif; ?>
+                                <?php
+							$action_label = $needs_setup
+								? sprintf(
+									/* translators: %s: payment method name */
+									__( 'Configure %s', 'tpw-core' ),
+									esc_html( $display_name )
+								)
+								: __( 'Edit', 'tpw-core' );
+							$action_class = $needs_setup ? 'button button-primary' : 'button';
+							if ($frontend_mode && !in_array((string) $method->slug, ['bacs', 'cheque', 'cash', 'card-on-the-day'], true)) {
+								$action_label = $needs_setup ? __( 'Open details', 'tpw-core' ) : __( 'View details', 'tpw-core' );
+							}
+						?>
+                                <a href="<?php echo esc_url($action_url); ?>" class="<?php echo esc_attr($action_class); ?>"><?php echo esc_html($action_label); ?></a>
                             </div>
                         </div>
                     <?php endforeach; ?>
@@ -283,12 +281,31 @@ class TPW_Payments_Admin {
             </form>
             <div id="tpw-sort-feedback" style="margin-top:8px; display:none;"></div>
         <style>
-            .tpw-payments-list { counter-reset: rownum; }
-            .tpw-pay-row { display:flex; align-items:center; gap:12px; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; background:#fff; }
-            .tpw-pay-row + .tpw-pay-row { margin-top:8px; }
+            .tpw-payments-list { counter-reset: rownum; display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+            .tpw-pay-row { display:flex; align-items:center; gap:16px; border:1px solid #d9e2ec; padding:12px 14px; border-radius:8px; background:#fff; }
+            .tpw-pay-col { display:flex; align-items:center; gap:8px; }
             .tpw-pay-drag { width:24px; cursor:move; color:#64748b; display:flex; align-items:center; justify-content:center; }
             .tpw-drag-handle { font-size:18px; line-height:1; user-select:none; }
+            .tpw-pay-name { flex:1 1 50%; min-width:220px; }
+            .tpw-pay-summary { display:block; margin-top:4px; color:#646970; font-size:12px; }
+            .tpw-pay-status { flex:0 0 220px; justify-content:center; text-align:center; }
+            .tpw-pay-status-stack { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; width:100%; }
+            .tpw-pay-enable { display:inline-flex; align-items:center; justify-content:center; gap:8px; font-weight:600; }
+            .tpw-pay-enable input[type="checkbox"] { width:20px; height:20px; min-width:20px; min-height:20px; margin:0; }
+            .tpw-pay-status-chips { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px; }
+            .tpw-status-chip { display:inline-flex; align-items:center; justify-content:center; padding:3px 8px; border-radius:999px; font-size:11px; font-weight:600; line-height:1.4; border:1px solid transparent; }
+            .tpw-status-chip.configured { color:#1f7a46; border-color:#72c095; background:#e9f7f1; }
+            .tpw-status-chip.needs-setup { color:#9a4f00; border-color:#f0b46c; background:#fff4e5; }
+            .tpw-status-chip.disconnected { color:#a12622; border-color:#e59a96; background:#fdecea; }
+            .tpw-pay-action { margin-left:auto; justify-content:flex-end; min-width:max-content; }
             .ui-sortable-helper { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+            @media (max-width: 782px) {
+                .tpw-pay-row { flex-direction:column; align-items:stretch; }
+                .tpw-pay-status { flex:1 1 auto; justify-content:flex-start; text-align:left; }
+                .tpw-pay-status-stack { align-items:flex-start; }
+                .tpw-pay-status-chips { justify-content:flex-start; }
+                .tpw-pay-action { margin-left:0; justify-content:flex-start; min-width:0; }
+            }
         </style>
         <script>
         (function($){

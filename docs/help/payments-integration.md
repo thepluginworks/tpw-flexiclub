@@ -71,7 +71,8 @@ Use `.tpw-frontend-ui` for public/member-facing payment screens. Add `.tpw-admin
 
 ## 2) Payment method picker contract
 
-- Radio inputs must use name="tpw_payment_method" and a slug value that matches Core’s methods (e.g., `square`, `bacs`, `cheque`, `cash`, `card-on-the-day`, `sumup`, `woocommerce`).
+- Radio inputs must use name="tpw_payment_method" and a slug value that matches the currently exposed Core methods (e.g., `square`, `bacs`, `cheque`, `cash`, `card-on-the-day`).
+- `sumup` and `woocommerce` remain reserved compatibility or development slugs in Core, but they are intentionally hidden from the current shared FE and BE Payment Methods configuration UI and should not be treated as current club-facing options.
 - Show/hide method-specific UI based on the selected radio.
 
 Minimal structure:

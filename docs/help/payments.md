@@ -3,8 +3,14 @@
 ## Overview
 Payments provides lightweight helpers and webhooks to log completed transactions (e.g., SumUp, Square) and expose settings like currency for dependent plugins.
 
+## Current Payment Methods Status
+- Visible in the shared Payment Methods settings UI: Bank Transfer (BACS), Cheque, Cash, Card on the day, and Square compatibility settings.
+- Hidden from the shared Payment Methods settings UI for now: SumUp and WooCommerce.
+- SumUp and WooCommerce remain development or integration surfaces in Core and must not be treated as current club-facing configuration options in the FE or BE Payment Methods list.
+- Square remains visible because Core still preserves its compatibility-era configuration state, even when the TPW Square Gateway add-on is not active.
+
 ## Key Screens / Shortcodes
-- Settings → TPW Core → Payments (gateway settings, currency)
+- Settings → FlexiClub → Payment Methods (shared gateway enablement and configuration)
 - Webhook endpoint(s): modules/payments/webhook.php (for gateways to call)
 
 ## Hooks
@@ -17,6 +23,6 @@ Payments provides lightweight helpers and webhooks to log completed transactions
 ## References
 - Developer Guide → ../developer-guide.md
 - Logger: modules/payments/class-tpw-payment-logger.php
-- Settings UI: modules/payments/views/payment-settings-page.php
+- Settings UI: modules/payments/class-tpw-payments-admin.php
 
 See also: Core Hooks Index → ../developer-guide.md#core-hooks-index

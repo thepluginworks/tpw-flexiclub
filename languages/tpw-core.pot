@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the FlexiClub plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FlexiClub 2.5.0\n"
+"Project-Id-Version: FlexiClub 2.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-20T14:51:29+00:00\n"
+"POT-Creation-Date: 2026-05-21T09:24:22+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tpw-core\n"
@@ -1748,6 +1748,7 @@ msgstr ""
 
 #: includes/class-tpw-member-payments.php:85
 #: includes/tpw-core-settings.php:207
+#: modules/payments/admin-settings.php:273
 msgid "Payment Methods"
 msgstr ""
 
@@ -1907,6 +1908,7 @@ msgstr ""
 #: modules/menus/class-tpw-menus-frontend-admin.php:390
 #: modules/menus/class-tpw-menus-frontend-admin.php:608
 #: modules/notices/shortcodes/noticeboard-list.php:96
+#: modules/payments/class-tpw-payments-admin.php:269
 #: modules/system-pages/class-tpw-core-system-pages.php:502
 #: modules/system-pages/templates/system-pages.php:89
 #: templates/frontend/flexiclub-workspace-system-pages.php:123
@@ -2286,7 +2288,7 @@ msgstr ""
 
 #: includes/tpw-core-settings.php:929
 #: modules/members/settings/member-signups-settings.php:151
-#: modules/payments/class-tpw-card-on-the-day-settings.php:75
+#: modules/payments/class-tpw-card-on-the-day-settings.php:83
 msgid "Label"
 msgstr ""
 
@@ -3227,7 +3229,7 @@ msgid "Identity Audit"
 msgstr ""
 
 #: modules/members/admin/class-tpw-identity-audit-admin.php:60
-#: modules/payments/admin-settings.php:164
+#: modules/payments/admin-settings.php:323
 #: modules/tpw-control/class-tpw-control-router.php:77
 msgid "You do not have permission to view this page."
 msgstr ""
@@ -4838,14 +4840,83 @@ msgstr ""
 msgid "Save Notice"
 msgstr ""
 
-#: modules/payments/admin-settings.php:182
+#: modules/payments/admin-settings.php:166
+msgid "Bank Transfer"
+msgstr ""
+
+#: modules/payments/admin-settings.php:171
+msgid "Cheque"
+msgstr ""
+
+#: modules/payments/admin-settings.php:176
+msgid "Cash"
+msgstr ""
+
+#: modules/payments/admin-settings.php:181
+msgid "Card on the day"
+msgstr ""
+
+#: modules/payments/admin-settings.php:199
+msgid "Square"
+msgstr ""
+
+#: modules/payments/admin-settings.php:200
+msgid "SumUp"
+msgstr ""
+
+#: modules/payments/admin-settings.php:201
+msgid "WooCommerce"
+msgstr ""
+
+#: modules/payments/admin-settings.php:226
+msgid "SumUp currently keeps its existing admin-only credential and OAuth flow. A front-end-safe wrapper is not available yet, so this method temporarily falls back to the existing admin page."
+msgstr ""
+
+#: modules/payments/admin-settings.php:230
+msgid "Square settings are currently owned by the TPW Square Gateway add-on. Use the existing admin route until a front-end-safe compatibility wrapper is available."
+msgstr ""
+
+#: modules/payments/admin-settings.php:233
+msgid "Square configuration includes credential fields and still relies on the existing admin settings surface. Use the admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:237
+msgid "WooCommerce payment configuration remains owned by WooCommerce. Use the existing admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:238
+msgid "WooCommerce is not active on this site, so there is no front-end configuration screen to render here."
+msgstr ""
+
+#: modules/payments/admin-settings.php:241
+msgid "This payment method is registered, but a front-end-safe configuration screen is not available yet. Use the existing admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:277
+msgid "Configure this payment method without leaving the FlexiClub Settings workspace."
+msgstr ""
+
+#: modules/payments/admin-settings.php:280
+#: modules/payments/class-tpw-card-on-the-day-settings.php:47
+msgid "Back to Payment Methods"
+msgstr ""
+
+#: modules/payments/admin-settings.php:286
+msgid "You do not have permission to configure payment methods."
+msgstr ""
+
+#: modules/payments/admin-settings.php:308
+msgid "Open Admin Settings"
+msgstr ""
+
+#: modules/payments/admin-settings.php:352
 msgid "Payment Methods UI is unavailable (missing admin renderer)."
 msgstr ""
 
-#: modules/payments/class-tpw-bacs-settings.php:100
-#: modules/payments/class-tpw-card-on-the-day-settings.php:95
-#: modules/payments/class-tpw-cash-settings.php:94
-#: modules/payments/class-tpw-cheque-settings.php:125
+#: modules/payments/class-tpw-bacs-settings.php:108
+#: modules/payments/class-tpw-card-on-the-day-settings.php:103
+#: modules/payments/class-tpw-cash-settings.php:102
+#: modules/payments/class-tpw-cheque-settings.php:133
 #: modules/payments/views/square-settings-page.php:67
 #, php-format
 msgid "Fixed (%s)"
@@ -4857,27 +4928,23 @@ msgstr ""
 msgid "Card on the day Settings"
 msgstr ""
 
-#: modules/payments/class-tpw-card-on-the-day-settings.php:47
-msgid "Back to Payment Methods"
-msgstr ""
-
-#: modules/payments/class-tpw-card-on-the-day-settings.php:49
+#: modules/payments/class-tpw-card-on-the-day-settings.php:56
 msgid "Surcharge settings updated successfully."
 msgstr ""
 
-#: modules/payments/class-tpw-card-on-the-day-settings.php:78
+#: modules/payments/class-tpw-card-on-the-day-settings.php:86
 msgid "Shown on checkout."
 msgstr ""
 
-#: modules/payments/class-tpw-card-on-the-day-settings.php:82
+#: modules/payments/class-tpw-card-on-the-day-settings.php:90
 msgid "Message to display"
 msgstr ""
 
-#: modules/payments/class-tpw-card-on-the-day-settings.php:85
+#: modules/payments/class-tpw-card-on-the-day-settings.php:93
 msgid "This message will be shown on the checkout, thank you page, and confirmation email."
 msgstr ""
 
-#: modules/payments/class-tpw-card-on-the-day-settings.php:89
+#: modules/payments/class-tpw-card-on-the-day-settings.php:97
 msgid "Surcharge (%)"
 msgstr ""
 
@@ -4921,30 +4988,52 @@ msgstr ""
 msgid "Square settings are retained, but Square cannot be enabled until the TPW Square Gateway add-on is active."
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:146
+#: modules/payments/class-tpw-payments-admin.php:147
 msgid "Square remains configured in Core, but it is unavailable on forms until the TPW Square Gateway add-on is active."
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:206
+#: modules/payments/class-tpw-payments-admin.php:204
 msgid "Unavailable on forms until the TPW Square Gateway add-on is active."
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:210
+#: modules/payments/class-tpw-payments-admin.php:208
 msgid "The previous enabled state will be restored when the add-on becomes active again."
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:246
+#: modules/payments/class-tpw-payments-admin.php:218
+msgid "Square configuration remains on the existing settings surface."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:220
+msgid "Uses the currently registered payment method settings."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:256
 msgid "Enable"
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:329
-#: modules/payments/class-tpw-payments-admin.php:335
-#: modules/payments/class-tpw-payments-admin.php:340
+#. translators: %s: payment method name
+#: modules/payments/class-tpw-payments-admin.php:266
+#, php-format
+msgid "Configure %s"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:272
+msgid "Open details"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:272
+msgid "View details"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:346
+#: modules/payments/class-tpw-payments-admin.php:352
+#: modules/payments/class-tpw-payments-admin.php:357
 msgid "Manage Payment Methods"
 msgstr ""
 
-#: modules/payments/class-tpw-payments-admin.php:330
-#: modules/payments/class-tpw-payments-admin.php:336
+#: modules/payments/class-tpw-payments-admin.php:347
+#: modules/payments/class-tpw-payments-admin.php:353
 msgid "Enable, disable, and configure payment methods for your events. For Admins and Treasurers."
 msgstr ""
 

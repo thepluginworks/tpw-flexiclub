@@ -46,12 +46,20 @@ class TPW_BACS_Settings {
         <?php if ( function_exists( 'tpw_core_render_settings_header' ) ) { tpw_core_render_settings_header( 'Bank Transfer Payment Settings' ); } ?>
         <div class="tpw-admin-ui"><div class="wrap">
             <p><a href="<?php echo esc_url( tpw_core_get_payment_methods_settings_url() ); ?>" class="button">Back to Payment Methods</a></p>
+            <?php self::render_settings_form(); ?>
+        </div></div>
+        <?php
+    }
+
+    public static function render_settings_form() {
+        ?>
             <?php if ( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) : ?>
                 <div class="notice notice-success is-dismissible"><p>Surcharge settings updated successfully.</p></div>
             <?php endif; ?>
-            <form method="post" action="options.php">
+            <form method="post" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>">
                 <?php
                 settings_fields('tpw_bacs_settings');
+                wp_referer_field();
                 do_settings_sections('tpw_bacs_settings');
                 // Current label from DB
                 global $wpdb; $table = $wpdb->prefix . 'tpw_payment_methods';
@@ -105,7 +113,6 @@ class TPW_BACS_Settings {
                 </table>
                 <?php submit_button('Save Settings'); ?>
             </form>
-        </div></div>
         <?php
     }
 

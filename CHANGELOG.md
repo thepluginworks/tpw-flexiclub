@@ -2,6 +2,17 @@
 
 ## [Unreleased]
 
+## [2.6.0] - 2026-05-21
+
+### Changed
+- Front end: added Payment Method detail routing inside the FlexiClub Settings workspace so supported offline methods open and save within the portal instead of relying on wp-admin routes.
+- Payments: reused the existing offline gateway configuration forms and save flows for Bank Transfer, Cheque, Cash, and Card on the day inside the front-end Settings workspace while preserving current option keys and existing wp-admin settings pages.
+- Payments: removed SumUp and WooCommerce from the shared FlexiClub Payment Methods settings list in both wp-admin and the front-end Settings workspace while those methods remain development-only surfaces.
+- Payments UI: aligned the shared Payment Methods list layout across wp-admin and the front-end Settings workspace so the Enable control is larger and the centered status state uses the same pill treatment in both contexts.
+
+### Fixed
+- Front end: Payment Methods Configure/Edit actions now stay inside the FlexiClub Settings workspace for supported methods, and unsupported methods now show a clear temporary admin fallback instead of broken or incorrect links.
+
 ## [2.5.0] - 2026-05-20
 
 ### Changed

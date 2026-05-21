@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.5.0
+Stable tag: 2.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,11 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.6.0 =
+- Added front-end Payment Method detail routing inside the FlexiClub Settings workspace so supported offline methods can be configured without leaving the portal.
+- Kept shared Payment Method save flows and admin pages aligned so existing wp-admin configuration pages continue to work while front-end settings routes return correctly after save.
+- Removed SumUp and WooCommerce from the shared Payment Methods list while those integrations remain development-only surfaces, and refreshed the shared payment list styling so enable toggles and status pills are clearer in both admin and front-end settings.
 
 = 2.5.0 =
 - Added dedicated front-end Menu Management, Archival System, and Logs workspaces inside the `[flexiclub]` portal while keeping the existing legacy TPW Control page available for transition.

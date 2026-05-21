@@ -589,7 +589,101 @@ if ( ! function_exists( 'tpw_core_user_can' ) ) {
  */
 if ( ! function_exists( 'tpw_core_get_payment_methods_settings_url' ) ) {
     function tpw_core_get_payment_methods_settings_url(): string {
+        if ( function_exists( 'tpw_core_get_settings_view_context' ) && function_exists( 'tpw_core_build_settings_tab_url' ) ) {
+            $context = tpw_core_get_settings_view_context();
+            $mode    = isset( $context['mode'] ) ? sanitize_key( (string) $context['mode'] ) : 'admin';
+
+            if ( 'frontend' === $mode ) {
+                $url = tpw_core_build_settings_tab_url( 'payment-methods' );
+
+                if ( is_string( $url ) && '' !== $url ) {
+                    return remove_query_arg(
+                        [ 'payment-method', 'payment-method-view', 'settings-updated', 'tpw_core_notice', 'sumup_connected' ],
+                        $url
+                    );
+                }
+            }
+        }
+
         return admin_url( 'options-general.php?page=tpw-core-settings&tab=payment-methods' );
+    }
+}
+
+if ( ! function_exists( 'tpw_core_get_payment_method_settings_page_slug' ) ) {
+    function tpw_core_get_payment_method_settings_page_slug( string $method_slug ): string {
+        $method_slug = sanitize_key( $method_slug );
+
+        $known_pages = [
+            'bacs'            => 'tpw-bacs-settings',
+            'cheque'          => 'tpw-cheque-settings',
+            'cash'            => 'tpw-cash-settings',
+            'card-on-the-day' => 'tpw-card-on-the-day-settings',
+            'sumup'           => 'tpw-sumup-settings',
+            'square'          => 'tpw-square-settings',
+            'woocommerce'     => 'admin.php?page=wc-settings&tab=checkout',
+        ];
+
+        if ( isset( $known_pages[ $method_slug ] ) ) {
+            return $known_pages[ $method_slug ];
+        }
+
+        return '';
+    }
+}
+
+if ( ! function_exists( 'tpw_core_build_payment_method_settings_url' ) ) {
+    function tpw_core_build_payment_method_settings_url( string $method_slug, array $extra_args = [] ): string {
+        $method_slug = sanitize_key( $method_slug );
+        if ( '' === $method_slug ) {
+            return tpw_core_get_payment_methods_settings_url();
+        }
+
+        if ( function_exists( 'tpw_core_get_settings_view_context' ) && function_exists( 'tpw_core_build_settings_tab_url' ) ) {
+            $context = tpw_core_get_settings_view_context();
+            $mode    = isset( $context['mode'] ) ? sanitize_key( (string) $context['mode'] ) : 'admin';
+
+            if ( 'frontend' === $mode ) {
+                return add_query_arg(
+                    array_merge(
+                        [
+                            'payment-method' => $method_slug,
+                        ],
+                        $extra_args
+                    ),
+                    tpw_core_get_payment_methods_settings_url()
+                );
+            }
+        }
+
+        return tpw_core_build_payment_method_admin_url( $method_slug, $extra_args );
+    }
+}
+
+if ( ! function_exists( 'tpw_core_build_payment_method_admin_url' ) ) {
+    function tpw_core_build_payment_method_admin_url( string $method_slug, array $extra_args = [] ): string {
+        $method_slug = sanitize_key( $method_slug );
+        if ( '' === $method_slug ) {
+            return admin_url( 'options-general.php?page=tpw-core-settings&tab=payment-methods' );
+        }
+
+        $page_slug = tpw_core_get_payment_method_settings_page_slug( $method_slug );
+        if ( '' === $page_slug ) {
+            return admin_url( 'options-general.php?page=tpw-core-settings&tab=payment-methods' );
+        }
+
+        if ( 0 === strpos( $page_slug, 'admin.php?' ) ) {
+            return add_query_arg( $extra_args, admin_url( $page_slug ) );
+        }
+
+        return add_query_arg(
+            array_merge(
+                [
+                    'page' => $page_slug,
+                ],
+                $extra_args
+            ),
+            admin_url( 'admin.php' )
+        );
     }
 }
 

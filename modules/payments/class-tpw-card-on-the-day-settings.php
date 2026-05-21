@@ -45,12 +45,20 @@ class TPW_Card_On_The_Day_Settings {
         <?php if ( function_exists( 'tpw_core_render_settings_header' ) ) { tpw_core_render_settings_header( __( 'Card on the day Settings', 'tpw-core' ) ); } ?>
         <div class="tpw-admin-ui"><div class="wrap">
             <p><a href="<?php echo esc_url( tpw_core_get_payment_methods_settings_url() ); ?>" class="button"><?php esc_html_e('Back to Payment Methods', 'tpw-core'); ?></a></p>
+            <?php self::render_settings_form(); ?>
+        </div></div>
+        <?php
+    }
+
+    public static function render_settings_form() {
+        ?>
             <?php if ( isset($_GET['settings-updated']) && $_GET['settings-updated'] ) : ?>
                 <div class="notice notice-success is-dismissible"><p><?php esc_html_e('Surcharge settings updated successfully.', 'tpw-core'); ?></p></div>
             <?php endif; ?>
-            <form method="post" action="options.php">
+            <form method="post" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>">
                 <?php
                 settings_fields('tpw_card_on_the_day_settings_group');
+                wp_referer_field();
                 do_settings_sections('tpw_card_on_the_day_settings_group');
                 $message = get_option('tpw_card_on_the_day_message', '');
                 // Current label from DB
@@ -100,7 +108,6 @@ class TPW_Card_On_The_Day_Settings {
                 </table>
                 <?php submit_button(); ?>
             </form>
-        </div></div>
         <?php
     }
 
