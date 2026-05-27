@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [2.6.1] - 2026-05-27
+
+### Changed
+- Noticeboard: documented the canonical module shortcode, assets, and legacy compatibility copies so future integrations use the active `modules/notices/*` runtime path.
+
+### Fixed
+- Noticeboard: updated the front-end notice editor modal shell so the active module script opens the flex-based modal layout correctly and keeps the improved scrolling and mobile sizing behaviour.
+
 ## [2.6.0] - 2026-05-21
 
 ### Changed

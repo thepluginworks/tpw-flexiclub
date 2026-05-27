@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the FlexiClub plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FlexiClub 2.6.0\n"
+"Project-Id-Version: FlexiClub 2.6.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-05-21T09:24:22+00:00\n"
+"POT-Creation-Date: 2026-05-27T11:18:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tpw-core\n"
@@ -160,8 +160,8 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:1710
 #: includes/class-tpw-flexiclub-admin-menu.php:3280
 #: includes/class-tpw-flexiclub-admin-menu.php:4449
-#: includes/noticeboard/class-tpw-noticeboard.php:12
-#: includes/noticeboard/class-tpw-noticeboard.php:22
+#: includes/noticeboard/class-tpw-noticeboard.php:20
+#: includes/noticeboard/class-tpw-noticeboard.php:30
 #: modules/notices/class-tpw-noticeboard.php:13
 #: modules/notices/class-tpw-noticeboard.php:23
 msgid "Noticeboard"
@@ -498,7 +498,7 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:896
 #: includes/class-tpw-flexiclub-admin-menu.php:937
-#: includes/noticeboard/noticeboard-handler.php:86
+#: includes/noticeboard/noticeboard-handler.php:94
 #: modules/notices/noticeboard-handler.php:78
 msgid "Not found."
 msgstr ""
@@ -1291,9 +1291,9 @@ msgid "Add New Member"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3414
-#: includes/noticeboard/class-tpw-noticeboard.php:14
-#: includes/noticeboard/class-tpw-noticeboard.php:15
-#: includes/noticeboard/shortcodes/noticeboard-list.php:94
+#: includes/noticeboard/class-tpw-noticeboard.php:22
+#: includes/noticeboard/class-tpw-noticeboard.php:23
+#: includes/noticeboard/shortcodes/noticeboard-list.php:108
 #: modules/notices/class-tpw-noticeboard.php:15
 #: modules/notices/class-tpw-noticeboard.php:16
 #: modules/notices/shortcodes/noticeboard-list.php:67
@@ -1760,147 +1760,147 @@ msgstr ""
 msgid "No active methods detected."
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:13
+#: includes/noticeboard/class-tpw-noticeboard.php:21
 #: modules/notices/class-tpw-noticeboard.php:14
 msgid "Notice"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:16
+#: includes/noticeboard/class-tpw-noticeboard.php:24
 #: modules/notices/class-tpw-noticeboard.php:17
 msgid "Edit Notice"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:17
+#: includes/noticeboard/class-tpw-noticeboard.php:25
 #: modules/notices/class-tpw-noticeboard.php:18
 msgid "New Notice"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:18
+#: includes/noticeboard/class-tpw-noticeboard.php:26
 #: modules/notices/class-tpw-noticeboard.php:19
 msgid "View Notice"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:19
+#: includes/noticeboard/class-tpw-noticeboard.php:27
 #: modules/notices/class-tpw-noticeboard.php:20
 msgid "Search Notices"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:20
+#: includes/noticeboard/class-tpw-noticeboard.php:28
 #: modules/notices/class-tpw-noticeboard.php:21
 msgid "No notices found"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:21
+#: includes/noticeboard/class-tpw-noticeboard.php:29
 #: modules/notices/class-tpw-noticeboard.php:22
 msgid "No notices found in Trash"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:39
-#: includes/noticeboard/class-tpw-noticeboard.php:49
+#: includes/noticeboard/class-tpw-noticeboard.php:47
+#: includes/noticeboard/class-tpw-noticeboard.php:57
 #: modules/notices/class-tpw-noticeboard.php:39
 #: modules/notices/class-tpw-noticeboard.php:49
 msgid "Notice Categories"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:40
+#: includes/noticeboard/class-tpw-noticeboard.php:48
 #: modules/notices/class-tpw-noticeboard.php:40
 msgid "Notice Category"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:41
+#: includes/noticeboard/class-tpw-noticeboard.php:49
 #: modules/notices/class-tpw-noticeboard.php:41
 msgid "Search Notice Categories"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:42
+#: includes/noticeboard/class-tpw-noticeboard.php:50
 #: modules/notices/class-tpw-noticeboard.php:42
 msgid "All Notice Categories"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:43
+#: includes/noticeboard/class-tpw-noticeboard.php:51
 #: modules/notices/class-tpw-noticeboard.php:43
 msgid "Parent Category"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:44
+#: includes/noticeboard/class-tpw-noticeboard.php:52
 #: modules/notices/class-tpw-noticeboard.php:44
 msgid "Parent Category:"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:45
+#: includes/noticeboard/class-tpw-noticeboard.php:53
 #: modules/notices/class-tpw-noticeboard.php:45
 msgid "Edit Category"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:46
+#: includes/noticeboard/class-tpw-noticeboard.php:54
 #: modules/notices/class-tpw-noticeboard.php:46
 msgid "Update Category"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:47
+#: includes/noticeboard/class-tpw-noticeboard.php:55
 #: modules/notices/class-tpw-noticeboard.php:47
 msgid "Add New Category"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:48
+#: includes/noticeboard/class-tpw-noticeboard.php:56
 #: modules/notices/class-tpw-noticeboard.php:48
 msgid "New Category Name"
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:37
+#: includes/noticeboard/noticeboard-handler.php:45
 #: modules/notices/noticeboard-handler.php:29
 msgid "Permission denied."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:41
+#: includes/noticeboard/noticeboard-handler.php:49
 #: modules/members/shortcodes/member-login.php:117
 #: modules/notices/noticeboard-handler.php:33
 msgid "Security check failed."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:69
+#: includes/noticeboard/noticeboard-handler.php:77
 #: modules/notices/noticeboard-handler.php:61
 msgid "Notice saved."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:75
-#: includes/noticeboard/noticeboard-handler.php:84
+#: includes/noticeboard/noticeboard-handler.php:83
+#: includes/noticeboard/noticeboard-handler.php:92
 #: modules/notices/noticeboard-handler.php:67
 #: modules/notices/noticeboard-handler.php:76
 msgid "Invalid notice ID."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:77
+#: includes/noticeboard/noticeboard-handler.php:85
 #: modules/notices/noticeboard-handler.php:69
 msgid "Delete failed."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:78
+#: includes/noticeboard/noticeboard-handler.php:86
 #: modules/notices/noticeboard-handler.php:70
 msgid "Notice deleted."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:105
+#: includes/noticeboard/noticeboard-handler.php:113
 #: modules/notices/noticeboard-handler.php:95
 msgid "Notice duplicated."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:112
+#: includes/noticeboard/noticeboard-handler.php:120
 #: modules/notices/noticeboard-handler.php:102
 msgid "Category name is required."
 msgstr ""
 
-#: includes/noticeboard/noticeboard-handler.php:119
+#: includes/noticeboard/noticeboard-handler.php:127
 #: modules/notices/noticeboard-handler.php:109
 msgid "Category added."
 msgstr ""
 
-#: includes/noticeboard/shortcodes/noticeboard-list.php:113
+#: includes/noticeboard/shortcodes/noticeboard-list.php:127
 #: modules/notices/shortcodes/noticeboard-list.php:92
 msgid "Read More"
 msgstr ""
 
-#: includes/noticeboard/shortcodes/noticeboard-list.php:117
+#: includes/noticeboard/shortcodes/noticeboard-list.php:131
 #: includes/tpw-core-settings.php:938
 #: modules/gallery/templates/list.php:51
 #: modules/members/shortcodes/member-profile.php:258
@@ -1915,12 +1915,12 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: includes/noticeboard/shortcodes/noticeboard-list.php:118
+#: includes/noticeboard/shortcodes/noticeboard-list.php:132
 #: modules/notices/shortcodes/noticeboard-list.php:97
 msgid "Duplicate"
 msgstr ""
 
-#: includes/noticeboard/shortcodes/noticeboard-list.php:119
+#: includes/noticeboard/shortcodes/noticeboard-list.php:133
 #: modules/gallery/gallery-loader.php:89
 #: modules/gallery/templates/categories.php:38
 #: modules/gallery/templates/form.php:88
@@ -1933,7 +1933,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: includes/noticeboard/shortcodes/noticeboard-list.php:126
+#: includes/noticeboard/shortcodes/noticeboard-list.php:140
 #: modules/notices/shortcodes/noticeboard-list.php:105
 msgid "No notices found."
 msgstr ""

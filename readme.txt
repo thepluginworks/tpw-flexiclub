@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.6.0
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,10 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.6.1 =
+- Noticeboard: improved the front-end notice editor modal so the active module layout opens correctly with the updated flex-based shell and better mobile sizing.
+- Noticeboard: clarified the canonical module asset and shortcode paths in the bundled docs while keeping the older root noticeboard assets and includes-based bootstraps as temporary compatibility copies.
 
 = 2.6.0 =
 - Added front-end Payment Method detail routing inside the FlexiClub Settings workspace so supported offline methods can be configured without leaving the portal.
