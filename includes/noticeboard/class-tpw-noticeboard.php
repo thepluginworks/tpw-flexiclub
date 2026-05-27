@@ -1,6 +1,14 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
+/*
+ * Deprecated legacy Noticeboard CPT bootstrap.
+ *
+ * The active Core bootstrap now loads modules/notices/class-tpw-noticeboard.php.
+ * Keep this file temporarily for backwards compatibility with older custom
+ * includes-based bootstraps only.
+ */
+
 class TPW_Noticeboard {
     public static function init() {
         add_action('init', [__CLASS__, 'register_cpt_and_tax']);

@@ -1,6 +1,14 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
+/*
+ * Deprecated legacy Noticeboard AJAX handler bootstrap.
+ *
+ * The active Core bootstrap now loads modules/notices/noticeboard-handler.php.
+ * Keep this file temporarily for backwards compatibility with older custom
+ * includes-based bootstraps only.
+ */
+
 class TPW_Noticeboard_Handler {
     public static function init() {
         add_action('wp_ajax_tpw_notice_save', [__CLASS__, 'save_notice']);

@@ -1,5 +1,5 @@
 (function($){
-  function openModal(){ $('#tpw-notice-modal').show(); }
+  function openModal(){ $('#tpw-notice-modal').css('display', 'flex'); }
   function closeModal(){ $('#tpw-notice-modal').hide(); }
   function setEditorContent(html){ if (typeof tinymce !== 'undefined' && tinymce.get('tpw_notice_content')) { tinymce.get('tpw_notice_content').setContent(html||''); } else { $('#tpw_notice_content').val(html||''); } }
   function getEditorContent(){ if (typeof tinymce !== 'undefined' && tinymce.get('tpw_notice_content')) { return tinymce.get('tpw_notice_content').getContent(); } return $('#tpw_notice_content').val(); }

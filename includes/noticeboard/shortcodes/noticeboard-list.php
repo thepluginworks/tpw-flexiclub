@@ -1,6 +1,20 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 
+/*
+ * Deprecated legacy shortcode implementation.
+ *
+ * TPW Core now bootstraps the Noticeboard from modules/notices/* via the
+ * main core loader. This includes-based copy is retained temporarily for
+ * backwards compatibility with older custom bootstraps only.
+ *
+ * The normal [tpw_noticeboard_list] runtime path uses:
+ * - modules/notices/shortcodes/noticeboard-list.php
+ * - modules/notices/assets/css/noticeboard.css
+ * - modules/notices/assets/js/noticeboard.js
+ * - modules/notices/templates/form.php
+ */
+
 class TPW_Noticeboard_List_Shortcode {
     public static function init() {
         add_shortcode('tpw_noticeboard_list', [__CLASS__, 'render']);

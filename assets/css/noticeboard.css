@@ -1,3 +1,14 @@
+/*
+ * Deprecated compatibility copy.
+ *
+ * The active [tpw_noticeboard_list] shortcode now loads
+ * modules/notices/assets/css/noticeboard.css via
+ * modules/notices/shortcodes/noticeboard-list.php.
+ *
+ * Keep this root asset temporarily for backwards compatibility with
+ * older custom URLs or bootstraps only.
+ */
+
 /* Noticeboard basic styles */
 .tpw-notice-admin-actions{margin-bottom:1rem}
 .tpw-notice-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
@@ -10,9 +21,17 @@
 .tpw-notice-actions{display:flex;gap:6px;padding:8px 12px;border-top:1px solid #eee}
 
 /* Modal */
-.tpw-notice-modal{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:9999;display:none}
-.tpw-notice-modal-content{background:#fff;max-width:900px;margin:4vh auto;padding:16px;border-radius:8px;}
-.tpw-notice-modal-header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:12px}
+.tpw-notice-modal{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:9999;display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-sizing:border-box}
+.tpw-notice-modal-content{background:#fff;width:min(900px,100%);max-width:900px;max-height:calc(100vh - 40px);max-height:calc(100dvh - 40px);margin:0 auto;padding:16px;border-radius:8px;display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box}
+.tpw-notice-modal-header{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding-bottom:8px;margin-bottom:12px;flex:0 0 auto}
 .tpw-notice-modal-title{margin:0}
 .tpw-notice-modal-close{background:none;border:none;font-size:20px;cursor:pointer}
+.tpw-notice-modal-body{overflow-y:auto;min-height:0;flex:1 1 auto;padding-right:2px}
 .tpw-field{margin-bottom:12px}
+.tpw-actions{display:flex;justify-content:flex-end;padding-top:12px}
+
+@media (max-width: 782px){
+.tpw-notice-modal{padding:12px}
+.tpw-notice-modal-content{width:calc(100vw - 24px);max-height:calc(100vh - 24px);max-height:calc(100dvh - 24px);padding:12px;border-radius:6px}
+.tpw-notice-modal-header{align-items:flex-start;gap:12px}
+}
