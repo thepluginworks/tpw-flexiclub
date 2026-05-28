@@ -567,7 +567,21 @@ if ( ! function_exists( 'tpw_core_render_member_menu_tab' ) ) {
         $selected = get_option( 'tpw_member_menu_location', 'primary' );
         $locations = function_exists( 'get_registered_nav_menus' ) ? get_registered_nav_menus() : [];
         $action = esc_url( admin_url( 'admin-post.php' ) );
+        $repair_notice = isset( $_GET['member-menu-repaired'] ) ? sanitize_key( wp_unslash( $_GET['member-menu-repaired'] ) ) : '';
+        $repair_message = '';
+        $repair_tone = '';
+
+        if ( '1' === $repair_notice ) {
+            $repair_tone = 'success';
+            $repair_message = __( 'Members Menu repair completed. Missing default items were added without duplicating existing entries.', 'tpw-core' );
+        } elseif ( '0' === $repair_notice ) {
+            $repair_tone = 'error';
+            $repair_message = __( 'Members Menu repair could not complete. Check that WordPress nav menu functions are available and try again.', 'tpw-core' );
+        }
         ?>
+        <?php if ( '' !== $repair_message ) : ?>
+            <div class="notice notice-<?php echo esc_attr( $repair_tone ); ?>"><p><?php echo esc_html( $repair_message ); ?></p></div>
+        <?php endif; ?>
         <form method="post" action="<?php echo $action; ?>">
             <?php wp_nonce_field( 'tpw_core_save_member_menu', 'tpw_core_member_menu_nonce' ); ?>
             <input type="hidden" name="action" value="tpw_core_save_member_menu" />
@@ -588,6 +602,15 @@ if ( ! function_exists( 'tpw_core_render_member_menu_tab' ) ) {
                 </tbody>
             </table>
             <?php submit_button( __( 'Save Member Menu', 'tpw-core' ) ); ?>
+        </form>
+        <form method="post" action="<?php echo $action; ?>">
+            <?php wp_nonce_field( 'tpw_core_repair_member_menu', 'tpw_core_repair_member_menu_nonce' ); ?>
+            <input type="hidden" name="action" value="tpw_core_repair_member_menu" />
+            <?php tpw_core_render_settings_context_fields( 'member-menu' ); ?>
+            <p>
+                <?php submit_button( __( 'Repair Members Menu', 'tpw-core' ), 'secondary', 'submit', false ); ?>
+                <span class="description"><?php esc_html_e( 'Safely add any missing default FlexiClub member-menu items on existing installs without deactivating or reactivating the plugin.', 'tpw-core' ); ?></span>
+            </p>
         </form>
         <?php
     }
@@ -1729,6 +1752,39 @@ add_action( 'admin_post_tpw_core_save_member_menu', function() {
     exit;
 } );
 
+add_action( 'admin_post_tpw_core_repair_member_menu', function() {
+    if ( ! tpw_core_current_user_can_manage_settings() ) {
+        wp_die( __( 'Permission denied', 'tpw-core' ) );
+    }
+
+    check_admin_referer( 'tpw_core_repair_member_menu', 'tpw_core_repair_member_menu_nonce' );
+
+    $menu_id = 0;
+    if ( function_exists( 'get_nav_menu_locations' ) ) {
+        $locations = get_nav_menu_locations();
+        $menu_id = isset( $locations['tpw_member_menu'] ) ? (int) $locations['tpw_member_menu'] : 0;
+    }
+
+    $repaired_menu_id = function_exists( 'tpw_core_ensure_member_menu_defaults' ) ? (int) tpw_core_ensure_member_menu_defaults( $menu_id ) : 0;
+    if ( $repaired_menu_id > 0 ) {
+        if ( function_exists( 'get_nav_menu_locations' ) ) {
+            $locations = get_nav_menu_locations();
+            $locations = is_array( $locations ) ? $locations : [];
+            if ( ! isset( $locations['tpw_member_menu'] ) || (int) $locations['tpw_member_menu'] !== $repaired_menu_id ) {
+                $locations['tpw_member_menu'] = $repaired_menu_id;
+                set_theme_mod( 'nav_menu_locations', $locations );
+            }
+        }
+
+        update_option( 'tpw_core_member_menu_defaults_seeded_v2', time() );
+        wp_safe_redirect( tpw_core_get_settings_redirect_url( 'member-menu', [ 'member-menu-repaired' => '1' ] ) );
+        exit;
+    }
+
+    wp_safe_redirect( tpw_core_get_settings_redirect_url( 'member-menu', [ 'member-menu-repaired' => '0' ] ) );
+    exit;
+} );
+
 // Migrate legacy FlexiGolf option to Core on admin_init (one-way)
 add_action( 'admin_init', function() {
     // If Core option not set but legacy exists, copy across
@@ -1952,6 +2008,364 @@ if ( ! function_exists( 'tpw_core_profile_page_is_configured' ) ) {
     }
 }
 
+if ( ! function_exists( 'tpw_core_find_page_with_shortcode_tag' ) ) {
+    function tpw_core_find_page_with_shortcode_tag( $shortcode_tag, $fallback_slug = '' ) {
+        $tag = sanitize_key( (string) $shortcode_tag );
+        if ( '' === $tag ) {
+            return null;
+        }
+
+        $page = null;
+
+        if ( class_exists( 'WP_Query' ) ) {
+            $query = new WP_Query(
+                [
+                    'post_type'      => 'page',
+                    'post_status'    => 'publish',
+                    'posts_per_page' => 25,
+                    'fields'         => 'ids',
+                    's'              => '[' . $tag,
+                ]
+            );
+
+            if ( $query->have_posts() ) {
+                foreach ( $query->posts as $page_id ) {
+                    $post = get_post( (int) $page_id );
+                    if ( ! ( $post instanceof WP_Post ) || 'page' !== $post->post_type || 'publish' !== $post->post_status ) {
+                        continue;
+                    }
+
+                    $content = (string) $post->post_content;
+                    if ( function_exists( 'has_shortcode' ) && has_shortcode( $content, $tag ) ) {
+                        $page = $post;
+                        break;
+                    }
+
+                    if ( false !== strpos( $content, '[' . $tag ) ) {
+                        $page = $post;
+                        break;
+                    }
+                }
+            }
+
+            wp_reset_postdata();
+        }
+
+        if ( ! ( $page instanceof WP_Post ) && '' !== $fallback_slug ) {
+            $fallback = get_page_by_path( sanitize_title( (string) $fallback_slug ), OBJECT, 'page' );
+            if ( $fallback instanceof WP_Post && 'publish' === $fallback->post_status ) {
+                $page = $fallback;
+            }
+        }
+
+        return $page instanceof WP_Post ? $page : null;
+    }
+}
+
+if ( ! function_exists( 'tpw_core_resolve_shortcode_page_url' ) ) {
+    function tpw_core_resolve_shortcode_page_url( $shortcode_tag, $fallback_slug = '', $query_args = [] ) {
+        $page = tpw_core_find_page_with_shortcode_tag( $shortcode_tag, $fallback_slug );
+        $url  = '';
+
+        if ( $page instanceof WP_Post ) {
+            $url = (string) get_permalink( $page );
+        } elseif ( '' !== $fallback_slug ) {
+            $url = site_url( '/' . trim( (string) $fallback_slug, '/' ) . '/' );
+        }
+
+        if ( '' === $url ) {
+            return '';
+        }
+
+        return ! empty( $query_args ) ? add_query_arg( $query_args, $url ) : $url;
+    }
+}
+
+if ( ! function_exists( 'tpw_core_member_menu_is_logout_url' ) ) {
+    function tpw_core_member_menu_is_logout_url( $url ) {
+        $raw = html_entity_decode( trim( (string) $url ), ENT_QUOTES, 'UTF-8' );
+        if ( '' === $raw ) {
+            return false;
+        }
+
+        $parsed = function_exists( 'wp_parse_url' ) ? wp_parse_url( $raw ) : parse_url( $raw );
+        if ( ! is_array( $parsed ) ) {
+            return false;
+        }
+
+        $path  = isset( $parsed['path'] ) ? (string) $parsed['path'] : '';
+        $query = isset( $parsed['query'] ) ? (string) $parsed['query'] : '';
+
+        if ( '' === $path ) {
+            $path = '/';
+        }
+
+        if ( '/' !== $path || '' === $query ) {
+            return false;
+        }
+
+        parse_str( $query, $query_vars );
+        if ( ! is_array( $query_vars ) || ! isset( $query_vars['tpw_action'] ) ) {
+            return false;
+        }
+
+        return 'logout' === (string) $query_vars['tpw_action'];
+    }
+}
+
+if ( ! function_exists( 'tpw_core_get_member_menu_allowed_statuses' ) ) {
+    function tpw_core_get_member_menu_allowed_statuses() {
+        if ( class_exists( 'TPW_Member_Access' ) && method_exists( 'TPW_Member_Access', 'get_allowed_statuses' ) ) {
+            return array_values( array_filter( array_map( 'strval', (array) TPW_Member_Access::get_allowed_statuses() ) ) );
+        }
+
+        return [ 'Active', 'Honorary', 'Life Member' ];
+    }
+}
+
+if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
+    function tpw_core_get_member_menu_default_items() {
+        $profile_url = tpw_core_resolve_profile_page_url();
+        if ( '' === $profile_url ) {
+            $profile_url = add_query_arg( 'tpw_my_profile', '1', home_url( '/my-profile/' ) );
+        }
+
+        $gallery_admin_url = class_exists( 'TPW_Core_System_Pages' )
+            ? (string) TPW_Core_System_Pages::get_permalink( 'gallery-admin' )
+            : tpw_core_resolve_shortcode_page_url( 'tpw_gallery_admin', 'gallery-admin' );
+
+        return [
+            [
+                'key'            => 'noticeboard',
+                'title'          => __( 'Noticeboard', 'tpw-core' ),
+                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_noticeboard_list', 'noticeboard' ),
+                'requires_login' => true,
+                'visibility'     => [
+                    'status' => tpw_core_get_member_menu_allowed_statuses(),
+                ],
+            ],
+            [
+                'key'            => 'members',
+                'title'          => __( 'Members', 'tpw-core' ),
+                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_manage_members', 'manage-members', [ 'action' => 'list' ] ),
+                'requires_login' => true,
+                'visibility'     => [
+                    'status' => tpw_core_get_member_menu_allowed_statuses(),
+                ],
+            ],
+            [
+                'key'            => 'gallery',
+                'title'          => __( 'Gallery', 'tpw-core' ),
+                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_gallery', 'gallery' ),
+                'requires_login' => true,
+                'visibility'     => [
+                    'status' => tpw_core_get_member_menu_allowed_statuses(),
+                ],
+            ],
+            [
+                'key'            => 'gallery-admin',
+                'title'          => __( 'Gallery Admin', 'tpw-core' ),
+                'url'            => $gallery_admin_url,
+                'parent_key'     => 'gallery',
+                'system_slug'    => 'gallery-admin',
+                'requires_login' => true,
+                'visibility'     => [
+                    'is_admin'         => true,
+                    'is_gallery_admin' => true,
+                ],
+            ],
+            [
+                'key'            => 'my-profile',
+                'title'          => __( 'My Profile', 'tpw-core' ),
+                'url'            => $profile_url,
+                'system_slug'    => 'my-profile',
+                'requires_login' => true,
+                'visibility'     => [
+                    'status' => tpw_core_get_member_menu_allowed_statuses(),
+                ],
+            ],
+            [
+                'key'            => 'admin',
+                'title'          => __( 'Admin', 'tpw-core' ),
+                'url'            => tpw_core_resolve_shortcode_page_url( 'flexiclub', 'flexiclub' ),
+                'system_slug'    => 'flexiclub',
+                'requires_login' => true,
+                'visibility'     => [
+                    'is_admin' => true,
+                ],
+            ],
+            [
+                'key'            => 'logout',
+                'title'          => __( 'Logout', 'tpw-core' ),
+                'url'            => '/?tpw_action=logout',
+                'requires_login' => true,
+                'visibility'     => [],
+            ],
+        ];
+    }
+}
+
+if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
+    function tpw_core_ensure_member_menu_defaults( $menu_id = 0 ) {
+        if ( ! function_exists( 'wp_create_nav_menu' ) || ! function_exists( 'wp_update_nav_menu_item' ) ) {
+            return 0;
+        }
+
+        $menu_id = absint( $menu_id );
+        if ( $menu_id <= 0 && function_exists( 'wp_get_nav_menu_object' ) ) {
+            $menu_obj = wp_get_nav_menu_object( __( 'Members Menu', 'tpw-core' ) );
+            $menu_id  = $menu_obj && isset( $menu_obj->term_id ) ? (int) $menu_obj->term_id : 0;
+        }
+
+        if ( $menu_id <= 0 ) {
+            $menu_id = (int) wp_create_nav_menu( __( 'Members Menu', 'tpw-core' ) );
+        }
+
+        if ( $menu_id <= 0 ) {
+            return 0;
+        }
+
+        $existing_items = wp_get_nav_menu_items( $menu_id, [ 'update_post_term_cache' => false ] );
+        $existing_items = is_array( $existing_items ) ? $existing_items : [];
+
+        $existing_by_default_key = [];
+        $existing_by_page_slug   = [];
+        $has_custom_items        = false;
+        $max_position            = 0;
+
+        foreach ( $existing_items as $existing_item ) {
+            $item_id = isset( $existing_item->ID ) ? (int) $existing_item->ID : 0;
+            if ( $item_id <= 0 ) {
+                continue;
+            }
+
+            $default_key = sanitize_key( (string) get_post_meta( $item_id, '_tpw_member_menu_default_key', true ) );
+            $page_slug   = sanitize_key( (string) get_post_meta( $item_id, '_tpw_page_slug', true ) );
+
+            if ( '' !== $default_key ) {
+                $existing_by_default_key[ $default_key ] = $existing_item;
+            }
+
+            if ( '' !== $page_slug && ! isset( $existing_by_page_slug[ $page_slug ] ) ) {
+                $existing_by_page_slug[ $page_slug ] = $existing_item;
+            }
+
+            if ( '' === $default_key && '' === $page_slug && ! tpw_core_member_menu_is_logout_url( $existing_item->url ?? '' ) ) {
+                $has_custom_items = true;
+            }
+
+            $max_position = max( $max_position, isset( $existing_item->menu_order ) ? (int) $existing_item->menu_order : 0 );
+        }
+
+        $defaults            = tpw_core_get_member_menu_default_items();
+        $default_item_ids    = [];
+        $bootstrap_positions = empty( $existing_items ) || ! $has_custom_items;
+
+        foreach ( $defaults as $index => $spec ) {
+            $key       = sanitize_key( (string) $spec['key'] );
+            $item_id   = 0;
+            $match     = isset( $existing_by_default_key[ $key ] ) ? $existing_by_default_key[ $key ] : null;
+            $page_slug = isset( $spec['system_slug'] ) ? sanitize_key( (string) $spec['system_slug'] ) : '';
+
+            if ( ! $match && '' !== $page_slug && isset( $existing_by_page_slug[ $page_slug ] ) ) {
+                $match = $existing_by_page_slug[ $page_slug ];
+            }
+
+            if ( ! $match ) {
+                foreach ( $existing_items as $existing_item ) {
+                    $current_url = (string) ( $existing_item->url ?? '' );
+
+                    if ( 'logout' === $key && tpw_core_member_menu_is_logout_url( $current_url ) ) {
+                        $match = $existing_item;
+                        break;
+                    }
+
+                    if ( 'logout' !== $key && ! empty( $spec['url'] ) ) {
+                        if ( untrailingslashit( $current_url ) === untrailingslashit( (string) $spec['url'] ) ) {
+                            $match = $existing_item;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if ( ! $match && $bootstrap_positions ) {
+                foreach ( $existing_items as $existing_item ) {
+                    $title = isset( $existing_item->title ) ? trim( (string) $existing_item->title ) : '';
+                    if ( '' !== $title && 0 === strcasecmp( $title, (string) $spec['title'] ) ) {
+                        $match = $existing_item;
+                        break;
+                    }
+                }
+            }
+
+            $parent_id = 0;
+            if ( ! empty( $spec['parent_key'] ) && isset( $default_item_ids[ $spec['parent_key'] ] ) ) {
+                $parent_id = (int) $default_item_ids[ $spec['parent_key'] ];
+            }
+
+            if ( $bootstrap_positions ) {
+                $position = $index + 1;
+            } elseif ( 'logout' === $key ) {
+                $position = $max_position + 1;
+            } else {
+                $max_position++;
+                $position = $max_position;
+            }
+
+            if ( $match ) {
+                $item_id = (int) $match->ID;
+                $args    = [
+                    'menu-item-title'  => isset( $match->title ) && '' !== trim( (string) $match->title ) ? (string) $match->title : (string) $spec['title'],
+                    'menu-item-url'    => (string) $spec['url'],
+                    'menu-item-status' => 'publish',
+                    'menu-item-type'   => 'custom',
+                ];
+
+                if ( $bootstrap_positions || 'logout' === $key || ! empty( $spec['parent_key'] ) ) {
+                    $args['menu-item-position']  = (int) $position;
+                    $args['menu-item-parent-id'] = (int) $parent_id;
+                }
+
+                wp_update_nav_menu_item( $menu_id, $item_id, $args );
+            } else {
+                $item_id = (int) wp_update_nav_menu_item(
+                    $menu_id,
+                    0,
+                    [
+                        'menu-item-title'     => (string) $spec['title'],
+                        'menu-item-url'       => (string) $spec['url'],
+                        'menu-item-status'    => 'publish',
+                        'menu-item-type'      => 'custom',
+                        'menu-item-position'  => (int) $position,
+                        'menu-item-parent-id' => (int) $parent_id,
+                    ]
+                );
+            }
+
+            if ( $item_id <= 0 ) {
+                continue;
+            }
+
+            update_post_meta( $item_id, '_tpw_member_menu_default_key', $key );
+            update_post_meta( $item_id, '_tpw_requires_login', ! empty( $spec['requires_login'] ) ? 1 : 0 );
+            update_post_meta( $item_id, '_tpw_visibility_json', wp_json_encode( isset( $spec['visibility'] ) && is_array( $spec['visibility'] ) ? $spec['visibility'] : [] ) );
+
+            if ( '' !== $page_slug ) {
+                update_post_meta( $item_id, '_tpw_page_slug', $page_slug );
+            }
+
+            $default_item_ids[ $key ] = $item_id;
+        }
+
+        if ( function_exists( 'clean_nav_menu_cache' ) ) {
+            clean_nav_menu_cache( $menu_id );
+        }
+
+        return $menu_id;
+    }
+}
+
 // Append a profile avatar + dropdown with My Profile link for logged-in members on classic menus
 add_filter( 'wp_nav_menu_items', function( $items, $args ) {
     if ( is_admin() ) return $items;
@@ -1968,6 +2382,28 @@ add_filter( 'wp_nav_menu_items', function( $items, $args ) {
     if ( ! $profile_configured ) {
         // Add the query var to guarantee routing even if rewrite rules aren't flushed
         $profile_url = add_query_arg( 'tpw_my_profile', '1', home_url( '/my-profile/' ) );
+    }
+
+    $locations = function_exists( 'get_nav_menu_locations' ) ? get_nav_menu_locations() : [];
+    $menu_id   = isset( $locations['tpw_member_menu'] ) ? (int) $locations['tpw_member_menu'] : 0;
+    if ( $menu_id > 0 && function_exists( 'wp_get_nav_menu_items' ) ) {
+        $menu_items = wp_get_nav_menu_items( $menu_id, [ 'update_post_term_cache' => false ] );
+        $menu_items = is_array( $menu_items ) ? $menu_items : [];
+
+        foreach ( $menu_items as $menu_item ) {
+            $item_id     = isset( $menu_item->ID ) ? (int) $menu_item->ID : 0;
+            $default_key = $item_id > 0 ? sanitize_key( (string) get_post_meta( $item_id, '_tpw_member_menu_default_key', true ) ) : '';
+            $page_slug   = $item_id > 0 ? sanitize_key( (string) get_post_meta( $item_id, '_tpw_page_slug', true ) ) : '';
+            $item_url    = (string) ( $menu_item->url ?? '' );
+
+            if ( 'my-profile' === $default_key || 'logout' === $default_key || 'my-profile' === $page_slug ) {
+                return $items;
+            }
+
+            if ( tpw_core_member_menu_is_logout_url( $item_url ) || untrailingslashit( $item_url ) === untrailingslashit( $profile_url ) ) {
+                return $items;
+            }
+        }
     }
 
     // Compute avatar: member photo or initials
@@ -2036,11 +2472,11 @@ add_filter( 'wp_nav_menu_objects', function( $items, $args ) {
 
     $is_hidden = [];
     $has_any_rules = function( $vis ) {
-        return ( ! empty( $vis['is_admin'] ) || ! empty( $vis['is_committee'] ) || ! empty( $vis['is_match_manager'] ) || ! empty( $vis['is_noticeboard_admin'] ) || ( ! empty( $vis['status'] ) && is_array( $vis['status'] ) ) );
+        return ( ! empty( $vis['is_admin'] ) || ! empty( $vis['is_committee'] ) || ! empty( $vis['is_match_manager'] ) || ! empty( $vis['is_noticeboard_admin'] ) || ! empty( $vis['is_gallery_admin'] ) || ( ! empty( $vis['status'] ) && is_array( $vis['status'] ) ) );
     };
     $convert_vis = function( $vis ) {
         $flags = [];
-        foreach ( [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin' ] as $k ) {
+        foreach ( [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin', 'is_gallery_admin' ] as $k ) {
             if ( ! empty( $vis[ $k ] ) ) $flags[] = $k;
         }
         $out = [];
@@ -2206,18 +2642,13 @@ add_action( 'admin_init', function () {
     if ( is_network_admin() || defined( 'DOING_AJAX' ) && DOING_AJAX ) {
         return; // avoid background/ajax contexts
     }
-    if ( get_option( 'tpw_core_member_menu_seeded' ) ) {
+    if ( get_option( 'tpw_core_member_menu_defaults_seeded_v2' ) ) {
         return;
     }
 
     // Make sure the location exists and check if it already has a menu
     if ( ! function_exists( 'has_nav_menu' ) ) {
         return;
-    }
-
-    if ( has_nav_menu( 'tpw_member_menu' ) ) {
-        update_option( 'tpw_core_member_menu_seeded', time() );
-        return; // already assigned
     }
 
     // Load helpers if needed
@@ -2237,36 +2668,17 @@ add_action( 'admin_init', function () {
         $locations = [];
     }
 
-    $has_assignment = isset( $locations['tpw_member_menu'] ) && ! empty( $locations['tpw_member_menu'] );
-    if ( $has_assignment ) {
-        update_option( 'tpw_core_member_menu_seeded', time() );
-        return;
-    }
+    $menu_id = isset( $locations['tpw_member_menu'] ) ? (int) $locations['tpw_member_menu'] : 0;
+    $menu_id = function_exists( 'tpw_core_ensure_member_menu_defaults' ) ? tpw_core_ensure_member_menu_defaults( $menu_id ) : $menu_id;
 
-    // Create or reuse a "Members Menu"
-    $menu_name = __( 'Members Menu', 'tpw-core' );
-    $menu_obj  = function_exists( 'wp_get_nav_menu_object' ) ? wp_get_nav_menu_object( $menu_name ) : null;
-    $menu_id   = $menu_obj && isset( $menu_obj->term_id ) ? (int) $menu_obj->term_id : 0;
-
-    if ( ! $menu_id ) {
-        $menu_id = (int) wp_create_nav_menu( $menu_name );
-    }
-
-    if ( $menu_id > 0 && function_exists( 'wp_update_nav_menu_item' ) ) {
-        // Store a placeholder (not a nonce URL) so it can be rewritten at render-time.
-        $logout_url = '/?tpw_action=logout';
-        wp_update_nav_menu_item( $menu_id, 0, [
-            'menu-item-title'  => __( 'Logout', 'tpw-core' ),
-            'menu-item-url'    => esc_url_raw( $logout_url ),
-            'menu-item-status' => 'publish',
-            'menu-item-type'   => 'custom',
-        ] );
-
+    if ( $menu_id > 0 && ( ! isset( $locations['tpw_member_menu'] ) || (int) $locations['tpw_member_menu'] !== $menu_id ) ) {
         $locations['tpw_member_menu'] = $menu_id;
         set_theme_mod( 'nav_menu_locations', $locations );
     }
 
-    update_option( 'tpw_core_member_menu_seeded', time() );
+    if ( $menu_id > 0 ) {
+        update_option( 'tpw_core_member_menu_defaults_seeded_v2', time() );
+    }
 } );
 
 // One-time fallback: ensure a "My Profile" page exists even if the site didn't re-activate the plugin

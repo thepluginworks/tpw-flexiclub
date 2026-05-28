@@ -2,6 +2,18 @@
 
 ## [Unreleased]
 
+## [2.7.0] - 2026-05-28
+
+### Changed
+- Members Menu: added a safer default FlexiClub Members Menu structure and repair flow so existing installs can restore the shared member navigation without requiring plugin reactivation.
+- Menus: runtime visibility checks now recognise `is_gallery_admin` consistently when shared menu visibility rules are evaluated.
+- System Pages: added a canonical system page protection contract and linked the relevant developer and help docs back to that shared Core reference.
+- Noticeboard: the default front-end Noticeboard is now members-only by default while preserving existing notice management access for authorised admins and noticeboard managers.
+
+### Fixed
+- System Pages: logged-out automatic page-list protection now covers both classic `wp_page_menu()` / `wp_list_pages()` output and block-theme `core/page-list` navigation fallbacks so private FlexiClub pages are not exposed automatically.
+- Members Menu: existing-install repair paths now restore the default Members Menu items even when the menu location is already assigned, and the shared settings screen now exposes an explicit repair action.
+
 ## [2.6.1] - 2026-05-27
 
 ### Changed

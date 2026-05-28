@@ -224,20 +224,16 @@ class TPW_Core_Activator {
                         $menu_id = (int) wp_create_nav_menu( $menu_name );
                     }
 
-                    if ( $menu_id > 0 && function_exists( 'wp_update_nav_menu_item' ) ) {
-                        // Add a basic Logout item for convenience if menu is new/empty
-                        // Store a placeholder (not a nonce URL) so it can be rewritten at render-time.
-                        $logout_url = '/?tpw_action=logout';
-                        wp_update_nav_menu_item( $menu_id, 0, [
-                            'menu-item-title'  => __( 'Logout', 'tpw-core' ),
-                            'menu-item-url'    => esc_url_raw( $logout_url ),
-                            'menu-item-status' => 'publish',
-                            'menu-item-type'   => 'custom',
-                        ] );
+                    if ( $menu_id > 0 ) {
+                        if ( function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
+                            $menu_id = (int) tpw_core_ensure_member_menu_defaults( $menu_id );
+                        }
 
-                        // Assign to the tpw_member_menu location
-                        $locations['tpw_member_menu'] = $menu_id;
-                        set_theme_mod( 'nav_menu_locations', $locations );
+                        if ( $menu_id > 0 ) {
+                            // Assign to the tpw_member_menu location.
+                            $locations['tpw_member_menu'] = $menu_id;
+                            set_theme_mod( 'nav_menu_locations', $locations );
+                        }
                     }
                 }
             }

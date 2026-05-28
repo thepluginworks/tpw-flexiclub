@@ -46,6 +46,23 @@ class TPW_Noticeboard_List_Shortcode {
             'read_more' => 'true',
         ], $atts, 'tpw_noticeboard_list');
 
+        $can_manage = class_exists( 'TPW_Noticeboard_Handler' ) && TPW_Noticeboard_Handler::user_can_manage_notices();
+
+        if ( ! is_user_logged_in() ) {
+            return '<div class="tpw-error">' . esc_html__( 'Please sign in to view the Noticeboard.', 'tpw-core' ) . '</div>';
+        }
+
+        if ( ! class_exists( 'TPW_Member_Access', false ) ) {
+            $member_access_path = TPW_CORE_PATH . 'modules/members/includes/class-tpw-member-access.php';
+            if ( file_exists( $member_access_path ) ) {
+                require_once $member_access_path;
+            }
+        }
+
+        if ( ! $can_manage && ( ! class_exists( 'TPW_Member_Access', false ) || ! TPW_Member_Access::is_member_current() ) ) {
+            return '<div class="tpw-error">' . esc_html__( 'Access Denied', 'tpw-core' ) . '</div>';
+        }
+
         $args = [
             'post_type'      => 'tpw_notice',
             'post_status'    => 'publish',
@@ -59,7 +76,6 @@ class TPW_Noticeboard_List_Shortcode {
             ]];
         }
         $q = new WP_Query($args);
-        $can_manage = class_exists( 'TPW_Noticeboard_Handler' ) && TPW_Noticeboard_Handler::user_can_manage_notices();
 
         ob_start();
         if ( $can_manage ) {

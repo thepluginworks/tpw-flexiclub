@@ -13,6 +13,7 @@ A quick index of module help topics for browsing in GitHub and for reference fro
   - For external plugins (e.g., FlexiTicket, RSVP): enqueue Core assets, radio input contract, Square container IDs, JS events, `TPW_Core_Payments::create_payment()`, config localization, and an example checkout flow.
 - [System Pages](system-pages.md)
   - Register/ensure required front‑end pages and resolve links.
+  - Canonical protection contract: [../architecture/system-pages/tpw-core-system-page-protection-contract.md](../architecture/system-pages/tpw-core-system-page-protection-contract.md)
 - [Menus](menus.md)
   - Event menu creation, modal rendering hooks, and template override notes.
 - [Postcodes](postcodes.md)

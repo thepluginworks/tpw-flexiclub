@@ -8,7 +8,7 @@ TPW Control centralises front‑end admin tools behind a single shortcode and ro
 
 Conventions
 - Front‑end only for now; architected for optional future wp‑admin UI.
-- Permissions leverage Members module statuses and flags (`is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`).
+- Permissions leverage Members module statuses and flags (`is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`, `is_gallery_admin`).
 - Sections can be added by other plugins via filter and action hooks.
 
 Auto-create the Control Page

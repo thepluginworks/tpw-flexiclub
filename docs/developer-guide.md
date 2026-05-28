@@ -74,6 +74,7 @@ The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary s
 	- File: `includes/class-tpw-core-system-pages.php`
 	- Since: 1.0.0
 	- Description: Rewrite or localize system page URL generation.
+	- Protection contract: `docs/architecture/system-pages/tpw-core-system-page-protection-contract.md`
 
 ### Members
 - tpw_member_login_redirect (filter) — Post-login redirect URL.
@@ -536,6 +537,7 @@ $rendered = TPW_Email_Template_Manager::get_rendered_template(
 	- TPW Core now registers the Members “My Profile” page in the System Pages table under slug `my-profile` with shortcode `[tpw_member_profile]`.
 	- Existing logic remains: Core still creates the WP page on activation where needed and keeps using the `tpw_member_profile_page_id` option.
 	- Where Core resolves the profile URL, it first tries `TPW_Core_System_Pages::get_permalink( 'my-profile' )` and falls back to `get_permalink( get_option( 'tpw_member_profile_page_id' ) )` or the front‑end route. This provides a safe migration path without breaking existing menus or links.
+	- For the canonical logged-out menu-hiding and direct-access contract, see `docs/architecture/system-pages/tpw-core-system-page-protection-contract.md`.
 
 		'{member-name}'  => 'Stuart Moodey',
 	]
@@ -1059,7 +1061,7 @@ Lightbox behavior
 Visibility JSON (supported keys)
 - `public` (bool): true allows all visitors (logged out users included)
 - `logged_in` (bool): require a logged-in user
-- `flags_any` (array<string>): any of `is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`
+- `flags_any` (array<string>): any of `is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`, `is_gallery_admin`
 - `flags_all` (array<string>): user must have all listed flags
 - `flags_not` (array<string>): user must NOT have any listed flags
 - `allowed_statuses` (array<string>): member statuses allowed (e.g., `Active`, `Honorary`)

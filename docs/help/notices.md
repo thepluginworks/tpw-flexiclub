@@ -3,6 +3,10 @@
 ## Overview
 The Notices module powers a simple noticeboard, allowing admins to publish time‑bound notices displayed on front‑end screens.
 
+Default access note: `[tpw_noticeboard_list]` is members-only by default. Logged-out visitors are denied direct access, standard viewing requires a logged-in member with an allowed status, and notice creation, editing, duplication, and deletion remain restricted to authorised admins or noticeboard managers.
+
+If a future public Noticeboard mode is introduced, it must be implemented and documented explicitly. The default Core behaviour remains private.
+
 ## Canonical Implementation
 - Canonical shortcode loader: `modules/notices/shortcodes/noticeboard-list.php`
 - Canonical modal template: `modules/notices/templates/form.php`
@@ -25,6 +29,7 @@ Legacy compatibility copies currently remain at `assets/css/noticeboard.css` and
 
 ## References
 - Developer Guide → ../developer-guide.md
+- System Page Protection Contract → ../architecture/system-pages/tpw-core-system-page-protection-contract.md
 - Active assets: `modules/notices/assets/css/noticeboard.css`, `modules/notices/assets/js/noticeboard.js`
 - Active template: `modules/notices/templates/form.php`
 - Active shortcode loader: `modules/notices/shortcodes/noticeboard-list.php`

@@ -18,7 +18,7 @@ TPW Control centralizes front‑end admin tools for your society in one place. P
 - Set Visibility (who can see this page):
   - Public: visible to everyone.
   - Logged-in: visible to logged-in users.
-  - Flags: choose roles like Admin, Committee, Match Manager, Noticeboard Admin.
+  - Flags: choose roles like Admin, Committee, Match Manager, Noticeboard Admin, or Gallery Admin.
   - Statuses: restrict by member status (e.g., Active, Honorary).
 - Save.
 
@@ -56,7 +56,7 @@ TPW Control centralizes front‑end admin tools for your society in one place. P
 - Public pages are visible to everyone (no login required).
 - Logged-in requires users to be logged into the site.
 - Admins can always see everything in TPW Control.
-- Committee/Match Manager/Noticeboard Admin flags are respected when present on a member.
+- Committee/Match Manager/Noticeboard Admin/Gallery Admin flags are respected when present on a member.
 - For status limited content, pick allowed statuses (e.g., Active). Users with other statuses won’t see it.
 
 ## Troubleshooting

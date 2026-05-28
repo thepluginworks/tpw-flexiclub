@@ -50,7 +50,7 @@ Visibility constraints for both sections and menu items are evaluated with `tpw_
 Supported keys:
 - `public` (bool)
 - `logged_in` (bool)
-- `flags_any` (array<string>): any of `is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`
+- `flags_any` (array<string>): any of `is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`, `is_gallery_admin`
 - `flags_all` (array<string>)
 - `flags_not` (array<string>)
 - `allowed_statuses` (array<string>)

@@ -104,7 +104,7 @@ class TPW_Control_UI {
 
         // Helper to read flag values from the member
         $flag_val = function( $flag ) use ( $member ) {
-            $allowed_flags = [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin' ];
+            $allowed_flags = [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin', 'is_gallery_admin' ];
             if ( ! in_array( $flag, $allowed_flags, true ) ) return false;
             if ( isset( $member->$flag ) ) return (int) $member->$flag === 1;
             return false;

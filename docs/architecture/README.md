@@ -33,6 +33,12 @@ Supporting permissions architecture references include:
 - [docs/architecture/permissions/role-capability-matrix.md](permissions/role-capability-matrix.md)
 - [docs/architecture/permissions/vc-permissions-implementation-playbook.md](permissions/vc-permissions-implementation-playbook.md)
 
+## System Page Protection Architecture
+
+System page protection architecture defines how TPW Core identifies private FlexiClub pages, hides them from logged-out automatic page listings, and delegates direct access enforcement to the owning route or shortcode.
+
+The canonical system page protection contract is [docs/architecture/system-pages/tpw-core-system-page-protection-contract.md](system-pages/tpw-core-system-page-protection-contract.md).
+
 ## UI Architecture
 
 UI architecture defines the canonical wrapper, shared component, and enqueue contract for TPW Core and consumer plugins.
