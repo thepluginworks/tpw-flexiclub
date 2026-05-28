@@ -2123,22 +2123,15 @@ if ( ! function_exists( 'tpw_core_get_member_menu_allowed_statuses' ) ) {
     }
 }
 
-if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
-    function tpw_core_get_member_menu_default_items() {
-        $profile_url = tpw_core_resolve_profile_page_url();
-        if ( '' === $profile_url ) {
-            $profile_url = add_query_arg( 'tpw_my_profile', '1', home_url( '/my-profile/' ) );
-        }
-
-        $gallery_admin_url = class_exists( 'TPW_Core_System_Pages' )
-            ? (string) TPW_Core_System_Pages::get_permalink( 'gallery-admin' )
-            : tpw_core_resolve_shortcode_page_url( 'tpw_gallery_admin', 'gallery-admin' );
-
+if ( ! function_exists( 'tpw_core_get_member_menu_core_default_items' ) ) {
+    function tpw_core_get_member_menu_core_default_items() {
         return [
             [
                 'key'            => 'noticeboard',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Noticeboard', 'tpw-core' ),
-                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_noticeboard_list', 'noticeboard' ),
+                'shortcode_tag'  => 'tpw_noticeboard_list',
+                'fallback_slug'  => 'noticeboard',
                 'requires_login' => true,
                 'visibility'     => [
                     'status' => tpw_core_get_member_menu_allowed_statuses(),
@@ -2146,8 +2139,11 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'members',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Members', 'tpw-core' ),
-                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_manage_members', 'manage-members', [ 'action' => 'list' ] ),
+                'shortcode_tag'  => 'tpw_manage_members',
+                'fallback_slug'  => 'manage-members',
+                'url_args'       => [ 'action' => 'list' ],
                 'requires_login' => true,
                 'visibility'     => [
                     'status' => tpw_core_get_member_menu_allowed_statuses(),
@@ -2155,8 +2151,10 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'gallery',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Gallery', 'tpw-core' ),
-                'url'            => tpw_core_resolve_shortcode_page_url( 'tpw_gallery', 'gallery' ),
+                'shortcode_tag'  => 'tpw_gallery',
+                'fallback_slug'  => 'gallery',
                 'requires_login' => true,
                 'visibility'     => [
                     'status' => tpw_core_get_member_menu_allowed_statuses(),
@@ -2164,10 +2162,12 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'gallery-admin',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Gallery Admin', 'tpw-core' ),
-                'url'            => $gallery_admin_url,
-                'parent_key'     => 'gallery',
                 'system_slug'    => 'gallery-admin',
+                'shortcode_tag'  => 'tpw_gallery_admin',
+                'fallback_slug'  => 'gallery-admin',
+                'parent_key'     => 'gallery',
                 'requires_login' => true,
                 'visibility'     => [
                     'is_admin'         => true,
@@ -2176,8 +2176,8 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'my-profile',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'My Profile', 'tpw-core' ),
-                'url'            => $profile_url,
                 'system_slug'    => 'my-profile',
                 'requires_login' => true,
                 'visibility'     => [
@@ -2186,9 +2186,11 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'admin',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Admin', 'tpw-core' ),
-                'url'            => tpw_core_resolve_shortcode_page_url( 'flexiclub', 'flexiclub' ),
                 'system_slug'    => 'flexiclub',
+                'shortcode_tag'  => 'flexiclub',
+                'fallback_slug'  => 'flexiclub',
                 'requires_login' => true,
                 'visibility'     => [
                     'is_admin' => true,
@@ -2196,12 +2198,213 @@ if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
             ],
             [
                 'key'            => 'logout',
+                'provider'       => 'tpw-core',
                 'title'          => __( 'Logout', 'tpw-core' ),
                 'url'            => '/?tpw_action=logout',
                 'requires_login' => true,
                 'visibility'     => [],
             ],
         ];
+    }
+}
+
+if ( ! function_exists( 'tpw_core_move_member_menu_item_key' ) ) {
+    function tpw_core_move_member_menu_item_key( array $ordered_keys, $item_key, $target_key, $position = 'after' ) {
+        $item_index   = array_search( $item_key, $ordered_keys, true );
+        $target_index = array_search( $target_key, $ordered_keys, true );
+
+        if ( false === $item_index || false === $target_index || $item_key === $target_key ) {
+            return $ordered_keys;
+        }
+
+        array_splice( $ordered_keys, $item_index, 1 );
+
+        $target_index = array_search( $target_key, $ordered_keys, true );
+        if ( false === $target_index ) {
+            $ordered_keys[] = $item_key;
+            return $ordered_keys;
+        }
+
+        $insert_index = 'before' === $position ? $target_index : $target_index + 1;
+        array_splice( $ordered_keys, $insert_index, 0, [ $item_key ] );
+
+        return array_values( $ordered_keys );
+    }
+}
+
+if ( ! function_exists( 'tpw_core_sort_member_menu_item_specs' ) ) {
+    function tpw_core_sort_member_menu_item_specs( array $items_by_key ) {
+        if ( empty( $items_by_key ) ) {
+            return [];
+        }
+
+        $logout_key  = null;
+        $logout_spec = null;
+        if ( isset( $items_by_key['logout'] ) ) {
+            $logout_key  = 'logout';
+            $logout_spec = $items_by_key['logout'];
+            unset( $items_by_key['logout'] );
+        }
+
+        $ordered_keys = array_keys( $items_by_key );
+        $max_passes   = max( 1, count( $ordered_keys ) * 4 );
+
+        for ( $pass = 0; $pass < $max_passes; $pass++ ) {
+            $changed = false;
+
+            foreach ( array_values( $ordered_keys ) as $item_key ) {
+                if ( empty( $items_by_key[ $item_key ] ) || ! is_array( $items_by_key[ $item_key ] ) ) {
+                    continue;
+                }
+
+                $spec = $items_by_key[ $item_key ];
+
+                if ( ! empty( $spec['parent_key'] ) && isset( $items_by_key[ $spec['parent_key'] ] ) ) {
+                    $updated_keys = tpw_core_move_member_menu_item_key( $ordered_keys, $item_key, $spec['parent_key'], 'after' );
+                    if ( $updated_keys !== $ordered_keys ) {
+                        $ordered_keys = $updated_keys;
+                        $changed      = true;
+                    }
+                }
+
+                if ( ! empty( $spec['after_key'] ) && isset( $items_by_key[ $spec['after_key'] ] ) ) {
+                    $updated_keys = tpw_core_move_member_menu_item_key( $ordered_keys, $item_key, $spec['after_key'], 'after' );
+                    if ( $updated_keys !== $ordered_keys ) {
+                        $ordered_keys = $updated_keys;
+                        $changed      = true;
+                    }
+                }
+
+                if ( ! empty( $spec['before_key'] ) && isset( $items_by_key[ $spec['before_key'] ] ) ) {
+                    $updated_keys = tpw_core_move_member_menu_item_key( $ordered_keys, $item_key, $spec['before_key'], 'before' );
+                    if ( $updated_keys !== $ordered_keys ) {
+                        $ordered_keys = $updated_keys;
+                        $changed      = true;
+                    }
+                }
+            }
+
+            if ( ! $changed ) {
+                break;
+            }
+        }
+
+        $ordered = [];
+        foreach ( $ordered_keys as $item_key ) {
+            if ( isset( $items_by_key[ $item_key ] ) ) {
+                $ordered[ $item_key ] = $items_by_key[ $item_key ];
+            }
+        }
+
+        if ( null !== $logout_key && is_array( $logout_spec ) ) {
+            $ordered[ $logout_key ] = $logout_spec;
+        }
+
+        return $ordered;
+    }
+}
+
+if ( ! function_exists( 'tpw_core_resolve_member_menu_item_url' ) ) {
+    function tpw_core_resolve_member_menu_item_url( array $spec ) {
+        $key          = sanitize_key( (string) ( $spec['key'] ?? '' ) );
+        $resolved_url = isset( $spec['url'] ) ? (string) $spec['url'] : '';
+        $system_slug  = isset( $spec['system_slug'] ) ? sanitize_key( (string) $spec['system_slug'] ) : '';
+        $shortcode    = isset( $spec['shortcode_tag'] ) ? sanitize_key( (string) $spec['shortcode_tag'] ) : '';
+        $fallback_slug = isset( $spec['fallback_slug'] ) ? sanitize_title( (string) $spec['fallback_slug'] ) : '';
+        $url_args     = isset( $spec['url_args'] ) && is_array( $spec['url_args'] ) ? $spec['url_args'] : [];
+
+        if ( '' === $resolved_url && 'my-profile' === $key ) {
+            $resolved_url = tpw_core_resolve_profile_page_url();
+            if ( '' === $resolved_url ) {
+                $resolved_url = add_query_arg( 'tpw_my_profile', '1', home_url( '/my-profile/' ) );
+            }
+        }
+
+        if ( '' === $resolved_url && '' !== $system_slug && class_exists( 'TPW_Core_System_Pages' ) ) {
+            $resolved_url = (string) TPW_Core_System_Pages::get_permalink( $system_slug );
+        }
+
+        if ( '' === $resolved_url && '' !== $shortcode ) {
+            $resolved_url = tpw_core_resolve_shortcode_page_url( $shortcode, $fallback_slug, $url_args );
+        }
+
+        if ( '' === $resolved_url && '' !== $fallback_slug ) {
+            $resolved_url = site_url( '/' . $fallback_slug . '/' );
+        }
+
+        return is_string( $resolved_url ) ? $resolved_url : '';
+    }
+}
+
+if ( ! function_exists( 'tpw_core_normalize_member_menu_item_spec' ) ) {
+    function tpw_core_normalize_member_menu_item_spec( array $spec ) {
+        $key = sanitize_key( (string) ( $spec['key'] ?? '' ) );
+        if ( '' === $key ) {
+            return [];
+        }
+
+        $normalized = [
+            'key'            => $key,
+            'provider'       => sanitize_key( (string) ( $spec['provider'] ?? 'tpw-core' ) ),
+            'title'          => isset( $spec['title'] ) && '' !== trim( (string) $spec['title'] ) ? (string) $spec['title'] : ucwords( str_replace( '-', ' ', $key ) ),
+            'system_slug'    => isset( $spec['system_slug'] ) ? sanitize_key( (string) $spec['system_slug'] ) : '',
+            'shortcode_tag'  => isset( $spec['shortcode_tag'] ) ? sanitize_key( (string) $spec['shortcode_tag'] ) : '',
+            'fallback_slug'  => isset( $spec['fallback_slug'] ) ? sanitize_title( (string) $spec['fallback_slug'] ) : '',
+            'after_key'      => isset( $spec['after_key'] ) ? sanitize_key( (string) $spec['after_key'] ) : '',
+            'before_key'     => isset( $spec['before_key'] ) ? sanitize_key( (string) $spec['before_key'] ) : '',
+            'parent_key'     => isset( $spec['parent_key'] ) ? sanitize_key( (string) $spec['parent_key'] ) : '',
+            'requires_login' => ! empty( $spec['requires_login'] ),
+            'visibility'     => isset( $spec['visibility'] ) && is_array( $spec['visibility'] ) ? $spec['visibility'] : [],
+            'url_args'       => isset( $spec['url_args'] ) && is_array( $spec['url_args'] ) ? $spec['url_args'] : [],
+            'url'            => isset( $spec['url'] ) ? (string) $spec['url'] : '',
+        ];
+
+        if ( '' === $normalized['provider'] ) {
+            $normalized['provider'] = 'tpw-core';
+        }
+
+        $normalized['url'] = tpw_core_resolve_member_menu_item_url( $normalized );
+
+        return $normalized;
+    }
+}
+
+if ( ! function_exists( 'tpw_core_get_member_menu_registered_items' ) ) {
+    function tpw_core_get_member_menu_registered_items() {
+        $context = [
+            'allowed_statuses' => tpw_core_get_member_menu_allowed_statuses(),
+        ];
+
+        $items = apply_filters( 'tpw_core/member_menu_items', tpw_core_get_member_menu_core_default_items(), $context );
+        if ( ! is_array( $items ) ) {
+            $items = tpw_core_get_member_menu_core_default_items();
+        }
+
+        $items_by_key = [];
+        foreach ( $items as $spec ) {
+            if ( ! is_array( $spec ) ) {
+                continue;
+            }
+
+            $normalized = tpw_core_normalize_member_menu_item_spec( $spec );
+            if ( empty( $normalized['key'] ) ) {
+                continue;
+            }
+
+            if ( isset( $items_by_key[ $normalized['key'] ] ) ) {
+                continue;
+            }
+
+            $items_by_key[ $normalized['key'] ] = $normalized;
+        }
+
+        return array_values( tpw_core_sort_member_menu_item_specs( $items_by_key ) );
+    }
+}
+
+if ( ! function_exists( 'tpw_core_get_member_menu_default_items' ) ) {
+    function tpw_core_get_member_menu_default_items() {
+        return tpw_core_get_member_menu_registered_items();
     }
 }
 
@@ -2225,13 +2428,29 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
             return 0;
         }
 
+        $defaults        = tpw_core_get_member_menu_default_items();
+        $managed_keys    = [];
+        foreach ( $defaults as $spec ) {
+            if ( ! is_array( $spec ) ) {
+                continue;
+            }
+
+            $managed_key = sanitize_key( (string) ( $spec['key'] ?? '' ) );
+            if ( '' !== $managed_key ) {
+                $managed_keys[ $managed_key ] = true;
+            }
+        }
+
         $existing_items = wp_get_nav_menu_items( $menu_id, [ 'update_post_term_cache' => false ] );
         $existing_items = is_array( $existing_items ) ? $existing_items : [];
 
         $existing_by_default_key = [];
         $existing_by_page_slug   = [];
+        $existing_managed_positions = [];
         $has_custom_items        = false;
         $max_position            = 0;
+
+        $filtered_existing_items = [];
 
         foreach ( $existing_items as $existing_item ) {
             $item_id = isset( $existing_item->ID ) ? (int) $existing_item->ID : 0;
@@ -2242,8 +2461,18 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
             $default_key = sanitize_key( (string) get_post_meta( $item_id, '_tpw_member_menu_default_key', true ) );
             $page_slug   = sanitize_key( (string) get_post_meta( $item_id, '_tpw_page_slug', true ) );
 
+            if ( '' !== $default_key && ! isset( $managed_keys[ $default_key ] ) ) {
+                if ( function_exists( 'wp_delete_post' ) ) {
+                    wp_delete_post( $item_id, true );
+                }
+                continue;
+            }
+
+            $filtered_existing_items[] = $existing_item;
+
             if ( '' !== $default_key ) {
                 $existing_by_default_key[ $default_key ] = $existing_item;
+                $existing_managed_positions[] = isset( $existing_item->menu_order ) ? (int) $existing_item->menu_order : 0;
             }
 
             if ( '' !== $page_slug && ! isset( $existing_by_page_slug[ $page_slug ] ) ) {
@@ -2257,15 +2486,22 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
             $max_position = max( $max_position, isset( $existing_item->menu_order ) ? (int) $existing_item->menu_order : 0 );
         }
 
-        $defaults            = tpw_core_get_member_menu_default_items();
+        $existing_items       = $filtered_existing_items;
         $default_item_ids    = [];
         $bootstrap_positions = empty( $existing_items ) || ! $has_custom_items;
+        $managed_position_index = 0;
+
+        $existing_managed_positions = array_values( array_filter( array_map( 'absint', $existing_managed_positions ) ) );
+        sort( $existing_managed_positions );
 
         foreach ( $defaults as $index => $spec ) {
             $key       = sanitize_key( (string) $spec['key'] );
             $item_id   = 0;
             $match     = isset( $existing_by_default_key[ $key ] ) ? $existing_by_default_key[ $key ] : null;
-            $page_slug = isset( $spec['system_slug'] ) ? sanitize_key( (string) $spec['system_slug'] ) : '';
+            $page_slug = isset( $spec['system_slug'] ) && '' !== (string) $spec['system_slug']
+                ? sanitize_key( (string) $spec['system_slug'] )
+                : sanitize_title( (string) ( $spec['fallback_slug'] ?? '' ) );
+            $provider  = sanitize_key( (string) ( $spec['provider'] ?? 'tpw-core' ) );
 
             if ( ! $match && '' !== $page_slug && isset( $existing_by_page_slug[ $page_slug ] ) ) {
                 $match = $existing_by_page_slug[ $page_slug ];
@@ -2308,10 +2544,15 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
                 $position = $index + 1;
             } elseif ( 'logout' === $key ) {
                 $position = $max_position + 1;
+            } elseif ( isset( $existing_managed_positions[ $managed_position_index ] ) ) {
+                $position = (int) $existing_managed_positions[ $managed_position_index ];
+                $managed_position_index++;
             } else {
                 $max_position++;
                 $position = $max_position;
             }
+
+            $max_position = max( $max_position, (int) $position );
 
             if ( $match ) {
                 $item_id = (int) $match->ID;
@@ -2320,12 +2561,9 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
                     'menu-item-url'    => (string) $spec['url'],
                     'menu-item-status' => 'publish',
                     'menu-item-type'   => 'custom',
+                    'menu-item-position'  => (int) $position,
+                    'menu-item-parent-id' => (int) $parent_id,
                 ];
-
-                if ( $bootstrap_positions || 'logout' === $key || ! empty( $spec['parent_key'] ) ) {
-                    $args['menu-item-position']  = (int) $position;
-                    $args['menu-item-parent-id'] = (int) $parent_id;
-                }
 
                 wp_update_nav_menu_item( $menu_id, $item_id, $args );
             } else {
@@ -2348,11 +2586,14 @@ if ( ! function_exists( 'tpw_core_ensure_member_menu_defaults' ) ) {
             }
 
             update_post_meta( $item_id, '_tpw_member_menu_default_key', $key );
+            update_post_meta( $item_id, '_tpw_member_menu_provider', '' !== $provider ? $provider : 'tpw-core' );
             update_post_meta( $item_id, '_tpw_requires_login', ! empty( $spec['requires_login'] ) ? 1 : 0 );
             update_post_meta( $item_id, '_tpw_visibility_json', wp_json_encode( isset( $spec['visibility'] ) && is_array( $spec['visibility'] ) ? $spec['visibility'] : [] ) );
 
             if ( '' !== $page_slug ) {
                 update_post_meta( $item_id, '_tpw_page_slug', $page_slug );
+            } else {
+                delete_post_meta( $item_id, '_tpw_page_slug' );
             }
 
             $default_item_ids[ $key ] = $item_id;

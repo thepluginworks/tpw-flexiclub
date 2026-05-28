@@ -28,6 +28,11 @@ Protected Manage Members permission fields are currently `is_admin`, `is_manage_
 	- File: `includes/class-tpw-core.php`
 	- Since: 1.0.0
 	- Description: Bootstrap point for add-ons to hook into after dependencies are loaded.
+- tpw_core/member_menu_items (filter) — Register managed FlexiClub Members Menu item specs.
+	- File: `includes/tpw-core-settings.php`
+	- Since: Unreleased
+	- Description: Add-on plugins append managed Members Menu items through the shared Core registry instead of writing nav-menu items directly.
+	- Contract: `docs/architecture/navigation/tpw-core-members-menu-registration-contract.md`
 - tpw_core/login_url (filter) — Resolve the front-end login URL.
 	- File: `tpw-flexiclub.php` and `includes/tpw-core-loader.php` (consumer)
 	- Since: 1.0.0

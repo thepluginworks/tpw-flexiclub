@@ -14,6 +14,8 @@ A quick index of module help topics for browsing in GitHub and for reference fro
 - [System Pages](system-pages.md)
   - Register/ensure required front‑end pages and resolve links.
   - Canonical protection contract: [../architecture/system-pages/tpw-core-system-page-protection-contract.md](../architecture/system-pages/tpw-core-system-page-protection-contract.md)
+- [Members Menu Registration Contract](../architecture/navigation/tpw-core-members-menu-registration-contract.md)
+  - Canonical developer contract for Core-managed Members Menu items contributed by add-on plugins.
 - [Menus](menus.md)
   - Event menu creation, modal rendering hooks, and template override notes.
 - [Postcodes](postcodes.md)

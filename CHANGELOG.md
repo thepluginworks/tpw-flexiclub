@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+### Changed
+- Members Menu: added a Core-owned managed item registration contract so add-on plugins can contribute Members Menu entries through a shared filter/registry instead of writing nav-menu items directly.
+- Documentation: added the canonical Members Menu registration contract and linked the relevant developer and help indexes to the new add-on integration guidance.
+
 ## [2.7.0] - 2026-05-28
 
 ### Changed

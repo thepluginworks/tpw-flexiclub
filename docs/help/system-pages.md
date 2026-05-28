@@ -22,6 +22,7 @@ That private set includes the default Noticeboard route as well as the other mem
 - Register your page and ensure it exists:
   - TPW_Core_System_Pages::register_page( 'slug', [ 'title' => 'Title', 'shortcode' => '[shortcode]', 'plugin' => 'my-addon', 'required' => 1 ] );
   - TPW_Core_System_Pages::ensure_page( 'slug' );
+- Plugin-owned FlexiClub Members Menu destinations should prefer `system_slug` entries registered through System Pages rather than hard-coded menu URLs. See the canonical Members Menu registration contract: ../architecture/navigation/tpw-core-members-menu-registration-contract.md
 
 ## Logged-out Fallback Menus
 - Core excludes known private FlexiClub System Pages from logged-out automatic page menus.

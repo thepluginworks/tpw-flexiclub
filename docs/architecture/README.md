@@ -39,6 +39,12 @@ System page protection architecture defines how TPW Core identifies private Flex
 
 The canonical system page protection contract is [docs/architecture/system-pages/tpw-core-system-page-protection-contract.md](system-pages/tpw-core-system-page-protection-contract.md).
 
+## Navigation Architecture
+
+Navigation architecture defines how TPW Core manages shared menu surfaces such as the FlexiClub Members Menu and how add-on plugins contribute managed items safely.
+
+The canonical Members Menu registration contract is [docs/architecture/navigation/tpw-core-members-menu-registration-contract.md](navigation/tpw-core-members-menu-registration-contract.md).
+
 ## UI Architecture
 
 UI architecture defines the canonical wrapper, shared component, and enqueue contract for TPW Core and consumer plugins.
