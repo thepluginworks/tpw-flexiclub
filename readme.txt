@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.7.0
+Stable tag: 2.8.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,11 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.8.0 =
+- Members Menu: add-on plugins can now register managed FlexiClub Members Menu items through a shared Core contract instead of writing menu items directly.
+- Members Menu: managed item visibility is now evaluated centrally by FlexiClub/Core so add-ons only declare login and visibility metadata.
+- System Pages: restored logged-out automatic page-list protection for both classic page lists and block-theme `core/page-list` navigation fallbacks so private FlexiClub pages stay hidden automatically.
 
 = 2.7.0 =
 - Members Menu: added a safer default FlexiClub Members Menu setup and repair flow so shared member navigation can be restored on existing installs without reactivation.

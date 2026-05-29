@@ -2,10 +2,15 @@
 
 ## [Unreleased]
 
+## [2.8.0] - 2026-05-29
+
 ### Changed
 - Members Menu: added a Core-owned managed item registration contract so add-on plugins can contribute Members Menu entries through a shared filter/registry instead of writing nav-menu items directly.
 - Members Menu: centralized managed item visibility evaluation in FlexiClub/Core so add-ons only declare login and visibility metadata and no longer need local `wp_nav_menu_objects` guards for managed Members Menu items.
 - Documentation: added the canonical Members Menu registration contract and linked the relevant developer and help indexes to the new add-on integration guidance.
+
+### Fixed
+- System Pages: restored logged-out automatic page-list protection for both classic `wp_page_menu()` / `wp_list_pages()` output and block-theme `core/page-list` navigation fallbacks so private FlexiClub pages are hidden again for logged-out visitors.
 
 ## [2.7.0] - 2026-05-28
 
