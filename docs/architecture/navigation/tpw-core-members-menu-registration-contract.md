@@ -18,8 +18,10 @@ That means:
 
 - Core seeds and repairs the menu items
 - Core stores the item metadata used for duplicate prevention and visibility
+- Core evaluates managed Members Menu visibility on the front end
 - add-ons register item specifications through the Core filter
 - add-ons must not call `wp_update_nav_menu_item()` directly for managed Members Menu entries
+- add-ons must not filter `wp_nav_menu_objects` to hide or show their own managed Members Menu items
 
 Site-owned custom menu items may still exist in the same menu, but Core must not rewrite or delete those custom items.
 
@@ -145,6 +147,10 @@ Managed Members Menu items use the current Core menu visibility model:
 - `requires_login`
 - `visibility`
 
+Core owns the full visibility evaluation path for managed Members Menu items.
+
+Add-ons must only declare metadata through the item specification. Add-ons must not implement separate front-end Members Menu visibility guards for those managed items.
+
 Current `visibility` support is the same flat model already used by Core-managed Members Menu items, including:
 
 - status arrays under `status`
@@ -209,3 +215,4 @@ When changing or extending this area, validate all of the following:
 4. allowed members do see the item
 5. provider-managed items disappear cleanly from the managed menu after the provider stops registering them
 6. custom site-owned menu items are not deleted or rewritten by the managed repair flow
+7. no add-on-local `wp_nav_menu_objects` visibility filter is required for a managed Members Menu item

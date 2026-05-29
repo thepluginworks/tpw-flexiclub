@@ -2,6 +2,12 @@
 /**
  * TPW Core – System Pages registry and resolver.
  *
+ * Responsibilities:
+ * - Define default keys and slugs for system pages
+ * - Allow modules to register additional pages
+ * - Resolve URLs and page IDs with optional overrides from wp_options
+ * - Provide safe fallbacks to home_url() when unresolved
+ *
  * @since 1.0.0
  */
 
@@ -22,8 +28,7 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
         /**
          * Cached overrides read from the tpw_core_system_pages option.
          * Shape: [ slug => [ 'wp_page_id' => int, 'is_unlinked' => int ] ]
-         *
-         * @var array<string,array<string,mixed>>|null
+         * @var array<string,array>
          */
         protected static $overrides = null;
 
@@ -55,54 +60,6 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
             if ( is_array( self::$overrides ) ) return;
             $opt = get_option( 'tpw_core_system_pages', [] );
             self::$overrides = is_array( $opt ) ? $opt : [];
-        }
-
-        /**
-         * Determine whether a registered system page should be hidden from logged-out fallback page menus.
-         *
-         * This affects automatic page listings such as wp_page_menu/wp_list_pages only.
-         * Runtime access control remains owned by the page shortcode or router.
-         *
-         * @param string $slug System page slug.
-         * @return bool
-         */
-        protected static function should_exclude_from_logged_out_page_menu( $slug ) {
-            $private_slugs = [
-                'my-profile',
-                'flexiclub',
-                'logs',
-                'menu-management',
-                'archival-system',
-                'tpw-control',
-                'gallery-admin',
-                'gallery-help',
-            ];
-
-            return in_array( sanitize_key( (string) $slug ), $private_slugs, true );
-        }
-
-        /**
-         * Mark a page with lightweight FlexiClub system-page metadata.
-         *
-         * @param int    $page_id Page ID.
-         * @param string $slug    System page slug.
-         * @param array  $def     Registry definition.
-         * @return void
-         */
-        protected static function mark_system_page( $page_id, $slug, $def = [] ) {
-            $page_id = absint( $page_id );
-            $slug    = sanitize_key( (string) $slug );
-
-            if ( $page_id <= 0 || '' === $slug ) {
-                return;
-            }
-
-            update_post_meta( $page_id, '_tpw_system_page_slug', $slug );
-            update_post_meta( $page_id, '_tpw_exclude_from_public_page_menu', self::should_exclude_from_logged_out_page_menu( $slug ) ? 1 : 0 );
-
-            if ( isset( $def['plugin'] ) && '' !== (string) $def['plugin'] ) {
-                update_post_meta( $page_id, '_tpw_system_page_plugin', sanitize_key( (string) $def['plugin'] ) );
-            }
         }
 
         /**
@@ -343,7 +300,6 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
                 }
             }
 
-            self::mark_system_page( (int) $id, $s, $def );
             self::persist_override( $s, (int) $id );
             return (int) $id;
         }
@@ -451,30 +407,6 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
         }
 
         /**
-         * Return FlexiClub system-page IDs that should be excluded from logged-out fallback page menus.
-         *
-         * @return int[]
-         */
-        public static function get_logged_out_page_menu_excluded_ids() {
-            self::boot_defaults();
-            $ids = [];
-
-            foreach ( self::$registry as $slug => $def ) {
-                if ( ! self::should_exclude_from_logged_out_page_menu( $slug ) ) {
-                    continue;
-                }
-
-                $page_id = self::get_id( $slug );
-                if ( $page_id > 0 ) {
-                    self::mark_system_page( $page_id, $slug, is_array( $def ) ? $def : [] );
-                    $ids[] = (int) $page_id;
-                }
-            }
-
-            return array_values( array_unique( array_filter( array_map( 'absint', $ids ) ) ) );
-        }
-
-        /**
          * Determine whether the current user may manage System Pages actions.
          *
          * Preserves wp-admin administrator access while allowing the
@@ -541,7 +473,6 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
 
             // Extract tag for has_shortcode check if possible
             $tag = self::parse_shortcode_tag( $sc );
-			$requires_exact_match = false !== strpos( trim( $sc, '[]' ), ' ' );
             $q = new \WP_Query( [
                 'post_type'      => 'page',
                 'post_status'    => 'publish',
@@ -552,15 +483,10 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
             if ( $q->have_posts() ) {
                 foreach ( $q->posts as $pid ) {
                     $content = (string) get_post_field( 'post_content', (int) $pid );
-					if ( $content !== '' && false !== strpos( $content, $sc ) ) {
-						return (int) $pid;
-					}
-
-					if ( $requires_exact_match ) {
-						continue;
-					}
-
                     if ( $tag && self::content_has_shortcode_tag( $content, $tag ) ) {
+                        return (int) $pid;
+                    }
+                    if ( $content !== '' && false !== strpos( $content, $sc ) ) {
                         return (int) $pid;
                     }
                 }
@@ -602,16 +528,6 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
             return false !== strpos( $c, '[' . $t );
         }
 
-        /**
-         * Public wrapper for shortcode-page discovery.
-         *
-         * @param string $shortcode Shortcode string, e.g. [tpw_manage_members].
-         * @return int
-         */
-        public static function find_published_page_id_with_shortcode( $shortcode ) {
-            return (int) self::find_page_with_shortcode( $shortcode );
-        }
-
         // --- No-op placeholders for future DB-backed implementation -----------------------
 
         /**
@@ -638,130 +554,6 @@ if ( ! function_exists( 'tpw_core_system_pages_ajax_error' ) ) {
         );
     }
 }
-
-if ( ! function_exists( 'tpw_core_get_logged_out_page_menu_excluded_ids' ) ) {
-    /**
-     * Get FlexiClub page IDs that should be hidden from logged-out automatic page menus.
-     *
-     * Covers Core-owned System Pages plus private shortcode-backed pages that are not
-     * currently registered in the System Pages registry.
-     *
-     * @return int[]
-     */
-    function tpw_core_get_logged_out_page_menu_excluded_ids() {
-        $exclude_ids = [];
-
-        if ( class_exists( 'TPW_Core_System_Pages' ) && method_exists( 'TPW_Core_System_Pages', 'get_logged_out_page_menu_excluded_ids' ) ) {
-            $exclude_ids = array_merge( $exclude_ids, (array) TPW_Core_System_Pages::get_logged_out_page_menu_excluded_ids() );
-        }
-
-        $private_shortcode_pages = [
-            [
-                'shortcode' => '[tpw_manage_members]',
-                'slug'      => 'manage-members',
-            ],
-            [
-                'shortcode' => '[tpw_noticeboard_list]',
-                'slug'      => 'noticeboard',
-            ],
-        ];
-
-        foreach ( $private_shortcode_pages as $page_config ) {
-            $page_id = 0;
-            $slug    = isset( $page_config['slug'] ) ? sanitize_title( (string) $page_config['slug'] ) : '';
-            $shortcode = isset( $page_config['shortcode'] ) ? (string) $page_config['shortcode'] : '';
-
-            if ( class_exists( 'TPW_Core_System_Pages' ) && method_exists( 'TPW_Core_System_Pages', 'find_published_page_id_with_shortcode' ) ) {
-                $page_id = (int) TPW_Core_System_Pages::find_published_page_id_with_shortcode( $shortcode );
-            }
-
-            if ( $page_id <= 0 && '' !== $slug ) {
-                $page = get_page_by_path( $slug, OBJECT, 'page' );
-                if ( $page instanceof WP_Post && 'publish' === $page->post_status ) {
-                    $page_id = (int) $page->ID;
-                }
-            }
-
-            if ( $page_id > 0 ) {
-                update_post_meta( $page_id, '_tpw_exclude_from_public_page_menu', 1 );
-                $exclude_ids[] = $page_id;
-            }
-        }
-
-        return array_values( array_unique( array_filter( array_map( 'absint', $exclude_ids ) ) ) );
-    }
-}
-
-if ( ! function_exists( 'tpw_core_is_logged_out_automatic_page_list_context' ) ) {
-    /**
-     * Determine whether the current get_pages() call is serving an automatic public page list.
-     *
-     * Restricts filtering to front-end logged-out requests and the block-based page-list render
-     * path used by block themes such as Twenty Twenty-Four.
-     *
-     * @return bool
-     */
-    function tpw_core_is_logged_out_automatic_page_list_context() {
-        if ( is_admin() || is_user_logged_in() ) {
-            return false;
-        }
-
-        $trace = function_exists( 'debug_backtrace' ) ? debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 12 ) : [];
-
-        foreach ( $trace as $frame ) {
-            $function = isset( $frame['function'] ) ? (string) $frame['function'] : '';
-            $class    = isset( $frame['class'] ) ? (string) $frame['class'] : '';
-
-            if ( 'render_block_core_page_list' === $function ) {
-                return true;
-            }
-
-            if ( 'WP_Navigation_Block_Renderer' === $class && 'has_submenus' === $function ) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-}
-
-add_filter( 'get_pages', function( $pages, $parsed_args ) {
-    if ( ! function_exists( 'tpw_core_is_logged_out_automatic_page_list_context' ) || ! tpw_core_is_logged_out_automatic_page_list_context() ) {
-        return $pages;
-    }
-
-    $exclude_page_ids = function_exists( 'tpw_core_get_logged_out_page_menu_excluded_ids' ) ? tpw_core_get_logged_out_page_menu_excluded_ids() : [];
-    if ( empty( $exclude_page_ids ) ) {
-        return $pages;
-    }
-
-    $exclude_page_ids = array_values( array_unique( array_filter( array_map( 'absint', (array) $exclude_page_ids ) ) ) );
-
-    return array_values(
-        array_filter(
-            (array) $pages,
-            function( $page ) use ( $exclude_page_ids ) {
-                $page_id = $page instanceof WP_Post ? (int) $page->ID : 0;
-                return $page_id <= 0 || ! in_array( $page_id, $exclude_page_ids, true );
-            }
-        )
-    );
-}, 10, 2 );
-
-add_filter( 'wp_list_pages_excludes', function( $exclude_page_ids ) {
-    if ( is_admin() || is_user_logged_in() ) {
-        return $exclude_page_ids;
-    }
-
-    $exclude_page_ids = is_array( $exclude_page_ids ) ? $exclude_page_ids : [];
-    $tpw_excludes     = function_exists( 'tpw_core_get_logged_out_page_menu_excluded_ids' ) ? tpw_core_get_logged_out_page_menu_excluded_ids() : [];
-
-    if ( empty( $tpw_excludes ) ) {
-        return $exclude_page_ids;
-    }
-
-    return array_values( array_unique( array_merge( $exclude_page_ids, $tpw_excludes ) ) );
-}, 10, 1 );
 
 if ( ! has_action( 'wp_ajax_tpw_system_page_unlink' ) ) {
     add_action(
@@ -795,7 +587,7 @@ if ( ! has_action( 'wp_ajax_tpw_system_page_unlink' ) ) {
 
             wp_send_json_success(
                 array(
-                    'message' => __( 'System page link cleared. The registered slug remains available to repair or recreate.', 'tpw-core' ),
+                    'message' => __( 'Page mapping cleared.', 'tpw-core' ),
                     'reload'  => true,
                 )
             );
@@ -838,7 +630,7 @@ if ( ! has_action( 'wp_ajax_tpw_system_page_recreate' ) ) {
                 array(
                     'message' => sprintf(
                         /* translators: %s: system page slug */
-                        __( 'System page "%s" is now linked and ready.', 'tpw-core' ),
+                        __( 'Page "%s" recreated.', 'tpw-core' ),
                         $slug
                     ),
                     'pageId'  => (int) $result,

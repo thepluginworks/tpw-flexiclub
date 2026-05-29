@@ -2688,6 +2688,81 @@ add_filter( 'wp_nav_menu_items', function( $items, $args ) {
 }, 10, 2 );
 
 // 6) Apply TPW visibility rules on front-end menus and cascade parent hiding to children
+if ( ! function_exists( 'tpw_core_member_menu_has_visibility_rules' ) ) {
+    function tpw_core_member_menu_has_visibility_rules( $visibility ) {
+        return is_array( $visibility )
+            && (
+                ! empty( $visibility['is_admin'] )
+                || ! empty( $visibility['is_committee'] )
+                || ! empty( $visibility['is_match_manager'] )
+                || ! empty( $visibility['is_noticeboard_admin'] )
+                || ! empty( $visibility['is_gallery_admin'] )
+                || ( ! empty( $visibility['status'] ) && is_array( $visibility['status'] ) )
+            );
+    }
+}
+
+if ( ! function_exists( 'tpw_core_member_menu_convert_visibility_rules' ) ) {
+    function tpw_core_member_menu_convert_visibility_rules( array $visibility ) {
+        $flags = [];
+
+        foreach ( [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin', 'is_gallery_admin' ] as $flag_key ) {
+            if ( ! empty( $visibility[ $flag_key ] ) ) {
+                $flags[] = $flag_key;
+            }
+        }
+
+        $converted = [];
+        if ( ! empty( $flags ) ) {
+            $converted['flags_any'] = $flags;
+        }
+
+        if ( ! empty( $visibility['status'] ) && is_array( $visibility['status'] ) ) {
+            $converted['allowed_statuses'] = array_values( array_map( 'strval', $visibility['status'] ) );
+        }
+
+        return $converted;
+    }
+}
+
+if ( ! function_exists( 'tpw_core_member_menu_current_user_can_view_item' ) ) {
+    function tpw_core_member_menu_current_user_can_view_item( $item_id ) {
+        $item_id = absint( $item_id );
+        if ( $item_id <= 0 ) {
+            return true;
+        }
+
+        $requires_login = (bool) get_post_meta( $item_id, '_tpw_requires_login', true );
+        if ( $requires_login && ! is_user_logged_in() ) {
+            return false;
+        }
+
+        $raw_visibility = get_post_meta( $item_id, '_tpw_visibility_json', true );
+        $visibility     = is_string( $raw_visibility ) ? json_decode( $raw_visibility, true ) : ( is_array( $raw_visibility ) ? $raw_visibility : [] );
+        if ( ! is_array( $visibility ) || ! tpw_core_member_menu_has_visibility_rules( $visibility ) ) {
+            return ! $requires_login || is_user_logged_in();
+        }
+
+        if ( ! class_exists( 'TPW_Control_UI' ) ) {
+            $ui_path = defined( 'TPW_CORE_PATH' ) ? TPW_CORE_PATH . 'modules/tpw-control/class-tpw-control-ui.php' : '';
+            if ( '' !== $ui_path && file_exists( $ui_path ) ) {
+                require_once $ui_path;
+            }
+        }
+
+        $advanced_visibility = tpw_core_member_menu_convert_visibility_rules( $visibility );
+        if ( empty( $advanced_visibility ) ) {
+            return ! $requires_login || is_user_logged_in();
+        }
+
+        if ( class_exists( 'TPW_Control_UI' ) && method_exists( 'TPW_Control_UI', 'user_has_access' ) ) {
+            return TPW_Control_UI::user_has_access( $advanced_visibility );
+        }
+
+        return false;
+    }
+}
+
 add_filter( 'wp_nav_menu_objects', function( $items, $args ) {
     if ( is_admin() ) return $items;
     if ( empty( $items ) || ! is_array( $items ) ) return $items;
@@ -2712,48 +2787,13 @@ add_filter( 'wp_nav_menu_objects', function( $items, $args ) {
     }
 
     $is_hidden = [];
-    $has_any_rules = function( $vis ) {
-        return ( ! empty( $vis['is_admin'] ) || ! empty( $vis['is_committee'] ) || ! empty( $vis['is_match_manager'] ) || ! empty( $vis['is_noticeboard_admin'] ) || ! empty( $vis['is_gallery_admin'] ) || ( ! empty( $vis['status'] ) && is_array( $vis['status'] ) ) );
-    };
-    $convert_vis = function( $vis ) {
-        $flags = [];
-        foreach ( [ 'is_admin', 'is_committee', 'is_match_manager', 'is_noticeboard_admin', 'is_gallery_admin' ] as $k ) {
-            if ( ! empty( $vis[ $k ] ) ) $flags[] = $k;
-        }
-        $out = [];
-        if ( ! empty( $flags ) ) $out['flags_any'] = $flags;
-        if ( ! empty( $vis['status'] ) && is_array( $vis['status'] ) ) $out['allowed_statuses'] = $vis['status'];
-        return $out;
-    };
 
     // First pass: evaluate each item's own rules
     foreach ( $items as $it ) {
         $id = (int) $it->ID;
-        $hide = false;
-        // requires_login meta
-        $requires_login = (bool) get_post_meta( $id, '_tpw_requires_login', true );
-        if ( $requires_login && ! is_user_logged_in() ) {
-            $hide = true;
+        if ( ! tpw_core_member_menu_current_user_can_view_item( $id ) ) {
+            $is_hidden[ $id ] = true;
         }
-        // visibility json rules (flat model)
-        if ( ! $hide ) {
-            $raw = get_post_meta( $id, '_tpw_visibility_json', true );
-            $vis = is_string( $raw ) ? json_decode( $raw, true ) : ( is_array( $raw ) ? $raw : [] );
-            if ( is_array( $vis ) && $has_any_rules( $vis ) ) {
-                // Convert to advanced model and defer to TPW_Control_UI
-                if ( ! class_exists( 'TPW_Control_UI' ) ) {
-                    $ui = defined('TPW_CORE_PATH') ? TPW_CORE_PATH . 'modules/tpw-control/class-tpw-control-ui.php' : '';
-                    if ( $ui && file_exists( $ui ) ) require_once $ui;
-                }
-                $adv = $convert_vis( $vis );
-                if ( ! empty( $adv ) && class_exists( 'TPW_Control_UI' ) ) {
-                    if ( ! TPW_Control_UI::user_has_access( $adv ) ) {
-                        $hide = true;
-                    }
-                }
-            }
-        }
-        if ( $hide ) $is_hidden[ $id ] = true;
     }
 
     // Second pass: cascade hiding to descendants if a parent is hidden
