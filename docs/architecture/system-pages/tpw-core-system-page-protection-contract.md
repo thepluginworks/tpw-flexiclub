@@ -44,14 +44,9 @@ Current metadata markers:
 
 ### 3.2 Private shortcode-backed pages outside the registry
 
-Some FlexiClub pages are currently identified by shortcode or fallback slug rather than by a formal registry row.
+Some FlexiClub pages may still be identified by shortcode or fallback slug rather than by a formal registry row.
 
-Current examples:
-
-- `manage-members` via `[tpw_manage_members]`
-- `noticeboard` via `[tpw_noticeboard_list]`
-
-Core may still mark these pages with `_tpw_exclude_from_public_page_menu` so they can participate in automatic page-list protection.
+Current Core-owned member and admin-style routes such as `manage-members` and `noticeboard` are now expected to be registered through `TPW_Core_System_Pages` while keeping shortcode-level direct-access enforcement.
 
 ## 4. Layered Protection Model
 
@@ -63,7 +58,7 @@ Current implementation uses:
 
 - the System Pages registry for registered slugs
 - persisted post meta for created or rediscovered pages
-- shortcode or slug fallback discovery for known non-registry pages
+- shortcode or slug fallback discovery as a compatibility path when an expected page is not yet stored as a canonical mapping
 
 ### 4.2 Logged-out automatic page-list protection
 

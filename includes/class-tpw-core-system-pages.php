@@ -74,6 +74,8 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
         protected static function should_exclude_from_logged_out_page_menu( $slug ) {
             $private_slugs = [
                 'my-profile',
+                'manage-members',
+                'noticeboard',
                 'flexiclub',
                 'logs',
                 'menu-management',
@@ -283,14 +285,17 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
             self::boot_defaults();
             self::load_overrides();
 
-            $id = self::get_id( $s );
-            if ( 0 < $id ) {
-                return (int) $id;
-            }
-
             $def = array();
             if ( isset( self::$registry[ $s ] ) && is_array( self::$registry[ $s ] ) ) {
                 $def = self::$registry[ $s ];
+            }
+
+            $id = self::get_id( $s );
+            if ( 0 < $id ) {
+                self::mark_system_page( (int) $id, $s, $def );
+                self::persist_override( $s, (int) $id );
+
+                return (int) $id;
             }
 
             $title = ucwords( str_replace( '-', ' ', $s ) );
@@ -642,8 +647,8 @@ if ( ! function_exists( 'tpw_core_get_logged_out_page_menu_excluded_ids' ) ) {
     /**
      * Get FlexiClub page IDs that should be hidden from logged-out automatic page menus.
      *
-     * Covers Core-owned System Pages plus private shortcode-backed pages that are not
-     * currently registered in the System Pages registry.
+        * Covers registered Core-owned System Pages plus compatibility shortcode discovery
+        * for legacy pages that may not yet have a canonical stored mapping.
      *
      * @return int[]
      */

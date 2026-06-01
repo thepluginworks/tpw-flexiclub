@@ -58,7 +58,7 @@ if ( ! function_exists( 'tpw_core_maybe_ensure_system_page' ) ) {
 
 		$published_page_id = (int) TPW_Core_System_Pages::get_page_id( $system_slug );
 		if ( 0 < $published_page_id ) {
-			return $published_page_id;
+            return (int) TPW_Core_System_Pages::ensure_page( $system_slug );
 		}
 
 		$existing_slug_page = get_page_by_path( $system_slug, OBJECT, 'page' );
@@ -115,21 +115,27 @@ if ( file_exists( TPW_CORE_PATH . 'modules/system-pages/class-tpw-core-system-pa
 // Register the Members "My Profile" page in the System Pages table (keeps existing logic intact)
 add_action( 'init', function() {
     if ( class_exists( 'TPW_Core_System_Pages' ) ) {
-        TPW_Core_System_Pages::register_page( 'my-profile', [
-            'title'     => 'My Profile',
-            'shortcode' => '[tpw_member_profile]',
-            'plugin'    => 'tpw-core',
-            'required'  => 1,
-        ] );
-        // Register the login page so sites can have a front-end login form
-        TPW_Core_System_Pages::register_page( 'member-login', [
-            'title'     => 'Member Login',
-            'shortcode' => '[tpw_member_login]',
-            'plugin'    => 'tpw-core',
-            'required'  => 1,
-        ] );
-
-        $flexiclub_pages = [
+        $core_pages = [
+            'my-profile' => [
+                'title'     => 'My Profile',
+                'shortcode' => '[tpw_member_profile]',
+                'required'  => 1,
+            ],
+            'member-login' => [
+                'title'     => 'Member Login',
+                'shortcode' => '[tpw_member_login]',
+                'required'  => 1,
+            ],
+            'manage-members' => [
+                'title'     => 'Manage Members',
+                'shortcode' => '[tpw_manage_members]',
+                'required'  => 1,
+            ],
+            'noticeboard' => [
+                'title'     => 'Noticeboard',
+                'shortcode' => '[tpw_noticeboard_list]',
+                'required'  => 1,
+            ],
             'flexiclub' => [
                 'title'     => 'FlexiClub',
                 'shortcode' => '[flexiclub]',
@@ -157,7 +163,7 @@ add_action( 'init', function() {
             ],
         ];
 
-        foreach ( $flexiclub_pages as $slug => $config ) {
+        foreach ( $core_pages as $slug => $config ) {
             TPW_Core_System_Pages::register_page( $slug, [
                 'title'     => $config['title'],
                 'shortcode' => $config['shortcode'],

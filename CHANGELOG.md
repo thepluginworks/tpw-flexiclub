@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [2.9.0] - 2026-06-01
+
+### Changed
+- System Pages: promoted the Core-owned Manage Members and Noticeboard routes into first-class registry-backed System Pages, while preserving the existing shortcode access controls and compatibility fallbacks.
+- System Pages: runtime provisioning now reuses existing published Manage Members and Noticeboard slug or shortcode pages and persists the canonical System Pages mapping and metadata so legacy installs migrate without duplicate pages.
+- Members Menu: the default Noticeboard and Members managed items now declare canonical `system_slug` destinations while retaining the existing shortcode and fallback-slug compatibility paths.
+- Documentation: updated the canonical System Pages contract and related help and developer references so Manage Members and Noticeboard are documented as registry-backed Core System Pages.
+
 ## [2.8.0] - 2026-05-29
 
 ### Changed

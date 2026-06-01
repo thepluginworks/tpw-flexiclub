@@ -527,7 +527,7 @@ $rendered = TPW_Email_Template_Manager::get_rendered_template(
 		'{fixture-date}' => '25 Sept 2025',
 	### System Pages Manager
 
-	TPW Core provides a lightweight registry for front-end WordPress pages required by TPW plugins (e.g., Members Profile, Control, Notices). It stores page definitions in a single table and ensures the linked WP pages exist.
+	TPW Core provides a lightweight registry for front-end WordPress pages required by TPW plugins (e.g., My Profile, Manage Members, Noticeboard, TPW Control). It stores page definitions in a single table and ensures the linked WP pages exist.
 
 	Key API (class `TPW_Core_System_Pages`):
 	- `register_page( $slug, [ 'title' => 'My Title', 'shortcode' => '[my_shortcode]', 'plugin' => 'tpw-core', 'required' => 1 ] )` – register or update the page meta.
@@ -732,22 +732,22 @@ Do not place this integration in an admin-only file, because the My Profile scre
 tpw_members_module_enabled(): bool
 ```
 
-- System Pages: Core registers the "My Profile" page under slug `my-profile` and shortcode `[tpw_member_profile]`. Add-on plugins can ensure this page exists by calling:
+- System Pages: Core registers the "My Profile" page under slug `my-profile` and shortcode `[tpw_member_profile]`. Core also owns the canonical `manage-members` and `noticeboard` system pages under shortcodes `[tpw_manage_members]` and `[tpw_noticeboard_list]`, and runtime provisioning will reuse existing published slug or shortcode pages before creating new ones. Add-on plugins can ensure the My Profile page exists by calling:
 
 ```php
 TPW_Core_System_Pages::ensure_page( 'my-profile' );
 ```
 
-- Add-on owned pages: If an add-on provides a front-end management UI for members (e.g. Lodge Meetings Manage Members), it should register its own System Page row so Core can manage the linked WP page. Example:
+- Add-on owned pages: If an add-on provides its own separate front-end management UI, it should register its own System Page row so Core can manage the linked WP page. Example:
 
 ```php
-TPW_Core_System_Pages::register_page( 'manage-members', [
-	'title'     => 'Manage Members',
-	'shortcode' => '[tpw_manage_members]',
+TPW_Core_System_Pages::register_page( 'lodge-members-admin', [
+	'title'     => 'Lodge Members Admin',
+	'shortcode' => '[tpw_lodge_manage_members]',
 	'plugin'    => 'tpw-rsvp-lodge-meetings',
 	'required'  => 1,
 ] );
-TPW_Core_System_Pages::ensure_page( 'manage-members' );
+TPW_Core_System_Pages::ensure_page( 'lodge-members-admin' );
 ```
 
 - Access control: Use `TPW_Member_Access` helpers to gate UI routes. Only admins or committee should access the Manage Members UI. Do not expose admin actions to regular members.

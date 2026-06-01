@@ -12,6 +12,8 @@ That private set includes the default Noticeboard route as well as the other mem
 ## Key Screens / Shortcodes
 - Typical pages:
   - My Profile — [tpw_member_profile]
+  - Manage Members — [tpw_manage_members]
+  - Noticeboard — [tpw_noticeboard_list]
   - TPW Control — [tpw-control]
 
 ## Hooks

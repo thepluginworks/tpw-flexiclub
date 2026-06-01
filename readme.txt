@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.8.0
+Stable tag: 2.9.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,11 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.9.0 =
+- System Pages: Manage Members and Noticeboard are now first-class FlexiClub System Pages with runtime auto-provisioning and duplicate-safe reuse of existing published pages.
+- Members Menu: the built-in Noticeboard and Members destinations now resolve through the canonical System Pages registry while preserving existing compatibility fallbacks.
+- Documentation: aligned the shipped System Pages docs with the current Core contract for Manage Members and Noticeboard.
 
 = 2.8.0 =
 - Members Menu: add-on plugins can now register managed FlexiClub Members Menu items through a shared Core contract instead of writing menu items directly.

@@ -701,6 +701,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'open_label'     => __( 'Open Manage Members', 'tpw-core' ),
 				'detector'       => 'members',
 				'shortcode'      => '[tpw_manage_members]',
+				'system_slug'    => 'manage-members',
 				'capability'     => [ __CLASS__, 'current_user_can_manage_members' ],
 			],
 			self::PAGE_GALLERY => [
@@ -765,18 +766,24 @@ class TPW_FlexiClub_Admin_Menu {
 		$type = isset( $config['detector'] ) ? (string) $config['detector'] : '';
 
 		switch ( $type ) {
+			case 'members':
+				return self::build_registered_page_status( $config );
 			case 'gallery':
-				return self::build_gallery_status( $config );
+				return self::build_registered_page_status( $config );
 			case 'tpw-control-section':
 				return self::build_tpw_control_status( $config, true );
-			case 'members':
 			default:
 				return self::build_shortcode_page_status( 'manage-members', 'tpw_manage_members', $config );
 		}
 	}
 
-	protected static function build_gallery_status( $config ) {
-		$status = self::locate_system_page( (string) $config['system_slug'], 'tpw_gallery_admin' );
+	protected static function build_registered_page_status( $config ) {
+		$shortcode_tag = '';
+		if ( ! empty( $config['shortcode'] ) && class_exists( 'TPW_Core_System_Pages' ) ) {
+			$shortcode_tag = TPW_Core_System_Pages::parse_shortcode_tag( (string) $config['shortcode'] );
+		}
+
+		$status = self::locate_system_page( (string) $config['system_slug'], $shortcode_tag );
 
 		return [
 			'page_text'        => $status['page_text'],
@@ -2227,11 +2234,10 @@ class TPW_FlexiClub_Admin_Menu {
 	}
 
 	protected static function get_frontend_noticeboard_route() {
-		$status = self::build_shortcode_page_status(
-			'noticeboard',
-			'tpw_noticeboard_list',
+		$status = self::build_registered_page_status(
 			[
-				'shortcode' => '[tpw_noticeboard_list]',
+				'system_slug' => 'noticeboard',
+				'shortcode'   => '[tpw_noticeboard_list]',
 			]
 		);
 
@@ -4322,9 +4328,9 @@ class TPW_FlexiClub_Admin_Menu {
 	}
 
 	protected static function get_members_management_url( $action = 'list' ) {
-		$status = self::locate_shortcode_page( 'tpw_manage_members', 'manage-members' );
-		if ( ! empty( $status['page_url'] ) && ! empty( $status['shortcode_present'] ) ) {
-			return add_query_arg( 'action', sanitize_key( $action ), $status['page_url'] );
+		$status = self::get_safe_system_page_status( 'manage-members', 'tpw_manage_members' );
+		if ( ! empty( $status['open_url'] ) ) {
+			return add_query_arg( 'action', sanitize_key( $action ), $status['open_url'] );
 		}
 
 		return admin_url( 'admin.php?page=' . self::PAGE_MEMBERS );
