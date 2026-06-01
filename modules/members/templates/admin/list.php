@@ -1155,7 +1155,7 @@ $current_view = $initial_view;
                             }
                             ?>
                             <?php if ( !empty($photo_url) ): ?>
-                                <img class="member-card-photo" src="<?php echo esc_url($photo_url); ?>" alt="<?php echo esc_attr( trim(($member->first_name ?? '') . ' ' . ($member->surname ?? '')) ); ?> photo" width="100" height="100">
+                                <img class="member-card-photo" src="<?php echo esc_url($photo_url); ?>" alt="<?php echo esc_attr( trim(($member->first_name ?? '') . ' ' . ($member->surname ?? '')) ); ?> photo" width="120" height="120">
                             <?php else: ?>
                                 <?php
                                 $fi = isset($member->first_name[0]) ? strtoupper($member->first_name[0]) : '';
