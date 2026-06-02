@@ -2,6 +2,16 @@
 
 ## [Unreleased]
 
+## [2.9.1] - 2026-06-02
+
+### Fixed
+- Noticeboard: restored normal WordPress single-template resolution for individual `tpw_notice` permalinks so active themes and Elementor Single templates can take ownership by default, while retaining the legacy bundled single template only through an explicit compatibility filter.
+- Noticeboard: limited the legacy `notice-single.css` enqueue path to the compatibility fallback template so Elementor- or theme-owned single notices do not inherit the bundled fallback styling unexpectedly.
+
+### Changed
+- Noticeboard: aligned the `tpw_notice` custom post type registration with clearer plural labels and explicit public-facing args so builders can expose cleaner all-notice single-template conditions without changing the current Noticeboard permalink structure.
+- Documentation: clarified that individual notice permalinks follow normal WordPress single-template resolution by default and documented the compatibility filter for sites that still need the bundled single template.
+
 ## [2.9.0] - 2026-06-01
 
 ### Changed

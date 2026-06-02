@@ -13,6 +13,8 @@ If a future public Noticeboard mode is introduced, it must be implemented and do
 - Canonical front-end assets: `modules/notices/assets/css/noticeboard.css`, `modules/notices/assets/js/noticeboard.js`
 - Canonical shortcode: `[tpw_noticeboard_list]`
 
+Individual `tpw_notice` permalinks follow normal WordPress single-template resolution by default, so active themes and Elementor Single templates can control the single-notice layout. Sites that still need the legacy bundled fallback can opt in with the `tpw_notice_use_legacy_single_template_fallback` filter; the legacy `notice-single.css` asset is only enqueued when that compatibility fallback is active.
+
 Legacy compatibility copies currently remain at `assets/css/noticeboard.css` and `assets/js/noticeboard.js`, but those root assets are not the canonical implementation and are not used by the normal Core loader path for `[tpw_noticeboard_list]`.
 
 ## Key Screens / Shortcodes

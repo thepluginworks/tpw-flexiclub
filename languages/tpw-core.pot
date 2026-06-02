@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the FlexiClub plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FlexiClub 2.9.0\n"
+"Project-Id-Version: FlexiClub 2.9.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-01T12:02:26+00:00\n"
+"POT-Creation-Date: 2026-06-02T20:23:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tpw-core\n"
@@ -155,11 +155,9 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:1717
 #: includes/class-tpw-flexiclub-admin-menu.php:3286
 #: includes/class-tpw-flexiclub-admin-menu.php:4455
-#: includes/noticeboard/class-tpw-noticeboard.php:20
-#: includes/noticeboard/class-tpw-noticeboard.php:30
+#: includes/noticeboard/class-tpw-noticeboard.php:32
 #: includes/tpw-core-settings.php:2132
-#: modules/notices/class-tpw-noticeboard.php:13
-#: modules/notices/class-tpw-noticeboard.php:23
+#: modules/notices/class-tpw-noticeboard.php:25
 msgid "Noticeboard"
 msgstr ""
 
@@ -1290,11 +1288,11 @@ msgid "Add New Member"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3420
-#: includes/noticeboard/class-tpw-noticeboard.php:22
 #: includes/noticeboard/class-tpw-noticeboard.php:23
+#: includes/noticeboard/class-tpw-noticeboard.php:24
 #: includes/noticeboard/shortcodes/noticeboard-list.php:108
-#: modules/notices/class-tpw-noticeboard.php:15
 #: modules/notices/class-tpw-noticeboard.php:16
+#: modules/notices/class-tpw-noticeboard.php:17
 #: modules/notices/shortcodes/noticeboard-list.php:83
 msgid "Add New Notice"
 msgstr ""
@@ -1759,90 +1757,107 @@ msgstr ""
 msgid "No active methods detected."
 msgstr ""
 
+#: includes/noticeboard/class-tpw-noticeboard.php:20
+#: includes/noticeboard/class-tpw-noticeboard.php:36
+#: modules/notices/class-tpw-noticeboard.php:13
+#: modules/notices/class-tpw-noticeboard.php:29
+msgid "Noticeboard Notices"
+msgstr ""
+
 #: includes/noticeboard/class-tpw-noticeboard.php:21
 #: modules/notices/class-tpw-noticeboard.php:14
 msgid "Notice"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:24
-#: modules/notices/class-tpw-noticeboard.php:17
-msgid "Edit Notice"
+#: includes/noticeboard/class-tpw-noticeboard.php:22
+#: modules/notices/class-tpw-noticeboard.php:15
+msgid "All Noticeboard Notices"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:25
 #: modules/notices/class-tpw-noticeboard.php:18
-msgid "New Notice"
+msgid "Edit Notice"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:26
 #: modules/notices/class-tpw-noticeboard.php:19
-msgid "View Notice"
+msgid "New Notice"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:27
 #: modules/notices/class-tpw-noticeboard.php:20
-msgid "Search Notices"
+msgid "View Notice"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:28
 #: modules/notices/class-tpw-noticeboard.php:21
-msgid "No notices found"
+msgid "Notice Archives"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:29
 #: modules/notices/class-tpw-noticeboard.php:22
+msgid "Search Notices"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:30
+#: modules/notices/class-tpw-noticeboard.php:23
+msgid "No notices found"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:31
+#: modules/notices/class-tpw-noticeboard.php:24
 msgid "No notices found in Trash"
 msgstr ""
 
-#: includes/noticeboard/class-tpw-noticeboard.php:47
-#: includes/noticeboard/class-tpw-noticeboard.php:57
-#: modules/notices/class-tpw-noticeboard.php:39
-#: modules/notices/class-tpw-noticeboard.php:49
-msgid "Notice Categories"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:48
-#: modules/notices/class-tpw-noticeboard.php:40
-msgid "Notice Category"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:49
-#: modules/notices/class-tpw-noticeboard.php:41
-msgid "Search Notice Categories"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:50
-#: modules/notices/class-tpw-noticeboard.php:42
-msgid "All Notice Categories"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:51
-#: modules/notices/class-tpw-noticeboard.php:43
-msgid "Parent Category"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:52
-#: modules/notices/class-tpw-noticeboard.php:44
-msgid "Parent Category:"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:53
-#: modules/notices/class-tpw-noticeboard.php:45
-msgid "Edit Category"
-msgstr ""
-
-#: includes/noticeboard/class-tpw-noticeboard.php:54
-#: modules/notices/class-tpw-noticeboard.php:46
-msgid "Update Category"
-msgstr ""
-
 #: includes/noticeboard/class-tpw-noticeboard.php:55
+#: includes/noticeboard/class-tpw-noticeboard.php:65
 #: modules/notices/class-tpw-noticeboard.php:47
-msgid "Add New Category"
+#: modules/notices/class-tpw-noticeboard.php:57
+msgid "Notice Categories"
 msgstr ""
 
 #: includes/noticeboard/class-tpw-noticeboard.php:56
 #: modules/notices/class-tpw-noticeboard.php:48
+msgid "Notice Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:57
+#: modules/notices/class-tpw-noticeboard.php:49
+msgid "Search Notice Categories"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:58
+#: modules/notices/class-tpw-noticeboard.php:50
+msgid "All Notice Categories"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:59
+#: modules/notices/class-tpw-noticeboard.php:51
+msgid "Parent Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:60
+#: modules/notices/class-tpw-noticeboard.php:52
+msgid "Parent Category:"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:61
+#: modules/notices/class-tpw-noticeboard.php:53
+msgid "Edit Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:62
+#: modules/notices/class-tpw-noticeboard.php:54
+msgid "Update Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:63
+#: modules/notices/class-tpw-noticeboard.php:55
+msgid "Add New Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:64
+#: modules/notices/class-tpw-noticeboard.php:56
 msgid "New Category Name"
 msgstr ""
 

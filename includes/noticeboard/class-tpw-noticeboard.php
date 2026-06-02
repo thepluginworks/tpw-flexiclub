@@ -17,13 +17,15 @@ class TPW_Noticeboard {
     public static function register_cpt_and_tax() {
         // CPT: tpw_notice
         $labels = [
-            'name'               => __('Noticeboard', 'tpw-core'),
+            'name'               => __('Noticeboard Notices', 'tpw-core'),
             'singular_name'      => __('Notice', 'tpw-core'),
+            'all_items'          => __('All Noticeboard Notices', 'tpw-core'),
             'add_new'            => __('Add New Notice', 'tpw-core'),
             'add_new_item'       => __('Add New Notice', 'tpw-core'),
             'edit_item'          => __('Edit Notice', 'tpw-core'),
             'new_item'           => __('New Notice', 'tpw-core'),
             'view_item'          => __('View Notice', 'tpw-core'),
+            'archives'           => __('Notice Archives', 'tpw-core'),
             'search_items'       => __('Search Notices', 'tpw-core'),
             'not_found'          => __('No notices found', 'tpw-core'),
             'not_found_in_trash' => __('No notices found in Trash', 'tpw-core'),
@@ -31,13 +33,19 @@ class TPW_Noticeboard {
         ];
 
         $args = [
+            'label'              => __('Noticeboard Notices', 'tpw-core'),
             'labels'             => $labels,
             'public'             => true,
+            'publicly_queryable' => true,
+            'show_ui'            => true,
             'show_in_rest'       => true,
+            'show_in_nav_menus'  => true,
             'has_archive'        => false,
             'exclude_from_search'=> true,
+            'hierarchical'       => false,
             'menu_icon'          => 'dashicons-megaphone',
             'supports'           => ['title','editor','excerpt','thumbnail','custom-fields'],
+            'rewrite'            => true,
             'capability_type'    => 'post',
         ];
         register_post_type('tpw_notice', $args);
