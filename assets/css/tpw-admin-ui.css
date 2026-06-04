@@ -201,7 +201,7 @@
   /* Ensure .tpw-btn-* variants keep their global styling (from tpw-buttons.css) */
   .tpw-admin-ui .tpw-btn[class*="tpw-btn-"],
   .tpw-frontend-ui .tpw-btn[class*="tpw-btn-"] {
-    font: inherit;
+    /* font: inherit; removed */
     box-sizing: border-box;
   }
   /* Apply typography tokens to all TPW buttons within the scoped UI */

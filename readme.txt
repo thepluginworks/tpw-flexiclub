@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.9.2 =
+- Admin UI: adjusted scoped TPW button styling so `.tpw-btn-*` variants retain their intended typography.
 
 = 2.9.1 =
 - Noticeboard: restored normal WordPress single-template ownership for individual notices so active themes and Elementor Single templates can control `tpw_notice` permalinks by default, while keeping the legacy bundled single template available only through an explicit compatibility filter.

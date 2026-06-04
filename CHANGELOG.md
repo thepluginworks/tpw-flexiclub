@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [2.9.2] - 2026-06-04
+
+### Fixed
+- Admin UI: adjusted scoped TPW button styling so `.tpw-btn-*` variants retain their intended typography.
+
 ## [2.9.1] - 2026-06-02
 
 ### Fixed
