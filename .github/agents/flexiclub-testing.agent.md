@@ -125,6 +125,24 @@ Use these email identities for reminder, notification, password reset, visitor-l
 
 ---
 
+## AI Credit-Control Rules
+
+Unless explicitly instructed otherwise:
+
+- test only the requested feature or workflow
+- avoid exploratory testing
+- avoid repository-wide searches
+- avoid reading large numbers of files
+- do not inspect more than 5 files when investigating a failure
+- prefer SQL, WP-CLI, admin inspection, or direct verification before browser automation
+- use browser automation only when the behaviour cannot be verified more cheaply
+- stop and report before testing additional workflows not originally requested
+- stop and report before expanding into dependency or ownership investigations
+- provide checkpoint findings before broad regression testing
+- do not perform full regression testing unless explicitly requested
+
+---
+
 ## Testing Rules
 
 You have access to command-line tools on the local machine.
@@ -170,7 +188,7 @@ If WP-CLI bootstrap is blocked, switch to direct SQL verification where appropri
 ### Browser and UI Testing
 
 - Use UI to test the user journey.
-- Prefer browser automation where available.
+- Use browser automation only when the behaviour cannot be verified through direct URL access, WP-CLI, SQL inspection, admin inspection, or a narrowly scoped manual UI validation.
 - Verify visible UI outcomes before checking database state.
 - Capture the exact page, role, and route under test.
 - Do NOT rely on UI alone for correctness.
@@ -179,7 +197,7 @@ If WP-CLI bootstrap is blocked, switch to direct SQL verification where appropri
 
 Use ripgrep for:
 - codebase searches
-- tracing unclear behaviour
+- locating directly relevant implementation points when required to explain a test failure
 - identifying where data is written or processed
 
 ### Tool Usage Rules
@@ -189,6 +207,25 @@ Use ripgrep for:
 - Prefer realistic local development or test data over artificial fixtures when possible.
 - Avoid destructive resets unless explicitly instructed.
 - Do NOT test normal development changes by building or installing plugin zip files.
+
+### Testing Investigation Limits
+
+Unless explicitly instructed:
+
+- do not inspect more than 5 files to understand a failure
+- do not perform repository-wide searches
+- do not trace dependency chains beyond the immediately involved plugin or shared dependency
+- stop and report if additional investigation appears necessary
+
+### Testing Approval Gate
+
+Stop and report before continuing if:
+
+- more than 3 separate user journeys require testing
+- browser automation appears necessary across multiple flows
+- additional test accounts must be created
+- testing expands beyond the originally requested feature
+- more than 5 files appear necessary to investigate a failure
 
 ### Payment Testing
 
@@ -236,6 +273,8 @@ SCA / 3D Secure testing:
 2. SCA challenge modal: Visa EU `4310 0000 0020 1019`, CVV `111`, verification code `123456`
 3. SCA failed verification: Visa `4811 1100 0000 0016`, CVV `111`
 
+Unless broader payment coverage is explicitly requested, verify only the payment behaviours directly related to the test request.
+
 For payment flows, verify frontend validation, backend validation, user notices, payment status handling, failure recovery, duplicate-submission prevention, retry behaviour, totals after failures, and relevant logs or debug entries where applicable.
 Local sites may be HTTP-only or use invalid local TLS, so browser-based payment flows may be blocked or only partially testable.
 Never assume payment success purely from UI redirects.
@@ -244,14 +283,14 @@ Never assume payment success purely from UI redirects.
 
 Before concluding a test result, you must:
 
-- identify which plugin owns the behaviour under test
+- identify ownership only when it is obvious from the tested workflow or directly relevant to explaining a failure
 - identify any shared dependency involvement
 - do not attribute failures to the current plugin when evidence indicates the issue originates in a dependency or shared system
 - clearly call out any cross-plugin or shared-system dependencies involved in the test
 
 ### Verification Requirements
 
-For key flows, you MUST verify both:
+For workflows that modify data or system state, you MUST verify both:
 
 #### UI Outcome
 - Page redirects
@@ -273,6 +312,36 @@ Check database and or admin screens for:
 
 ---
 
+### Default Test Scope
+
+Unless the user requests broader coverage:
+
+- test only the behaviour specifically requested
+- do not perform regression testing outside the affected feature
+- do not test adjacent workflows
+- do not expand into exploratory testing
+
+### Escalation Checkpoint
+
+If a test cannot be completed within the initially requested scope:
+
+Report:
+
+- what was tested
+- what remains unverified
+- why additional investigation is required
+
+Then stop and await instruction.
+
+### Stop Conditions
+
+Stop and report findings instead of continuing when:
+
+- the root cause appears outside the current plugin
+- the test request requires cross-plugin investigation
+- more than one dependency appears involved
+- additional testing would exceed the originally requested scope
+
 ## Your Responsibilities
 
 When given a test instruction, you must:
@@ -281,7 +350,7 @@ When given a test instruction, you must:
 2. Record exact inputs used.
 3. Record expected outcome.
 4. Record actual outcome.
-5. Identify which plugin owns the behaviour under test and note any dependency involvement.
+5. Note plugin ownership and dependency involvement only when obvious from the tested workflow or relevant to explaining a failure.
 6. Assign exactly one result classification.
 7. Identify side effects such as duplicates, stale records, permission leaks, or unexpected data mutations.
 
@@ -343,6 +412,8 @@ Notes:
 ## Testing Scope
 
 You may be asked to test:
+
+This list defines possible test categories, not required regression coverage. Only test categories directly relevant to the user's request unless broader testing is explicitly requested.
 
 - admin screens
 - frontend user journeys

@@ -25,41 +25,69 @@ Use this mode for:
 - backwards-compatibility-sensitive changes
 - consumer-plugin impact review for Core changes
 
+## AI Credit-Control Rules
+
+Use the smallest investigation needed to complete the requested development task safely.
+
+- Start with files explicitly named by the user, files referenced in errors, or files most directly responsible for the requested change.
+- Prefer targeted search before opening additional files.
+- Do not perform broad repository discovery unless the task cannot be understood from targeted investigation.
+- Do not read startup files, local docs, integration docs, or architecture docs unless they are needed for the requested change.
+- Avoid reopening files already inspected unless validating a specific changed section.
+- Do not perform opportunistic refactoring, cleanup, renaming, modernisation, or code reorganisation unless explicitly requested or required to complete the approved task.
+- Use the lowest reasoning effort likely to complete the task correctly. Do not use high-effort investigation for wording changes, simple edits, documentation-only changes, token reviews, or small local fixes.
+
+Stop and report before continuing when:
+
+- more than 5 files need to be inspected before editing
+- the issue appears to involve multiple plugins
+- a shared dependency may require modification
+- the requested change expands beyond the original scope
+- a database schema change may be required
+- the root cause remains unclear after the first targeted investigation pass
+- the fix would require refactoring rather than a targeted patch
+
+When stopping, report what was checked, what was found, the likely next step, and what approval or clarification is needed before continuing.
+
 ## Startup Checklist
 
-Before making code changes:
+Before making code changes, use a narrow investigation first:
 
-1. Read the plugin startup files most relevant to this plugin:
+1. Start with only the files directly named by the user, shown in the error, or most obviously responsible for the requested change.
+2. Use search before opening additional files.
+3. Read the plugin startup files only when they are needed to understand bootstrapping, hooks, dependency loading, ownership, or the requested implementation path:
 	- `.github/copilot-instructions.md`
 	- `readme.md`
 	- `CODING_STANDARDS.md`
 	- `docs/developer-guide.md`
 	- `docs/architecture/README.md`
 	- `CHANGELOG.md`
-2. Read the local docs most directly tied to the affected feature or contract, starting with the nearest canonical doc in this repository.
-3. Use the following plugin-specific startup guidance when applicable:
+4. Read the local docs only when the task touches a documented contract, shared workflow, database schema, payment flow, licensing, release process, or integration boundary.
+5. Use the following plugin-specific startup guidance only when it is applicable to the requested change:
 - Shared UI, wrappers, enqueue, branding, or shared component work: `docs/architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md`, `docs/help/tpw-branding.md`, `docs/help/ui-spec.md`, `docs/help/payments-integration.md`, and `docs/tpw-payments-ui.md` when the Payments Hub is involved.
 - Permissions or access-control changes: `docs/architecture/permissions/tpw-core.permissions.md`, `docs/architecture/permissions/role-capability-matrix.md`, and `docs/architecture/permissions/vc-permissions-implementation-playbook.md`.
 - Identity, member flags, roles, or member classification: `docs/architecture/identity/identity-model.md`, `docs/architecture/identity/role-classification-model.md`, and `docs/architecture/identity/member-flag-ownership-model.md`.
 - System pages: `docs/help/system-pages.md` and `docs/architecture/system-pages/tpw-core-system-page-protection-contract.md`.
 - Shared payments: `docs/help/payments.md` and `docs/help/payments-integration.md`.
-4. Inspect integration docs when the change touches shared systems, payment flows, licensing, admin or frontend shared behaviour, or external services.
-5. Identify the owning plugin, shared dependency, and canonical contract before editing.
-6. If a listed startup file or doc is missing, note that gap and continue from the closest authoritative local code or docs instead of inventing context.
+6. Inspect integration docs only when the proposed change clearly affects shared systems, payment flows, licensing, admin or frontend shared behaviour, or external services.
+7. Identify the owning plugin, shared dependency, and canonical contract only when the change crosses plugin or shared-system boundaries.
+8. If a listed startup file or doc is missing, note that gap and continue from the closest authoritative local code or docs instead of inventing context.
 
 ## Core Operating Rules
 
 - Follow the repository instructions already in force for this workspace.
 - Within this mode, resolve conflicts in this order: repository instructions already in force, explicit user scope and approvals, these core rules and boundaries, then plugin-specific notes in this file.
-- When scope, ownership, expected behaviour, or rollout intent is ambiguous, do not guess. State the ambiguity and ask the smallest question that unblocks the work.
+- When scope, ownership, expected behaviour, or rollout intent is ambiguous and the ambiguity blocks a safe targeted change, do not guess. State the ambiguity and ask the smallest question that unblocks the work.
 - Treat the current code and real runtime behaviour as authoritative for how the plugin works today. Treat docs as intent and rollout material. If docs conflict with code, do not silently follow stale docs; confirm whether the task is to preserve current behaviour or intentionally change it.
 - Smallest safe change means the smallest plugin-local change that fully solves the requested problem, preserves existing contracts unless explicit scope says otherwise, and includes required docs or testing handoff when triggered. It does not mean the fewest-line patch if that would leave behaviour inconsistent or fragile.
 - Prefer additive, backwards-compatible changes before removing, renaming, tightening, or repurposing established behaviour.
+- Do not broaden the task autonomously. Fix only the requested issue and report unrelated problems separately unless the user explicitly approves expanding the scope.
 
 ## Regression Protection Rules
 
-- Before editing a file that already contains related behaviour, search git history for the affected feature, hook, helper, filter, action, or contract.
-- Identify whether the behaviour was previously added, removed, or refactored.
+- For behavioural changes, refactors, contract changes, integration changes, payment changes, access-control changes, or runtime-path replacements, search git history for the affected feature, hook, helper, filter, action, or contract before editing.
+- When git history is searched, identify whether the behaviour was previously added, removed, or refactored.
+- Do not search git history for documentation-only changes, wording changes, formatting-only edits, simple CSS spacing or styling tweaks with no behavioural change, or small local fixes where existing behaviour is already clear from the directly affected file.
 - Do not remove existing runtime behaviour merely because a new refactor supersedes nearby code.
 - If replacing code, explicitly document what old behaviour is being removed, what new implementation preserves it, and which runtime paths remain covered.
 - If docs describe a contract, confirm matching runtime code exists before marking the task complete.
@@ -70,7 +98,7 @@ Before making code changes:
 
 - Run `git diff --check`.
 - Review the full diff of every touched runtime file.
-- Search the diff for removed hooks, filters, actions, helper methods, capability checks, access-control logic, menu filters, payment hooks, shortcode handlers, and system-page helpers.
+- For runtime PHP, JavaScript, integration, access-control, payment, routing, API, shortcode, or system-page changes, search the diff for removed hooks, filters, actions, helper methods, capability checks, access-control logic, menu filters, payment hooks, shortcode handlers, and system-page helpers.
 - Confirm no unrelated functional behaviour was removed.
 - For refactors, verify all previous entry points remain covered.
 - If a hook, filter, action, or helper is removed, explicitly state what was removed, why it was removed, what replaces it, and how the runtime path is still covered.
@@ -130,7 +158,7 @@ Plugin-specific implementation-method notes for this generated copy:
 - Validate against the active local or symlinked environment where applicable rather than assuming a packaged plugin build is authoritative.
 - Do not test normal development changes by building, installing, or swapping plugin ZIP files unless the user explicitly asks for release-packaging work.
 - Real functional behaviour means runtime behaviour, user-visible flows, data handling, permissions or access-control, integrations, payment flows, API or contract behaviour, or failure and degradation paths.
-- You own the escalation decision for development work. Use .github/agents/core-testing.agent.md when the change affects real functional behaviour.
+- You own the escalation decision for development work. Use .github/agents/flexiclub-testing.agent.md when the change affects real functional behaviour.
 - If you are unsure whether a change affects real functional behaviour, escalate it to testing.
 - For refactors and replacements that touch runtime behaviour, confirm the previous runtime paths remain covered before considering testing complete.
 - Do not mark a task that changes real functional behaviour as fully complete until testing has been performed or explicitly handed off.
@@ -159,7 +187,7 @@ Required handoff content:
 
 When handing off a qualifying functional change to testing:
 
-- explicitly reference .github/agents/core-testing.agent.md
+- explicitly reference .github/agents/flexiclub-testing.agent.md
 - summarise the user-visible and system-level areas that require testing
 - identify the highest regression-risk areas
 - call out any setup, data prerequisites, feature flags, payment environment notes, or environment constraints

@@ -51,7 +51,16 @@ If the changes are internal/development-only:
 
 If the changes affect distributable plugin functionality/runtime behaviour, continue with the full production release workflow below.
 
+
 Do not treat every repository change as a customer release. Avoid unnecessary production releases, version bumps, tags, GitHub Releases, or deployment handoffs for internal-only work.
+
+Release efficiency rules:
+• collect repository state once where possible and reuse the results throughout the workflow
+• avoid repeating git status, branch validation, repository-root validation, tag discovery, or diff analysis unless repository state has changed
+• prefer direct release execution over exploratory investigation
+• stop investigating once release classification is clear
+• if release classification remains unclear after the initial repository-state review, stop and report findings rather than continuing exploratory analysis
+• do not perform architecture reviews, repository health reviews, or broad code audits during release workflows unless explicitly requested
 
 ⸻
 
@@ -200,12 +209,15 @@ If no changes:
 
 Before committing, check git status --short.
 
+
 Before a production release, inspect the active repository for obvious accidental development artefacts such as:
 • TODO or FIXME markers
 • debug statements
 • temporary dump or logging code
 • commented-out temporary logic
 • accidental scratch files
+
+Limit this inspection to files that are being released or are directly relevant to the release. Do not perform repository-wide TODO, FIXME, debug, or scratch-file searches unless a specific release concern requires it.
 
 If suspicious development artefacts are detected:
 • warn clearly in the report
@@ -255,8 +267,43 @@ For an internal/development-only classification:
 
 For a production release classification, use the following steps.
 
+Pre-release completeness gate
+
+Use information already gathered earlier in the workflow whenever possible. Do not repeat repository analysis solely to regenerate information that has already been collected and remains valid.
+
+Before editing version files or creating a production release commit, the agent must confirm the release scope using the minimum repository checks needed to ensure all intended committed runtime/distributable changes are included.
+
+For production releases, run the minimum checks needed to safely confirm release scope. Normally this should be limited to:
+
+• current branch
+• current HEAD commit
+• latest existing version tag
+• git status –short –untracked-files=all
+• git diff –name-status latest-tag..HEAD
+• when the changed-file set is already clear, a concise changed-file summary may be used instead of additional classification passes
+• avoid repeated diff categorisation once release scope has been determined
+• git diff –name-status –cached
+• list of any modified or untracked files not yet committed
+
+Run the following additional checks only when ambiguity, release-risk concerns, repository-boundary concerns, packaging concerns, incomplete-release concerns, or other blockers require deeper validation:
+
+• git diff –name-status latest-tag..HEAD for runtime/distributable files only
+• git diff –name-status latest-tag..HEAD for internal/tooling files only
+• list of files that would be omitted from the tag if release proceeded now
+• list of files that would be included in the deploy package
+• list of files excluded by .distignore or packaging rules
+
+Default to the lightest validation path that can safely confirm release scope. Only expand into detailed file-by-file analysis, deployment-package analysis, omitted-file analysis, or repeated classification work when the initial summary identifies ambiguity, uncommitted runtime files, repository-boundary concerns, packaging concerns, release-risk concerns, or other blockers that could affect release safety.
+
+If any intended runtime/distributable file is modified or untracked but not committed, stop and report that the release would be incomplete.
+
+Do not proceed to version bump, commit, tag, or push until either:
+
+• all intended runtime/distributable files are committed, or
+• the agent clearly reports that the uncommitted files are unrelated and excludes them intentionally.
+
 Once version files are updated:
-• commit only the intended release files
+• commit the version/release metadata files only, but confirm that all intended runtime changes are already committed and included in HEAD before tagging
 • stage only intended files inside the active repository
 • push the commit to the main branch
 
@@ -325,9 +372,15 @@ At the end, show:
 • whether Freemius deployment was triggered, skipped as not applicable, or blocked
 • whether a GitHub Release was created automatically, created manually, skipped as not applicable, or blocked
 • exact release summary prepared for production releases, or explicitly state that no customer release notes were created for internal-only changes
-• exact files included in the release commit
 • which optional steps were skipped because they were not applicable, including readme.txt stable tag updates, POT generation, deployment workflow handoff, Freemius deployment, and GitHub Release creation when relevant
 • any separated internal-only file groups or suspicious development artefacts that were detected
+• confirmation that all intended runtime/distributable changes are included in the release tag
+• confirmation that no uncommitted runtime/distributable files existed at the time the tag was created
+• provide detailed file lists, commit ranges, tag comparisons, package contents, or omitted-file reports only when a blocker, release-risk concern, incomplete release concern, packaging concern, or explicit user request requires them
+
+⸻
+
+For routine releases, keep reporting concise. GitHub already provides commit history, tag comparisons, release contents, and file-level inspection. Do not reproduce those details in release reports unless a blocker, release-risk concern, repository-boundary issue, packaging concern, incomplete-release condition, or explicit user request requires them.
 
 ⸻
 
@@ -342,3 +395,7 @@ At the end, show:
 • Do not create empty production releases for non-runtime-only changes.
 • Use the internal-only fast path for clearly non-runtime maintenance changes instead of full production-release inspection.
 • Keep the workflow read/write capable, but operate only inside the active repository.
+• Do not repeatedly analyse the same repository state when previously collected information remains valid.
+• Prefer concise changed-file summaries over repeated file classification exercises.
+• Limit validation and investigation work to the files relevant to the release.
+• Once release safety has been established, proceed with the workflow instead of continuing exploratory investigation.
