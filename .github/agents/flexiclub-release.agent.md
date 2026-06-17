@@ -61,10 +61,28 @@ Release efficiency rules:
 • stop investigating once release classification is clear
 • if release classification remains unclear after the initial repository-state review, stop and report findings rather than continuing exploratory analysis
 • do not perform architecture reviews, repository health reviews, or broad code audits during release workflows unless explicitly requested
+• use Low thinking unless explicitly instructed otherwise
+• do not perform repository-wide searches
+• do not read runtime source files unless required to identify version constants or release metadata
+• do not inspect CSS, JS, PHP, templates, or includes to judge implementation quality
+• if a required command fails or produces noisy output, retry once only, then stop and report the blocker
+• once release safety has been established, proceed with the workflow rather than continuing investigation
 
 ⸻
 
-0. Release classification
+0. Release code-change restriction
+
+Release agents must not make functional code changes during a release.
+
+If a possible code, CSS, JS, PHP, packaging, translation, or workflow issue is detected during release, stop and report it instead of fixing it.
+
+The release workflow may only edit release metadata files such as version files, changelog, readme stable tag, and translation template files when required by repository policy.
+
+Do not improve, refactor, tidy, review, or adjust runtime code during release.
+
+⸻
+
+0.10 Release classification
 
 Inspect the current repository state before semantic version selection.
 
@@ -202,6 +220,13 @@ If the POT file changes:
 
 If no changes:
 - do not force a commit
+
+• If POT generation is required:
+• run the configured POT generation command once
+• if it fails, produces excessive warnings, or the output cannot be captured cleanly, retry once only with output redirected to a temporary log
+• if the second attempt fails or remains noisy, stop and report the POT generation blocker
+• do not continue repeated WP-CLI attempts
+• do not investigate WP-CLI internals, plugin bootstrap warnings, PHP deprecations, or translation tooling unless explicitly instructed
 
 ⸻
 
@@ -368,7 +393,7 @@ At the end, show:
 • whether main was pushed successfully
 • whether the tag was pushed successfully for production releases, or explicitly state that no tag push occurred for internal-only changes
 • whether the post-release clean-state verification passed for production releases, or explicitly state that it was not applicable for internal-only changes
-• whether a deployment workflow exists and, if so, the workflow name or file to monitor
+• whether a deployment workflow is already known or configured by repository policy and, if so, the workflow name or file to monitor
 • whether Freemius deployment was triggered, skipped as not applicable, or blocked
 • whether a GitHub Release was created automatically, created manually, skipped as not applicable, or blocked
 • exact release summary prepared for production releases, or explicitly state that no customer release notes were created for internal-only changes
@@ -389,6 +414,7 @@ For routine releases, keep reporting concise. GitHub already provides commit his
 • Do not include unrelated modified files in the release commit
 • Prefer committing only intended release files rather than stopping
 • Do not manually deploy to Freemius as part of this workflow
+• Do not make functional code changes during release workflows; report issues instead of fixing them
 • A GitHub Release is required for production releases when the repository uses GitHub Releases as part of its release process.
 • Internal/development-only changes must be committed and pushed without being turned into a production release.
 • Never stage, commit, or tag files from sibling repositories in the workspace.
