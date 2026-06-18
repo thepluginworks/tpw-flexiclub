@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.9.2
+Stable tag: 2.10.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,11 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.10.0 =
+- Email: added durable queued email delivery backed by Action Scheduler, with queue status visibility, retry handling, and recovery for missing scheduled actions.
+- Email: preserved immediate send behaviour for immediate-sensitive workflows while routing queue-safe notifications through the new background queue.
+- Members: tightened shared admin and member workflow safeguards that shipped alongside the queue rollout.
 
 = 2.9.2 =
 - Admin UI: adjusted scoped TPW button styling so `.tpw-btn-*` variants retain their intended typography.

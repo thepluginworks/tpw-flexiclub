@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+## [2.10.0] - 2026-06-18
+
+### Added
+- Email: added a durable email queue backed by Action Scheduler, including queue status visibility, retry handling, and reconciliation recovery for pending rows that lose their scheduled action.
+
+### Changed
+- Email: preserved immediate-send semantics for existing immediate-sensitive workflows while routing queue-safe notifications through the explicit background queue API.
+- Members: shipped the related shared admin and member workflow safeguards alongside the queue rollout.
+
 ## [2.9.2] - 2026-06-04
 
 ### Fixed
