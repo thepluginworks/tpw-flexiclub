@@ -228,8 +228,22 @@ Dispatcher flow:
 
 - Sanitizes the subject and normalizes headers and attachments.
 - Applies the shared throttling rules from Core Email Settings.
-- Calls WordPress `wp_mail()`.
+- Calls WordPress `wp_mail()` during the current request.
 - Records a lightweight operational log entry when Email Logging is enabled in Core Email Settings.
+
+Queue behaviour:
+
+- Queue storage table: `{$wpdb->prefix}tpw_email_queue`
+- Durable queueing is opt-in through the explicit queue API, not the default behaviour of `TPW_Email::dispatch_mail()`.
+- One queued email row schedules one Action Scheduler job through the Core scheduler wrapper.
+- Failed queued sends remain in queue state and are retried with backoff until `max_attempts` is reached.
+- WordPress Admin → Settings → TPW Core → Email Queue is the business-level payload and status view.
+- Tools → Scheduled Actions is the infrastructure and job-execution view.
+- Email Logs remain an operational attempt log only; they are not the queue store.
+
+Explicit queue API:
+
+Use `TPW_Email::enqueue_mail()` when a caller intentionally wants durable asynchronous delivery.
 
 Optional context:
 
@@ -248,6 +262,18 @@ TPW_Email::dispatch_mail(
 	[
 		'context' => 'membership-renewal-reminder',
 		'source'  => 'My_Module::send_reminder',
+	]
+);
+
+TPW_Email::enqueue_mail(
+	$to,
+	$subject,
+	$message,
+	$headers,
+	[],
+	[
+		'context' => 'membership-renewal-reminder',
+		'source'  => 'My_Module::queue_reminder',
 	]
 );
 ```
@@ -278,6 +304,8 @@ Admin access:
 - WordPress Admin → Settings → TPW Core → Email Logs
 - The screen shows the latest 100 log entries, newest first.
 - Administrators can clear the log table from this tab.
+- WordPress Admin → Settings → TPW Core → Email Queue
+- The queue tab shows pending, processing, sent, failed, and cancelled items and supports reconciliation, retry, cancel, and sent-item cleanup actions.
 
 ---
 

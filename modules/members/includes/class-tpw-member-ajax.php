@@ -1041,7 +1041,7 @@ class TPW_Member_Ajax {
                 }
 
                 if ( class_exists( 'TPW_Email' ) ) {
-                    TPW_Email::dispatch_mail( $notify_to, $subject, $body, $headers, [], [
+                    TPW_Email::enqueue_mail( $notify_to, $subject, $body, $headers, [], [
                         'source'       => 'TPW_Member_Ajax::profile_update',
                         'message_type' => 'plain',
                     ] );

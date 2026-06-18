@@ -481,6 +481,17 @@ add_shortcode('tpw_manage_members', function() {
         }
     }
 
+    if ( isset( $_GET['tpw_member_admin_error'] ) ) {
+        $error = sanitize_key( wp_unslash( $_GET['tpw_member_admin_error'] ) );
+        $errors = [
+            'last_admin_lockout' => __( 'Administrator access was not removed because this would leave the site without any other effective Administrator who can recover member management.', 'tpw-core' ),
+            'self_demotion_requires_other_admin' => __( 'Your Administrator access was not removed because no other effective Administrator currently exists to recover the system.', 'tpw-core' ),
+        ];
+        if ( isset( $errors[ $error ] ) ) {
+            echo '<div class="notice notice-error" style="margin:10px 0;"><p>' . esc_html( $errors[ $error ] ) . '</p></div>';
+        }
+    }
+
     // Show success notice after creating and linking a WP user
     if ( isset($_GET['wp_user_created']) && $_GET['wp_user_created'] === '1' ) {
         echo '<div class="notice notice-success" style="margin:10px 0;"><p>' . esc_html__( 'WordPress user successfully created and linked.', 'tpw-core' ) . '</p></div>';

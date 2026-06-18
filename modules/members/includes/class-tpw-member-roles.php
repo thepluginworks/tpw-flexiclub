@@ -1,6 +1,9 @@
 <?php
 
 class TPW_Member_Roles {
+	const ADMIN_REMOVAL_BLOCK_LAST_ADMIN = 'last_admin_lockout';
+	const ADMIN_REMOVAL_BLOCK_SELF       = 'self_demotion_requires_other_admin';
+
 	/**
 	 * Identity roles managed by TPW Core.
 	 *
@@ -204,6 +207,52 @@ class TPW_Member_Roles {
 		if ( $allow_removal ) {
 			self::remove_role( $user_id, 'administrator' );
 		}
+	}
+
+	public static function get_admin_removal_block_reason( $target_user_id, $actor_user_id = 0 ) {
+		$target_user_id = (int) $target_user_id;
+		$actor_user_id  = (int) $actor_user_id;
+
+		if ( $target_user_id <= 0 ) {
+			return '';
+		}
+
+		if ( self::count_effective_administrators_excluding( $target_user_id ) > 0 ) {
+			return '';
+		}
+
+		if ( $actor_user_id > 0 && $actor_user_id === $target_user_id ) {
+			return self::ADMIN_REMOVAL_BLOCK_SELF;
+		}
+
+		return self::ADMIN_REMOVAL_BLOCK_LAST_ADMIN;
+	}
+
+	public static function count_effective_administrators_excluding( $exclude_user_id = 0 ) {
+		$exclude_user_id = (int) $exclude_user_id;
+		$user_ids        = get_users(
+			array(
+				'fields' => 'ID',
+			)
+		);
+
+		if ( ! is_array( $user_ids ) || empty( $user_ids ) ) {
+			return 0;
+		}
+
+		$count = 0;
+		foreach ( $user_ids as $user_id ) {
+			$user_id = (int) $user_id;
+			if ( $user_id <= 0 || $user_id === $exclude_user_id ) {
+				continue;
+			}
+
+			if ( user_can( $user_id, 'manage_options' ) ) {
+				$count++;
+			}
+		}
+
+		return $count;
 	}
 
 	/**

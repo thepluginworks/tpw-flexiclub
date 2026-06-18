@@ -1,6 +1,12 @@
 <?php
 
 class TPW_Member_Controller {
+    /**
+     * Last guard/error code raised during a write operation.
+     *
+     * @var string
+     */
+    protected $last_error_code = '';
 
     /**
      * Sync TPW-managed WordPress roles for a linked member user.
@@ -44,6 +50,10 @@ class TPW_Member_Controller {
                 ]
             );
         }
+    }
+
+    public function get_last_error_code() {
+        return is_string( $this->last_error_code ) ? $this->last_error_code : '';
     }
 
     /**
@@ -493,6 +503,7 @@ class TPW_Member_Controller {
     public function update_member( $id, $data, $args = [] ) {
         global $wpdb;
         $table = $wpdb->prefix . 'tpw_members';
+        $this->last_error_code = '';
 
         // Partial update: only update fields explicitly provided in $data
         $allowed_columns = [
@@ -573,6 +584,34 @@ class TPW_Member_Controller {
 
         // Always bump the updated_at timestamp
         $update['updated_at'] = current_time( 'mysql' );
+
+        if ( ! empty( $args['explicit_admin_change'] ) && array_key_exists( 'is_admin', $update ) && ! $update['is_admin'] ) {
+            $member_before = $this->get_member( $id );
+            $target_user_id = 0;
+
+            if ( is_object( $member_before ) && ! empty( $member_before->user_id ) ) {
+                $target_user_id = (int) $member_before->user_id;
+            } elseif ( array_key_exists( 'user_id', $update ) && ! empty( $update['user_id'] ) ) {
+                $target_user_id = (int) $update['user_id'];
+            }
+
+            if ( $target_user_id > 0 ) {
+                if ( ! class_exists( 'TPW_Member_Roles', false ) ) {
+                    $roles_file = plugin_dir_path( __FILE__ ) . 'class-tpw-member-roles.php';
+                    if ( file_exists( $roles_file ) ) {
+                        require_once $roles_file;
+                    }
+                }
+
+                if ( class_exists( 'TPW_Member_Roles', false ) ) {
+                    $actor_user_id         = function_exists( 'get_current_user_id' ) ? (int) get_current_user_id() : 0;
+                    $this->last_error_code = TPW_Member_Roles::get_admin_removal_block_reason( $target_user_id, $actor_user_id );
+                    if ( '' !== $this->last_error_code ) {
+                        return false;
+                    }
+                }
+            }
+        }
 
     $res = $wpdb->update( $table, $update, [ 'id' => $id ] );
         if ( $res !== false ) {

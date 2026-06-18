@@ -51,6 +51,20 @@ class TPW_Member_Form_Handler {
         exit;
     }
 
+    protected static function redirect_edit_form_with_admin_error( $member_id, $error_code ) {
+        $edit_url = add_query_arg(
+            [
+                'action'               => 'edit_form',
+                'id'                   => (int) $member_id,
+                'tpw_member_admin_error' => sanitize_key( (string) $error_code ),
+            ],
+            site_url( '/manage-members/' )
+        );
+
+        wp_safe_redirect( $edit_url );
+        exit;
+    }
+
     /**
      * Delete a newly created WordPress user after a failed member add.
      *
@@ -546,6 +560,13 @@ class TPW_Member_Form_Handler {
                 'explicit_admin_change' => $explicit_admin_change,
             ]
         );
+
+		if ( false === $updated ) {
+			$admin_error = method_exists( $controller, 'get_last_error_code' ) ? $controller->get_last_error_code() : '';
+			if ( '' !== $admin_error ) {
+				self::redirect_edit_form_with_admin_error( $member_id, $admin_error );
+			}
+		}
 
         // After successful update, delete stale photo file from disk if needed
         $redirect_msg = '';

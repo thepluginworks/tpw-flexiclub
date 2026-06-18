@@ -24,6 +24,21 @@ class TPW_Email {
     * @return bool
      */
     public static function dispatch_mail( $to, $subject, $message, $headers = [], $attachments = [], $context = [] ) {
+        return self::dispatch_mail_immediate( $to, $subject, $message, $headers, $attachments, $context );
+    }
+
+    /**
+     * Immediately send an email through wp_mail() while preserving throttle and logging.
+     *
+     * @param string|array $to
+     * @param string       $subject
+     * @param string       $message
+     * @param string|array $headers
+     * @param array        $attachments
+     * @param string|array $context
+     * @return bool
+     */
+    public static function dispatch_mail_immediate( $to, $subject, $message, $headers = [], $attachments = [], $context = [] ) {
         $subject_clean    = wp_strip_all_tags( (string) $subject );
         $message_body     = (string) $message;
         $headers_for_send = is_array( $headers ) ? $headers : (string) $headers;
@@ -79,6 +94,40 @@ class TPW_Email {
         );
 
         return (bool) $sent;
+    }
+
+    /**
+     * Queue an outbound email for durable background delivery.
+     *
+     * This is opt-in and does not change the semantics of dispatch_mail().
+     *
+     * @param string|array $to
+     * @param string       $subject
+     * @param string       $message
+     * @param string|array $headers
+     * @param array        $attachments
+     * @param string|array $context
+     * @return array{success:bool,queue_id:int,action_id:int,error:string,message:string}
+     */
+    public static function enqueue_mail( $to, $subject, $message, $headers = [], $attachments = [], $context = [] ) {
+        if ( ! class_exists( 'TPW_Email_Queue' ) ) {
+            return [
+                'success'  => false,
+                'queue_id' => 0,
+                'action_id' => 0,
+                'error'    => __( 'Email queue service unavailable.', 'tpw-core' ),
+                'message'  => __( 'Email queue service unavailable.', 'tpw-core' ),
+            ];
+        }
+
+        return TPW_Email_Queue::enqueue_and_schedule(
+            $to,
+            $subject,
+            $message,
+            $headers,
+            $attachments,
+            self::normalise_dispatch_context( $context )
+        );
     }
 
     /**
@@ -620,4 +669,5 @@ class TPW_Email {
 
         return '';
     }
+
 }

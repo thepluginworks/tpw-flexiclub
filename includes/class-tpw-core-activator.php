@@ -80,6 +80,19 @@ class TPW_Core_Activator {
             }
         }
 
+        // Create Email Queue table and schedule Action Scheduler reconciliation.
+		try {
+			require_once TPW_CORE_PATH . 'modules/email/class-tpw-email-queue.php';
+			if ( class_exists( 'TPW_Email_Queue' ) ) {
+				TPW_Email_Queue::create_table();
+                TPW_Email_Queue::ensure_reconciliation_scheduled();
+			}
+		} catch ( \Throwable $e ) {
+			if ( function_exists( 'error_log' ) ) {
+				error_log( 'TPW Core activation: email queue setup failed - ' . $e->getMessage() );
+			}
+		}
+
         // Set default currency settings if not already set
         $settings = get_option( 'flexievent_settings', [] );
 

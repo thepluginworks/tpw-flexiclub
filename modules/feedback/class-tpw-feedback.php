@@ -306,7 +306,7 @@ if ( ! class_exists( 'TPW_Feedback' ) ) {
                 $body = implode( "\n", $body_lines );
                 $headers = [ 'Content-Type: text/plain; charset=UTF-8' ];
                 if ( class_exists( 'TPW_Email' ) ) {
-                    TPW_Email::dispatch_mail( $to, $subject, $body, $headers, [], [
+                    TPW_Email::enqueue_mail( $to, $subject, $body, $headers, [], [
                         'source'       => 'TPW_Feedback::ajax_submit',
                         'message_type' => 'plain',
                     ] );
