@@ -224,6 +224,13 @@ The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary s
 TPW Core provides a central outbound email dispatcher in `TPW_Email::dispatch_mail()`.
 All TPW Core email sends should pass through this method directly, or through helpers such as `TPW_Email::send_email()` and `TPW_Email::send_with_template()` that eventually call the dispatcher.
 
+Immediate send APIs:
+
+- `TPW_Email::dispatch_mail()` remains the immediate low-level API.
+- `TPW_Email::send_email()` remains an immediate helper for wrapped HTML sends, attachment validation, and optional sender-copy behaviour.
+- `TPW_Email::send_with_template()` remains an immediate helper that resolves a stored template and then sends through `send_email()`.
+- These APIs do not create durable queue rows; they send during the current request while still applying shared throttling and logging.
+
 Dispatcher flow:
 
 - Sanitizes the subject and normalizes headers and attachments.
@@ -235,15 +242,32 @@ Queue behaviour:
 
 - Queue storage table: `{$wpdb->prefix}tpw_email_queue`
 - Durable queueing is opt-in through the explicit queue API, not the default behaviour of `TPW_Email::dispatch_mail()`.
+- `TPW_Email::enqueue_mail()` is the explicit durable queue API.
 - One queued email row schedules one Action Scheduler job through the Core scheduler wrapper.
+- Queued emails are processed asynchronously by Action Scheduler.
 - Failed queued sends remain in queue state and are retried with backoff until `max_attempts` is reached.
 - WordPress Admin → Settings → TPW Core → Email Queue is the business-level payload and status view.
 - Tools → Scheduled Actions is the infrastructure and job-execution view.
 - Email Logs remain an operational attempt log only; they are not the queue store.
+- Email Logs are written when an actual send attempt happens, not when a queue row is created.
 
 Explicit queue API:
 
 Use `TPW_Email::enqueue_mail()` when a caller intentionally wants durable asynchronous delivery.
+
+Choosing immediate vs queued send:
+
+- Use immediate send for user-facing request flows that need an in-request success or failure result, such as contact forms, one-off admin sends, or workflows that must surface delivery failure immediately.
+- Use immediate send when the current caller expects the historical `dispatch_mail()` or `send_email()` contract and should not be changed to background delivery silently.
+- Use queued send for notifications, reminders, batch-style operational mail, or add-on plugin work that benefits from retry, reconciliation, and background processing.
+- Do not switch existing immediate callers to `enqueue_mail()` unless the caller explicitly accepts asynchronous delivery semantics.
+
+Guidance for add-on plugins:
+
+- Add-on plugins such as FlexiSubscriptions should treat `TPW_Email::enqueue_mail()` as the default choice for durable notification workflows that do not need to block the current request.
+- Add-on plugins should continue to use the immediate APIs for transactional or interactive flows where the plugin must know whether `wp_mail()` succeeded during the request.
+- Queue-safe add-on notifications should pass a clear `context` and `source` label so queue entries and send-attempt logs remain traceable across Core and consumer plugins.
+- Add-on plugins should not implement their own parallel durable queue when Core queueing semantics are sufficient.
 
 Optional context:
 
@@ -306,6 +330,12 @@ Admin access:
 - Administrators can clear the log table from this tab.
 - WordPress Admin → Settings → TPW Core → Email Queue
 - The queue tab shows pending, processing, sent, failed, and cancelled items and supports reconciliation, retry, cancel, and sent-item cleanup actions.
+
+Local testing note:
+
+- Local Mailpit verification depends on `wp_mail()` reaching the local mail transport.
+- If Site Mailer, SMTP, or similar mail-intercept plugins are active, Mailpit may not receive the message even though Core called `wp_mail()` correctly.
+- When validating local delivery, confirm that no mail-routing plugin is overriding the expected local Mailpit path.
 
 ---
 
