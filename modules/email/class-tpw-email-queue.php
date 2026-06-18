@@ -383,9 +383,10 @@ class TPW_Email_Queue {
 
 		$next_status = self::STATUS_FAILED;
 		$next_scheduled_at = $now;
-		$next_action_id = null;
+		$next_scheduler_action_id = isset( $row['scheduler_action_id'] ) ? (int) $row['scheduler_action_id'] : null;
 		if ( $attempts < $max_attempts ) {
 			$next_status = self::STATUS_PENDING;
+			$next_scheduler_action_id = null;
 			$retry_delay = self::get_retry_delay_seconds( $attempts );
 			$next_scheduled_at = gmdate( 'Y-m-d H:i:s', time() + $retry_delay );
 		}
@@ -396,19 +397,25 @@ class TPW_Email_Queue {
 				'status'       => $next_status,
 				'attempts'     => $attempts,
 				'last_error'   => $error_message,
+				'scheduler_action_id' => $next_scheduler_action_id,
 				'scheduled_at' => $next_scheduled_at,
 				'locked_at'    => null,
 				'updated_at'   => $now,
 			],
 			[ 'id' => $queue_id ],
-			[ '%s', '%d', '%s', '%s', '%s', '%s' ],
+			[ '%s', '%d', '%s', '%d', '%s', '%s', '%s' ],
 			[ '%d' ]
 		);
 
 		if ( self::STATUS_PENDING === $next_status ) {
-			$scheduled_action_id = self::schedule_queue_action( $queue_id, strtotime( $next_scheduled_at . ' UTC' ) );
+			$current_action_id = isset( $row['scheduler_action_id'] ) ? (int) $row['scheduler_action_id'] : 0;
+			$scheduled_action_id = self::schedule_queue_action( $queue_id, strtotime( $next_scheduled_at . ' UTC' ), $current_action_id );
 			if ( false === $scheduled_action_id ) {
-				self::update_schedule_failure( $queue_id, __( 'Retry scheduling failed after email send failure.', 'tpw-core' ) );
+				self::update_schedule_failure( $queue_id, sprintf(
+					/* translators: %s: original send failure message */
+					__( 'Retry scheduling failed after email send failure: %s', 'tpw-core' ),
+					$error_message !== '' ? $error_message : __( 'Unknown send failure.', 'tpw-core' )
+				) );
 			}
 		}
 	}
@@ -497,6 +504,7 @@ class TPW_Email_Queue {
 			self::table_name(),
 			[
 				'status'       => self::STATUS_PENDING,
+				'scheduler_action_id' => null,
 				'locked_at'    => null,
 				'last_error'   => null,
 				'scheduled_at' => gmdate( 'Y-m-d H:i:s' ),
@@ -506,7 +514,7 @@ class TPW_Email_Queue {
 				'id'     => $queue_id,
 				'status' => self::STATUS_FAILED,
 			],
-			[ '%s', '%s', '%s', '%s', '%s' ],
+			[ '%s', '%d', '%s', '%s', '%s', '%s' ],
 			[ '%d', '%s' ]
 		);
 
@@ -528,7 +536,7 @@ class TPW_Email_Queue {
 		$updated = $wpdb->query(
 			$wpdb->prepare(
 				"UPDATE " . self::table_name() . "
-				 SET status = %s, locked_at = NULL, updated_at = %s
+				 SET status = %s, scheduler_action_id = NULL, locked_at = NULL, updated_at = %s
 				 WHERE id = %d
 				   AND status IN (%s, %s)",
 				self::STATUS_CANCELLED,
@@ -739,17 +747,34 @@ class TPW_Email_Queue {
 		exit;
 	}
 
-	protected static function schedule_queue_action( $queue_id, $timestamp = null ) {
+	protected static function schedule_queue_action( $queue_id, $timestamp = null, $exclude_action_id = 0 ) {
 		global $wpdb;
 
 		$queue_id = (int) $queue_id;
+		$exclude_action_id = (int) $exclude_action_id;
 		if ( $queue_id <= 0 || ! class_exists( 'TPW_Core_Scheduler' ) ) {
 			return false;
 		}
 
+		$existing_action_id = self::get_active_action_id( $queue_id, $exclude_action_id );
+		if ( $existing_action_id > 0 ) {
+			$wpdb->update(
+				self::table_name(),
+				[
+					'scheduler_action_id' => $existing_action_id,
+					'updated_at'          => gmdate( 'Y-m-d H:i:s' ),
+				],
+				[ 'id' => $queue_id ],
+				[ '%d', '%s' ],
+				[ '%d' ]
+			);
+
+			return $existing_action_id;
+		}
+
 		$when = is_numeric( $timestamp ) ? (int) $timestamp : time();
 		$when = max( time(), $when );
-		$action_id = TPW_Core_Scheduler::schedule_single( $when, self::PROCESS_ACTION_HOOK, [ $queue_id ], self::ACTION_GROUP, true );
+		$action_id = TPW_Core_Scheduler::schedule_single( $when, self::PROCESS_ACTION_HOOK, [ $queue_id ], self::ACTION_GROUP, false );
 		if ( false === $action_id ) {
 			return false;
 		}
@@ -769,11 +794,58 @@ class TPW_Email_Queue {
 	}
 
 	protected static function has_pending_action( $queue_id ) {
+		return self::get_active_action_id( $queue_id ) > 0;
+	}
+
+	protected static function get_active_action_id( $queue_id, $exclude_action_id = 0 ) {
 		if ( ! class_exists( 'TPW_Core_Scheduler' ) ) {
-			return false;
+			return 0;
 		}
 
-		return TPW_Core_Scheduler::has_scheduled( self::PROCESS_ACTION_HOOK, [ (int) $queue_id ], self::ACTION_GROUP );
+		$queue_id = (int) $queue_id;
+		$exclude_action_id = (int) $exclude_action_id;
+		if ( $queue_id <= 0 ) {
+			return 0;
+		}
+
+		foreach ( [ 'pending', 'in-progress' ] as $status ) {
+			$actions = TPW_Core_Scheduler::get_scheduled_actions( self::PROCESS_ACTION_HOOK, [ $queue_id ], self::ACTION_GROUP, $status );
+			$action_ids = self::normalise_action_ids( $actions );
+			foreach ( $action_ids as $action_id ) {
+				if ( $action_id > 0 && $action_id !== $exclude_action_id ) {
+					return $action_id;
+				}
+			}
+		}
+
+		return 0;
+	}
+
+	protected static function normalise_action_ids( $actions ) {
+		if ( ! is_array( $actions ) ) {
+			return [];
+		}
+
+		$action_ids = [];
+		foreach ( $actions as $action ) {
+			if ( is_numeric( $action ) ) {
+				$action_ids[] = (int) $action;
+				continue;
+			}
+
+			if ( is_object( $action ) ) {
+				if ( isset( $action->action_id ) && is_numeric( $action->action_id ) ) {
+					$action_ids[] = (int) $action->action_id;
+					continue;
+				}
+
+				if ( method_exists( $action, 'get_id' ) ) {
+					$action_ids[] = (int) $action->get_id();
+				}
+			}
+		}
+
+		return array_values( array_unique( array_filter( $action_ids ) ) );
 	}
 
 	protected static function claim_queue_row( $queue_id ) {
