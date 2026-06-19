@@ -7,6 +7,7 @@
     if (!el) return;
     el.textContent = (msg || '').toString();
     el.hidden = !msg;
+    el.style.display = msg ? 'block' : 'none';
     if (msg) {
       el.setAttribute('role','alert');
       el.setAttribute('aria-live','polite');

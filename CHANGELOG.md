@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [2.10.2] - 2026-06-19
+
+### Fixed
+- Payments: fixed Square/Core checkout frontend error visibility so mount, config, or SDK failures written to `#tpw-square-errors` are shown to checkout users instead of remaining hidden by inline `display:none`.
+
 ## [2.10.1] - 2026-06-19
 
 ### Fixed
