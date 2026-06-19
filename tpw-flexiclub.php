@@ -18,6 +18,10 @@ if ( ! defined( 'TPW_CORE_VERSION' ) ) {
     define( 'TPW_CORE_VERSION', '2.10.0' );
 }
 
+if ( ! defined( 'TPW_PAYMENTS_DB_VERSION' ) ) {
+    define( 'TPW_PAYMENTS_DB_VERSION', '1.1.0' );
+}
+
 // Define paths
 define( 'TPW_CORE_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TPW_CORE_URL', plugin_dir_url( __FILE__ ) );
@@ -93,6 +97,17 @@ function tpw_maybe_upgrade_members_db() {
             TPW_Members_DB::create_table(); // This should be dbDelta-aware
         }
         update_option( 'tpw_members_db_version', TPW_MEMBERS_DB_VERSION );
+    }
+}
+
+add_action( 'admin_init', 'tpw_maybe_upgrade_payments_db' );
+function tpw_maybe_upgrade_payments_db() {
+    $stored_version = get_option( 'tpw_payments_db_version' );
+
+    if ( $stored_version !== TPW_PAYMENTS_DB_VERSION ) {
+        require_once TPW_CORE_PATH . 'modules/payments/class-tpw-payment-db.php';
+        TPW_Payment_DB::create_table();
+        update_option( 'tpw_payments_db_version', TPW_PAYMENTS_DB_VERSION );
     }
 }
 
