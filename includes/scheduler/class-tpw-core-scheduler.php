@@ -70,7 +70,9 @@ class TPW_Core_Scheduler {
 	 * Detect and load Action Scheduler if needed.
 	 *
 	 * This should be called by other TPW plugins early (e.g. on plugins_loaded)
-	 * when they need scheduling.
+	 * when they need scheduling. This only guarantees that the Action Scheduler
+	 * code has been loaded for the request; callers must still wait for
+	 * action_scheduler_init before treating it as ready for scheduling.
 	 *
 	 * @since 1.7.0
 	 *
@@ -119,6 +121,36 @@ class TPW_Core_Scheduler {
 	public static function is_available() {
 		// Allow checking without forcing a load.
 		return self::action_scheduler_is_loaded() || self::$is_available;
+	}
+
+	/**
+	 * Whether Action Scheduler is fully initialized and safe to use.
+	 *
+	 * @since 2.10.1
+	 *
+	 * @return bool
+	 */
+	public static function is_ready() {
+		if ( false === self::init_if_needed() ) {
+			self::$last_error = 'action scheduler could not be loaded';
+			return false;
+		}
+
+		if ( function_exists( 'did_action' ) && did_action( 'action_scheduler_init' ) > 0 ) {
+			return true;
+		}
+
+		if ( class_exists( 'ActionScheduler', false ) && is_callable( array( 'ActionScheduler', 'is_initialized' ) ) ) {
+			if ( ActionScheduler::is_initialized() ) {
+				return true;
+			}
+
+			self::$last_error = 'action scheduler loaded but not initialized; wait for action_scheduler_init';
+			return false;
+		}
+
+		self::$last_error = 'action scheduler readiness could not be confirmed; wait for action_scheduler_init';
+		return false;
 	}
 
 	/**
@@ -217,6 +249,26 @@ class TPW_Core_Scheduler {
 					'branch'                    => 'wrapper_invalid_timestamp',
 					'pre_filter_present'        => $pre_filter_present,
 					'pre_filter_callback_count' => $pre_filter_count,
+				)
+			);
+			return false;
+		}
+
+		if ( ! self::is_ready() ) {
+			self::set_last_schedule_debug(
+				array(
+					'timestamp'                 => $timestamp,
+					'hook'                      => $hook,
+					'args'                      => $args,
+					'group'                     => $group,
+					'unique'                    => (bool) $unique,
+					'result'                    => false,
+					'raw_scheduler_return'      => false,
+					'error'                     => self::$last_error,
+					'branch'                    => 'scheduler_not_ready',
+					'pre_filter_present'        => $pre_filter_present,
+					'pre_filter_callback_count' => $pre_filter_count,
+					'action_scheduler_init_count' => function_exists( 'did_action' ) ? (int) did_action( 'action_scheduler_init' ) : 0,
 				)
 			);
 			return false;
@@ -369,6 +421,9 @@ class TPW_Core_Scheduler {
 			'core_version'              => defined( 'TPW_CORE_VERSION' ) ? TPW_CORE_VERSION : '',
 			'action_scheduler_source'   => (string) self::$source,
 			'action_scheduler_version'  => defined( 'ACTION_SCHEDULER_VERSION' ) ? ACTION_SCHEDULER_VERSION : '',
+			'ready'                     => self::is_ready(),
+			'readiness_error'           => (string) self::$last_error,
+			'action_scheduler_init_count' => function_exists( 'did_action' ) ? (int) did_action( 'action_scheduler_init' ) : 0,
 			'pre_filter_present'        => self::has_pre_schedule_single_filter(),
 			'pre_filter_callback_count' => self::count_filter_callbacks( 'pre_as_schedule_single_action' ),
 			'debug_api_available'       => true,
@@ -390,13 +445,17 @@ class TPW_Core_Scheduler {
 	 * @return int|false Action ID on success, false on failure/unavailable.
 	 */
 	public static function schedule_recurring( $timestamp, $interval_in_seconds, $hook, $args = array(), $group = 'tpw', $unique = true ) {
+		self::$last_error = '';
 		if ( false === self::init_if_needed() ) {
+			self::$last_error = 'scheduler wrapper returned false';
 			return false;
 		}
 		if ( ! function_exists( 'as_schedule_recurring_action' ) ) {
+			self::$last_error = 'action scheduler recurring function unavailable';
 			return false;
 		}
 		if ( '' === (string) $hook ) {
+			self::$last_error = 'invalid scheduler hook';
 			return false;
 		}
 
@@ -406,7 +465,14 @@ class TPW_Core_Scheduler {
 		$group               = (string) $group;
 		$args                = is_array( $args ) ? $args : array();
 
+		if ( ! self::is_ready() ) {
+			return false;
+		}
+
 		$action_id = (int) as_schedule_recurring_action( $timestamp, $interval_in_seconds, $hook, $args, $group, (bool) $unique );
+		if ( $action_id <= 0 && '' === self::$last_error ) {
+			self::$last_error = 'scheduler returned 0 without an exception message';
+		}
 		return ( $action_id > 0 ) ? $action_id : false;
 	}
 
@@ -424,10 +490,16 @@ class TPW_Core_Scheduler {
 	 * @return int|false Number of actions unscheduled/cancelled, or false if unavailable.
 	 */
 	public static function unschedule( $hook, $args = array(), $group = 'tpw' ) {
+		self::$last_error = '';
 		if ( false === self::init_if_needed() ) {
+			self::$last_error = 'scheduler wrapper returned false';
 			return false;
 		}
 		if ( ! function_exists( 'as_unschedule_all_actions' ) ) {
+			self::$last_error = 'action scheduler unschedule function unavailable';
+			return false;
+		}
+		if ( ! self::is_ready() ) {
 			return false;
 		}
 
@@ -458,7 +530,12 @@ class TPW_Core_Scheduler {
 	 * @return bool
 	 */
 	public static function has_scheduled( $hook, $args = array(), $group = 'tpw' ) {
+		self::$last_error = '';
 		if ( false === self::init_if_needed() ) {
+			self::$last_error = 'scheduler wrapper returned false';
+			return false;
+		}
+		if ( ! self::is_ready() ) {
 			return false;
 		}
 		if ( function_exists( 'as_has_scheduled_action' ) ) {
@@ -485,10 +562,16 @@ class TPW_Core_Scheduler {
 	 * @return array|false Array of action IDs (or action objects, depending on AS config), or false if unavailable.
 	 */
 	public static function get_scheduled_actions( $hook, $args = array(), $group = 'tpw', $status = 'pending' ) {
+		self::$last_error = '';
 		if ( false === self::init_if_needed() ) {
+			self::$last_error = 'scheduler wrapper returned false';
 			return false;
 		}
 		if ( ! function_exists( 'as_get_scheduled_actions' ) ) {
+			self::$last_error = 'action scheduler query function unavailable';
+			return false;
+		}
+		if ( ! self::is_ready() ) {
 			return false;
 		}
 

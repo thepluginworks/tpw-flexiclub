@@ -243,13 +243,17 @@ Queue behaviour:
 - Queue storage table: `{$wpdb->prefix}tpw_email_queue`
 - Durable queueing is opt-in through the explicit queue API, not the default behaviour of `TPW_Email::dispatch_mail()`.
 - `TPW_Email::enqueue_mail()` is the explicit durable queue API.
-- One queued email row schedules one Action Scheduler job through the Core scheduler wrapper.
+- One queued email row schedules one Action Scheduler job through the Core scheduler wrapper once Action Scheduler is fully ready.
+- Core distinguishes scheduler availability from scheduler readiness: loaded symbols alone are not treated as a safe scheduling signal.
+- If a queue row is created before Action Scheduler reaches `action_scheduler_init`, the row remains `pending` and scheduling is deferred until a safe lifecycle point.
+- In that deferred state, `TPW_Email::enqueue_mail()` still returns a successful queue result, but `action_id` may remain `0` until the deferred scheduling pass runs.
 - Queued emails are processed asynchronously by Action Scheduler.
 - Failed queued sends remain in queue state and are retried with backoff until `max_attempts` is reached.
 - WordPress Admin → Settings → TPW Core → Email Queue is the business-level payload and status view.
 - Tools → Scheduled Actions is the infrastructure and job-execution view.
 - Email Logs remain an operational attempt log only; they are not the queue store.
 - Email Logs are written when an actual send attempt happens, not when a queue row is created.
+- Queue rows should only record scheduler diagnostics when scheduling genuinely fails or must wait for scheduler readiness; they should not be treated as send-attempt failures.
 
 Explicit queue API:
 

@@ -25,6 +25,9 @@ class TPW_Email_Queue {
 	public static function init() {
 		add_action( 'init', [ __CLASS__, 'maybe_install' ], 20 );
 		add_action( 'init', [ __CLASS__, 'ensure_reconciliation_scheduled' ], 20 );
+		add_action( 'init', [ __CLASS__, 'schedule_unscheduled_pending_items' ], 25 );
+		add_action( 'action_scheduler_init', [ __CLASS__, 'ensure_reconciliation_scheduled' ], 5 );
+		add_action( 'action_scheduler_init', [ __CLASS__, 'schedule_unscheduled_pending_items' ], 10 );
 		add_action( self::PROCESS_ACTION_HOOK, [ __CLASS__, 'process_scheduled_item' ], 10, 1 );
 		add_action( self::RECONCILE_ACTION_HOOK, [ __CLASS__, 'reconcile_pending_items' ] );
 		add_filter( 'tpw_core_settings_tabs', [ __CLASS__, 'register_settings_tab' ] );
@@ -98,6 +101,10 @@ class TPW_Email_Queue {
 
 	public static function ensure_reconciliation_scheduled() {
 		if ( ! class_exists( 'TPW_Core_Scheduler' ) ) {
+			return false;
+		}
+
+		if ( ! TPW_Core_Scheduler::is_ready() ) {
 			return false;
 		}
 
@@ -217,17 +224,22 @@ class TPW_Email_Queue {
 		}
 
 		$queue_id = (int) $wpdb->insert_id;
-		$action_id = self::schedule_queue_action( $queue_id, $scheduled_ts );
-		if ( false === $action_id ) {
-			self::update_schedule_failure( $queue_id, __( 'Failed to schedule queued email processing.', 'tpw-core' ) );
+		$schedule_result = self::schedule_queue_action_or_defer( $queue_id, $scheduled_ts );
+		$action_id = isset( $schedule_result['action_id'] ) ? (int) $schedule_result['action_id'] : 0;
+		if ( 'failed' === $schedule_result['status'] ) {
+			self::update_schedule_failure( $queue_id, $schedule_result['diagnostic'] );
 
 			return [
 				'success'   => false,
 				'queue_id'  => $queue_id,
 				'action_id' => 0,
-				'error'     => __( 'Failed to schedule queued email processing.', 'tpw-core' ),
-				'message'   => __( 'Failed to schedule queued email processing.', 'tpw-core' ),
+				'error'     => $schedule_result['diagnostic'],
+				'message'   => $schedule_result['message'],
 			];
+		}
+
+		if ( 'deferred' === $schedule_result['status'] ) {
+			self::update_schedule_waiting_note( $queue_id, $schedule_result['diagnostic'] );
 		}
 
 		do_action( 'tpw_email/queued', [
@@ -245,8 +257,53 @@ class TPW_Email_Queue {
 			'queue_id'  => $queue_id,
 			'action_id' => $action_id,
 			'error'     => '',
-			'message'   => __( 'Email queued for sending.', 'tpw-core' ),
+			'message'   => $schedule_result['message'],
 		];
+	}
+
+	public static function schedule_unscheduled_pending_items() {
+		global $wpdb;
+
+		if ( ! class_exists( 'TPW_Core_Scheduler' ) || ! TPW_Core_Scheduler::is_ready() ) {
+			return 0;
+		}
+
+		$rows = $wpdb->get_results(
+			$wpdb->prepare(
+				"SELECT id, scheduled_at
+				 FROM " . self::table_name() . "
+				 WHERE status = %s
+				   AND scheduler_action_id IS NULL
+				 ORDER BY scheduled_at ASC, id ASC
+				 LIMIT %d",
+				self::STATUS_PENDING,
+				(int) apply_filters( 'tpw_email_queue/unscheduled_pending_batch_size', 50 )
+			)
+		);
+
+		if ( empty( $rows ) || ! is_array( $rows ) ) {
+			return 0;
+		}
+
+		$scheduled = 0;
+		foreach ( $rows as $row ) {
+			$queue_id = isset( $row->id ) ? (int) $row->id : 0;
+			if ( $queue_id <= 0 || self::has_pending_action( $queue_id ) ) {
+				continue;
+			}
+
+			$scheduled_ts = isset( $row->scheduled_at ) ? strtotime( (string) $row->scheduled_at . ' UTC' ) : time();
+			$scheduled_ts = $scheduled_ts > 0 ? $scheduled_ts : time();
+
+			if ( false !== self::schedule_queue_action( $queue_id, $scheduled_ts ) ) {
+				$scheduled++;
+				continue;
+			}
+
+			self::update_schedule_failure( $queue_id, self::build_scheduler_failure_message( __( 'Failed to schedule queued email processing.', 'tpw-core' ) ) );
+		}
+
+		return $scheduled;
 	}
 
 	public static function process_scheduled_item( $queue_id = 0 ) {
@@ -783,14 +840,61 @@ class TPW_Email_Queue {
 			self::table_name(),
 			[
 				'scheduler_action_id' => (int) $action_id,
+				'last_error'          => null,
 				'updated_at'          => gmdate( 'Y-m-d H:i:s' ),
 			],
 			[ 'id' => $queue_id ],
-			[ '%d', '%s' ],
+			[ '%d', '%s', '%s' ],
 			[ '%d' ]
 		);
 
 		return (int) $action_id;
+	}
+
+	protected static function schedule_queue_action_or_defer( $queue_id, $timestamp = null, $exclude_action_id = 0 ) {
+		if ( ! class_exists( 'TPW_Core_Scheduler' ) ) {
+			return [
+				'status'     => 'failed',
+				'action_id'  => 0,
+				'diagnostic' => __( 'Failed to schedule queued email processing. Scheduler wrapper unavailable.', 'tpw-core' ),
+				'message'    => __( 'Failed to schedule queued email processing.', 'tpw-core' ),
+			];
+		}
+
+		if ( ! TPW_Core_Scheduler::is_ready() ) {
+			return [
+				'status'     => 'deferred',
+				'action_id'  => 0,
+				'diagnostic' => self::build_scheduler_waiting_message(),
+				'message'    => __( 'Email queued for sending. Processing will begin when Action Scheduler is ready.', 'tpw-core' ),
+			];
+		}
+
+		$action_id = self::schedule_queue_action( $queue_id, $timestamp, $exclude_action_id );
+		if ( false === $action_id ) {
+			if ( ! TPW_Core_Scheduler::is_ready() ) {
+				return [
+					'status'     => 'deferred',
+					'action_id'  => 0,
+					'diagnostic' => self::build_scheduler_waiting_message(),
+					'message'    => __( 'Email queued for sending. Processing will begin when Action Scheduler is ready.', 'tpw-core' ),
+				];
+			}
+
+			return [
+				'status'     => 'failed',
+				'action_id'  => 0,
+				'diagnostic' => self::build_scheduler_failure_message( __( 'Failed to schedule queued email processing.', 'tpw-core' ) ),
+				'message'    => __( 'Failed to schedule queued email processing. The queue row is still pending and includes scheduler diagnostics.', 'tpw-core' ),
+			];
+		}
+
+		return [
+			'status'     => 'scheduled',
+			'action_id'  => (int) $action_id,
+			'diagnostic' => '',
+			'message'    => __( 'Email queued for sending.', 'tpw-core' ),
+		];
 	}
 
 	protected static function has_pending_action( $queue_id ) {
@@ -904,6 +1008,68 @@ class TPW_Email_Queue {
 			[ '%s', '%s' ],
 			[ '%d' ]
 		);
+	}
+
+	protected static function update_schedule_waiting_note( $queue_id, $message ) {
+		if ( '' === trim( (string) $message ) ) {
+			return;
+		}
+
+		self::update_schedule_failure( $queue_id, $message );
+	}
+
+	protected static function build_scheduler_waiting_message() {
+		$message = __( 'Queued email is waiting for Action Scheduler initialization.', 'tpw-core' );
+
+		if ( class_exists( 'TPW_Core_Scheduler' ) ) {
+			$last_error = trim( (string) TPW_Core_Scheduler::get_last_error() );
+			if ( '' !== $last_error ) {
+				$message .= ' [' . 'scheduler_error=' . sanitize_text_field( $last_error ) . ']';
+			}
+		}
+
+		return $message;
+	}
+
+	protected static function build_scheduler_failure_message( $message ) {
+		$message = trim( (string) $message );
+		if ( '' === $message ) {
+			$message = __( 'Failed to schedule queued email processing.', 'tpw-core' );
+		}
+
+		if ( ! class_exists( 'TPW_Core_Scheduler' ) ) {
+			return $message;
+		}
+
+		$details = [];
+		$last_error = trim( (string) TPW_Core_Scheduler::get_last_error() );
+		if ( '' !== $last_error ) {
+			$details[] = 'scheduler_error=' . sanitize_text_field( $last_error );
+		}
+
+		if ( method_exists( 'TPW_Core_Scheduler', 'get_last_schedule_debug' ) ) {
+			$debug = TPW_Core_Scheduler::get_last_schedule_debug();
+			if ( is_array( $debug ) ) {
+				if ( ! empty( $debug['branch'] ) ) {
+					$details[] = 'branch=' . sanitize_key( (string) $debug['branch'] );
+				}
+				if ( ! empty( $debug['call_strategy'] ) ) {
+					$details[] = 'call_strategy=' . sanitize_key( (string) $debug['call_strategy'] );
+				}
+				if ( ! empty( $debug['action_scheduler_source'] ) ) {
+					$details[] = 'source=' . sanitize_key( (string) $debug['action_scheduler_source'] );
+				}
+				if ( ! empty( $debug['action_scheduler_version'] ) ) {
+					$details[] = 'version=' . sanitize_text_field( (string) $debug['action_scheduler_version'] );
+				}
+			}
+		}
+
+		if ( empty( $details ) ) {
+			return $message;
+		}
+
+		return $message . ' [' . implode( '; ', $details ) . ']';
 	}
 
 	public static function table_name() {
