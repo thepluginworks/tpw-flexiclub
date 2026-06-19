@@ -1,0 +1,5898 @@
+# Copyright (C) 2026 ThePluginWorks
+# This file is distributed under the same license as the FlexiClub plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: FlexiClub 2.10.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-06-19T12:05:09+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: tpw-core\n"
+
+#. Plugin Name of the plugin
+#: tpw-flexiclub.php
+#: includes/class-tpw-flexiclub-admin-menu.php:81
+#: includes/class-tpw-flexiclub-admin-menu.php:82
+#: includes/tpw-core-settings.php:27
+#: templates/admin/flexiclub-dashboard.php:10
+#: templates/admin/flexiclub-dashboard.php:12
+#: templates/frontend/flexiclub-dashboard.php:16
+#: templates/frontend/flexiclub-dashboard.php:18
+#: templates/frontend/flexiclub-dashboard.php:116
+#: templates/frontend/flexiclub-dashboard.php:118
+msgid "FlexiClub"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: tpw-flexiclub.php
+msgid "https://thepluginworks.com/"
+msgstr ""
+
+#. Description of the plugin
+#: tpw-flexiclub.php
+msgid "Free base platform for shared member, payment, page, branding, and admin tools across the FlexiClub ecosystem."
+msgstr ""
+
+#. Author of the plugin
+#: tpw-flexiclub.php
+msgid "ThePluginWorks"
+msgstr ""
+
+#: includes/class-tpw-core-activator.php:232
+#: includes/tpw-core-settings.php:2421
+#: includes/tpw-core-settings.php:2426
+msgid "Members Menu"
+msgstr ""
+
+#: includes/class-tpw-core-activator.php:302
+#: includes/tpw-core-loader.php:628
+#: includes/tpw-core-settings.php:2182
+#: includes/tpw-core-settings.php:2683
+#: includes/tpw-core-settings.php:3020
+#: modules/members/shortcodes/member-profile.php:13
+#: modules/members/shortcodes/member-profile.php:375
+msgid "My Profile"
+msgstr ""
+
+#: includes/class-tpw-core-create-menu.php:51
+msgid "Dining menu admin class not found."
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:43
+msgid "Member Login"
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:282
+#: includes/class-tpw-core-system-pages.php:428
+msgid "Missing system page slug."
+msgstr ""
+
+#. translators: %s: system page slug
+#: includes/class-tpw-core-system-pages.php:318
+#, php-format
+msgid "The page for slug \"%s\" is currently in Trash. Empty Trash or restore that page before recreating it."
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:775
+#: includes/class-tpw-core-system-pages.php:815
+#: includes/tpw-core-settings.php:972
+#: includes/tpw-core-settings.php:1494
+#: includes/tpw-core-settings.php:1701
+#: includes/tpw-core-settings.php:1721
+#: includes/tpw-core-settings.php:1745
+#: includes/tpw-core-settings.php:1757
+#: modules/gallery/elementor/ajax.php:16
+#: modules/gallery/gallery-loader.php:138
+#: modules/gallery/gallery-loader.php:148
+#: modules/gallery/gallery-loader.php:165
+#: modules/gallery/gallery-loader.php:183
+#: modules/gallery/gallery-loader.php:195
+#: modules/gallery/gallery-loader.php:208
+#: modules/gallery/gallery-loader.php:220
+#: modules/gallery/gallery-loader.php:230
+#: modules/gallery/gallery-loader.php:240
+#: modules/gallery/gallery-loader.php:252
+#: modules/gallery/gallery-loader.php:264
+#: modules/gallery/gallery-loader.php:277
+#: modules/gallery/gallery-loader.php:291
+#: modules/system-pages/class-tpw-core-system-pages.php:359
+#: modules/system-pages/class-tpw-core-system-pages.php:427
+#: modules/system-pages/class-tpw-core-system-pages.php:444
+msgid "Permission denied"
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:784
+#: includes/class-tpw-core-system-pages.php:824
+#: modules/system-pages/class-tpw-core-system-pages.php:429
+#: modules/system-pages/class-tpw-core-system-pages.php:446
+msgid "Bad nonce"
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:793
+#: includes/class-tpw-core-system-pages.php:833
+#: modules/system-pages/class-tpw-core-system-pages.php:431
+#: modules/system-pages/class-tpw-core-system-pages.php:448
+msgid "Missing slug"
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:797
+msgid "Failed to unlink page mapping."
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:802
+msgid "Page mapping cleared."
+msgstr ""
+
+#. translators: %s: system page slug
+#: includes/class-tpw-core-system-pages.php:845
+#, php-format
+msgid "Page \"%s\" recreated."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:93
+#: includes/class-tpw-flexiclub-admin-menu.php:94
+#: modules/tpw-control/class-tpw-control.php:178
+msgid "Dashboard"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:104
+#: includes/class-tpw-flexiclub-admin-menu.php:105
+#: includes/class-tpw-flexiclub-admin-menu.php:613
+#: includes/class-tpw-flexiclub-admin-menu.php:699
+#: includes/class-tpw-flexiclub-admin-menu.php:1702
+msgid "Manage Members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:115
+#: includes/class-tpw-flexiclub-admin-menu.php:116
+#: includes/class-tpw-flexiclub-admin-menu.php:622
+#: includes/class-tpw-flexiclub-admin-menu.php:1717
+#: includes/class-tpw-flexiclub-admin-menu.php:3286
+#: includes/class-tpw-flexiclub-admin-menu.php:4455
+#: includes/noticeboard/class-tpw-noticeboard.php:32
+#: includes/tpw-core-settings.php:2132
+#: modules/notices/class-tpw-noticeboard.php:25
+msgid "Noticeboard"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:125
+#: includes/class-tpw-flexiclub-admin-menu.php:126
+#: includes/class-tpw-flexiclub-admin-menu.php:631
+#: includes/class-tpw-flexiclub-admin-menu.php:709
+#: includes/class-tpw-flexiclub-admin-menu.php:1733
+#: includes/class-tpw-flexiclub-admin-menu.php:3298
+#: includes/tpw-core-settings.php:2168
+#: modules/gallery/gallery-loader.php:24
+msgid "Gallery Admin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:136
+#: includes/class-tpw-flexiclub-admin-menu.php:137
+#: includes/class-tpw-flexiclub-admin-menu.php:640
+#: includes/class-tpw-flexiclub-admin-menu.php:719
+#: includes/class-tpw-flexiclub-admin-menu.php:3310
+msgid "Upload Pages / Archive"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:147
+#: includes/class-tpw-flexiclub-admin-menu.php:148
+#: includes/class-tpw-flexiclub-admin-menu.php:649
+#: includes/class-tpw-flexiclub-admin-menu.php:732
+#: includes/class-tpw-flexiclub-admin-menu.php:3322
+msgid "Menu Permissions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:158
+#: includes/class-tpw-flexiclub-admin-menu.php:159
+#: includes/class-tpw-flexiclub-admin-menu.php:658
+#: includes/class-tpw-flexiclub-admin-menu.php:1787
+#: includes/class-tpw-flexiclub-admin-menu.php:3334
+#: includes/tpw-core-settings.php:210
+msgid "System Pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:168
+#: includes/class-tpw-flexiclub-admin-menu.php:169
+#: includes/class-tpw-flexiclub-admin-menu.php:667
+#: includes/class-tpw-flexiclub-admin-menu.php:1805
+#: includes/class-tpw-flexiclub-admin-menu.php:3346
+msgid "Payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:178
+#: includes/class-tpw-flexiclub-admin-menu.php:179
+#: includes/class-tpw-flexiclub-admin-menu.php:676
+#: includes/class-tpw-flexiclub-admin-menu.php:1820
+#: includes/class-tpw-flexiclub-admin-menu.php:3359
+msgid "Settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:189
+#: includes/class-tpw-flexiclub-admin-menu.php:190
+#: includes/class-tpw-flexiclub-admin-menu.php:685
+#: includes/class-tpw-flexiclub-admin-menu.php:1835
+#: includes/class-tpw-flexiclub-admin-menu.php:2544
+#: includes/class-tpw-flexiclub-admin-menu.php:3371
+#: templates/frontend/flexiclub-workspace-logs.php:15
+msgid "Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:213
+msgid "FlexiClub Dashboard template is missing."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:253
+msgid "Please sign in with a club administrator account to access the FlexiClub workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:259
+msgid "You do not have permission to access the FlexiClub workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:269
+msgid "You do not have permission to access the Menu Management workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:270
+msgid "You do not have permission to access the Archival System workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:289
+msgid "FlexiClub workspace unavailable"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:289
+msgid "The front-end FlexiClub dashboard template could not be found."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:301
+msgid "Access restricted"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:302
+msgid "FlexiClub workspace"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:313
+msgid "Unknown FlexiClub bridge page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:319
+msgid "You do not have permission to access this FlexiClub bridge page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:321
+#: includes/class-tpw-flexiclub-admin-menu.php:380
+#: includes/class-tpw-flexiclub-admin-menu.php:424
+#: includes/class-tpw-flexiclub-admin-menu.php:463
+#: includes/class-tpw-flexiclub-admin-menu.php:475
+#: modules/email/class-tpw-email-form.php:68
+#: modules/payments/class-tpw-payment-logs-admin.php:26
+#: modules/payments/class-tpw-payment-logs-admin.php:83
+msgid "Access denied."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:339
+msgid "Screen type"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:339
+msgid "Bridge / launcher"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:340
+msgid "Front-end page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:341
+msgid "Expected shortcode"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:342
+msgid "Shortcode status"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:344
+msgid "Target route"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:347
+msgid "Section status"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:358
+msgid "Edit Page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:366
+msgid "Create / Repair Page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:384
+msgid "FlexiClub Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:385
+msgid "Open the existing log screens without duplicating their implementations."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:391
+msgid "Log screen"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:392
+msgid "Current route"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:393
+#: includes/class-tpw-flexiclub-admin-menu.php:399
+#: includes/class-tpw-flexiclub-admin-menu.php:404
+#: templates/admin/flexiclub-dashboard.php:105
+#: templates/frontend/flexiclub-dashboard.php:205
+msgid "Open"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:397
+#: includes/class-tpw-flexiclub-admin-menu.php:2551
+#: includes/class-tpw-flexiclub-admin-menu.php:2613
+#: includes/class-tpw-flexiclub-admin-menu.php:2672
+#: includes/tpw-core-settings.php:201
+msgid "Email Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:397
+msgid "Existing FlexiClub settings tab for outbound email diagnostics."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:402
+#: includes/class-tpw-flexiclub-admin-menu.php:2564
+#: includes/class-tpw-flexiclub-admin-menu.php:2578
+#: includes/class-tpw-flexiclub-admin-menu.php:2677
+msgid "Payment Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:402
+msgid "Existing Tools screen for payment log inspection."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:429
+#: modules/email/class-tpw-email-form.php:73
+#: modules/postcodes/postcode-ajax.php:36
+msgid "Invalid request."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:482
+msgid "Invalid plugin request."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:614
+msgid "Bridge to the existing front-end Manage Members screen."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:615
+#: includes/class-tpw-flexiclub-admin-menu.php:633
+#: includes/class-tpw-flexiclub-admin-menu.php:642
+#: includes/class-tpw-flexiclub-admin-menu.php:651
+msgid "Bridge"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:623
+msgid "Existing wp-admin Noticeboard CPT screen."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:624
+#: includes/class-tpw-flexiclub-admin-menu.php:660
+#: includes/class-tpw-flexiclub-admin-menu.php:669
+#: includes/class-tpw-flexiclub-admin-menu.php:678
+#: includes/class-tpw-flexiclub-admin-menu.php:687
+msgid "WP Admin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:632
+msgid "Bridge to the existing front-end Gallery Admin page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:641
+msgid "Bridge to the existing archive and upload-pages feature on its current front-end compatibility route."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:650
+msgid "Bridge to the front-end feature that controls WordPress menu visibility and permissions across the FlexiClub ecosystem."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:659
+msgid "Existing System Pages tab inside FlexiClub Settings."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:668
+msgid "Existing Payment Methods settings tab."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:677
+msgid "Existing FlexiClub settings screen."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:686
+msgid "Launcher for the existing email and payment log screens."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:700
+msgid "Launch the existing front-end Manage Members interface. No duplicate wp-admin member CRUD is created here."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:701
+#: includes/class-tpw-flexiclub-admin-menu.php:3050
+msgid "Open Manage Members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:710
+msgid "Launch the existing front-end Gallery Admin system page. The wp-admin bridge only reports status and opens the current page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:711
+#: includes/class-tpw-flexiclub-admin-menu.php:3061
+msgid "Open Gallery Admin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:720
+msgid "This bridge describes the archive and upload-pages feature, checks the current front-end compatibility page, and opens the existing front-end implementation without duplicating it in wp-admin."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:721
+msgid "Open Upload Pages / Archive"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:733
+msgid "This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the FlexiClub ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:734
+msgid "Open Menu Permissions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:824
+msgid "Registered on the existing compatibility route."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:825
+msgid "This feature section is not currently registered on the existing compatibility route."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:830
+msgid "No compatible front-end page is currently configured. Page creation or repair is not yet supported from this bridge."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:832
+msgid "A compatible front-end page exists, but the expected shortcode is missing from its content. Page creation or repair is not yet supported from this bridge."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:834
+msgid "The front-end page exists, but the requested tool is not currently registered on that compatibility route."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:857
+msgid "No published front-end page is currently configured for this feature."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:859
+msgid "A published page was found, but the expected shortcode is missing from its content."
+msgstr ""
+
+#. translators: 1: page title, 2: page ID
+#: includes/class-tpw-flexiclub-admin-menu.php:899
+#: includes/class-tpw-flexiclub-admin-menu.php:940
+#, php-format
+msgid "Found: %1$s (#%2$d)"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:903
+#: includes/class-tpw-flexiclub-admin-menu.php:944
+#: includes/noticeboard/noticeboard-handler.php:94
+#: modules/notices/noticeboard-handler.php:78
+msgid "Not found."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:910
+#: includes/class-tpw-flexiclub-admin-menu.php:945
+msgid "Present on the published page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:910
+#: includes/class-tpw-flexiclub-admin-menu.php:945
+msgid "Missing from the published page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:930
+msgid "Automatic repair is unavailable here because the current system-pages tooling does not overwrite existing page content."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1296
+#: modules/gallery/templates/categories.php:9
+#: modules/gallery/templates/editor.php:9
+#: modules/gallery/templates/form.php:9
+#: modules/gallery/templates/list.php:9
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1414
+#: includes/class-tpw-flexiclub-admin-menu.php:3245
+#: includes/tpw-core-settings.php:2192
+msgid "Admin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1451
+#: includes/class-tpw-flexiclub-admin-menu.php:3464
+msgid "Continue setup"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1458
+#: includes/class-tpw-flexiclub-admin-menu.php:3471
+msgid "Review checklist"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1458
+#: includes/class-tpw-flexiclub-admin-menu.php:3471
+msgid "Open checklist"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1665
+#: includes/class-tpw-flexiclub-admin-menu.php:3248
+msgid "Total Members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1667
+#: includes/class-tpw-flexiclub-admin-menu.php:3280
+msgid "Manage members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1671
+#: includes/class-tpw-flexiclub-admin-menu.php:3256
+msgid "Active Notices"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1673
+#: includes/class-tpw-flexiclub-admin-menu.php:3292
+msgid "Open noticeboard"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1677
+#: includes/class-tpw-flexiclub-admin-menu.php:3264
+msgid "Upcoming Events"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1749
+#: includes/class-tpw-flexiclub-admin-menu.php:3075
+msgid "Menu Management"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1768
+#: includes/class-tpw-flexiclub-admin-menu.php:3075
+msgid "Archival System"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:1856
+msgid "Dashboard Home"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2005
+#: includes/class-tpw-flexiclub-admin-menu.php:2022
+#: includes/class-tpw-flexiclub-admin-menu.php:2041
+#: includes/class-tpw-flexiclub-admin-menu.php:2058
+#: includes/class-tpw-flexiclub-admin-menu.php:2077
+msgid "Workspace Overview"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2009
+msgid "Menu Tool"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2013
+#: includes/class-tpw-flexiclub-admin-menu.php:2030
+msgid "Legacy Route"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2026
+msgid "Archive Tool"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2037
+#: includes/class-tpw-flexiclub-admin-menu.php:2438
+msgid "Active Settings Area"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2045
+#: templates/frontend/flexiclub-workspace-settings.php:49
+msgid "Settings Areas"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2062
+#: templates/frontend/flexiclub-workspace-system-pages.php:41
+msgid "Registered Pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2066
+msgid "Action Guide"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2073
+msgid "Active Log Source"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2081
+#: templates/frontend/flexiclub-workspace-logs.php:67
+msgid "Log Sources"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2093
+msgid "KPI Snapshot"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2100
+#: templates/admin/flexiclub-dashboard.php:67
+#: templates/frontend/flexiclub-dashboard.php:173
+msgid "Getting Started"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2107
+#: templates/admin/flexiclub-dashboard.php:137
+#: templates/frontend/flexiclub-dashboard.php:226
+msgid "Club Overview"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2113
+#: templates/admin/flexiclub-dashboard.php:175
+#: templates/frontend/flexiclub-dashboard.php:264
+msgid "Extend FlexiClub"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2118
+msgid "Support"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2130
+#: includes/class-tpw-flexiclub-admin-menu.php:3410
+msgid "Setup Checklist"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2175
+#: includes/class-tpw-flexiclub-admin-menu.php:3804
+msgid "Create or confirm your system pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2177
+msgid "Make sure the required member and operational workspace pages are linked and published."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2182
+msgid "Open FE workspace"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2182
+msgid "Open admin tab"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2185
+#: includes/class-tpw-flexiclub-admin-menu.php:3810
+msgid "Add your first members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2186
+#: includes/class-tpw-flexiclub-admin-menu.php:3811
+msgid "Start building the club member register and linked accounts."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2191
+#: includes/class-tpw-flexiclub-admin-menu.php:3816
+msgid "Configure menu permissions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2193
+#: includes/class-tpw-flexiclub-admin-menu.php:3817
+msgid "Control which audiences can see and access club navigation items."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2198
+#: includes/class-tpw-flexiclub-admin-menu.php:2345
+#: modules/tpw-control/templates/dashboard.php:29
+msgid "Open Menu Management"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2201
+#: includes/class-tpw-flexiclub-admin-menu.php:3822
+msgid "Configure settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2203
+#: includes/class-tpw-flexiclub-admin-menu.php:3823
+msgid "Review branding, login, and shared FlexiClub platform settings."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2208
+msgid "Open FE settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2208
+msgid "Open admin settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2211
+#: includes/class-tpw-flexiclub-admin-menu.php:3352
+#: includes/class-tpw-flexiclub-admin-menu.php:3828
+msgid "Configure payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2213
+#: includes/class-tpw-flexiclub-admin-menu.php:3829
+msgid "Enable and set up the payment methods your club wants to offer."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2219
+msgid "Open FE payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2219
+msgid "Open admin payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2222
+#: includes/class-tpw-flexiclub-admin-menu.php:3835
+msgid "Publish your first notice"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2224
+#: includes/class-tpw-flexiclub-admin-menu.php:2226
+#: includes/class-tpw-flexiclub-admin-menu.php:3836
+msgid "Share updates, reminders, and announcements from the Noticeboard."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2231
+msgid "Open FE noticeboard"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2231
+#: includes/class-tpw-flexiclub-admin-menu.php:2251
+#: includes/class-tpw-flexiclub-admin-menu.php:2252
+#: includes/class-tpw-flexiclub-admin-menu.php:2424
+#: includes/class-tpw-flexiclub-admin-menu.php:2428
+msgid "Needs front-end screen"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2247
+msgid "Open Noticeboard"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2265
+msgid "The FlexiClub portal page must be available before the front-end System Pages workspace can be opened."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2272
+msgid "Open System Pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2273
+msgid "Validate, repair, and recreate registered system pages from the FlexiClub portal."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2274
+#: includes/class-tpw-flexiclub-admin-menu.php:2289
+#: includes/class-tpw-flexiclub-admin-menu.php:2300
+#: includes/class-tpw-flexiclub-admin-menu.php:2333
+#: includes/class-tpw-flexiclub-admin-menu.php:2387
+#: includes/class-tpw-flexiclub-admin-menu.php:2779
+#: includes/class-tpw-flexiclub-admin-menu.php:2944
+#: includes/class-tpw-flexiclub-admin-menu.php:3080
+#: includes/class-tpw-flexiclub-admin-menu.php:3931
+#: includes/class-tpw-flexiclub-admin-menu.php:3955
+#: includes/class-tpw-flexiclub-admin-menu.php:4129
+#: includes/class-tpw-flexiclub-admin-menu.php:4151
+#: includes/class-tpw-flexiclub-admin-menu.php:4215
+#: includes/class-tpw-flexiclub-admin-menu.php:4290
+#: templates/frontend/flexiclub-workspace-archival-system.php:29
+#: templates/frontend/flexiclub-workspace-menu-management.php:29
+msgid "Ready"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2287
+msgid "Open Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2288
+msgid "Review email and payment logs from the FlexiClub portal."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2298
+msgid "Open Logs page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2299
+msgid "Dedicated front-end Logs page using the FlexiClub portal shell."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2306
+msgid "The FlexiClub portal page must be available before the front-end Logs workspace can be opened."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2307
+msgid "Open admin logs (temporary)"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2317
+msgid "The FlexiClub portal page must be available before the front-end Settings workspace can be opened."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2318
+msgid "Open admin settings (temporary)"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2329
+msgid "Open Payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2329
+msgid "Open Settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2331
+msgid "Manage payment methods from the front-end Settings workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2332
+msgid "Review branding, login, email, and shared FlexiClub platform settings from the portal."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2356
+#: modules/tpw-control/templates/dashboard.php:32
+msgid "Open Archival System"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2373
+#: includes/class-tpw-flexiclub-admin-menu.php:2408
+#: includes/class-tpw-flexiclub-admin-menu.php:3131
+#: includes/class-tpw-flexiclub-admin-menu.php:3189
+msgid "Open diagnostics"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2374
+msgid "The legacy Control compatibility layer does not currently expose this workspace section."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2375
+#: includes/class-tpw-flexiclub-admin-menu.php:2399
+#: includes/class-tpw-flexiclub-admin-menu.php:2410
+#: includes/class-tpw-flexiclub-admin-menu.php:2553
+#: includes/class-tpw-flexiclub-admin-menu.php:2566
+#: includes/class-tpw-flexiclub-admin-menu.php:3133
+#: includes/class-tpw-flexiclub-admin-menu.php:3191
+#: includes/class-tpw-flexiclub-admin-menu.php:4075
+#: includes/class-tpw-flexiclub-admin-menu.php:4129
+#: includes/class-tpw-flexiclub-admin-menu.php:4151
+#: includes/class-tpw-flexiclub-admin-menu.php:4214
+#: includes/class-tpw-flexiclub-admin-menu.php:4265
+#: includes/class-tpw-flexiclub-admin-menu.php:4321
+msgid "Needs review"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2386
+msgid "Preferred front-end workspace route inside the FlexiClub portal."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2397
+msgid "Open dedicated page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2398
+msgid "The FlexiClub portal page is not currently available, so the dedicated workspace page is being used instead."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2409
+msgid "The FlexiClub portal page must be available before this front-end workspace can be opened."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2427
+msgid "Front-end pending"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2545
+#: templates/frontend/flexiclub-workspace-logs.php:16
+msgid "No log entries found."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2553
+#: includes/class-tpw-flexiclub-admin-menu.php:2566
+#: includes/class-tpw-flexiclub-admin-menu.php:4321
+msgid "Healthy"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2555
+msgid "Outbound email dispatch attempts recorded by the shared email dispatcher."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2568
+msgid "Payment method and gateway activity recorded by the shared payment logger."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2579
+#: modules/payments/class-tpw-payment-logs-admin.php:122
+msgid "No payment log entries found."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2588
+msgid "Clear Payment Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2589
+msgid "Are you sure you want to clear all payment logs?"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2597
+#, php-format
+msgid "%1$s via %2$s"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2603
+msgid "Payment"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2614
+#: includes/tpw-core-settings.php:681
+msgid "No email log entries found."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2623
+msgid "Clear Email Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2624
+msgid "Are you sure you want to clear all email logs?"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2638
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2644
+#: modules/members/includes/class-tpw-member-csv-importer.php:166
+#: modules/members/includes/class-tpw-member-csv-importer.php:803
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:109
+msgid "Email"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2669
+msgid "No additional Core/System log screens are currently registered beyond Email Logs and Payment Logs."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2682
+msgid "Issues"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2702
+msgid "Review each registered system page and use the available actions only when they are needed."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2709
+msgid "The System Pages manager is not available on this request."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2738
+msgid "No registered system pages were found in the current FlexiClub ecosystem registry."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2741
+msgid "All registered system pages are linked, published, and ready to use."
+msgstr ""
+
+#. translators: 1: missing page count, 2: needs attention count
+#: includes/class-tpw-flexiclub-admin-menu.php:2746
+#, php-format
+msgid "%1$s page(s) are missing and %2$s page(s) need attention."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2769
+msgid "Registered"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2774
+#: includes/class-tpw-flexiclub-admin-menu.php:2944
+#: includes/class-tpw-flexiclub-admin-menu.php:4075
+msgid "Complete"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2784
+#: includes/class-tpw-flexiclub-admin-menu.php:2923
+#: includes/class-tpw-flexiclub-admin-menu.php:2954
+#: includes/class-tpw-flexiclub-admin-menu.php:2963
+#: includes/class-tpw-flexiclub-admin-menu.php:2971
+msgid "Needs Attention"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2789
+#: includes/class-tpw-flexiclub-admin-menu.php:2911
+#: includes/class-tpw-flexiclub-admin-menu.php:2923
+#: includes/class-tpw-flexiclub-admin-menu.php:3133
+#: includes/class-tpw-flexiclub-admin-menu.php:3191
+#: includes/class-tpw-flexiclub-admin-menu.php:3931
+#: includes/class-tpw-flexiclub-admin-menu.php:3955
+#: includes/class-tpw-flexiclub-admin-menu.php:4034
+#: includes/class-tpw-flexiclub-admin-menu.php:4037
+#: includes/class-tpw-flexiclub-admin-menu.php:4065
+#: includes/class-tpw-flexiclub-admin-menu.php:4068
+#: modules/system-pages/class-tpw-core-system-pages.php:513
+#: modules/system-pages/templates/system-pages.php:85
+msgid "Missing"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2861
+msgid "Payment logs cleared."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2868
+#: modules/payments/class-tpw-payment-logs-admin.php:144
+msgid "Payment logs could not be cleared."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2885
+#: modules/members/settings/member-signups-settings.php:153
+#: modules/members/settings/member-signups-settings.php:183
+#: modules/system-pages/templates/system-pages.php:38
+#: templates/frontend/flexiclub-workspace-system-pages.php:74
+#: templates/frontend/flexiclub-workspace-system-pages.php:95
+msgid "Required"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2885
+#: includes/class-tpw-flexiclub-admin-menu.php:4259
+#: modules/feedback/class-tpw-feedback.php:196
+#: templates/admin/flexiclub-dashboard.php:100
+#: templates/frontend/flexiclub-dashboard.php:200
+msgid "Optional"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2913
+#: includes/class-tpw-flexiclub-admin-menu.php:2925
+msgid "Recreate available"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2914
+msgid "No published page is currently linked for this registered slug."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2917
+msgid "Recreate page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2918
+#: includes/class-tpw-flexiclub-admin-menu.php:3089
+#: modules/tpw-control/templates/dashboard.php:24
+#: templates/frontend/flexiclub-workspace-archival-system.php:38
+#: templates/frontend/flexiclub-workspace-menu-management.php:38
+msgid "Legacy Workspace"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2919
+msgid "Use Menu Management and Archival System for new launches. Keep this page only for compatibility during the transition."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2927
+msgid "The stored assignment was cleared for this required system page. The WordPress page was not deleted, but you need to repair or recreate the mapping before this page is ready again."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2928
+msgid "The stored assignment was cleared for this optional system page. The WordPress page was not deleted, and you can recreate the mapping whenever you need this page again."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2946
+msgid "No action needed"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2948
+msgid "The linked page is published and contains the expected shortcode. View or edit it as needed."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2949
+msgid "This optional page is published and usable. You can still view, edit, or unlink it if needed."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2956
+#: includes/class-tpw-flexiclub-admin-menu.php:2965
+#: includes/class-tpw-flexiclub-admin-menu.php:2973
+msgid "Repair available"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2957
+msgid "The page exists, but the expected shortcode is missing. Edit the page to repair it. Recreate is not offered here because current logic does not overwrite published content automatically."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2966
+msgid "A page with this slug is currently in Trash. Restore it or clear the current link before recreating the system page."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2974
+msgid "A page for this slug exists but is not published. Recreate will publish the current page using the existing System Pages logic."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2977
+msgid "Repair / publish page"
+msgstr ""
+
+#. translators: 1: page title, 2: page ID
+#: includes/class-tpw-flexiclub-admin-menu.php:2988
+#, php-format
+msgid "%1$s (#%2$d)"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2992
+#: modules/system-pages/class-tpw-core-system-pages.php:506
+#: modules/system-pages/templates/system-pages.php:78
+msgid "Not linked"
+msgstr ""
+
+#. translators: %s: WordPress post status
+#: includes/class-tpw-flexiclub-admin-menu.php:2997
+#, php-format
+msgid "WordPress status: %s"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3000
+msgid "Recreate will generate the linked page from the registered system-page definition."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3005
+msgid "tpw-core"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3008
+msgid "No shortcode registered"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3076
+#: templates/frontend/flexiclub-workspace-menu-management.php:14
+msgid "Menu Management Workspace"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3076
+#: templates/frontend/flexiclub-workspace-archival-system.php:14
+msgid "Archival System Workspace"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3078
+msgid "Manage the existing front-end menu visibility and navigation controls from the FlexiClub portal without changing the underlying permissions engine."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3079
+msgid "Manage the existing archive pages and file uploads from the FlexiClub portal without changing the underlying archive logic."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3082
+msgid "Menus"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3082
+msgid "Archive Pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3083
+#: templates/frontend/flexiclub-workspace-archival-system.php:30
+#: templates/frontend/flexiclub-workspace-menu-management.php:30
+msgid "Unavailable"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3087
+#: templates/frontend/flexiclub-workspace-menu-management.php:22
+msgid "Open dedicated Menu Management page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3087
+#: templates/frontend/flexiclub-workspace-archival-system.php:22
+msgid "Open dedicated Archival System page"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3090
+msgid "FlexiClub Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3092
+#: templates/frontend/flexiclub-workspace-menu-management.php:49
+msgid "Current Menu Management tool"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3092
+#: templates/frontend/flexiclub-workspace-archival-system.php:49
+msgid "Current Archival System tool"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3094
+#: templates/frontend/flexiclub-workspace-menu-management.php:50
+msgid "This workspace embeds the existing front-end menu-management section inside the FlexiClub portal shell."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3095
+#: templates/frontend/flexiclub-workspace-archival-system.php:50
+msgid "This workspace embeds the existing front-end archive section inside the FlexiClub portal shell."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3121
+msgid "No FlexiClub Control admin sections are currently available for your role."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3123
+msgid "A compatible FlexiClub Control page exists, but the expected shortcode is missing from its content."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3125
+msgid "No compatible FlexiClub Control page is currently configured."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3131
+msgid "Open FlexiClub Control"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3158
+msgid "The requested workspace tool is not currently available."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3164
+msgid "The requested workspace tool is not currently registered on this site."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3170
+msgid "You do not have permission to access this workspace tool."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3251
+msgid "View members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3259
+msgid "View notices"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3274
+#: includes/class-tpw-flexiclub-admin-menu.php:4418
+#: includes/tpw-core-settings.php:2144
+msgid "Members"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3304
+msgid "Open gallery admin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3316
+msgid "Open archive tools"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3328
+msgid "Review permissions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3340
+msgid "Open system pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3365
+msgid "Open settings"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3377
+msgid "View logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3415
+msgid "Add New Member"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3420
+#: includes/noticeboard/class-tpw-noticeboard.php:23
+#: includes/noticeboard/class-tpw-noticeboard.php:24
+#: includes/noticeboard/shortcodes/noticeboard-list.php:108
+#: modules/notices/class-tpw-noticeboard.php:16
+#: modules/notices/class-tpw-noticeboard.php:17
+#: modules/notices/shortcodes/noticeboard-list.php:83
+msgid "Add New Notice"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3425
+msgid "Add Gallery Images"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3430
+msgid "Create or Check System Pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3435
+msgid "Review Menu Permissions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3443
+msgid "Configure Payments"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3450
+msgid "View Logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3524
+msgid "FlexiEvent"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3525
+msgid "Events, scheduling, and club activities."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3536
+msgid "Manage events"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3539
+msgid "FlexiSubscriptions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3540
+msgid "Membership subscriptions and renewals."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3548
+msgid "Manage subscriptions"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3551
+msgid "FlexiTicket"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3552
+msgid "Ticketing and event sales for members."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3560
+msgid "Manage ticketing"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3563
+msgid "FlexiLedger"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3564
+msgid "Financial tracking and reconciliation tools."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3571
+msgid "Manage ledger"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3574
+msgid "FlexiGolf"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3575
+msgid "Fixtures, results, and match administration."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3585
+msgid "FlexiPolicy"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3586
+msgid "Club documents, policy delivery, and acknowledgements."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3594
+msgid "FlexiRota"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3595
+msgid "Volunteer and duty rota planning."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3603
+msgid "Lodge RSVP"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3604
+msgid "Responses, attendance, and payment-ready RSVPs."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3612
+msgid "Manage RSVPs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3632
+#: includes/class-tpw-flexiclub-admin-menu.php:4292
+msgid "Available"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3639
+#: includes/class-tpw-flexiclub-admin-menu.php:3931
+#: includes/class-tpw-flexiclub-admin-menu.php:3955
+#: includes/class-tpw-flexiclub-admin-menu.php:4129
+#: includes/class-tpw-flexiclub-admin-menu.php:4151
+#: includes/class-tpw-flexiclub-admin-menu.php:4265
+msgid "Active"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3647
+msgid "Open plugin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3655
+msgid "Installed"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3659
+#: includes/class-tpw-flexiclub-admin-menu.php:3662
+msgid "Activate plugin"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3662
+#: includes/class-tpw-flexiclub-admin-menu.php:3665
+msgid "View plugins"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3673
+msgid "Learn more"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3805
+msgid "Make sure the required member and control pages are linked and published."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3873
+msgid "Activity will appear here as your club starts using FlexiClub."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3874
+msgid "System activity"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3875
+msgid "Just now"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3886
+msgid "Members module"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3891
+msgid "Required pages"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3896
+msgid "Recent logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3909
+msgid "Payment methods"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3934
+msgid "Members are not set up on this site yet."
+msgstr ""
+
+#. translators: %s: total members
+#: includes/class-tpw-flexiclub-admin-menu.php:3937
+#, php-format
+msgid "%s member recorded"
+msgid_plural "%s members recorded"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3941
+msgid "The member register is not available yet."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3942
+msgid "Member records are ready to manage across the club workspace."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3958
+msgid "Noticeboard data is currently unavailable."
+msgstr ""
+
+#. translators: %s: published notices
+#: includes/class-tpw-flexiclub-admin-menu.php:3961
+#, php-format
+msgid "%s published notice"
+msgid_plural "%s published notices"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3965
+msgid "Open the Noticeboard when the content type is available."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3967
+msgid "Share updates, reminders, and club announcements from one place."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3968
+msgid "The Noticeboard is ready for your next club update."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3978
+msgid "Not installed"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3979
+msgid "Install FlexiEvent to manage club events."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3980
+msgid "Add FlexiEvent"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3984
+#: includes/class-tpw-flexiclub-admin-menu.php:4015
+msgid "FlexiEvent active"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3985
+msgid "FlexiEvent is active."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3986
+msgid "View events"
+msgstr ""
+
+#. translators: %s: number of upcoming events
+#: includes/class-tpw-flexiclub-admin-menu.php:4010
+#, php-format
+msgid "%s upcoming events scheduled."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4013
+msgid "No upcoming events at this time."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4016
+msgid "FlexiEvent is active, but the upcoming event count is not available right now."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4036
+#: includes/class-tpw-flexiclub-admin-menu.php:4067
+msgid "Review the current system page assignments for FlexiClub and add-on features."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4038
+msgid "The full registered system-page set could not be resolved safely on this request."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4069
+msgid "No registered system pages were found in the resolved ecosystem registry."
+msgstr ""
+
+#. translators: 1: configured pages, 2: registered pages
+#: includes/class-tpw-flexiclub-admin-menu.php:4079
+#, php-format
+msgid "%1$s / %2$s"
+msgstr ""
+
+#. translators: 1: configured pages, 2: registered pages
+#: includes/class-tpw-flexiclub-admin-menu.php:4092
+#, php-format
+msgid "%1$s of %2$s registered system pages are linked."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4098
+msgid "All required system pages are published and ready to use."
+msgstr ""
+
+#. translators: 1: configured pages, 2: missing pages
+#: includes/class-tpw-flexiclub-admin-menu.php:4101
+#, php-format
+msgid "%1$s required page is ready and %2$s still needs review."
+msgid_plural "%1$s required pages are ready and %2$s still need review."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4133
+msgid "Manage gallery collections and image libraries for club content."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4134
+msgid "The Gallery Admin page needs to be checked before launch."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4155
+msgid "The archive tools need review before members can rely on them."
+msgstr ""
+
+#. translators: 1: archive pages count, 2: archived file count
+#: includes/class-tpw-flexiclub-admin-menu.php:4159
+#, php-format
+msgid "%1$s archive pages and %2$s files are currently in use."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4163
+msgid "Archive tools are available whenever you need to add upload and archive pages."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4215
+msgid "In use"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4220
+msgid "Some menu permission rules could not be read and should be reviewed."
+msgstr ""
+
+#. translators: %s: count of protected menu items
+#: includes/class-tpw-flexiclub-admin-menu.php:4224
+#, php-format
+msgid "%s menu item uses permission rules."
+msgid_plural "%s menu items use permission rules."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4227
+msgid "Menu permissions are available when you need to restrict navigation."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4257
+msgid "Inactive"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4260
+msgid "No payment-enabled modules are currently active."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4276
+msgid "Club payment methods are configured for member payments and checkout."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4277
+msgid "No payment methods have been configured yet."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4294
+msgid "Core branding, login, and platform settings are ready to review or refine."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4295
+msgid "Review the main FlexiClub settings to tailor the platform for your club."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4325
+msgid "Recent operational logs need review for email or payment issues."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4326
+msgid "Email and payment logs are available for operational review."
+msgstr ""
+
+#. translators: %s: member name
+#: includes/class-tpw-flexiclub-admin-menu.php:4415
+#, php-format
+msgid "%s profile updated"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4416
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1129
+#: modules/members/includes/class-tpw-member-admin-actions.php:529
+msgid "Member"
+msgstr ""
+
+#. translators: %s: notice title
+#: includes/class-tpw-flexiclub-admin-menu.php:4452
+#, php-format
+msgid "Notice published: %s"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4482
+msgid "Email delivery failed"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4483
+msgid "Email sent successfully"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4484
+#, php-format
+msgid "Email to %s"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4484
+msgid "Email logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4511
+msgid "Payment log requires review"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4512
+msgid "Payment activity recorded"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4513
+#, php-format
+msgid "Reference %s"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4513
+msgid "Payment logs"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4556
+msgid "Not available"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4569
+msgid "Recently"
+msgstr ""
+
+#. translators: %s: relative time string
+#: includes/class-tpw-flexiclub-admin-menu.php:4574
+#, php-format
+msgid "%s ago"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4600
+msgid "The front-end page was created or repaired."
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:4605
+msgid "The front-end page could not be created or repaired."
+msgstr ""
+
+#: includes/class-tpw-member-payments.php:30
+#: includes/class-tpw-member-payments.php:193
+#: templates/members/profile/payments/index.php:44
+msgid "My Payments"
+msgstr ""
+
+#: includes/class-tpw-member-payments.php:85
+#: includes/tpw-core-settings.php:207
+#: modules/payments/admin-settings.php:273
+msgid "Payment Methods"
+msgstr ""
+
+#: includes/class-tpw-member-payments.php:111
+msgid "Active payment methods"
+msgstr ""
+
+#: includes/class-tpw-member-payments.php:119
+msgid "No active methods detected."
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:20
+#: includes/noticeboard/class-tpw-noticeboard.php:36
+#: modules/notices/class-tpw-noticeboard.php:13
+#: modules/notices/class-tpw-noticeboard.php:29
+msgid "Noticeboard Notices"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:21
+#: modules/notices/class-tpw-noticeboard.php:14
+msgid "Notice"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:22
+#: modules/notices/class-tpw-noticeboard.php:15
+msgid "All Noticeboard Notices"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:25
+#: modules/notices/class-tpw-noticeboard.php:18
+msgid "Edit Notice"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:26
+#: modules/notices/class-tpw-noticeboard.php:19
+msgid "New Notice"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:27
+#: modules/notices/class-tpw-noticeboard.php:20
+msgid "View Notice"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:28
+#: modules/notices/class-tpw-noticeboard.php:21
+msgid "Notice Archives"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:29
+#: modules/notices/class-tpw-noticeboard.php:22
+msgid "Search Notices"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:30
+#: modules/notices/class-tpw-noticeboard.php:23
+msgid "No notices found"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:31
+#: modules/notices/class-tpw-noticeboard.php:24
+msgid "No notices found in Trash"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:55
+#: includes/noticeboard/class-tpw-noticeboard.php:65
+#: modules/notices/class-tpw-noticeboard.php:47
+#: modules/notices/class-tpw-noticeboard.php:57
+msgid "Notice Categories"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:56
+#: modules/notices/class-tpw-noticeboard.php:48
+msgid "Notice Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:57
+#: modules/notices/class-tpw-noticeboard.php:49
+msgid "Search Notice Categories"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:58
+#: modules/notices/class-tpw-noticeboard.php:50
+msgid "All Notice Categories"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:59
+#: modules/notices/class-tpw-noticeboard.php:51
+msgid "Parent Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:60
+#: modules/notices/class-tpw-noticeboard.php:52
+msgid "Parent Category:"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:61
+#: modules/notices/class-tpw-noticeboard.php:53
+msgid "Edit Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:62
+#: modules/notices/class-tpw-noticeboard.php:54
+msgid "Update Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:63
+#: modules/notices/class-tpw-noticeboard.php:55
+msgid "Add New Category"
+msgstr ""
+
+#: includes/noticeboard/class-tpw-noticeboard.php:64
+#: modules/notices/class-tpw-noticeboard.php:56
+msgid "New Category Name"
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:45
+#: modules/notices/noticeboard-handler.php:29
+msgid "Permission denied."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:49
+#: modules/members/shortcodes/member-login.php:117
+#: modules/notices/noticeboard-handler.php:33
+msgid "Security check failed."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:77
+#: modules/notices/noticeboard-handler.php:61
+msgid "Notice saved."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:83
+#: includes/noticeboard/noticeboard-handler.php:92
+#: modules/notices/noticeboard-handler.php:67
+#: modules/notices/noticeboard-handler.php:76
+msgid "Invalid notice ID."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:85
+#: modules/notices/noticeboard-handler.php:69
+msgid "Delete failed."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:86
+#: modules/notices/noticeboard-handler.php:70
+msgid "Notice deleted."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:113
+#: modules/notices/noticeboard-handler.php:95
+msgid "Notice duplicated."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:120
+#: modules/notices/noticeboard-handler.php:102
+msgid "Category name is required."
+msgstr ""
+
+#: includes/noticeboard/noticeboard-handler.php:127
+#: modules/notices/noticeboard-handler.php:109
+msgid "Category added."
+msgstr ""
+
+#: includes/noticeboard/shortcodes/noticeboard-list.php:127
+#: modules/notices/shortcodes/noticeboard-list.php:108
+msgid "Read More"
+msgstr ""
+
+#: includes/noticeboard/shortcodes/noticeboard-list.php:131
+#: includes/tpw-core-settings.php:961
+#: modules/gallery/templates/list.php:51
+#: modules/members/shortcodes/member-profile.php:258
+#: modules/members/shortcodes/member-profile.php:431
+#: modules/menus/class-tpw-menus-frontend-admin.php:390
+#: modules/menus/class-tpw-menus-frontend-admin.php:608
+#: modules/notices/shortcodes/noticeboard-list.php:112
+#: modules/payments/class-tpw-payments-admin.php:269
+#: modules/system-pages/class-tpw-core-system-pages.php:502
+#: modules/system-pages/templates/system-pages.php:74
+#: templates/frontend/flexiclub-workspace-system-pages.php:123
+msgid "Edit"
+msgstr ""
+
+#: includes/noticeboard/shortcodes/noticeboard-list.php:132
+#: modules/notices/shortcodes/noticeboard-list.php:113
+msgid "Duplicate"
+msgstr ""
+
+#: includes/noticeboard/shortcodes/noticeboard-list.php:133
+#: modules/gallery/gallery-loader.php:89
+#: modules/gallery/templates/categories.php:38
+#: modules/gallery/templates/form.php:88
+#: modules/gallery/templates/help.php:54
+#: modules/gallery/templates/list.php:52
+#: modules/members/shortcodes/member-profile.php:494
+#: modules/menus/class-tpw-menus-frontend-admin.php:396
+#: modules/menus/class-tpw-menus-frontend-admin.php:617
+#: modules/notices/shortcodes/noticeboard-list.php:114
+msgid "Delete"
+msgstr ""
+
+#: includes/noticeboard/shortcodes/noticeboard-list.php:140
+#: modules/notices/shortcodes/noticeboard-list.php:121
+msgid "No notices found."
+msgstr ""
+
+#: includes/tpw-core-settings.php:19
+msgid "TPW Member Menu"
+msgstr ""
+
+#: includes/tpw-core-settings.php:26
+#: includes/tpw-core-settings.php:473
+msgid "FlexiClub Settings"
+msgstr ""
+
+#: includes/tpw-core-settings.php:64
+#: includes/tpw-core-settings.php:347
+msgid "Email settings saved."
+msgstr ""
+
+#: includes/tpw-core-settings.php:65
+#: includes/tpw-core-settings.php:348
+msgid "Settings saved."
+msgstr ""
+
+#: includes/tpw-core-settings.php:76
+#: includes/tpw-core-settings.php:355
+msgid "Base64 copy not created – image too large or incompatible format."
+msgstr ""
+
+#: includes/tpw-core-settings.php:78
+#: includes/tpw-core-settings.php:360
+msgid "Could not save. Email settings class missing."
+msgstr ""
+
+#: includes/tpw-core-settings.php:80
+#: includes/tpw-core-settings.php:365
+msgid "Could not save. Email Templates DB class missing."
+msgstr ""
+
+#: includes/tpw-core-settings.php:82
+#: includes/tpw-core-settings.php:370
+msgid "Email logs cleared."
+msgstr ""
+
+#: includes/tpw-core-settings.php:84
+#: includes/tpw-core-settings.php:375
+msgid "Email logs are unavailable. Please ensure FlexiClub is fully updated."
+msgstr ""
+
+#: includes/tpw-core-settings.php:93
+msgid "System Pages template not found."
+msgstr ""
+
+#: includes/tpw-core-settings.php:98
+msgid "Email settings class not found. Please ensure FlexiClub is fully updated."
+msgstr ""
+
+#: includes/tpw-core-settings.php:102
+msgid "Email logs class not found. Please ensure FlexiClub is fully updated."
+msgstr ""
+
+#: includes/tpw-core-settings.php:107
+msgid "Email Template Registry not loaded."
+msgstr ""
+
+#: includes/tpw-core-settings.php:113
+msgid "Unknown template key."
+msgstr ""
+
+#: includes/tpw-core-settings.php:124
+msgid "FlexiClub: The Member Profile page is not configured. "
+msgstr ""
+
+#: includes/tpw-core-settings.php:125
+#: includes/tpw-core-settings.php:2900
+msgid "Select a Profile page now"
+msgstr ""
+
+#: includes/tpw-core-settings.php:134
+msgid "FlexiClub: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
+msgstr ""
+
+#: includes/tpw-core-settings.php:135
+#: includes/tpw-core-settings.php:2912
+msgid "Edit page"
+msgstr ""
+
+#: includes/tpw-core-settings.php:197
+msgid "Branding"
+msgstr ""
+
+#: includes/tpw-core-settings.php:198
+msgid "Member Menu"
+msgstr ""
+
+#: includes/tpw-core-settings.php:199
+msgid "Features"
+msgstr ""
+
+#: includes/tpw-core-settings.php:200
+msgid "Email Settings"
+msgstr ""
+
+#: includes/tpw-core-settings.php:202
+msgid "Email Templates"
+msgstr ""
+
+#: includes/tpw-core-settings.php:440
+msgid "No content registered for this tab."
+msgstr ""
+
+#: includes/tpw-core-settings.php:475
+msgid "Configure branding, menus, email, payment methods, and system pages."
+msgstr ""
+
+#: includes/tpw-core-settings.php:476
+msgid "Configure branding, menus, email, and system pages."
+msgstr ""
+
+#: includes/tpw-core-settings.php:522
+msgid "Default Login Page"
+msgstr ""
+
+#: includes/tpw-core-settings.php:533
+#: includes/tpw-core-settings.php:550
+msgid "No published pages found."
+msgstr ""
+
+#: includes/tpw-core-settings.php:535
+msgid "Select the page members should be redirected to when login is required. Used by FlexiEvent and other TPW modules."
+msgstr ""
+
+#: includes/tpw-core-settings.php:539
+msgid "Redirect After Login"
+msgstr ""
+
+#: includes/tpw-core-settings.php:552
+msgid "Choose a page to send members to immediately after they log in. Leave as “No redirect” to go to the site home."
+msgstr ""
+
+#: includes/tpw-core-settings.php:557
+msgid "Save Features"
+msgstr ""
+
+#: includes/tpw-core-settings.php:576
+msgid "Members Menu repair completed. Missing default items were added without duplicating existing entries."
+msgstr ""
+
+#: includes/tpw-core-settings.php:579
+msgid "Members Menu repair could not complete. Check that WordPress nav menu functions are available and try again."
+msgstr ""
+
+#: includes/tpw-core-settings.php:592
+msgid "Replace Which Menu Location for Members?"
+msgstr ""
+
+#: includes/tpw-core-settings.php:599
+#: includes/tpw-core-settings.php:1902
+msgid "Logged-in users will see the TPW Member Menu at this location if a menu is assigned to it."
+msgstr ""
+
+#: includes/tpw-core-settings.php:604
+msgid "Save Member Menu"
+msgstr ""
+
+#: includes/tpw-core-settings.php:611
+msgid "Repair Members Menu"
+msgstr ""
+
+#: includes/tpw-core-settings.php:612
+msgid "Safely add any missing default FlexiClub member-menu items on existing installs without deactivating or reactivating the plugin."
+msgstr ""
+
+#: includes/tpw-core-settings.php:658
+msgid "Recent email dispatch attempts recorded by the central core dispatcher. The latest 100 entries are shown, newest first, and logs older than 30 days are removed automatically."
+msgstr ""
+
+#: includes/tpw-core-settings.php:664
+msgid "Clear Logs"
+msgstr ""
+
+#: includes/tpw-core-settings.php:670
+msgid "Timestamp"
+msgstr ""
+
+#: includes/tpw-core-settings.php:671
+#: modules/email/class-tpw-email-queue.php:701
+msgid "Recipient"
+msgstr ""
+
+#: includes/tpw-core-settings.php:672
+#: includes/tpw-core-settings.php:896
+#: includes/tpw-core-settings.php:901
+#: modules/email/class-tpw-email-queue.php:702
+#: modules/email/templates/email-form.php:48
+#: modules/email/templates/email-form.php:49
+msgid "Subject"
+msgstr ""
+
+#: includes/tpw-core-settings.php:673
+#: modules/email/class-tpw-email-queue.php:703
+msgid "Context"
+msgstr ""
+
+#: includes/tpw-core-settings.php:674
+#: modules/email/class-tpw-email-queue.php:704
+#: modules/members/admin/class-tpw-identity-audit-admin.php:990
+#: modules/members/includes/class-tpw-member-csv-importer.php:803
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:111
+#: modules/payments/class-tpw-payment-logs-admin.php:118
+#: modules/system-pages/templates/system-pages.php:36
+#: templates/frontend/flexiclub-workspace-logs.php:137
+#: templates/frontend/flexiclub-workspace-logs.php:151
+msgid "Status"
+msgstr ""
+
+#: includes/tpw-core-settings.php:675
+msgid "Error"
+msgstr ""
+
+#: includes/tpw-core-settings.php:732
+msgid "Displayed in email headers. Leave blank to use your Site Title."
+msgstr ""
+
+#: includes/tpw-core-settings.php:736
+msgid "Enable Throttling"
+msgstr ""
+
+#: includes/tpw-core-settings.php:740
+msgid "Limit the rate of outgoing emails"
+msgstr ""
+
+#: includes/tpw-core-settings.php:745
+msgid "Max Emails Per Minute"
+msgstr ""
+
+#: includes/tpw-core-settings.php:751
+msgid "Delay Between Emails (sec)"
+msgstr ""
+
+#: includes/tpw-core-settings.php:757
+msgid "Enable Logging"
+msgstr ""
+
+#: includes/tpw-core-settings.php:761
+msgid "Record email activity (via hooks)"
+msgstr ""
+
+#: includes/tpw-core-settings.php:766
+msgid "Enable Test Mode"
+msgstr ""
+
+#: includes/tpw-core-settings.php:770
+msgid "Send all emails to a single test address"
+msgstr ""
+
+#: includes/tpw-core-settings.php:775
+msgid "Test Email Recipient"
+msgstr ""
+
+#: includes/tpw-core-settings.php:778
+msgid "Used only when Test Mode is enabled."
+msgstr ""
+
+#: includes/tpw-core-settings.php:782
+msgid "Fallback Logo URL"
+msgstr ""
+
+#: includes/tpw-core-settings.php:785
+msgid "Select Image"
+msgstr ""
+
+#: includes/tpw-core-settings.php:786
+msgid "Clear"
+msgstr ""
+
+#: includes/tpw-core-settings.php:787
+msgid "Optional fallback logo displayed in email templates. PNG/JPG only for base64 copy."
+msgstr ""
+
+#: includes/tpw-core-settings.php:790
+msgid "Current Logo Preview"
+msgstr ""
+
+#: includes/tpw-core-settings.php:797
+msgid "Embed Logo as Inline Image (base64)"
+msgstr ""
+
+#: includes/tpw-core-settings.php:799
+msgid "Use this if you want to embed the logo directly in the email for clients that block remote images. Not recommended for large images."
+msgstr ""
+
+#: includes/tpw-core-settings.php:802
+msgid "Base64 copy is stored."
+msgstr ""
+
+#: includes/tpw-core-settings.php:803
+msgid "Reset"
+msgstr ""
+
+#: includes/tpw-core-settings.php:806
+msgid "No base64 copy stored yet. It will be created automatically when you select a compatible image (PNG/JPG, ≤50KB, ≤400px wide)."
+msgstr ""
+
+#: includes/tpw-core-settings.php:813
+msgid "Save Email Settings"
+msgstr ""
+
+#: includes/tpw-core-settings.php:884
+msgid "Back to list"
+msgstr ""
+
+#: includes/tpw-core-settings.php:893
+msgid "Template"
+msgstr ""
+
+#: includes/tpw-core-settings.php:894
+msgid "Group"
+msgstr ""
+
+#: includes/tpw-core-settings.php:898
+msgid "Use placeholders below in the subject."
+msgstr ""
+
+#: includes/tpw-core-settings.php:901
+msgid "Subject is not editable for this template."
+msgstr ""
+
+#: includes/tpw-core-settings.php:904
+#: includes/tpw-core-settings.php:913
+msgid "Body"
+msgstr ""
+
+#: includes/tpw-core-settings.php:910
+msgid "You can use the placeholders below in the body."
+msgstr ""
+
+#: includes/tpw-core-settings.php:913
+msgid "Body is not editable for this template."
+msgstr ""
+
+#: includes/tpw-core-settings.php:916
+msgid "Include fallback logo"
+msgstr ""
+
+#: includes/tpw-core-settings.php:917
+msgid "Show the configured fallback logo at the top of this email"
+msgstr ""
+
+#: includes/tpw-core-settings.php:921
+msgid "Available placeholders"
+msgstr ""
+
+#: includes/tpw-core-settings.php:929
+msgid "No placeholders defined for this template."
+msgstr ""
+
+#: includes/tpw-core-settings.php:934
+msgid "Save Template"
+msgstr ""
+
+#: includes/tpw-core-settings.php:935
+msgid "Reset to Default"
+msgstr ""
+
+#: includes/tpw-core-settings.php:943
+msgid "Registered email templates from TPW plugins. Edit to override the default subject/body and choose whether to include the fallback logo."
+msgstr ""
+
+#: includes/tpw-core-settings.php:945
+msgid "No templates registered yet."
+msgstr ""
+
+#: includes/tpw-core-settings.php:952
+#: modules/members/settings/member-signups-settings.php:151
+#: modules/payments/class-tpw-card-on-the-day-settings.php:83
+msgid "Label"
+msgstr ""
+
+#: includes/tpw-core-settings.php:953
+msgid "Key"
+msgstr ""
+
+#: includes/tpw-core-settings.php:954
+#: modules/email/class-tpw-email-queue.php:708
+#: modules/gallery/templates/categories.php:28
+#: modules/gallery/templates/list.php:35
+#: modules/menus/class-tpw-menus-frontend-admin.php:370
+#: modules/menus/class-tpw-menus-frontend-admin.php:387
+#: modules/menus/class-tpw-menus-frontend-admin.php:597
+#: modules/menus/class-tpw-menus-frontend-admin.php:605
+#: modules/system-pages/templates/system-pages.php:39
+#: templates/frontend/flexiclub-workspace-system-pages.php:79
+#: templates/frontend/flexiclub-workspace-system-pages.php:117
+msgid "Actions"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1231
+msgid "Heading font family"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1234
+msgid "Leave empty to inherit the UI Theme font. Applies to h1–h6 within TPW UIs."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1244
+msgid "colour / size / weight"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1252
+msgid "Default"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1256
+msgid "Leave colour empty to inherit. Size accepts px, rem, or em. Weight: choose Default to use the built-in scale."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1295
+msgid "Used for .tpw-action-edit buttons in admin module lists."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1311
+msgid "Large buttons font size"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1312
+msgid "Used by .tpw-btn-lg."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1315
+msgid "Large buttons padding"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1316
+msgid "CSS shorthand accepted. Used by .tpw-btn-lg."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1319
+msgid "Large buttons height"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1320
+msgid "Minimum height for .tpw-btn-lg. Use a unit such as px, rem, or em."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1327
+msgid "Background/base colour for success states. Supports CSS functions (color-mix, var())."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1334
+msgid "Base colour for informational notices. Typically uses the UI accent."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1342
+msgid "High-attention but non-fatal states."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1349
+msgid "Critical / failure state colour, usually matches Danger button."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1353
+msgid "Buttons Height"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1356
+msgid "Optional. Sets a fixed height for TPW buttons. Use a unit (e.g., 32px). Leave blank or set to “auto” to size by padding."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1360
+msgid "Buttons Font Weight"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1368
+msgid "Overrides UI weight for TPW buttons only. Leave as 600 for the default."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1372
+msgid "Buttons Font Family"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1375
+msgid "Optional. Overrides UI font for TPW buttons only. If empty, buttons use the UI Theme font or the system stack."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1380
+msgid "Font family"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1383
+msgid "Applies within .tpw-admin-ui only."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1387
+msgid "Font weight"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1398
+msgid "Text transform"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1409
+msgid "Letter spacing"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1415
+msgid "Text shadow"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1421
+msgid "Button background colour"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1428
+msgid "Button text colour"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1435
+msgid "Accent colour"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1442
+#: includes/tpw-core-settings.php:1458
+msgid "Inherit global site styles on admin screens (front-end only)"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1447
+#: includes/tpw-core-settings.php:1467
+msgid "Do not apply TPW Admin UI wrapper/styles on front-end shortcodes. Useful when using Elementor/Theme global styles."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1449
+msgid "Does not affect wp-admin. Only front-end admin-like pages (shortcodes) are affected."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1469
+msgid "This does not affect wp-admin. It applies only to front-end admin-like pages powered by TPW shortcodes."
+msgstr ""
+
+#: includes/tpw-core-settings.php:1474
+msgid "Save Branding"
+msgstr ""
+
+#: includes/tpw-core-settings.php:1802
+#: includes/tpw-core-settings.php:1867
+#: modules/email/class-tpw-email-queue.php:752
+#: modules/email/class-tpw-email-queue.php:762
+#: modules/email/class-tpw-email-queue.php:775
+#: modules/email/class-tpw-email-queue.php:788
+msgid "You do not have permission to manage settings."
+msgstr ""
+
+#: includes/tpw-core-settings.php:2157
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:39
+msgid "Gallery"
+msgstr ""
+
+#: includes/tpw-core-settings.php:2204
+#: includes/tpw-core-settings.php:2684
+#: modules/members/members-init.php:210
+#: modules/members/members-init.php:223
+msgid "Logout"
+msgstr ""
+
+#: includes/tpw-core-settings.php:2899
+msgid "TPW Core: The Member Profile page is not configured. "
+msgstr ""
+
+#: includes/tpw-core-settings.php:2911
+msgid "TPW Core: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
+msgstr ""
+
+#: modules/email/class-tpw-email-form.php:23
+msgid "Sending…"
+msgstr ""
+
+#: modules/email/class-tpw-email-form.php:24
+#: modules/email/templates/email-form.php:76
+msgid "Send"
+msgstr ""
+
+#: modules/email/class-tpw-email-form.php:85
+msgid "Missing required fields."
+msgstr ""
+
+#: modules/email/class-tpw-email-form.php:102
+msgid "Email sent."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:46
+msgid "Email Queue"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:222
+msgid "Failed to insert email queue row."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:303
+#: modules/email/class-tpw-email-queue.php:860
+#: modules/email/class-tpw-email-queue.php:887
+#: modules/email/class-tpw-email-queue.php:1037
+msgid "Failed to schedule queued email processing."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:412
+msgid "Immediate dispatch returned false."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:415
+msgid "TPW_Email dispatcher unavailable."
+msgstr ""
+
+#. translators: %s: original send failure message
+#: modules/email/class-tpw-email-queue.php:473
+#, php-format
+msgid "Retry scheduling failed after email send failure: %s"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:474
+msgid "Unknown send failure."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:645
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1935
+msgid "All"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:646
+msgid "Pending"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:647
+msgid "Processing"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:648
+msgid "Sent"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:649
+msgid "Failed"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:650
+msgid "Cancelled"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:658
+msgid "Email queue reconciliation triggered."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:660
+msgid "Queued email moved back to pending and rescheduled."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:662
+msgid "Queued email cancelled."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:664
+msgid "Old sent queue items cleared."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:666
+msgid "Email queue action completed."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:673
+msgid "Queued outbound emails are stored durably before delivery. This screen is the business-level email payload and status view. Scheduled Actions remains the infrastructure view for job execution."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:674
+msgid "View Scheduled Actions"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:687
+msgid "Reconcile Queue Now"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:694
+msgid "Clear Sent Queue Items"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:700
+#: modules/gallery/templates/list.php:33
+#: modules/members/includes/class-tpw-member-ajax.php:717
+msgid "Created"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:705
+msgid "Attempts"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:706
+msgid "Scheduled Action"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:707
+msgid "Last Error"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:713
+msgid "No queue items found."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:727
+msgid "Retry"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:730
+#: modules/gallery/gallery-loader.php:95
+#: modules/gallery/templates/form.php:99
+#: modules/menus/class-tpw-menus-frontend-admin.php:511
+#: modules/menus/class-tpw-menus-frontend-admin.php:730
+msgid "Cancel"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:859
+msgid "Failed to schedule queued email processing. Scheduler wrapper unavailable."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:869
+#: modules/email/class-tpw-email-queue.php:880
+msgid "Email queued for sending. Processing will begin when Action Scheduler is ready."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:888
+msgid "Failed to schedule queued email processing. The queue row is still pending and includes scheduler diagnostics."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:896
+msgid "Email queued for sending."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:1022
+msgid "Queued email is waiting for Action Scheduler initialization."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:71
+msgid "wp_mail() returned false."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:118
+#: modules/email/class-tpw-email.php:119
+msgid "Email queue service unavailable."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:153
+msgid "Invalid recipient email."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:156
+msgid "Invalid sender email."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:159
+msgid "Subject is required."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:162
+msgid "Message is required."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:193
+msgid "Failed to send email."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:199
+msgid "This is a copy of your message."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:210
+msgid "Email sent successfully."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:424
+#: modules/email/class-tpw-email.php:474
+msgid "The uploaded file exceeds the upload_max_filesize directive."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:425
+#: modules/email/class-tpw-email.php:475
+msgid "The uploaded file exceeds the MAX_FILE_SIZE directive."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:426
+#: modules/email/class-tpw-email.php:476
+msgid "The uploaded file was only partially uploaded."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:427
+#: modules/email/class-tpw-email.php:477
+msgid "No file was uploaded."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:428
+#: modules/email/class-tpw-email.php:478
+msgid "Missing a temporary folder on the server."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:429
+#: modules/email/class-tpw-email.php:479
+msgid "Failed to write file to disk."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:430
+#: modules/email/class-tpw-email.php:480
+msgid "A PHP extension stopped the file upload."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:432
+#: modules/email/class-tpw-email.php:482
+msgid "Upload error."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:437
+#: modules/email/class-tpw-email.php:454
+#: modules/email/class-tpw-email.php:487
+#, php-format
+msgid "File type not allowed: %s"
+msgstr ""
+
+#: modules/email/class-tpw-email.php:440
+#: modules/email/class-tpw-email.php:457
+#: modules/email/class-tpw-email.php:490
+#, php-format
+msgid "File too large: %s"
+msgstr ""
+
+#: modules/email/class-tpw-email.php:444
+#: modules/email/class-tpw-email.php:494
+msgid "Unable to store uploaded file. Please try again or contact support."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:637
+msgid "Email template manager unavailable."
+msgstr ""
+
+#: modules/email/templates/email-form.php:7
+msgid "Contact"
+msgstr ""
+
+#: modules/email/templates/email-form.php:8
+#: modules/gallery/templates/editor.php:36
+#: modules/gallery/templates/list.php:68
+#: modules/gallery/templates/list.php:88
+#: modules/menus/templates/menu-modal.php:59
+msgid "Close"
+msgstr ""
+
+#: modules/email/templates/email-form.php:17
+msgid "Recipient's Name"
+msgstr ""
+
+#: modules/email/templates/email-form.php:21
+msgid "Recipient's Email"
+msgstr ""
+
+#: modules/email/templates/email-form.php:27
+#: modules/email/templates/email-form.php:38
+msgid "Your Name"
+msgstr ""
+
+#: modules/email/templates/email-form.php:32
+#: modules/email/templates/email-form.php:42
+msgid "Your Email"
+msgstr ""
+
+#: modules/email/templates/email-form.php:53
+#: modules/payments/class-tpw-payment-logs-admin.php:118
+msgid "Message"
+msgstr ""
+
+#: modules/email/templates/email-form.php:58
+msgid "Attachments"
+msgstr ""
+
+#: modules/email/templates/email-form.php:63
+#, php-format
+msgid "Allowed: PDF, DOCX, JPG, PNG. Max %dMB each."
+msgstr ""
+
+#: modules/email/templates/email-form.php:69
+msgid "Send a copy to me"
+msgstr ""
+
+#: modules/feedback/admin/admin-feedback.php:4
+#: modules/feedback/views/admin-feedback.php:4
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:119
+msgid "Thanks for your feedback!"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:120
+msgid "Sorry, something went wrong. Please try again."
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:150
+msgid "Help us improve the RSVP form"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:151
+msgid "How easy was it to complete the RSVP?"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:152
+msgid "Did you find all the options you needed?"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:153
+msgid "About how long did it take?"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:154
+msgid "Any suggestions to improve the form?"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:155
+msgid "Send feedback"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:182
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:104
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:67
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:100
+#: modules/members/includes/class-tpw-member-admin-actions.php:462
+#: modules/members/includes/class-tpw-member-admin-actions.php:464
+#: modules/members/shortcodes/member-profile.php:532
+msgid "Yes"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:183
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:105
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:68
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:101
+#: modules/members/includes/class-tpw-member-admin-actions.php:464
+msgid "No"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:184
+msgid "If no, what was missing or unclear?"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:189
+msgid "Under 2 minutes"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:190
+msgid "2–5 minutes"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:191
+msgid "Over 5 minutes"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:218
+msgid "Bad nonce."
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:228
+msgid "Missing context."
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:317
+#: modules/gallery/gallery-loader.php:96
+msgid "Saved"
+msgstr ""
+
+#: modules/feedback/class-tpw-feedback.php:319
+msgid "Database error"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:13
+msgid "TPW Gallery Index"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:28
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:32
+#: modules/notices/templates/form.php:44
+#: templates/noticeboard/form.php:44
+msgid "Content"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:35
+msgid "Index layout"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:39
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:72
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:55
+msgid "Grid"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:40
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:73
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:56
+msgid "List"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:48
+msgid "Index columns"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:68
+msgid "Selected gallery view"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:74
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:57
+msgid "Story"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:82
+msgid "Selected gallery columns"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery-index.php:102
+msgid "Show selected gallery heading"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:15
+msgid "TPW Gallery"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:44
+msgid "Search by title to select a gallery."
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:51
+#: modules/system-pages/class-tpw-core-system-pages.php:499
+#: modules/system-pages/class-tpw-core-system-pages.php:528
+#: modules/system-pages/templates/system-pages.php:71
+#: modules/system-pages/templates/system-pages.php:101
+#: templates/frontend/flexiclub-workspace-system-pages.php:120
+msgid "View"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:65
+msgid "Show heading"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:71
+msgid "Show the gallery title/description above the images."
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:78
+msgid "Columns"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:98
+msgid "Paginate"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:113
+msgid "Per page"
+msgstr ""
+
+#: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:119
+msgid "Number of images per page when pagination is enabled."
+msgstr ""
+
+#: modules/gallery/elementor/elementor-loader.php:45
+msgid "Type to search galleries…"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:31
+#: modules/gallery/templates/help.php:9
+msgid "Gallery Help"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:49
+msgid "You do not have permission to access the Gallery admin."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:75
+msgid "Delete this gallery?"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:76
+#: modules/gallery/templates/list.php:19
+#: modules/gallery/templates/list.php:67
+msgid "Add Gallery"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:77
+#: modules/gallery/templates/editor.php:16
+msgid "Edit Gallery"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:83
+msgid "Remove this image from the gallery?"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:84
+#: modules/gallery/templates/form.php:85
+#: modules/gallery/templates/help.php:53
+msgid "Remove"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:85
+msgid "No images in this gallery yet."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:86
+msgid "Upload to this Gallery"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:87
+msgid "Add Images (Media Library)"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:88
+msgid "Delete this image permanently from the Media Library? This cannot be undone."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:90
+#: modules/gallery/templates/form.php:79
+msgid "Edit caption"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:91
+#: modules/gallery/templates/grid.php:91
+#: modules/gallery/templates/list-view.php:75
+#: modules/menus/class-tpw-menus-frontend-admin.php:348
+msgid "Previous"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:92
+#: modules/gallery/templates/grid.php:93
+#: modules/gallery/templates/list-view.php:77
+#: modules/menus/class-tpw-menus-frontend-admin.php:349
+msgid "Next"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:93
+msgid "You have unsaved caption changes. Discard them?"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:94
+msgid "Save"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:97
+#: modules/gallery/templates/categories.php:19
+#: modules/notices/templates/form.php:31
+#: templates/noticeboard/form.php:31
+msgid "Add Category"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:98
+#: modules/gallery/templates/categories.php:18
+msgid "Category name"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:99
+msgid "Delete this category?"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:100
+msgid "Uploading..."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:101
+msgid "Upload failed"
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:102
+msgid "Gallery saved automatically before upload."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:103
+msgid "Click or drag to set the focal point."
+msgstr ""
+
+#: modules/gallery/gallery-loader.php:119
+msgid "You do not have permission to access the Gallery help."
+msgstr ""
+
+#: modules/gallery/templates/categories.php:16
+msgid "Categories"
+msgstr ""
+
+#: modules/gallery/templates/categories.php:25
+msgid "Name"
+msgstr ""
+
+#: modules/gallery/templates/categories.php:26
+#: modules/system-pages/templates/system-pages.php:34
+msgid "Slug"
+msgstr ""
+
+#: modules/gallery/templates/categories.php:27
+msgid "Sort"
+msgstr ""
+
+#: modules/gallery/templates/editor.php:18
+#: modules/gallery/templates/help.php:11
+#: modules/gallery/templates/index.php:23
+msgid "Back to Galleries"
+msgstr ""
+
+#: modules/gallery/templates/editor.php:35
+#: modules/gallery/templates/help.php:57
+#: modules/gallery/templates/list.php:20
+#: modules/gallery/templates/list.php:87
+msgid "Manage Categories"
+msgstr ""
+
+#: modules/gallery/templates/form.php:20
+#: modules/gallery/templates/list.php:31
+#: modules/notices/templates/form.php:14
+#: modules/system-pages/templates/system-pages.php:33
+#: templates/noticeboard/form.php:14
+msgid "Title"
+msgstr ""
+
+#: modules/gallery/templates/form.php:24
+#: modules/menus/class-tpw-menus-frontend-admin.php:370
+#: modules/menus/class-tpw-menus-frontend-admin.php:384
+#: modules/menus/class-tpw-menus-frontend-admin.php:491
+#: modules/menus/class-tpw-menus-frontend-admin.php:552
+#: modules/menus/class-tpw-menus-frontend-admin.php:597
+#: modules/menus/class-tpw-menus-frontend-admin.php:603
+msgid "Description"
+msgstr ""
+
+#: modules/gallery/templates/form.php:28
+#: modules/gallery/templates/list.php:32
+#: modules/notices/templates/form.php:18
+#: templates/noticeboard/form.php:18
+msgid "Category"
+msgstr ""
+
+#: modules/gallery/templates/form.php:30
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1957
+msgid "Uncategorised"
+msgstr ""
+
+#: modules/gallery/templates/form.php:40
+#: modules/gallery/templates/list.php:34
+msgid "Images"
+msgstr ""
+
+#: modules/gallery/templates/form.php:43
+#: modules/gallery/templates/help.php:31
+msgid "Add Images"
+msgstr ""
+
+#: modules/gallery/templates/form.php:46
+#: modules/gallery/templates/help.php:33
+msgid "From Media Library"
+msgstr ""
+
+#: modules/gallery/templates/form.php:47
+#: modules/gallery/templates/help.php:34
+msgid "Upload New Files"
+msgstr ""
+
+#: modules/gallery/templates/form.php:84
+msgid "Focal"
+msgstr ""
+
+#: modules/gallery/templates/form.php:98
+msgid "Save Gallery"
+msgstr ""
+
+#: modules/gallery/templates/help.php:16
+msgid "Access"
+msgstr ""
+
+#: modules/gallery/templates/help.php:18
+msgid "Route:"
+msgstr ""
+
+#: modules/gallery/templates/help.php:19
+msgid "Shortcode:"
+msgstr ""
+
+#: modules/gallery/templates/help.php:20
+msgid "Permission:"
+msgstr ""
+
+#: modules/gallery/templates/help.php:20
+msgid "Administrators"
+msgstr ""
+
+#: modules/gallery/templates/help.php:23
+msgid "Create a Gallery"
+msgstr ""
+
+#: modules/gallery/templates/help.php:25
+msgid "Click “Add Gallery”."
+msgstr ""
+
+#: modules/gallery/templates/help.php:26
+msgid "Enter a Title and (optional) Description."
+msgstr ""
+
+#: modules/gallery/templates/help.php:27
+msgid "Choose a Category (or leave Uncategorised)."
+msgstr ""
+
+#: modules/gallery/templates/help.php:28
+msgid "Click “Save Gallery”."
+msgstr ""
+
+#: modules/gallery/templates/help.php:33
+msgid "Pick existing images; they are linked into the gallery."
+msgstr ""
+
+#: modules/gallery/templates/help.php:34
+msgid "Select images to upload; the gallery auto‑saves if needed."
+msgstr ""
+
+#: modules/gallery/templates/help.php:37
+msgid "Edit Images"
+msgstr ""
+
+#: modules/gallery/templates/help.php:39
+msgid "Caption"
+msgstr ""
+
+#: modules/gallery/templates/help.php:39
+msgid "Click the caption to edit, then Save or Cancel."
+msgstr ""
+
+#: modules/gallery/templates/help.php:40
+msgid "Focal Point"
+msgstr ""
+
+#: modules/gallery/templates/help.php:40
+msgid "Click the image (or “Focal” button) to open the focal editor."
+msgstr ""
+
+#: modules/gallery/templates/help.php:42
+msgid "Click or drag the green handle to set the focus; Save to apply."
+msgstr ""
+
+#: modules/gallery/templates/help.php:43
+msgid "Editor page thumbnails recenter to the saved focal point."
+msgstr ""
+
+#: modules/gallery/templates/help.php:48
+msgid "Reorder Images"
+msgstr ""
+
+#: modules/gallery/templates/help.php:49
+msgid "Drag and drop thumbnails to change order. Order is saved automatically."
+msgstr ""
+
+#: modules/gallery/templates/help.php:51
+msgid "Remove vs Delete"
+msgstr ""
+
+#: modules/gallery/templates/help.php:53
+msgid "Unlinks the image from the gallery only (keeps it in Media Library)."
+msgstr ""
+
+#: modules/gallery/templates/help.php:54
+msgid "Permanently deletes the image from the Media Library (cannot be undone)."
+msgstr ""
+
+#: modules/gallery/templates/help.php:58
+msgid "Use “Manage Categories” to add or delete categories. The gallery form’s Category dropdown updates after closing the modal."
+msgstr ""
+
+#: modules/gallery/templates/help.php:60
+msgid "Quick Edit vs Full Page"
+msgstr ""
+
+#: modules/gallery/templates/help.php:62
+#: modules/gallery/templates/list.php:50
+msgid "Quick Edit"
+msgstr ""
+
+#: modules/gallery/templates/help.php:62
+msgid "Opens a modal for lightweight changes."
+msgstr ""
+
+#: modules/gallery/templates/help.php:63
+msgid "Edit (Page)"
+msgstr ""
+
+#: modules/gallery/templates/help.php:63
+msgid "Opens the full Gallery Editor for larger galleries and drag‑drop."
+msgstr ""
+
+#: modules/gallery/templates/help.php:66
+msgid "Public Display"
+msgstr ""
+
+#: modules/gallery/templates/help.php:67
+msgid "Use"
+msgstr ""
+
+#: modules/gallery/templates/help.php:67
+msgid "to show a gallery on public pages. Thumbnails crop to fit and honor focal points; captions are shown below."
+msgstr ""
+
+#: modules/gallery/templates/help.php:70
+msgid "For very large galleries, you can limit how many thumbnails render at once (grid/list only):"
+msgstr ""
+
+#: modules/gallery/templates/help.php:72
+msgid "or"
+msgstr ""
+
+#: modules/gallery/templates/help.php:77
+msgid "To hide the gallery heading (title/description) above the images:"
+msgstr ""
+
+#: modules/gallery/templates/help.php:83
+msgid "Tips & Troubleshooting"
+msgstr ""
+
+#: modules/gallery/templates/help.php:85
+msgid "If changes don’t appear, refresh and clear browser cache."
+msgstr ""
+
+#: modules/gallery/templates/help.php:86
+msgid "The focal point is stored per image; set it for portraits for better crops."
+msgstr ""
+
+#: modules/gallery/templates/help.php:87
+msgid "You must Save the gallery to create it before uploading files."
+msgstr ""
+
+#: modules/gallery/templates/help.php:88
+msgid "Only administrators can access /gallery-admin/."
+msgstr ""
+
+#: modules/gallery/templates/help.php:93
+#: modules/members/signups/class-tpw-signup-form-renderer.php:51
+#: modules/payments/class-tpw-payment-logs-admin.php:118
+msgid "Reference"
+msgstr ""
+
+#: modules/gallery/templates/help.php:95
+msgid "Templates & assets:"
+msgstr ""
+
+#: modules/gallery/templates/help.php:96
+msgid "Developer hooks: see the developer help “Gallery”."
+msgstr ""
+
+#: modules/gallery/templates/list.php:17
+msgid "Galleries"
+msgstr ""
+
+#: modules/gallery/templates/list.php:22
+#: modules/members/includes/admin-settings-tabs.php:38
+#: modules/members/settings/member-settings.php:199
+msgid "Help"
+msgstr ""
+
+#: modules/gallery/templates/list.php:30
+msgid "Cat ID"
+msgstr ""
+
+#: modules/gallery/templates/list.php:40
+msgid "No galleries yet."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:48
+#: modules/members/admin/class-tpw-identity-audit-admin.php:67
+msgid "Identity Audit"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:60
+#: modules/payments/admin-settings.php:323
+#: modules/tpw-control/class-tpw-control-router.php:77
+msgid "You do not have permission to view this page."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:68
+msgid "Phase 1 safety tooling for the TPW identity architecture. This screen is read-only and reports current linkage, identity projection, role drift, and member status data without modifying any records."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:76
+msgid "Snapshot:"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:102
+msgid "The tpw_members table is not available on this site, so the identity audit cannot run yet."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:341
+msgid "Linked user_id points to no existing WordPress user."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:351
+msgid "No linked user_id and no email or username fallback match."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:588
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1013
+msgid "Users with identity role but no member record"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:592
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1014
+msgid "Users with member record but no identity role"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:596
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1015
+msgid "Member records linked to non-existent users"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:600
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1016
+msgid "Users resolving only through weak linkage fallback"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:779
+msgid "(Unnamed member)"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:861
+msgid "1. User to Member Linkage Audit"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:862
+msgid "This report shows how current WordPress users relate to tpw_members rows using direct user_id linkage first, then the existing weak fallback paths where no direct stored relationship exists."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:865
+msgid "Metric"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:865
+#: modules/members/admin/class-tpw-identity-audit-admin.php:894
+#: modules/members/admin/class-tpw-identity-audit-admin.php:990
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1011
+msgid "Count"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:867
+#: modules/members/admin/class-tpw-identity-audit-admin.php:874
+msgid "Users with direct member linkage"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:868
+#: modules/members/admin/class-tpw-identity-audit-admin.php:875
+msgid "Users matched only through weak fallback"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:869
+msgid "Users without any linkage"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:870
+#: modules/members/admin/class-tpw-identity-audit-admin.php:877
+msgid "Members without a corresponding user"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:876
+msgid "Users without any member linkage"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:890
+msgid "2. Weak Linkage Detection"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:891
+msgid "These users do not have a direct stored user_id to member relationship and appear to resolve only through the current compatibility fallbacks."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:894
+msgid "Weak Match Type"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:896
+msgid "Email only"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:897
+msgid "Username only"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:898
+msgid "Email and username"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:899
+msgid "Ambiguous fallback matches"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:903
+msgid "Weak-linkage users"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:916
+msgid "3. Identity Role Projection Audit"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:917
+msgid "This section groups users by the current identity-style role slugs present in WordPress. The legacy tpw_member role is highlighted separately to support later cleanup planning."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:923
+#: modules/members/admin/class-tpw-identity-audit-admin.php:967
+msgid "Role"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:923
+msgid "Users"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:926
+msgid "Legacy identity role detected: tpw_member is still assigned to one or more users."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:944
+msgid "4. Unknown Role Detection"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:945
+msgid "These assigned roles are not WordPress core roles and are not currently classified as known TPW roles by the audit. They may be legacy, site-local, or third-party roles and are reported without modification."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:948
+msgid "No unknown roles were found in current user assignments."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:967
+msgid "Assigned Users"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:967
+msgid "User Details"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:982
+msgid "5. Member Status Distribution"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:983
+msgid "Current status counts from tpw_members.status. This is an audit snapshot only and does not enforce any status vocabulary."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1003
+msgid "6. Identity Drift Indicators"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1004
+msgid "These conditions are diagnostic warnings only. They help identify current-state drift before later migration and enforcement work begins."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1011
+msgid "Warning"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1035
+msgid "No records found."
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1072
+msgid "Direct user_id linkage"
+msgstr ""
+
+#. translators: %s: Comma-separated weak-linkage match methods such as email or username.
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1078
+#, php-format
+msgid "methods: %s"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1082
+msgid "Weak fallback with multiple possible matches"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1083
+msgid "Weak fallback only"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1085
+msgid "No linked member record found"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1096
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1171
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1198
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1228
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1260
+msgid "User"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1096
+msgid "Matched Member"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1096
+msgid "Notes"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1123
+msgid "(none)"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1129
+msgid "Linked user_id"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1129
+msgid "Reason"
+msgstr ""
+
+#. translators: %s: WordPress role slug being reported in the identity audit.
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1143
+#, php-format
+msgid "Users with role: %s"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1171
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1228
+msgid "Resolved Member"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1171
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1228
+msgid "Linkage Type"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1198
+msgid "Identity Roles"
+msgstr ""
+
+#: modules/members/admin/class-tpw-identity-audit-admin.php:1260
+msgid "Weak Matches"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:31
+msgid "General"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:32
+msgid "Privacy"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:33
+#: modules/members/settings/member-settings.php:193
+msgid "Sign-Ups"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:34
+msgid "Field Settings"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:35
+msgid "Directory Field Visibility"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:36
+#: modules/members/settings/member-settings.php:195
+msgid "Member Profile"
+msgstr ""
+
+#: modules/members/includes/admin-settings-tabs.php:37
+#: modules/members/settings/member-settings.php:197
+msgid "Address Lookup"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:212
+msgid "Member is no longer linked to the expected WordPress user."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:221
+msgid "Password setup email sent."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:228
+#: modules/members/includes/class-tpw-member-password-setup.php:93
+#: modules/members/shortcodes/members-admin.php:475
+msgid "Password setup email could not be sent."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:417
+msgid "Household"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:431
+msgid "Household created and member assigned."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:432
+msgid "Member assigned to household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:440
+msgid "You do not have permission to manage households."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:441
+msgid "Household support is disabled."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:442
+msgid "Invalid member."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:443
+msgid "Cannot create household: member has no society assigned."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:444
+msgid "Failed to create household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:445
+msgid "Failed to assign member to household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:446
+msgid "Please select a valid primary member."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:447
+msgid "Household belongs to a different society."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:462
+msgid "Assigned:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:463
+msgid "Primary member:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:464
+msgid "Primary member (this record):"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:465
+msgid "Role:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:508
+msgid "Household members:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:523
+msgid "Primary"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:525
+#: modules/members/includes/class-tpw-member-admin-actions.php:620
+#: modules/members/includes/class-tpw-member-ajax.php:762
+msgid "Partner"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:527
+#: modules/members/includes/class-tpw-member-admin-actions.php:621
+msgid "Child"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:541
+msgid "This record"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:559
+msgid "Status:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:559
+msgid "Not assigned to a household"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:566
+msgid "This member is the primary contact for their household. Household changes are disabled here."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:583
+msgid "Change household / primary member"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:584
+msgid "Choose a primary member to attach or move this member into that household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:594
+msgid "Create new household with this member as primary"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:601
+msgid "Choose household (primary member)"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:603
+#: modules/members/settings/member-signups-settings.php:36
+#: modules/members/settings/member-signups-settings.php:192
+#: modules/notices/templates/form.php:25
+#: templates/noticeboard/form.php:25
+msgid "— Select —"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:614
+msgid "This will move the member to a different household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:618
+msgid "Household role for this member"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:629
+msgid "Make this member the primary member for this household"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:631
+msgid "This will replace the existing primary member."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:633
+msgid "This will replace the existing primary member for this household."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-admin-actions.php:637
+msgid "Update household"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-ajax.php:715
+msgid "Admin Section"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-ajax.php:720
+msgid "Updated"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-ajax.php:760
+msgid "Family membership"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:105
+msgid "Password Setup Emails"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:106
+#, php-format
+msgid "Eligible newly imported linked members: %d"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:109
+msgid "Existing WordPress users excluded"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:110
+msgid "Rows without a valid email excluded"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:111
+msgid "Rows without a new linked WordPress user excluded"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:112
+msgid "Other skipped rows excluded"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:136
+#, php-format
+msgid "Sent: %1$d, Failed: %2$d, Skipped: %3$d, Remaining: %4$d"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:140
+msgid "No newly created and linked WordPress users were created in this import, so there are no password setup emails to send."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:143
+msgid "Continue sending remaining password setup emails"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:144
+msgid "Send password setup emails to newly imported members"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:153
+msgid "Password setup email sending is complete for this import run."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:165
+msgid "View failed or skipped recipients"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:166
+msgid "Result"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:169
+msgid "No details available."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:187
+#: modules/members/templates/admin/import-csv.php:38
+msgid "The password setup email import run has expired or is no longer available."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:345
+#: modules/members/includes/class-tpw-member-csv-importer.php:524
+msgid "No data found in CSV file."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:353
+msgid "Map CSV Columns to Member Fields"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:354
+msgid "Preview CSV Data"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:371
+msgid "CSV Column"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:371
+msgid "Map To Field"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:401
+msgid "-- Select Field --"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:426
+msgid "On duplicate users:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:427
+msgid "Skip record if user exists (default)"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:428
+msgid "Update user if exists"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:429
+msgid "Duplicates are detected by email. For rows without email, username is used (fallback to matching First Name + Surname)."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:432
+msgid "Username handling for new WordPress users:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:433
+msgid "Generate new usernames (default)"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:434
+msgid "Preserve imported usernames"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:435
+msgid "Generate mode ignores mapped username values when creating new WordPress users. Preserve mode uses the imported username as the preferred base and suffixes it until unique. Rows without email still use the member username field for member-only import matching."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:438
+msgid "Simulation mode – don’t actually import"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:440
+msgid "Import Members"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:448
+msgid "Security check failed. Please reload the page and try again."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:451
+msgid "Starting import process..."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:461
+msgid "CSV file not found or upload expired. Please try again."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:467
+msgid "CSV file is not readable."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:472
+msgid "Unable to read the CSV file."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:800
+#, php-format
+msgid "Imported %d members successfully."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:802
+msgid "Import Summary"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:843
+msgid "Import Members from CSV"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:847
+msgid "Choose CSV File:"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:851
+msgid "First row contains column headers"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:853
+msgid "Upload and Continue"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-csv-importer.php:855
+msgid "Download Sample CSV Template"
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-form-handler.php:348
+#: modules/members/includes/class-tpw-member-form-handler.php:677
+msgid "Invalid member ID."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-form-handler.php:685
+msgid "Member not found."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-password-setup.php:20
+msgid "Linked WordPress user could not be loaded."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-password-setup.php:28
+msgid "Linked WordPress user does not have a valid email address."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-password-setup.php:35
+msgid "Password reset functions are unavailable."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-password-setup.php:51
+msgid "Password setup URL could not be generated."
+msgstr ""
+
+#: modules/members/includes/class-tpw-member-password-setup.php:58
+msgid "TPW email service is unavailable."
+msgstr ""
+
+#: modules/members/settings/member-settings.php:184
+#: modules/members/settings/member-settings.php:201
+msgid "Member Settings"
+msgstr ""
+
+#: modules/members/settings/member-settings.php:189
+msgid "General Settings"
+msgstr ""
+
+#: modules/members/settings/member-settings.php:191
+msgid "Privacy Settings"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:24
+msgid "Enable Sign-Ups"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:29
+msgid "Join Page"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:42
+msgid "When Sign-Ups are enabled, TPW Core will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:46
+msgid "Active Join Provider"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:53
+msgid "Select which registered provider tpw_join_form dispatches to on the managed Join page. The page content itself is not rewritten."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:58
+msgid "Field Configuration"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:59
+msgid "Only public-safe fields are shown here. Enable the fields you want on the Join form, choose whether they are required, and place them into the fixed Core section registry."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:60
+msgid "Drag rows to change field order. Ordering is saved within each section."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:61
+msgid "Email, First Name, and Surname are Core-required baseline Join fields. They stay visible here for reference, but their enabled and required states are locked and cannot be turned off."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:150
+#: modules/members/shortcodes/member-profile.php:378
+msgid "Field"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:152
+#: modules/members/settings/member-signups-settings.php:173
+msgid "Enabled"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:154
+msgid "Section"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:167
+msgid "Core Required"
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:177
+msgid "System-required and always enabled."
+msgstr ""
+
+#: modules/members/settings/member-signups-settings.php:187
+msgid "Locked as required for Join readiness."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:99
+msgid "Too many attempts. Please try again later."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:132
+msgid "Please enter your email/username and password."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:154
+#: modules/members/shortcodes/member-login.php:571
+msgid "Invalid username or password."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:205
+#: modules/members/shortcodes/member-login.php:248
+#: modules/members/signups/class-tpw-signup-form-controller.php:219
+msgid "Security check failed. Please refresh the page and try again."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:211
+msgid "Please enter your email or username."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:223
+#: modules/members/shortcodes/member-login.php:232
+#: modules/members/shortcodes/member-login.php:565
+msgid "If an account with that email address exists, you'll receive an email with a link to reset your password shortly. Please check your inbox (and junk folder)."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:236
+#: modules/members/shortcodes/member-login.php:567
+msgid "Password reset failed. Please try again later."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:262
+#: modules/members/shortcodes/member-login.php:328
+msgid "This password reset link is invalid or has expired. Please request a new password reset."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:268
+msgid "Please enter your new password twice."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:274
+msgid "Passwords do not match."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:292
+#: modules/members/shortcodes/member-login.php:569
+msgid "Password successfully reset. Please log in."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:337
+msgid "Password reset failed. Please request a new password reset."
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:399
+#, php-format
+msgid "Reset your password: %s"
+msgstr ""
+
+#: modules/members/shortcodes/member-login.php:590
+msgid "Login form template missing."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:21
+#: modules/members/shortcodes/member-profile.php:322
+msgid "Change Password"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:258
+msgid "Confirm"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:262
+#: modules/members/shortcodes/member-profile.php:341
+#: modules/members/shortcodes/member-profile.php:343
+msgid "Use a strong password that you do not use elsewhere."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:263
+msgid "Too short"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:264
+msgid "Very weak"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:265
+msgid "Weak"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:266
+msgid "Medium"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:267
+msgid "Strong"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:268
+msgid "Passwords do not match"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:269
+msgid "Password strength could not be determined."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:283
+msgid "Your password has been updated."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:292
+msgid "You do not have permission to change that password."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:294
+msgid "Your linked member record could not be loaded."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:296
+msgid "Your password change request expired. Please try again."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:298
+msgid "Enter your current password."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:300
+msgid "Enter and confirm your new password."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:302
+msgid "Your new passwords do not match."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:304
+msgid "Your new password must be different from your current password."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:306
+msgid "Your current password is incorrect."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:308
+msgid "Your password could not be updated. Please try again."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:310
+msgid "Your password could not be updated."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:335
+msgid "Current password"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:339
+msgid "New password"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:346
+msgid "Confirm new password"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:349
+msgid "Update Password"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:378
+msgid "Value"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:446
+msgid "Last updated:"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:475
+msgid "Member Photo"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:480
+msgid "Upload Member Photo"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:483
+msgid "Choose file"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:484
+msgid "No file chosen"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:486
+msgid "Recommended size: 300x300px. Max file size: 2MB."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:495
+msgid "Replace"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:505
+msgid "No photo uploaded yet."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:648
+#: modules/members/shortcodes/member-profile.php:669
+#: modules/members/shortcodes/members-admin.php:508
+#: modules/notices/shortcodes/noticeboard-list.php:63
+msgid "Access Denied"
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:661
+msgid "Member record not found for your user. As an admin you can still preview via this page, but creating a member record is recommended."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:663
+msgid "Member record not found for your user."
+msgstr ""
+
+#: modules/members/shortcodes/member-profile.php:679
+msgid "Profile section unavailable."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:451
+msgid "Member photo deleted."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:453
+msgid "Member photo updated."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:463
+msgid "Member saved and password setup email sent."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:464
+msgid "Password setup link sent to the member."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:474
+msgid "Member saved, but the password setup email could not be sent."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:476
+msgid "This member is not linked to a valid WordPress user."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:477
+msgid "Password setup email is blocked because the member email and linked WordPress account email do not match. Resolve the mismatch first."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:487
+msgid "Administrator access was not removed because this would leave the site without any other effective Administrator who can recover member management."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:488
+msgid "Your Administrator access was not removed because no other effective Administrator currently exists to recover the system."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:497
+msgid "WordPress user successfully created and linked."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:501
+msgid "Email address added — you can now create a WordPress user for this member."
+msgstr ""
+
+#: modules/members/signups/class-tpw-join-page.php:87
+msgid "Core"
+msgstr ""
+
+#: modules/members/signups/class-tpw-join-page.php:170
+#: modules/members/signups/class-tpw-join-page.php:375
+#: modules/members/signups/class-tpw-signup-field-schema.php:275
+#: modules/members/signups/class-tpw-signup-form-renderer.php:82
+msgid "Join"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:63
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:64
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:86
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:102
+msgid "Sign Ups (Debug)"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:80
+msgid "You do not have permission to access this screen."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:87
+msgid "Signup debug mode is disabled."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:103
+msgid "Temporary internal testing screen for draft signup attempts and the Branch 5 internal completion bridge."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:108
+msgid "Attempt ID"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:110
+msgid "Flow Key"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:112
+msgid "Created Date"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:113
+msgid "Action"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:119
+msgid "No signup attempts found."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:154
+msgid "Complete Internally"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-attempts-admin.php:157
+msgid "—"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-controller.php:242
+msgid "A valid email address is required to continue."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-controller.php:248
+msgid "The join request could not be recorded right now. Please try again."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:23
+msgid "Join requests are not available at the moment."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:47
+msgid "Thank you for joining us"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:48
+msgid "We've received your details successfully."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:49
+msgid "We'll review your request and be in touch if anything further is needed. If you contact us about this request, please quote the reference below."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:87
+msgid "Please correct the highlighted fields and try again."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:96
+msgid "Submit Join Request"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-renderer.php:236
+msgid "Select…"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:88
+msgid "This field is required."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:97
+msgid "Enter a valid email address."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:102
+msgid "Enter a valid date."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:107
+msgid "Enter a valid date and time."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:112
+msgid "Enter a valid number."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-form-validator.php:117
+msgid "Choose a valid option."
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-sections.php:20
+msgid "Account Details"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-sections.php:21
+msgid "Personal Details"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-sections.php:22
+msgid "Address"
+msgstr ""
+
+#: modules/members/signups/class-tpw-signup-sections.php:23
+msgid "Emergency Contact"
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:34
+msgid "Please enter a valid email address."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:35
+msgid "This member is linked to a WordPress user that could not be loaded. Repair the account link before changing the email."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:36
+msgid "That email address is already in use by another WordPress account. Use a different email or link the correct account first."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:37
+msgid "The member email could not be synchronized with the linked WordPress account. No email change was saved."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:307
+msgid "Linked account email status"
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:308
+msgid "Member Email:"
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:309
+msgid "WordPress/Login Email:"
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:311
+msgid "Warning: This member is linked to a WordPress account that could not be loaded."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:313
+msgid "Warning: Member email and linked WordPress account email do not match."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:314
+msgid "Password setup emails are blocked until the mismatch is resolved."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:324
+msgid "Password setup emails will be sent to:"
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:326
+msgid "Password setup is unavailable because the linked WordPress account does not have a valid email address."
+msgstr ""
+
+#: modules/members/templates/admin/edit.php:329
+#: modules/members/templates/admin/edit.php:334
+msgid "Resolve the email mismatch before sending a password setup link."
+msgstr ""
+
+#: modules/members/templates/admin/import-csv.php:40
+msgid "The password setup email import run is invalid."
+msgstr ""
+
+#: modules/menus/class-tpw-course-choice-form-admin.php:46
+#: modules/menus/class-tpw-menus-frontend-admin.php:535
+msgid "Course Options"
+msgstr ""
+
+#: modules/menus/class-tpw-course-choice-form-admin.php:47
+msgid "Add or update an individual dish option for your menu."
+msgstr ""
+
+#: modules/menus/class-tpw-course-choice-form-admin.php:125
+msgid "Changing this menu item's name will remove the preselected value from existing RSVPs. Are you sure you want to continue?"
+msgstr ""
+
+#: modules/menus/class-tpw-course-choices-admin.php:47
+#: modules/menus/class-tpw-course-choices-admin.php:53
+#: modules/menus/class-tpw-course-choices-admin.php:58
+msgid "Manage Course Options"
+msgstr ""
+
+#: modules/menus/class-tpw-course-choices-admin.php:48
+#: modules/menus/class-tpw-course-choices-admin.php:54
+msgid "View and edit available choices for each course in your dining menus. For Admins and Secretaries."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-admin-edit.php:29
+#: modules/menus/class-tpw-menus-frontend-admin.php:539
+msgid "Edit Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-admin-edit.php:30
+msgid "Update menu details, courses, and pricing for your events."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-admin.php:72
+#: modules/menus/class-tpw-menus-admin.php:78
+#: modules/menus/class-tpw-menus-admin.php:83
+msgid "Manage Menus"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-admin.php:73
+#: modules/menus/class-tpw-menus-admin.php:79
+msgid "Add, edit, and delete dining menus for your events. For Admins and Secretaries."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:31
+#: modules/menus/class-tpw-menus-frontend-admin.php:356
+msgid "Dining Menus"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:41
+msgid "Dining menu created."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:42
+msgid "Dining menu updated."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:43
+msgid "Dining menu deleted."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:44
+msgid "Course choice created."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:45
+msgid "Course choice updated."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:46
+msgid "Course choice deleted."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:47
+msgid "Course name updated."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:50
+msgid "Menu name is required."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:51
+msgid "Dish name is required."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:52
+msgid "The selected dining menu is invalid."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:53
+msgid "The selected course choice is invalid."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:54
+msgid "The selected course is invalid."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:55
+msgid "Security check failed. Please try again."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:56
+msgid "You do not have permission to manage dining menus."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:57
+msgid "The dining menu could not be saved."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:58
+msgid "The dining menu could not be deleted."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:59
+msgid "The course choice could not be saved."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:60
+msgid "The course choice could not be deleted."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:61
+msgid "The course name could not be updated."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:70
+msgid "Dining Menus is not currently available."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:357
+msgid "Manage dining menus and the course choices used by dining-enabled events from the FlexiEvent front-end admin."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:359
+msgid "Add Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:365
+msgid "Each menu now links directly into course management so you can maintain dishes without leaving the FE admin."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:366
+#, php-format
+msgid "%d menus"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:370
+#: modules/menus/class-tpw-menus-frontend-admin.php:383
+msgid "Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:370
+#: modules/menus/class-tpw-menus-frontend-admin.php:385
+#: modules/menus/class-tpw-menus-frontend-admin.php:389
+#: modules/menus/class-tpw-menus-frontend-admin.php:509
+msgid "Courses"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:370
+#: modules/menus/class-tpw-menus-frontend-admin.php:386
+#: modules/menus/class-tpw-menus-frontend-admin.php:499
+#: modules/menus/templates/menu-modal.php:68
+msgid "Price"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:391
+msgid "Delete this dining menu?"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:410
+msgid "Dining menus pagination"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:414
+#, php-format
+msgid "Showing %1$d-%2$d of %3$d"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:430
+msgid "No dining menus have been created yet."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:431
+msgid "Create your first menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:442
+msgid "Edit Dining Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:442
+msgid "Add Dining Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:444
+msgid "Update the menu details used by your dining-enabled events."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:445
+msgid "Create a dining menu with the core details needed for event setup."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:451
+#: modules/menus/class-tpw-menus-frontend-admin.php:525
+#: modules/menus/class-tpw-menus-frontend-admin.php:645
+msgid "Dining menu not found."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:452
+msgid "The selected menu could not be loaded."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:454
+#: modules/menus/class-tpw-menus-frontend-admin.php:470
+#: modules/menus/class-tpw-menus-frontend-admin.php:528
+#: modules/menus/class-tpw-menus-frontend-admin.php:540
+#: modules/menus/class-tpw-menus-frontend-admin.php:648
+msgid "Back to Menus"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:482
+msgid "Menu Details"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:483
+msgid "These fields stay aligned with the existing backend menu records."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:487
+msgid "Menu Name"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:495
+#: modules/menus/class-tpw-menus-frontend-admin.php:556
+msgid "Number of Courses"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:507
+msgid "Save Changes"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:507
+msgid "Create Menu"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:526
+msgid "Select a valid dining menu to manage its courses and dishes."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:536
+#, php-format
+msgid "Manage course names and dish choices for %s."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:548
+#, php-format
+msgid "%1$d courses configured. Menu price: %2$s."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:571
+#, php-format
+msgid "%d dish available."
+msgid_plural "%d dishes available."
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:582
+msgid "Course Name"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:588
+msgid "Update Course Name"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:589
+msgid "Add Dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:597
+#: modules/menus/class-tpw-menus-frontend-admin.php:602
+msgid "Dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:597
+#: modules/menus/class-tpw-menus-frontend-admin.php:604
+#: modules/menus/class-tpw-menus-frontend-admin.php:721
+msgid "Extra Cost"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:611
+#: modules/menus/class-tpw-menus-frontend-admin.php:734
+msgid "Delete this course choice?"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:629
+msgid "No dishes have been added for this course yet."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:630
+msgid "Add the first dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:646
+msgid "Select a valid dining menu to manage course choices."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:655
+msgid "Course not found."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:656
+msgid "The selected course is not available on this menu."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:658
+#: modules/menus/class-tpw-menus-frontend-admin.php:679
+#: modules/menus/class-tpw-menus-frontend-admin.php:694
+msgid "Back to Course Options"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:666
+msgid "Edit Course Choice"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:666
+msgid "Add Course Choice"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:669
+#, php-format
+msgid "Update a dish option for %1$s on %2$s."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:670
+#, php-format
+msgid "Add a new dish option for %1$s on %2$s."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:676
+msgid "Course choice not found."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:677
+msgid "The selected dish could not be loaded for this course."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:708
+msgid "Dish Details"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:709
+#, php-format
+msgid "This choice belongs to %1$s on %2$s."
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:713
+msgid "Dish Name"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:717
+msgid "Dish Description"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:729
+msgid "Save Dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:729
+msgid "Create Dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:740
+msgid "Delete Dish"
+msgstr ""
+
+#: modules/menus/class-tpw-menus-frontend-admin.php:766
+#: modules/menus/templates/menu-modal.php:86
+#, php-format
+msgid "Course %d"
+msgstr ""
+
+#: modules/menus/templates/menu-modal.php:35
+msgid "View Menu"
+msgstr ""
+
+#: modules/menus/templates/menu-modal.php:103
+msgid "Choices to be confirmed."
+msgstr ""
+
+#: modules/notices/shortcodes/noticeboard-list.php:52
+msgid "Please sign in to view the Noticeboard."
+msgstr ""
+
+#: modules/notices/templates/form.php:5
+#: templates/noticeboard/form.php:5
+msgid "Add/Edit Notice"
+msgstr ""
+
+#: modules/notices/templates/form.php:30
+#: templates/noticeboard/form.php:30
+msgid "New category name"
+msgstr ""
+
+#: modules/notices/templates/form.php:36
+#: templates/noticeboard/form.php:36
+msgid "Featured Image"
+msgstr ""
+
+#: modules/notices/templates/form.php:39
+#: templates/noticeboard/form.php:39
+msgid "Choose Image"
+msgstr ""
+
+#: modules/notices/templates/form.php:49
+#: templates/noticeboard/form.php:49
+msgid "Excerpt"
+msgstr ""
+
+#: modules/notices/templates/form.php:53
+#: templates/noticeboard/form.php:53
+msgid "Save Notice"
+msgstr ""
+
+#: modules/payments/admin-settings.php:166
+msgid "Bank Transfer"
+msgstr ""
+
+#: modules/payments/admin-settings.php:171
+msgid "Cheque"
+msgstr ""
+
+#: modules/payments/admin-settings.php:176
+msgid "Cash"
+msgstr ""
+
+#: modules/payments/admin-settings.php:181
+msgid "Card on the day"
+msgstr ""
+
+#: modules/payments/admin-settings.php:199
+msgid "Square"
+msgstr ""
+
+#: modules/payments/admin-settings.php:200
+msgid "SumUp"
+msgstr ""
+
+#: modules/payments/admin-settings.php:201
+msgid "WooCommerce"
+msgstr ""
+
+#: modules/payments/admin-settings.php:226
+msgid "SumUp currently keeps its existing admin-only credential and OAuth flow. A front-end-safe wrapper is not available yet, so this method temporarily falls back to the existing admin page."
+msgstr ""
+
+#: modules/payments/admin-settings.php:230
+msgid "Square settings are currently owned by the TPW Square Gateway add-on. Use the existing admin route until a front-end-safe compatibility wrapper is available."
+msgstr ""
+
+#: modules/payments/admin-settings.php:233
+msgid "Square configuration includes credential fields and still relies on the existing admin settings surface. Use the admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:237
+msgid "WooCommerce payment configuration remains owned by WooCommerce. Use the existing admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:238
+msgid "WooCommerce is not active on this site, so there is no front-end configuration screen to render here."
+msgstr ""
+
+#: modules/payments/admin-settings.php:241
+msgid "This payment method is registered, but a front-end-safe configuration screen is not available yet. Use the existing admin route for now."
+msgstr ""
+
+#: modules/payments/admin-settings.php:277
+msgid "Configure this payment method without leaving the FlexiClub Settings workspace."
+msgstr ""
+
+#: modules/payments/admin-settings.php:280
+#: modules/payments/class-tpw-card-on-the-day-settings.php:47
+msgid "Back to Payment Methods"
+msgstr ""
+
+#: modules/payments/admin-settings.php:286
+msgid "You do not have permission to configure payment methods."
+msgstr ""
+
+#: modules/payments/admin-settings.php:308
+msgid "Open Admin Settings"
+msgstr ""
+
+#: modules/payments/admin-settings.php:352
+msgid "Payment Methods UI is unavailable (missing admin renderer)."
+msgstr ""
+
+#: modules/payments/class-tpw-bacs-settings.php:108
+#: modules/payments/class-tpw-card-on-the-day-settings.php:103
+#: modules/payments/class-tpw-cash-settings.php:102
+#: modules/payments/class-tpw-cheque-settings.php:133
+#: modules/payments/views/square-settings-page.php:67
+#, php-format
+msgid "Fixed (%s)"
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:13
+#: modules/payments/class-tpw-card-on-the-day-settings.php:14
+#: modules/payments/class-tpw-card-on-the-day-settings.php:45
+msgid "Card on the day Settings"
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:56
+msgid "Surcharge settings updated successfully."
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:86
+msgid "Shown on checkout."
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:90
+msgid "Message to display"
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:93
+msgid "This message will be shown on the checkout, thank you page, and confirmation email."
+msgstr ""
+
+#: modules/payments/class-tpw-card-on-the-day-settings.php:97
+msgid "Surcharge (%)"
+msgstr ""
+
+#: modules/payments/class-tpw-core-checkout-handler.php:17
+msgid "Square payments are not available because the TPW Square Gateway add-on is not active. Please choose another payment method."
+msgstr ""
+
+#: modules/payments/class-tpw-core-checkout-handler.php:18
+msgid "Square Unavailable"
+msgstr ""
+
+#: modules/payments/class-tpw-core-checkout-handler.php:24
+msgid "The selected payment method is not currently available. Please choose another payment method."
+msgstr ""
+
+#: modules/payments/class-tpw-core-checkout-handler.php:25
+msgid "Payment Method Unavailable"
+msgstr ""
+
+#: modules/payments/class-tpw-payment-logs-admin.php:33
+msgid "TPW Payment Logs"
+msgstr ""
+
+#: modules/payments/class-tpw-payment-logs-admin.php:110
+msgid "Clear All Logs"
+msgstr ""
+
+#: modules/payments/class-tpw-payment-logs-admin.php:118
+msgid "Date"
+msgstr ""
+
+#: modules/payments/class-tpw-payment-logs-admin.php:118
+msgid "Method"
+msgstr ""
+
+#: modules/payments/class-tpw-payment-logs-admin.php:142
+msgid "All payment logs have been cleared."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:86
+msgid "Square settings are retained, but Square cannot be enabled until the TPW Square Gateway add-on is active."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:147
+msgid "Square remains configured in Core, but it is unavailable on forms until the TPW Square Gateway add-on is active."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:204
+msgid "Unavailable on forms until the TPW Square Gateway add-on is active."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:208
+msgid "The previous enabled state will be restored when the add-on becomes active again."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:218
+msgid "Square configuration remains on the existing settings surface."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:220
+msgid "Uses the currently registered payment method settings."
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:256
+msgid "Enable"
+msgstr ""
+
+#. translators: %s: payment method name
+#: modules/payments/class-tpw-payments-admin.php:266
+#, php-format
+msgid "Configure %s"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:272
+msgid "Open details"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:272
+msgid "View details"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:346
+#: modules/payments/class-tpw-payments-admin.php:352
+#: modules/payments/class-tpw-payments-admin.php:357
+msgid "Manage Payment Methods"
+msgstr ""
+
+#: modules/payments/class-tpw-payments-admin.php:347
+#: modules/payments/class-tpw-payments-admin.php:353
+msgid "Enable, disable, and configure payment methods for your events. For Admins and Treasurers."
+msgstr ""
+
+#: modules/payments/views/square-settings-page.php:6
+msgid "Square payments now require the TPW Square Gateway add-on. These settings are retained for compatibility and will be used by the add-on when it is active."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:28
+msgid "None"
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:33
+msgid "Lookup controls stay hidden and address entry remains manual only."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:34
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:259
+msgid "Address lookup is disabled."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:38
+msgid "Ideal Postcodes"
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:45
+msgid "Ideal Postcodes API Key"
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:46
+msgid "Required for live GB address lookup. Available from your Ideal Postcodes dashboard."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:49
+msgid "Ideal Postcodes is fully wired for live GB address lookup when a valid API key is configured."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:50
+msgid "Ideal Postcodes is selected but no API key has been configured yet."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:54
+msgid "Fetchify"
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:61
+msgid "Fetchify Access Token"
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:62
+msgid "Stored in Core now so the provider can be selected safely. Live Fetchify lookup is not wired in this release."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:65
+msgid "Fetchify settings are scaffolded only in this Core release. Selecting Fetchify keeps manual address entry active and does not expose lookup UI yet."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:66
+msgid "Fetchify credentials can be stored here, but live Fetchify address lookup is not wired yet."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:269
+msgid "No valid address lookup provider is configured."
+msgstr ""
+
+#: modules/postcodes/class-tpw-postcode-provider-registry.php:276
+#: modules/postcodes/postcode-ajax.php:71
+msgid "Address lookup is not available for the selected provider."
+msgstr ""
+
+#: modules/postcodes/postcode-ajax.php:51
+msgid "Postcode is required."
+msgstr ""
+
+#: modules/postcodes/postcode-ajax.php:61
+msgid "Postcode helper unavailable."
+msgstr ""
+
+#: modules/postcodes/postcode-ajax.php:87
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:92
+msgid "Postcode not found."
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-fetchify.php:37
+msgid "Fetchify credentials can be stored in Core, but live Fetchify address lookup is not wired in this release."
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:55
+msgid "Ideal Postcodes supports GB lookup only."
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:62
+msgid "Ideal Postcodes API key missing."
+msgstr ""
+
+#. translators: %s: suggestion list
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:97
+#, php-format
+msgid "Suggestions: %s"
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:106
+#, php-format
+msgid "HTTP %d from Ideal Postcodes."
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:111
+msgid "No addresses returned for this postcode."
+msgstr ""
+
+#: modules/postcodes/providers/class-tpw-postcode-provider-ideal-postcodes.php:134
+msgid "No matching addresses were returned for this postcode."
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:364
+msgid "Security check failed"
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:409
+#, php-format
+msgid "Page '%s' successfully recreated."
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:411
+#, php-format
+msgid "Failed to recreate page '%s'."
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:433
+msgid "Failed to unlink"
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:452
+msgid "Failed to recreate page"
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:511
+#: modules/system-pages/templates/system-pages.php:83
+msgid "Exists"
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:525
+#: modules/system-pages/templates/system-pages.php:98
+#: templates/frontend/flexiclub-workspace-system-pages.php:126
+msgid "Unlink"
+msgstr ""
+
+#: modules/system-pages/class-tpw-core-system-pages.php:526
+#: modules/system-pages/templates/system-pages.php:99
+msgid "Recreate"
+msgstr ""
+
+#: modules/system-pages/templates/system-pages.php:6
+msgid "System Pages manager not loaded."
+msgstr ""
+
+#: modules/system-pages/templates/system-pages.php:25
+msgid "Registered TPW system pages across plugins. This list does not auto-create WordPress pages. Use Recreate to restore a missing page for an existing slug."
+msgstr ""
+
+#: modules/system-pages/templates/system-pages.php:28
+msgid "No system pages registered yet."
+msgstr ""
+
+#: modules/system-pages/templates/system-pages.php:35
+msgid "Linked WP Page"
+msgstr ""
+
+#: modules/system-pages/templates/system-pages.php:37
+msgid "Plugin"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-router.php:21
+msgid "You do not have permission to access TPW Control."
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-router.php:27
+msgid "You do not have permission to view this section."
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-router.php:66
+#: modules/tpw-control/templates/layout.php:8
+msgid "TPW Control"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-router.php:72
+msgid "Menu Manager coming soon…"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1147
+#, php-format
+msgid "Moved %d file to Trash"
+msgid_plural "Moved %d files to Trash"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1152
+#, php-format
+msgid "Deleted %d file permanently"
+msgid_plural "Deleted %d files permanently"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1865
+msgid "Edit Upload Page"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1875
+msgid "No files uploaded yet."
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1926
+msgid "Category:"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1947
+msgid "Year:"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1950
+msgid "Show all years"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2050
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2075
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2098
+msgid "Documents"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2114
+msgid "Download"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2350
+msgid "Upload Pages module not available."
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control.php:189
+msgid "Upload Pages"
+msgstr ""
+
+#: modules/tpw-control/class-tpw-control.php:198
+msgid "Menu Manager"
+msgstr ""
+
+#: modules/tpw-control/templates/dashboard.php:25
+msgid "FlexiClub Control has been split into separate FE workspaces"
+msgstr ""
+
+#: modules/tpw-control/templates/dashboard.php:26
+msgid "Use the new Menu Management and Archival System workspaces for day-to-day front-end operations. This legacy page remains available during the transition so existing links, pages, and shortcodes continue to work."
+msgstr ""
+
+#: modules/tpw-control/templates/dashboard.php:35
+msgid "Legacy quick links remain available below while the older combined workspace is phased into transition status."
+msgstr ""
+
+#: modules/tpw-control/templates/dashboard.php:37
+msgid "Legacy Upload Pages"
+msgstr ""
+
+#: modules/tpw-control/templates/dashboard.php:38
+msgid "Legacy Menu Manager"
+msgstr ""
+
+#: modules/tpw-control/templates/sections/menu-manager.php:6
+msgid "You do not have permission to manage menus."
+msgstr ""
+
+#: modules/tpw-control/templates/sections/upload-pages.php:374
+#, php-format
+msgid "%d file"
+msgid_plural "%d files"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/flexiclub-dashboard.php:15
+msgid "Your club. Your members. Your community."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:20
+#: templates/frontend/flexiclub-dashboard.php:23
+#: templates/frontend/flexiclub-dashboard.php:126
+msgid "Version"
+msgstr ""
+
+#. translators: %s: current user display name
+#: templates/admin/flexiclub-dashboard.php:32
+#: templates/frontend/flexiclub-dashboard.php:138
+#, php-format
+msgid "Welcome back, %s"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:37
+msgid "Here’s what’s happening across your club operations today."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:68
+msgid "A simple checklist for launching your club workspace."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:78
+#: templates/frontend/flexiclub-dashboard.php:184
+msgid "Setup Progress"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:82
+msgid "Everything is in place."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:83
+msgid "Almost there."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:112
+msgid "Collapse"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:113
+#: templates/admin/flexiclub-dashboard.php:129
+msgid "Dismiss"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:122
+#: templates/admin/flexiclub-dashboard.php:124
+msgid "Setup complete"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:125
+msgid "Your current onboarding checklist is complete."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:128
+msgid "View checklist"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:138
+msgid "A snapshot of your key management areas."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:176
+msgid "Add powerful add-ons to grow your club."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:210
+#: templates/frontend/flexiclub-dashboard.php:299
+msgid "Quick Actions"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:234
+#: templates/frontend/flexiclub-dashboard.php:323
+msgid "Recent Activity"
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:235
+#: templates/frontend/flexiclub-dashboard.php:324
+msgid "Latest operational updates across members, notices, and logs."
+msgstr ""
+
+#: templates/admin/flexiclub-dashboard.php:255
+#: templates/frontend/flexiclub-dashboard.php:344
+msgid "System Status"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:10
+msgid "FlexiClub navigation"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:20
+msgid "Club workspace for member operations, setup, and connected tools."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:30
+msgid "Workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:31
+msgid "FlexiClub workspace navigation"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:50
+msgid "On This Page"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:51
+msgid "FlexiClub dashboard sections"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:67
+msgid "Menu Management workspace unavailable"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:68
+msgid "The front-end Menu Management workspace template could not be found."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:77
+msgid "Archival System workspace unavailable"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:78
+msgid "The front-end Archival System workspace template could not be found."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:87
+msgid "Settings workspace unavailable"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:88
+msgid "The front-end Settings workspace template could not be found."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:97
+msgid "System Pages workspace unavailable"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:98
+msgid "The front-end System Pages workspace template could not be found."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:107
+msgid "Logs workspace unavailable"
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:108
+msgid "The front-end Logs workspace template could not be found."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:121
+msgid "Your front-end workspace for club administration and setup."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:143
+msgid "Monitor setup progress, jump into the right tool, and keep the club workspace healthy from one front-end hub."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:174
+msgid "A launch checklist for the FlexiClub front-end workspace and connected pages."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:185
+msgid "Complete the remaining setup tasks before handing this portal to club administrators."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:227
+msgid "Open the current club tools without absorbing or replacing their existing plugin-owned screens."
+msgstr ""
+
+#: templates/frontend/flexiclub-dashboard.php:265
+msgid "Add-on products stay plugin-owned. The FlexiClub hub links out to them and reports current availability."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-archival-system.php:15
+msgid "Manage the current front-end archive tools from the FlexiClub portal."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-archival-system.php:19
+#: templates/frontend/flexiclub-workspace-logs.php:46
+#: templates/frontend/flexiclub-workspace-menu-management.php:19
+#: templates/frontend/flexiclub-workspace-settings.php:37
+#: templates/frontend/flexiclub-workspace-system-pages.php:23
+msgid "Back to dashboard"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-archival-system.php:39
+#: templates/frontend/flexiclub-workspace-menu-management.php:39
+msgid "FlexiClub Control remains available during the transition."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-archival-system.php:41
+#: templates/frontend/flexiclub-workspace-menu-management.php:41
+msgid "Open legacy FlexiClub Control"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:41
+msgid "Logs Workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:42
+msgid "Review operational email and payment logs from the FlexiClub portal without leaving the front end. Sensitive payloads and secrets remain hidden."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:49
+msgid "Open Settings workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:68
+msgid "Switch between the existing log sources that FlexiClub currently exposes through shared Core tooling."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:73
+msgid "No front-end-safe log sources are currently available."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:75
+msgid "FlexiClub log sources"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:106
+#, php-format
+msgid "Review the latest %1$s entries available from this source."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:135
+#: templates/frontend/flexiclub-workspace-logs.php:145
+msgid "Date / Time"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:136
+#: templates/frontend/flexiclub-workspace-logs.php:148
+msgid "Type / Source"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:138
+#: templates/frontend/flexiclub-workspace-logs.php:154
+msgid "Message / Summary"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:139
+#: templates/frontend/flexiclub-workspace-logs.php:157
+msgid "Related Item"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:152
+msgid "Unknown"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-logs.php:165
+msgid "Log pagination"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-menu-management.php:15
+msgid "Manage the current front-end menu permissions tools from the FlexiClub portal."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:9
+msgid "Settings Area"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:32
+msgid "Settings Workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:33
+msgid "Manage the existing FlexiClub settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:40
+msgid "Open System Pages workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:50
+msgid "Switch between the existing FlexiClub settings areas without leaving the front-end workspace."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:54
+msgid "FlexiClub settings areas"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:78
+msgid "Portal Settings"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-settings.php:91
+msgid "The shared FlexiClub settings renderer is unavailable on this request."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:18
+msgid "System Pages Workspace"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:19
+msgid "Review every registered FlexiClub and add-on page, then repair or recreate only the pages that actually need intervention."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:42
+msgid "Each row shows the registration state, current page health, and the actions you can take from this workspace."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:45
+msgid "How this works"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:47
+msgid "What the actions mean"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:49
+msgid "View opens the current front-end page. Edit opens the underlying WordPress page so you can fix content or shortcode issues directly."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:50
+msgid "Unlink uses the existing System Pages unlink action. It clears the stored mapping without deleting the WordPress page itself."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:51
+msgid "Recreate uses the existing System Pages recreate action. Use it when a registered page is missing or when the current logic can safely repair an unpublished page."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:52
+msgid "If a published page is missing the expected shortcode, edit that page to repair it. The current System Pages logic does not overwrite published content automatically."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:53
+msgid "Only authorised FlexiClub admins and member managers can access this workspace and run these actions."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:69
+msgid "No system pages are currently registered."
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:71
+msgid "Registered system pages"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:73
+#: templates/frontend/flexiclub-workspace-system-pages.php:84
+msgid "Page"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:75
+#: templates/frontend/flexiclub-workspace-system-pages.php:99
+msgid "Page Status"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:76
+#: templates/frontend/flexiclub-workspace-system-pages.php:103
+msgid "Shortcode"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:77
+#: templates/frontend/flexiclub-workspace-system-pages.php:107
+msgid "Linked Page"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:78
+#: templates/frontend/flexiclub-workspace-system-pages.php:112
+msgid "Action State"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:126
+#, php-format
+msgid "Clear the current System Pages link for %s?"
+msgstr ""
+
+#: templates/frontend/flexiclub-workspace-system-pages.php:129
+#, php-format
+msgid "Recreate or repair the page for %s?"
+msgstr ""
+
+#: templates/members/profile/payments/index.php:28
+msgid "No payment modules are active."
+msgstr ""
+
+#: templates/members/profile/payments/index.php:52
+msgid "The selected payments view is not available."
+msgstr ""
+
+#: templates/members/profile/payments/partials/sidebar.php:6
+msgid "Payment types"
+msgstr ""

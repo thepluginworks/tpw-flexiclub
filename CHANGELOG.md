@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [2.10.1] - 2026-06-19
+
+### Fixed
+- Payments: restored creation of the shared `tpw_rsvp_payments` table during activation and added an existing-site repair path so payment rows can be created reliably again for ticketing and other TPW checkout flows.
+
 ## [2.10.0] - 2026-06-18
 
 ### Added

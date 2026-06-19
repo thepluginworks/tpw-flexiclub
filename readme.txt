@@ -4,7 +4,7 @@ Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.10.0
+Stable tag: 2.10.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,9 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.10.1 =
+- Payments: restored creation and repair of the shared RSVP payments table on activation and existing-site upgrade paths so payment rows can be created reliably again.
 
 = 2.10.0 =
 - Email: added durable queued email delivery backed by Action Scheduler, with queue status visibility, retry handling, and recovery for missing scheduled actions.
