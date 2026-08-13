@@ -1,21 +1,21 @@
 # Copyright (C) 2026 ThePluginWorks
-# This file is distributed under the same license as the FlexiClub plugin.
+# This file is distributed under the same license as the iLungu™ Club plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FlexiClub 2.10.2\n"
+"Project-Id-Version: iLungu™ Club 2.10.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-19T15:05:40+00:00\n"
+"POT-Creation-Date: 2026-08-03T15:57:03+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tpw-core\n"
 
 #. Plugin Name of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 #: includes/class-tpw-flexiclub-admin-menu.php:81
 #: includes/class-tpw-flexiclub-admin-menu.php:82
 #: includes/tpw-core-settings.php:27
@@ -25,22 +25,22 @@ msgstr ""
 #: templates/frontend/flexiclub-dashboard.php:18
 #: templates/frontend/flexiclub-dashboard.php:116
 #: templates/frontend/flexiclub-dashboard.php:118
-msgid "FlexiClub"
+msgid "iLungu™ Club"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 msgid "https://thepluginworks.com/"
 msgstr ""
 
 #. Description of the plugin
-#: tpw-flexiclub.php
-msgid "Free base platform for shared member, payment, page, branding, and admin tools across the FlexiClub ecosystem."
+#: ilungu-club.php
+msgid "Free base platform for shared member, payment, page, branding, and admin tools across the iLungu Club ecosystem."
 msgstr ""
 
 #. Author of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 msgid "ThePluginWorks"
 msgstr ""
 
@@ -224,15 +224,15 @@ msgid "Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:213
-msgid "FlexiClub Dashboard template is missing."
+msgid "iLungu Club Dashboard template is missing."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:253
-msgid "Please sign in with a club administrator account to access the FlexiClub workspace."
+msgid "Please sign in with a club administrator account to access the iLungu Club workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:259
-msgid "You do not have permission to access the FlexiClub workspace."
+msgid "You do not have permission to access the iLungu Club workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:269
@@ -244,11 +244,11 @@ msgid "You do not have permission to access the Archival System workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:289
-msgid "FlexiClub workspace unavailable"
+msgid "iLungu Club workspace unavailable"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:289
-msgid "The front-end FlexiClub dashboard template could not be found."
+msgid "The front-end iLungu Club dashboard template could not be found."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:301
@@ -256,15 +256,15 @@ msgid "Access restricted"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:302
-msgid "FlexiClub workspace"
+msgid "iLungu Club workspace"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:313
-msgid "Unknown FlexiClub bridge page."
+msgid "Unknown iLungu Club bridge page."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:319
-msgid "You do not have permission to access this FlexiClub bridge page."
+msgid "You do not have permission to access this iLungu Club bridge page."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:321
@@ -315,7 +315,7 @@ msgid "Create / Repair Page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:384
-msgid "FlexiClub Logs"
+msgid "iLungu Club Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:385
@@ -347,7 +347,7 @@ msgid "Email Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:397
-msgid "Existing FlexiClub settings tab for outbound email diagnostics."
+msgid "Existing iLungu Club settings tab for outbound email diagnostics."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:402
@@ -403,11 +403,11 @@ msgid "Bridge to the existing archive and upload-pages feature on its current fr
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:650
-msgid "Bridge to the front-end feature that controls WordPress menu visibility and permissions across the FlexiClub ecosystem."
+msgid "Bridge to the front-end feature that controls WordPress menu visibility and permissions across the iLungu Club ecosystem."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:659
-msgid "Existing System Pages tab inside FlexiClub Settings."
+msgid "Existing System Pages tab inside iLungu Club Settings."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:668
@@ -415,7 +415,7 @@ msgid "Existing Payment Methods settings tab."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:677
-msgid "Existing FlexiClub settings screen."
+msgid "Existing iLungu Club settings screen."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:686
@@ -449,7 +449,7 @@ msgid "Open Upload Pages / Archive"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:733
-msgid "This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the FlexiClub ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin."
+msgid "This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the iLungu Club ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:734
@@ -648,7 +648,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:2113
 #: templates/admin/flexiclub-dashboard.php:175
 #: templates/frontend/flexiclub-dashboard.php:264
-msgid "Extend FlexiClub"
+msgid "Extend iLungu Club"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2118
@@ -710,7 +710,7 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2203
 #: includes/class-tpw-flexiclub-admin-menu.php:3823
-msgid "Review branding, login, and shared FlexiClub platform settings."
+msgid "Review branding, login, and shared iLungu Club platform settings."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2208
@@ -768,7 +768,7 @@ msgid "Open Noticeboard"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2265
-msgid "The FlexiClub portal page must be available before the front-end System Pages workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end System Pages workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2272
@@ -776,7 +776,7 @@ msgid "Open System Pages"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2273
-msgid "Validate, repair, and recreate registered system pages from the FlexiClub portal."
+msgid "Validate, repair, and recreate registered system pages from the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2274
@@ -803,7 +803,7 @@ msgid "Open Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2288
-msgid "Review email and payment logs from the FlexiClub portal."
+msgid "Review email and payment logs from the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2298
@@ -811,11 +811,11 @@ msgid "Open Logs page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2299
-msgid "Dedicated front-end Logs page using the FlexiClub portal shell."
+msgid "Dedicated front-end Logs page using the iLungu Club portal shell."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2306
-msgid "The FlexiClub portal page must be available before the front-end Logs workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end Logs workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2307
@@ -823,7 +823,7 @@ msgid "Open admin logs (temporary)"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2317
-msgid "The FlexiClub portal page must be available before the front-end Settings workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end Settings workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2318
@@ -843,7 +843,7 @@ msgid "Manage payment methods from the front-end Settings workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2332
-msgid "Review branding, login, email, and shared FlexiClub platform settings from the portal."
+msgid "Review branding, login, email, and shared iLungu Club platform settings from the portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2356
@@ -879,7 +879,7 @@ msgid "Needs review"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2386
-msgid "Preferred front-end workspace route inside the FlexiClub portal."
+msgid "Preferred front-end workspace route inside the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2397
@@ -887,11 +887,11 @@ msgid "Open dedicated page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2398
-msgid "The FlexiClub portal page is not currently available, so the dedicated workspace page is being used instead."
+msgid "The iLungu Club portal page is not currently available, so the dedicated workspace page is being used instead."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2409
-msgid "The FlexiClub portal page must be available before this front-end workspace can be opened."
+msgid "The iLungu Club portal page must be available before this front-end workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2427
@@ -981,7 +981,7 @@ msgid "The System Pages manager is not available on this request."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2738
-msgid "No registered system pages were found in the current FlexiClub ecosystem registry."
+msgid "No registered system pages were found in the current iLungu Club ecosystem registry."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2741
@@ -1162,11 +1162,11 @@ msgid "Archival System Workspace"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3078
-msgid "Manage the existing front-end menu visibility and navigation controls from the FlexiClub portal without changing the underlying permissions engine."
+msgid "Manage the existing front-end menu visibility and navigation controls from the iLungu Club portal without changing the underlying permissions engine."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3079
-msgid "Manage the existing archive pages and file uploads from the FlexiClub portal without changing the underlying archive logic."
+msgid "Manage the existing archive pages and file uploads from the iLungu Club portal without changing the underlying archive logic."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3082
@@ -1194,7 +1194,7 @@ msgid "Open dedicated Archival System page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3090
-msgid "FlexiClub Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces."
+msgid "iLungu Club Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3092
@@ -1209,28 +1209,28 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3094
 #: templates/frontend/flexiclub-workspace-menu-management.php:50
-msgid "This workspace embeds the existing front-end menu-management section inside the FlexiClub portal shell."
+msgid "This workspace embeds the existing front-end menu-management section inside the iLungu Club portal shell."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3095
 #: templates/frontend/flexiclub-workspace-archival-system.php:50
-msgid "This workspace embeds the existing front-end archive section inside the FlexiClub portal shell."
+msgid "This workspace embeds the existing front-end archive section inside the iLungu Club portal shell."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3121
-msgid "No FlexiClub Control admin sections are currently available for your role."
+msgid "No iLungu Club Control admin sections are currently available for your role."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3123
-msgid "A compatible FlexiClub Control page exists, but the expected shortcode is missing from its content."
+msgid "A compatible iLungu Club Control page exists, but the expected shortcode is missing from its content."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3125
-msgid "No compatible FlexiClub Control page is currently configured."
+msgid "No compatible iLungu Club Control page is currently configured."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3131
-msgid "Open FlexiClub Control"
+msgid "Open iLungu Club Control"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3158
@@ -1442,7 +1442,7 @@ msgid "Make sure the required member and control pages are linked and published.
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3873
-msgid "Activity will appear here as your club starts using FlexiClub."
+msgid "Activity will appear here as your club starts using iLungu Club."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3874
@@ -1554,7 +1554,7 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:4036
 #: includes/class-tpw-flexiclub-admin-menu.php:4067
-msgid "Review the current system page assignments for FlexiClub and add-on features."
+msgid "Review the current system page assignments for iLungu Club and add-on features."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:4038
@@ -1652,7 +1652,7 @@ msgid "Core branding, login, and platform settings are ready to review or refine
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:4295
-msgid "Review the main FlexiClub settings to tailor the platform for your club."
+msgid "Review the main iLungu Club settings to tailor the platform for your club."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:4325
@@ -1957,8 +1957,7 @@ msgid "TPW Member Menu"
 msgstr ""
 
 #: includes/tpw-core-settings.php:26
-#: includes/tpw-core-settings.php:473
-msgid "FlexiClub Settings"
+msgid "iLungu™ Club Settings"
 msgstr ""
 
 #: includes/tpw-core-settings.php:64
@@ -1993,7 +1992,7 @@ msgstr ""
 
 #: includes/tpw-core-settings.php:84
 #: includes/tpw-core-settings.php:375
-msgid "Email logs are unavailable. Please ensure FlexiClub is fully updated."
+msgid "Email logs are unavailable. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:93
@@ -2001,11 +2000,11 @@ msgid "System Pages template not found."
 msgstr ""
 
 #: includes/tpw-core-settings.php:98
-msgid "Email settings class not found. Please ensure FlexiClub is fully updated."
+msgid "Email settings class not found. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:102
-msgid "Email logs class not found. Please ensure FlexiClub is fully updated."
+msgid "Email logs class not found. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:107
@@ -2017,7 +2016,8 @@ msgid "Unknown template key."
 msgstr ""
 
 #: includes/tpw-core-settings.php:124
-msgid "FlexiClub: The Member Profile page is not configured. "
+#: includes/tpw-core-settings.php:2899
+msgid "iLungu Club: The Member Profile page is not configured. "
 msgstr ""
 
 #: includes/tpw-core-settings.php:125
@@ -2026,7 +2026,8 @@ msgid "Select a Profile page now"
 msgstr ""
 
 #: includes/tpw-core-settings.php:134
-msgid "FlexiClub: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
+#: includes/tpw-core-settings.php:2911
+msgid "iLungu Club: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
 msgstr ""
 
 #: includes/tpw-core-settings.php:135
@@ -2056,6 +2057,10 @@ msgstr ""
 
 #: includes/tpw-core-settings.php:440
 msgid "No content registered for this tab."
+msgstr ""
+
+#: includes/tpw-core-settings.php:473
+msgid "iLungu Club Settings"
 msgstr ""
 
 #: includes/tpw-core-settings.php:475
@@ -2117,7 +2122,7 @@ msgid "Repair Members Menu"
 msgstr ""
 
 #: includes/tpw-core-settings.php:612
-msgid "Safely add any missing default FlexiClub member-menu items on existing installs without deactivating or reactivating the plugin."
+msgid "Safely add any missing default iLungu Club member-menu items on existing installs without deactivating or reactivating the plugin."
 msgstr ""
 
 #: includes/tpw-core-settings.php:658
@@ -2509,14 +2514,6 @@ msgstr ""
 #: modules/members/members-init.php:210
 #: modules/members/members-init.php:223
 msgid "Logout"
-msgstr ""
-
-#: includes/tpw-core-settings.php:2899
-msgid "TPW Core: The Member Profile page is not configured. "
-msgstr ""
-
-#: includes/tpw-core-settings.php:2911
-msgid "TPW Core: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
 msgstr ""
 
 #: modules/email/class-tpw-email-form.php:23
@@ -4108,7 +4105,7 @@ msgid "Join Page"
 msgstr ""
 
 #: modules/members/settings/member-signups-settings.php:42
-msgid "When Sign-Ups are enabled, TPW Core will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed."
+msgid "When Sign-Ups are enabled, iLungu Club will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed."
 msgstr ""
 
 #: modules/members/settings/member-signups-settings.php:46
@@ -5095,7 +5092,7 @@ msgid "This payment method is registered, but a front-end-safe configuration scr
 msgstr ""
 
 #: modules/payments/admin-settings.php:277
-msgid "Configure this payment method without leaving the FlexiClub Settings workspace."
+msgid "Configure this payment method without leaving the iLungu Club Settings workspace."
 msgstr ""
 
 #: modules/payments/admin-settings.php:280
@@ -5481,7 +5478,7 @@ msgid "Menu Manager"
 msgstr ""
 
 #: modules/tpw-control/templates/dashboard.php:25
-msgid "FlexiClub Control has been split into separate FE workspaces"
+msgid "iLungu Club Control has been split into separate FE workspaces"
 msgstr ""
 
 #: modules/tpw-control/templates/dashboard.php:26
@@ -5600,7 +5597,7 @@ msgid "System Status"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:10
-msgid "FlexiClub navigation"
+msgid "iLungu Club navigation"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:20
@@ -5612,7 +5609,7 @@ msgid "Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:31
-msgid "FlexiClub workspace navigation"
+msgid "iLungu Club workspace navigation"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:50
@@ -5620,7 +5617,7 @@ msgid "On This Page"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:51
-msgid "FlexiClub dashboard sections"
+msgid "iLungu Club dashboard sections"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:67
@@ -5672,7 +5669,7 @@ msgid "Monitor setup progress, jump into the right tool, and keep the club works
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:174
-msgid "A launch checklist for the FlexiClub front-end workspace and connected pages."
+msgid "A launch checklist for the iLungu Club front-end workspace and connected pages."
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:185
@@ -5684,11 +5681,11 @@ msgid "Open the current club tools without absorbing or replacing their existing
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:265
-msgid "Add-on products stay plugin-owned. The FlexiClub hub links out to them and reports current availability."
+msgid "Add-on products stay plugin-owned. The iLungu Club hub links out to them and reports current availability."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:15
-msgid "Manage the current front-end archive tools from the FlexiClub portal."
+msgid "Manage the current front-end archive tools from the iLungu Club portal."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:19
@@ -5701,12 +5698,12 @@ msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:39
 #: templates/frontend/flexiclub-workspace-menu-management.php:39
-msgid "FlexiClub Control remains available during the transition."
+msgid "iLungu Club Control remains available during the transition."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:41
 #: templates/frontend/flexiclub-workspace-menu-management.php:41
-msgid "Open legacy FlexiClub Control"
+msgid "Open legacy iLungu Club Control"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:41
@@ -5714,7 +5711,7 @@ msgid "Logs Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:42
-msgid "Review operational email and payment logs from the FlexiClub portal without leaving the front end. Sensitive payloads and secrets remain hidden."
+msgid "Review operational email and payment logs from the iLungu Club portal without leaving the front end. Sensitive payloads and secrets remain hidden."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:49
@@ -5722,7 +5719,7 @@ msgid "Open Settings workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:68
-msgid "Switch between the existing log sources that FlexiClub currently exposes through shared Core tooling."
+msgid "Switch between the existing log sources that iLungu Club currently exposes through shared Core tooling."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:73
@@ -5730,7 +5727,7 @@ msgid "No front-end-safe log sources are currently available."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:75
-msgid "FlexiClub log sources"
+msgid "iLungu Club log sources"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:106
@@ -5767,7 +5764,7 @@ msgid "Log pagination"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-menu-management.php:15
-msgid "Manage the current front-end menu permissions tools from the FlexiClub portal."
+msgid "Manage the current front-end menu permissions tools from the iLungu Club portal."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:9
@@ -5779,7 +5776,7 @@ msgid "Settings Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:33
-msgid "Manage the existing FlexiClub settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen."
+msgid "Manage the existing iLungu Club settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:40
@@ -5787,11 +5784,11 @@ msgid "Open System Pages workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:50
-msgid "Switch between the existing FlexiClub settings areas without leaving the front-end workspace."
+msgid "Switch between the existing iLungu Club settings areas without leaving the front-end workspace."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:54
-msgid "FlexiClub settings areas"
+msgid "iLungu Club settings areas"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:78
@@ -5799,7 +5796,7 @@ msgid "Portal Settings"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:91
-msgid "The shared FlexiClub settings renderer is unavailable on this request."
+msgid "The shared iLungu Club settings renderer is unavailable on this request."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:18
@@ -5807,7 +5804,7 @@ msgid "System Pages Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:19
-msgid "Review every registered FlexiClub and add-on page, then repair or recreate only the pages that actually need intervention."
+msgid "Review every registered iLungu Club and add-on page, then repair or recreate only the pages that actually need intervention."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:42
@@ -5839,7 +5836,7 @@ msgid "If a published page is missing the expected shortcode, edit that page to 
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:53
-msgid "Only authorised FlexiClub admins and member managers can access this workspace and run these actions."
+msgid "Only authorised iLungu Club admins and member managers can access this workspace and run these actions."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:69

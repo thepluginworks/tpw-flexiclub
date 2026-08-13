@@ -1,21 +1,21 @@
 # Copyright (C) 2026 ThePluginWorks
-# This file is distributed under the same license as the FlexiClub plugin.
+# This file is distributed under the same license as the iLungu™ Club plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: FlexiClub 2.9.2\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-flexiclub\n"
+"Project-Id-Version: iLungu™ Club 2.11.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/tpw-ilungu-club\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-04T08:49:25+00:00\n"
+"POT-Creation-Date: 2026-08-13T11:00:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: tpw-core\n"
 
 #. Plugin Name of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 #: includes/class-tpw-flexiclub-admin-menu.php:81
 #: includes/class-tpw-flexiclub-admin-menu.php:82
 #: includes/tpw-core-settings.php:27
@@ -25,39 +25,29 @@ msgstr ""
 #: templates/frontend/flexiclub-dashboard.php:18
 #: templates/frontend/flexiclub-dashboard.php:116
 #: templates/frontend/flexiclub-dashboard.php:118
-msgid "FlexiClub"
+msgid "iLungu™ Club"
 msgstr ""
 
 #. Plugin URI of the plugin
 #. Author URI of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 msgid "https://thepluginworks.com/"
 msgstr ""
 
 #. Description of the plugin
-#: tpw-flexiclub.php
-msgid "Free base platform for shared member, payment, page, branding, and admin tools across the FlexiClub ecosystem."
+#: ilungu-club.php
+msgid "Free base platform for shared member, payment, page, branding, and admin tools across the iLungu Club ecosystem."
 msgstr ""
 
 #. Author of the plugin
-#: tpw-flexiclub.php
+#: ilungu-club.php
 msgid "ThePluginWorks"
 msgstr ""
 
-#: includes/class-tpw-core-activator.php:219
-#: includes/tpw-core-settings.php:2421
-#: includes/tpw-core-settings.php:2426
+#: includes/class-tpw-core-activator.php:232
+#: includes/tpw-core-settings.php:2448
+#: includes/tpw-core-settings.php:2453
 msgid "Members Menu"
-msgstr ""
-
-#: includes/class-tpw-core-activator.php:289
-#: includes/tpw-core-loader.php:626
-#: includes/tpw-core-settings.php:2182
-#: includes/tpw-core-settings.php:2683
-#: includes/tpw-core-settings.php:3020
-#: modules/members/shortcodes/member-profile.php:13
-#: modules/members/shortcodes/member-profile.php:375
-msgid "My Profile"
 msgstr ""
 
 #: includes/class-tpw-core-create-menu.php:51
@@ -68,25 +58,31 @@ msgstr ""
 msgid "Member Login"
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:282
-#: includes/class-tpw-core-system-pages.php:428
+#. translators: %s: system page slug
+#: includes/class-tpw-core-system-pages.php:295
+#, php-format
+msgid "Cannot create or recreate the system page at \"/%s/\" because an unrelated WordPress page already uses that path. Reassign or rename that page before continuing."
+msgstr ""
+
+#: includes/class-tpw-core-system-pages.php:322
+#: includes/class-tpw-core-system-pages.php:482
 msgid "Missing system page slug."
 msgstr ""
 
 #. translators: %s: system page slug
-#: includes/class-tpw-core-system-pages.php:318
+#: includes/class-tpw-core-system-pages.php:364
 #, php-format
 msgid "The page for slug \"%s\" is currently in Trash. Empty Trash or restore that page before recreating it."
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:775
-#: includes/class-tpw-core-system-pages.php:815
-#: includes/tpw-core-settings.php:972
-#: includes/tpw-core-settings.php:1494
-#: includes/tpw-core-settings.php:1701
-#: includes/tpw-core-settings.php:1721
-#: includes/tpw-core-settings.php:1745
-#: includes/tpw-core-settings.php:1757
+#: includes/class-tpw-core-system-pages.php:827
+#: includes/class-tpw-core-system-pages.php:867
+#: includes/tpw-core-settings.php:999
+#: includes/tpw-core-settings.php:1521
+#: includes/tpw-core-settings.php:1728
+#: includes/tpw-core-settings.php:1748
+#: includes/tpw-core-settings.php:1772
+#: includes/tpw-core-settings.php:1784
 #: modules/gallery/elementor/ajax.php:16
 #: modules/gallery/gallery-loader.php:138
 #: modules/gallery/gallery-loader.php:148
@@ -107,30 +103,30 @@ msgstr ""
 msgid "Permission denied"
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:784
-#: includes/class-tpw-core-system-pages.php:824
+#: includes/class-tpw-core-system-pages.php:836
+#: includes/class-tpw-core-system-pages.php:876
 #: modules/system-pages/class-tpw-core-system-pages.php:429
 #: modules/system-pages/class-tpw-core-system-pages.php:446
 msgid "Bad nonce"
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:793
-#: includes/class-tpw-core-system-pages.php:833
+#: includes/class-tpw-core-system-pages.php:845
+#: includes/class-tpw-core-system-pages.php:885
 #: modules/system-pages/class-tpw-core-system-pages.php:431
 #: modules/system-pages/class-tpw-core-system-pages.php:448
 msgid "Missing slug"
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:797
+#: includes/class-tpw-core-system-pages.php:849
 msgid "Failed to unlink page mapping."
 msgstr ""
 
-#: includes/class-tpw-core-system-pages.php:802
+#: includes/class-tpw-core-system-pages.php:854
 msgid "Page mapping cleared."
 msgstr ""
 
 #. translators: %s: system page slug
-#: includes/class-tpw-core-system-pages.php:845
+#: includes/class-tpw-core-system-pages.php:897
 #, php-format
 msgid "Page \"%s\" recreated."
 msgstr ""
@@ -153,10 +149,10 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:116
 #: includes/class-tpw-flexiclub-admin-menu.php:622
 #: includes/class-tpw-flexiclub-admin-menu.php:1717
-#: includes/class-tpw-flexiclub-admin-menu.php:3286
-#: includes/class-tpw-flexiclub-admin-menu.php:4455
+#: includes/class-tpw-flexiclub-admin-menu.php:3288
+#: includes/class-tpw-flexiclub-admin-menu.php:4457
 #: includes/noticeboard/class-tpw-noticeboard.php:32
-#: includes/tpw-core-settings.php:2132
+#: includes/tpw-core-settings.php:2159
 #: modules/notices/class-tpw-noticeboard.php:25
 msgid "Noticeboard"
 msgstr ""
@@ -166,8 +162,8 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:631
 #: includes/class-tpw-flexiclub-admin-menu.php:709
 #: includes/class-tpw-flexiclub-admin-menu.php:1733
-#: includes/class-tpw-flexiclub-admin-menu.php:3298
-#: includes/tpw-core-settings.php:2168
+#: includes/class-tpw-flexiclub-admin-menu.php:3300
+#: includes/tpw-core-settings.php:2195
 #: modules/gallery/gallery-loader.php:24
 msgid "Gallery Admin"
 msgstr ""
@@ -176,7 +172,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:137
 #: includes/class-tpw-flexiclub-admin-menu.php:640
 #: includes/class-tpw-flexiclub-admin-menu.php:719
-#: includes/class-tpw-flexiclub-admin-menu.php:3310
+#: includes/class-tpw-flexiclub-admin-menu.php:3312
 msgid "Upload Pages / Archive"
 msgstr ""
 
@@ -184,7 +180,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:148
 #: includes/class-tpw-flexiclub-admin-menu.php:649
 #: includes/class-tpw-flexiclub-admin-menu.php:732
-#: includes/class-tpw-flexiclub-admin-menu.php:3322
+#: includes/class-tpw-flexiclub-admin-menu.php:3324
 msgid "Menu Permissions"
 msgstr ""
 
@@ -192,7 +188,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:159
 #: includes/class-tpw-flexiclub-admin-menu.php:658
 #: includes/class-tpw-flexiclub-admin-menu.php:1787
-#: includes/class-tpw-flexiclub-admin-menu.php:3334
+#: includes/class-tpw-flexiclub-admin-menu.php:3336
 #: includes/tpw-core-settings.php:210
 msgid "System Pages"
 msgstr ""
@@ -201,7 +197,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:169
 #: includes/class-tpw-flexiclub-admin-menu.php:667
 #: includes/class-tpw-flexiclub-admin-menu.php:1805
-#: includes/class-tpw-flexiclub-admin-menu.php:3346
+#: includes/class-tpw-flexiclub-admin-menu.php:3348
 msgid "Payments"
 msgstr ""
 
@@ -209,7 +205,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:179
 #: includes/class-tpw-flexiclub-admin-menu.php:676
 #: includes/class-tpw-flexiclub-admin-menu.php:1820
-#: includes/class-tpw-flexiclub-admin-menu.php:3359
+#: includes/class-tpw-flexiclub-admin-menu.php:3361
 msgid "Settings"
 msgstr ""
 
@@ -218,21 +214,21 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:685
 #: includes/class-tpw-flexiclub-admin-menu.php:1835
 #: includes/class-tpw-flexiclub-admin-menu.php:2544
-#: includes/class-tpw-flexiclub-admin-menu.php:3371
+#: includes/class-tpw-flexiclub-admin-menu.php:3373
 #: templates/frontend/flexiclub-workspace-logs.php:15
 msgid "Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:213
-msgid "FlexiClub Dashboard template is missing."
+msgid "iLungu Club Dashboard template is missing."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:253
-msgid "Please sign in with a club administrator account to access the FlexiClub workspace."
+msgid "Please sign in with a club administrator account to access the iLungu Club workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:259
-msgid "You do not have permission to access the FlexiClub workspace."
+msgid "You do not have permission to access the iLungu Club workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:269
@@ -244,11 +240,11 @@ msgid "You do not have permission to access the Archival System workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:289
-msgid "FlexiClub workspace unavailable"
+msgid "iLungu Club workspace unavailable"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:289
-msgid "The front-end FlexiClub dashboard template could not be found."
+msgid "The front-end iLungu Club dashboard template could not be found."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:301
@@ -256,15 +252,15 @@ msgid "Access restricted"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:302
-msgid "FlexiClub workspace"
+msgid "iLungu Club workspace"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:313
-msgid "Unknown FlexiClub bridge page."
+msgid "Unknown iLungu Club bridge page."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:319
-msgid "You do not have permission to access this FlexiClub bridge page."
+msgid "You do not have permission to access this iLungu Club bridge page."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:321
@@ -315,7 +311,7 @@ msgid "Create / Repair Page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:384
-msgid "FlexiClub Logs"
+msgid "iLungu Club Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:385
@@ -347,7 +343,7 @@ msgid "Email Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:397
-msgid "Existing FlexiClub settings tab for outbound email diagnostics."
+msgid "Existing iLungu Club settings tab for outbound email diagnostics."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:402
@@ -403,11 +399,11 @@ msgid "Bridge to the existing archive and upload-pages feature on its current fr
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:650
-msgid "Bridge to the front-end feature that controls WordPress menu visibility and permissions across the FlexiClub ecosystem."
+msgid "Bridge to the front-end feature that controls WordPress menu visibility and permissions across the iLungu Club ecosystem."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:659
-msgid "Existing System Pages tab inside FlexiClub Settings."
+msgid "Existing System Pages tab inside iLungu Club Settings."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:668
@@ -415,7 +411,7 @@ msgid "Existing Payment Methods settings tab."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:677
-msgid "Existing FlexiClub settings screen."
+msgid "Existing iLungu Club settings screen."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:686
@@ -427,7 +423,7 @@ msgid "Launch the existing front-end Manage Members interface. No duplicate wp-a
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:701
-#: includes/class-tpw-flexiclub-admin-menu.php:3050
+#: includes/class-tpw-flexiclub-admin-menu.php:3052
 msgid "Open Manage Members"
 msgstr ""
 
@@ -436,7 +432,7 @@ msgid "Launch the existing front-end Gallery Admin system page. The wp-admin bri
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:711
-#: includes/class-tpw-flexiclub-admin-menu.php:3061
+#: includes/class-tpw-flexiclub-admin-menu.php:3063
 msgid "Open Gallery Admin"
 msgstr ""
 
@@ -449,7 +445,7 @@ msgid "Open Upload Pages / Archive"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:733
-msgid "This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the FlexiClub ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin."
+msgid "This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the iLungu Club ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:734
@@ -521,58 +517,58 @@ msgid "You do not have permission to access this page."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1414
-#: includes/class-tpw-flexiclub-admin-menu.php:3245
-#: includes/tpw-core-settings.php:2192
+#: includes/class-tpw-flexiclub-admin-menu.php:3247
+#: includes/tpw-core-settings.php:2219
 msgid "Admin"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1451
-#: includes/class-tpw-flexiclub-admin-menu.php:3464
+#: includes/class-tpw-flexiclub-admin-menu.php:3466
 msgid "Continue setup"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1458
-#: includes/class-tpw-flexiclub-admin-menu.php:3471
+#: includes/class-tpw-flexiclub-admin-menu.php:3473
 msgid "Review checklist"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1458
-#: includes/class-tpw-flexiclub-admin-menu.php:3471
+#: includes/class-tpw-flexiclub-admin-menu.php:3473
 msgid "Open checklist"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1665
-#: includes/class-tpw-flexiclub-admin-menu.php:3248
+#: includes/class-tpw-flexiclub-admin-menu.php:3250
 msgid "Total Members"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1667
-#: includes/class-tpw-flexiclub-admin-menu.php:3280
+#: includes/class-tpw-flexiclub-admin-menu.php:3282
 msgid "Manage members"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1671
-#: includes/class-tpw-flexiclub-admin-menu.php:3256
+#: includes/class-tpw-flexiclub-admin-menu.php:3258
 msgid "Active Notices"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1673
-#: includes/class-tpw-flexiclub-admin-menu.php:3292
+#: includes/class-tpw-flexiclub-admin-menu.php:3294
 msgid "Open noticeboard"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1677
-#: includes/class-tpw-flexiclub-admin-menu.php:3264
+#: includes/class-tpw-flexiclub-admin-menu.php:3266
 msgid "Upcoming Events"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1749
-#: includes/class-tpw-flexiclub-admin-menu.php:3075
+#: includes/class-tpw-flexiclub-admin-menu.php:3077
 msgid "Menu Management"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:1768
-#: includes/class-tpw-flexiclub-admin-menu.php:3075
+#: includes/class-tpw-flexiclub-admin-menu.php:3077
 msgid "Archival System"
 msgstr ""
 
@@ -648,7 +644,7 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:2113
 #: templates/admin/flexiclub-dashboard.php:175
 #: templates/frontend/flexiclub-dashboard.php:264
-msgid "Extend FlexiClub"
+msgid "Extend iLungu Club"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2118
@@ -656,12 +652,12 @@ msgid "Support"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2130
-#: includes/class-tpw-flexiclub-admin-menu.php:3410
+#: includes/class-tpw-flexiclub-admin-menu.php:3412
 msgid "Setup Checklist"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2175
-#: includes/class-tpw-flexiclub-admin-menu.php:3804
+#: includes/class-tpw-flexiclub-admin-menu.php:3806
 msgid "Create or confirm your system pages"
 msgstr ""
 
@@ -678,22 +674,22 @@ msgid "Open admin tab"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2185
-#: includes/class-tpw-flexiclub-admin-menu.php:3810
+#: includes/class-tpw-flexiclub-admin-menu.php:3812
 msgid "Add your first members"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2186
-#: includes/class-tpw-flexiclub-admin-menu.php:3811
+#: includes/class-tpw-flexiclub-admin-menu.php:3813
 msgid "Start building the club member register and linked accounts."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2191
-#: includes/class-tpw-flexiclub-admin-menu.php:3816
+#: includes/class-tpw-flexiclub-admin-menu.php:3818
 msgid "Configure menu permissions"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2193
-#: includes/class-tpw-flexiclub-admin-menu.php:3817
+#: includes/class-tpw-flexiclub-admin-menu.php:3819
 msgid "Control which audiences can see and access club navigation items."
 msgstr ""
 
@@ -704,13 +700,13 @@ msgid "Open Menu Management"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2201
-#: includes/class-tpw-flexiclub-admin-menu.php:3822
+#: includes/class-tpw-flexiclub-admin-menu.php:3824
 msgid "Configure settings"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2203
-#: includes/class-tpw-flexiclub-admin-menu.php:3823
-msgid "Review branding, login, and shared FlexiClub platform settings."
+#: includes/class-tpw-flexiclub-admin-menu.php:3825
+msgid "Review branding, login, and shared iLungu Club platform settings."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2208
@@ -722,13 +718,13 @@ msgid "Open admin settings"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2211
-#: includes/class-tpw-flexiclub-admin-menu.php:3352
-#: includes/class-tpw-flexiclub-admin-menu.php:3828
+#: includes/class-tpw-flexiclub-admin-menu.php:3354
+#: includes/class-tpw-flexiclub-admin-menu.php:3830
 msgid "Configure payments"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2213
-#: includes/class-tpw-flexiclub-admin-menu.php:3829
+#: includes/class-tpw-flexiclub-admin-menu.php:3831
 msgid "Enable and set up the payment methods your club wants to offer."
 msgstr ""
 
@@ -741,13 +737,13 @@ msgid "Open admin payments"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2222
-#: includes/class-tpw-flexiclub-admin-menu.php:3835
+#: includes/class-tpw-flexiclub-admin-menu.php:3837
 msgid "Publish your first notice"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2224
 #: includes/class-tpw-flexiclub-admin-menu.php:2226
-#: includes/class-tpw-flexiclub-admin-menu.php:3836
+#: includes/class-tpw-flexiclub-admin-menu.php:3838
 msgid "Share updates, reminders, and announcements from the Noticeboard."
 msgstr ""
 
@@ -768,7 +764,7 @@ msgid "Open Noticeboard"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2265
-msgid "The FlexiClub portal page must be available before the front-end System Pages workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end System Pages workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2272
@@ -776,7 +772,7 @@ msgid "Open System Pages"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2273
-msgid "Validate, repair, and recreate registered system pages from the FlexiClub portal."
+msgid "Validate, repair, and recreate registered system pages from the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2274
@@ -785,14 +781,14 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:2333
 #: includes/class-tpw-flexiclub-admin-menu.php:2387
 #: includes/class-tpw-flexiclub-admin-menu.php:2779
-#: includes/class-tpw-flexiclub-admin-menu.php:2944
-#: includes/class-tpw-flexiclub-admin-menu.php:3080
-#: includes/class-tpw-flexiclub-admin-menu.php:3931
-#: includes/class-tpw-flexiclub-admin-menu.php:3955
-#: includes/class-tpw-flexiclub-admin-menu.php:4129
-#: includes/class-tpw-flexiclub-admin-menu.php:4151
-#: includes/class-tpw-flexiclub-admin-menu.php:4215
-#: includes/class-tpw-flexiclub-admin-menu.php:4290
+#: includes/class-tpw-flexiclub-admin-menu.php:2945
+#: includes/class-tpw-flexiclub-admin-menu.php:3082
+#: includes/class-tpw-flexiclub-admin-menu.php:3933
+#: includes/class-tpw-flexiclub-admin-menu.php:3957
+#: includes/class-tpw-flexiclub-admin-menu.php:4131
+#: includes/class-tpw-flexiclub-admin-menu.php:4153
+#: includes/class-tpw-flexiclub-admin-menu.php:4217
+#: includes/class-tpw-flexiclub-admin-menu.php:4292
 #: templates/frontend/flexiclub-workspace-archival-system.php:29
 #: templates/frontend/flexiclub-workspace-menu-management.php:29
 msgid "Ready"
@@ -803,7 +799,7 @@ msgid "Open Logs"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2288
-msgid "Review email and payment logs from the FlexiClub portal."
+msgid "Review email and payment logs from the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2298
@@ -811,11 +807,11 @@ msgid "Open Logs page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2299
-msgid "Dedicated front-end Logs page using the FlexiClub portal shell."
+msgid "Dedicated front-end Logs page using the iLungu Club portal shell."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2306
-msgid "The FlexiClub portal page must be available before the front-end Logs workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end Logs workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2307
@@ -823,7 +819,7 @@ msgid "Open admin logs (temporary)"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2317
-msgid "The FlexiClub portal page must be available before the front-end Settings workspace can be opened."
+msgid "The iLungu Club portal page must be available before the front-end Settings workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2318
@@ -843,7 +839,7 @@ msgid "Manage payment methods from the front-end Settings workspace."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2332
-msgid "Review branding, login, email, and shared FlexiClub platform settings from the portal."
+msgid "Review branding, login, email, and shared iLungu Club platform settings from the portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2356
@@ -853,8 +849,8 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2373
 #: includes/class-tpw-flexiclub-admin-menu.php:2408
-#: includes/class-tpw-flexiclub-admin-menu.php:3131
-#: includes/class-tpw-flexiclub-admin-menu.php:3189
+#: includes/class-tpw-flexiclub-admin-menu.php:3133
+#: includes/class-tpw-flexiclub-admin-menu.php:3191
 msgid "Open diagnostics"
 msgstr ""
 
@@ -867,19 +863,19 @@ msgstr ""
 #: includes/class-tpw-flexiclub-admin-menu.php:2410
 #: includes/class-tpw-flexiclub-admin-menu.php:2553
 #: includes/class-tpw-flexiclub-admin-menu.php:2566
-#: includes/class-tpw-flexiclub-admin-menu.php:3133
-#: includes/class-tpw-flexiclub-admin-menu.php:3191
-#: includes/class-tpw-flexiclub-admin-menu.php:4075
-#: includes/class-tpw-flexiclub-admin-menu.php:4129
-#: includes/class-tpw-flexiclub-admin-menu.php:4151
-#: includes/class-tpw-flexiclub-admin-menu.php:4214
-#: includes/class-tpw-flexiclub-admin-menu.php:4265
-#: includes/class-tpw-flexiclub-admin-menu.php:4321
+#: includes/class-tpw-flexiclub-admin-menu.php:3135
+#: includes/class-tpw-flexiclub-admin-menu.php:3193
+#: includes/class-tpw-flexiclub-admin-menu.php:4077
+#: includes/class-tpw-flexiclub-admin-menu.php:4131
+#: includes/class-tpw-flexiclub-admin-menu.php:4153
+#: includes/class-tpw-flexiclub-admin-menu.php:4216
+#: includes/class-tpw-flexiclub-admin-menu.php:4267
+#: includes/class-tpw-flexiclub-admin-menu.php:4323
 msgid "Needs review"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2386
-msgid "Preferred front-end workspace route inside the FlexiClub portal."
+msgid "Preferred front-end workspace route inside the iLungu Club portal."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2397
@@ -887,11 +883,11 @@ msgid "Open dedicated page"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2398
-msgid "The FlexiClub portal page is not currently available, so the dedicated workspace page is being used instead."
+msgid "The iLungu Club portal page is not currently available, so the dedicated workspace page is being used instead."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2409
-msgid "The FlexiClub portal page must be available before this front-end workspace can be opened."
+msgid "The iLungu Club portal page must be available before this front-end workspace can be opened."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2427
@@ -905,7 +901,7 @@ msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2553
 #: includes/class-tpw-flexiclub-admin-menu.php:2566
-#: includes/class-tpw-flexiclub-admin-menu.php:4321
+#: includes/class-tpw-flexiclub-admin-menu.php:4323
 msgid "Healthy"
 msgstr ""
 
@@ -940,7 +936,7 @@ msgid "Payment"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2614
-#: includes/tpw-core-settings.php:681
+#: includes/tpw-core-settings.php:708
 msgid "No email log entries found."
 msgstr ""
 
@@ -981,7 +977,7 @@ msgid "The System Pages manager is not available on this request."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2738
-msgid "No registered system pages were found in the current FlexiClub ecosystem registry."
+msgid "No registered system pages were found in the current iLungu Club ecosystem registry."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2741
@@ -999,30 +995,30 @@ msgid "Registered"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2774
-#: includes/class-tpw-flexiclub-admin-menu.php:2944
-#: includes/class-tpw-flexiclub-admin-menu.php:4075
+#: includes/class-tpw-flexiclub-admin-menu.php:2945
+#: includes/class-tpw-flexiclub-admin-menu.php:4077
 msgid "Complete"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2784
-#: includes/class-tpw-flexiclub-admin-menu.php:2923
-#: includes/class-tpw-flexiclub-admin-menu.php:2954
-#: includes/class-tpw-flexiclub-admin-menu.php:2963
-#: includes/class-tpw-flexiclub-admin-menu.php:2971
+#: includes/class-tpw-flexiclub-admin-menu.php:2924
+#: includes/class-tpw-flexiclub-admin-menu.php:2955
+#: includes/class-tpw-flexiclub-admin-menu.php:2964
+#: includes/class-tpw-flexiclub-admin-menu.php:2972
 msgid "Needs Attention"
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:2789
-#: includes/class-tpw-flexiclub-admin-menu.php:2911
-#: includes/class-tpw-flexiclub-admin-menu.php:2923
-#: includes/class-tpw-flexiclub-admin-menu.php:3133
-#: includes/class-tpw-flexiclub-admin-menu.php:3191
-#: includes/class-tpw-flexiclub-admin-menu.php:3931
-#: includes/class-tpw-flexiclub-admin-menu.php:3955
-#: includes/class-tpw-flexiclub-admin-menu.php:4034
-#: includes/class-tpw-flexiclub-admin-menu.php:4037
-#: includes/class-tpw-flexiclub-admin-menu.php:4065
-#: includes/class-tpw-flexiclub-admin-menu.php:4068
+#: includes/class-tpw-flexiclub-admin-menu.php:2912
+#: includes/class-tpw-flexiclub-admin-menu.php:2924
+#: includes/class-tpw-flexiclub-admin-menu.php:3135
+#: includes/class-tpw-flexiclub-admin-menu.php:3193
+#: includes/class-tpw-flexiclub-admin-menu.php:3933
+#: includes/class-tpw-flexiclub-admin-menu.php:3957
+#: includes/class-tpw-flexiclub-admin-menu.php:4036
+#: includes/class-tpw-flexiclub-admin-menu.php:4039
+#: includes/class-tpw-flexiclub-admin-menu.php:4067
+#: includes/class-tpw-flexiclub-admin-menu.php:4070
 #: modules/system-pages/class-tpw-core-system-pages.php:513
 #: modules/system-pages/templates/system-pages.php:85
 msgid "Missing"
@@ -1037,7 +1033,11 @@ msgstr ""
 msgid "Payment logs could not be cleared."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2885
+#: includes/class-tpw-flexiclub-admin-menu.php:2882
+msgid "iLungu Club"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:2886
 #: modules/members/settings/member-signups-settings.php:153
 #: modules/members/settings/member-signups-settings.php:183
 #: modules/system-pages/templates/system-pages.php:38
@@ -1046,248 +1046,249 @@ msgstr ""
 msgid "Required"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2885
-#: includes/class-tpw-flexiclub-admin-menu.php:4259
+#: includes/class-tpw-flexiclub-admin-menu.php:2886
+#: includes/class-tpw-flexiclub-admin-menu.php:4261
 #: modules/feedback/class-tpw-feedback.php:196
 #: templates/admin/flexiclub-dashboard.php:100
 #: templates/frontend/flexiclub-dashboard.php:200
 msgid "Optional"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2913
-#: includes/class-tpw-flexiclub-admin-menu.php:2925
+#: includes/class-tpw-flexiclub-admin-menu.php:2914
+#: includes/class-tpw-flexiclub-admin-menu.php:2926
 msgid "Recreate available"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2914
+#: includes/class-tpw-flexiclub-admin-menu.php:2915
 msgid "No published page is currently linked for this registered slug."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2917
+#: includes/class-tpw-flexiclub-admin-menu.php:2918
 msgid "Recreate page"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2918
-#: includes/class-tpw-flexiclub-admin-menu.php:3089
+#: includes/class-tpw-flexiclub-admin-menu.php:2919
+#: includes/class-tpw-flexiclub-admin-menu.php:3091
 #: modules/tpw-control/templates/dashboard.php:24
 #: templates/frontend/flexiclub-workspace-archival-system.php:38
 #: templates/frontend/flexiclub-workspace-menu-management.php:38
 msgid "Legacy Workspace"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2919
+#: includes/class-tpw-flexiclub-admin-menu.php:2920
 msgid "Use Menu Management and Archival System for new launches. Keep this page only for compatibility during the transition."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2927
+#: includes/class-tpw-flexiclub-admin-menu.php:2928
 msgid "The stored assignment was cleared for this required system page. The WordPress page was not deleted, but you need to repair or recreate the mapping before this page is ready again."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2928
+#: includes/class-tpw-flexiclub-admin-menu.php:2929
 msgid "The stored assignment was cleared for this optional system page. The WordPress page was not deleted, and you can recreate the mapping whenever you need this page again."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2946
+#: includes/class-tpw-flexiclub-admin-menu.php:2947
 msgid "No action needed"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2948
+#: includes/class-tpw-flexiclub-admin-menu.php:2949
 msgid "The linked page is published and contains the expected shortcode. View or edit it as needed."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2949
+#: includes/class-tpw-flexiclub-admin-menu.php:2950
 msgid "This optional page is published and usable. You can still view, edit, or unlink it if needed."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2956
-#: includes/class-tpw-flexiclub-admin-menu.php:2965
-#: includes/class-tpw-flexiclub-admin-menu.php:2973
+#: includes/class-tpw-flexiclub-admin-menu.php:2957
+#: includes/class-tpw-flexiclub-admin-menu.php:2966
+#: includes/class-tpw-flexiclub-admin-menu.php:2974
 msgid "Repair available"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2957
+#: includes/class-tpw-flexiclub-admin-menu.php:2958
 msgid "The page exists, but the expected shortcode is missing. Edit the page to repair it. Recreate is not offered here because current logic does not overwrite published content automatically."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2966
+#: includes/class-tpw-flexiclub-admin-menu.php:2967
 msgid "A page with this slug is currently in Trash. Restore it or clear the current link before recreating the system page."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2974
+#: includes/class-tpw-flexiclub-admin-menu.php:2975
 msgid "A page for this slug exists but is not published. Recreate will publish the current page using the existing System Pages logic."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2977
+#: includes/class-tpw-flexiclub-admin-menu.php:2978
 msgid "Repair / publish page"
 msgstr ""
 
 #. translators: 1: page title, 2: page ID
-#: includes/class-tpw-flexiclub-admin-menu.php:2988
+#: includes/class-tpw-flexiclub-admin-menu.php:2989
 #, php-format
 msgid "%1$s (#%2$d)"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:2992
+#: includes/class-tpw-flexiclub-admin-menu.php:2993
 #: modules/system-pages/class-tpw-core-system-pages.php:506
 #: modules/system-pages/templates/system-pages.php:78
 msgid "Not linked"
 msgstr ""
 
 #. translators: %s: WordPress post status
-#: includes/class-tpw-flexiclub-admin-menu.php:2997
+#: includes/class-tpw-flexiclub-admin-menu.php:2998
 #, php-format
 msgid "WordPress status: %s"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3000
+#: includes/class-tpw-flexiclub-admin-menu.php:3001
 msgid "Recreate will generate the linked page from the registered system-page definition."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3005
+#: includes/class-tpw-flexiclub-admin-menu.php:3006
+#: includes/class-tpw-flexiclub-admin-menu.php:3007
 msgid "tpw-core"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3008
+#: includes/class-tpw-flexiclub-admin-menu.php:3010
 msgid "No shortcode registered"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3076
+#: includes/class-tpw-flexiclub-admin-menu.php:3078
 #: templates/frontend/flexiclub-workspace-menu-management.php:14
 msgid "Menu Management Workspace"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3076
+#: includes/class-tpw-flexiclub-admin-menu.php:3078
 #: templates/frontend/flexiclub-workspace-archival-system.php:14
 msgid "Archival System Workspace"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3078
-msgid "Manage the existing front-end menu visibility and navigation controls from the FlexiClub portal without changing the underlying permissions engine."
+#: includes/class-tpw-flexiclub-admin-menu.php:3080
+msgid "Manage the existing front-end menu visibility and navigation controls from the iLungu Club portal without changing the underlying permissions engine."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3079
-msgid "Manage the existing archive pages and file uploads from the FlexiClub portal without changing the underlying archive logic."
+#: includes/class-tpw-flexiclub-admin-menu.php:3081
+msgid "Manage the existing archive pages and file uploads from the iLungu Club portal without changing the underlying archive logic."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3082
+#: includes/class-tpw-flexiclub-admin-menu.php:3084
 msgid "Menus"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3082
+#: includes/class-tpw-flexiclub-admin-menu.php:3084
 msgid "Archive Pages"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3083
+#: includes/class-tpw-flexiclub-admin-menu.php:3085
 #: templates/frontend/flexiclub-workspace-archival-system.php:30
 #: templates/frontend/flexiclub-workspace-menu-management.php:30
 msgid "Unavailable"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3087
+#: includes/class-tpw-flexiclub-admin-menu.php:3089
 #: templates/frontend/flexiclub-workspace-menu-management.php:22
 msgid "Open dedicated Menu Management page"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3087
+#: includes/class-tpw-flexiclub-admin-menu.php:3089
 #: templates/frontend/flexiclub-workspace-archival-system.php:22
 msgid "Open dedicated Archival System page"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3090
-msgid "FlexiClub Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces."
+#: includes/class-tpw-flexiclub-admin-menu.php:3092
+msgid "iLungu Club Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3092
+#: includes/class-tpw-flexiclub-admin-menu.php:3094
 #: templates/frontend/flexiclub-workspace-menu-management.php:49
 msgid "Current Menu Management tool"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3092
+#: includes/class-tpw-flexiclub-admin-menu.php:3094
 #: templates/frontend/flexiclub-workspace-archival-system.php:49
 msgid "Current Archival System tool"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3094
+#: includes/class-tpw-flexiclub-admin-menu.php:3096
 #: templates/frontend/flexiclub-workspace-menu-management.php:50
-msgid "This workspace embeds the existing front-end menu-management section inside the FlexiClub portal shell."
+msgid "This workspace embeds the existing front-end menu-management section inside the iLungu Club portal shell."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3095
+#: includes/class-tpw-flexiclub-admin-menu.php:3097
 #: templates/frontend/flexiclub-workspace-archival-system.php:50
-msgid "This workspace embeds the existing front-end archive section inside the FlexiClub portal shell."
-msgstr ""
-
-#: includes/class-tpw-flexiclub-admin-menu.php:3121
-msgid "No FlexiClub Control admin sections are currently available for your role."
+msgid "This workspace embeds the existing front-end archive section inside the iLungu Club portal shell."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3123
-msgid "A compatible FlexiClub Control page exists, but the expected shortcode is missing from its content."
+msgid "No iLungu Club Control admin sections are currently available for your role."
 msgstr ""
 
 #: includes/class-tpw-flexiclub-admin-menu.php:3125
-msgid "No compatible FlexiClub Control page is currently configured."
+msgid "A compatible iLungu Club Control page exists, but the expected shortcode is missing from its content."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3131
-msgid "Open FlexiClub Control"
+#: includes/class-tpw-flexiclub-admin-menu.php:3127
+msgid "No compatible iLungu Club Control page is currently configured."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3158
+#: includes/class-tpw-flexiclub-admin-menu.php:3133
+msgid "Open iLungu Club Control"
+msgstr ""
+
+#: includes/class-tpw-flexiclub-admin-menu.php:3160
 msgid "The requested workspace tool is not currently available."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3164
+#: includes/class-tpw-flexiclub-admin-menu.php:3166
 msgid "The requested workspace tool is not currently registered on this site."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3170
+#: includes/class-tpw-flexiclub-admin-menu.php:3172
 msgid "You do not have permission to access this workspace tool."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3251
+#: includes/class-tpw-flexiclub-admin-menu.php:3253
 msgid "View members"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3259
+#: includes/class-tpw-flexiclub-admin-menu.php:3261
 msgid "View notices"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3274
-#: includes/class-tpw-flexiclub-admin-menu.php:4418
-#: includes/tpw-core-settings.php:2144
+#: includes/class-tpw-flexiclub-admin-menu.php:3276
+#: includes/class-tpw-flexiclub-admin-menu.php:4420
+#: includes/tpw-core-settings.php:2171
 msgid "Members"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3304
+#: includes/class-tpw-flexiclub-admin-menu.php:3306
 msgid "Open gallery admin"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3316
+#: includes/class-tpw-flexiclub-admin-menu.php:3318
 msgid "Open archive tools"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3328
+#: includes/class-tpw-flexiclub-admin-menu.php:3330
 msgid "Review permissions"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3340
+#: includes/class-tpw-flexiclub-admin-menu.php:3342
 msgid "Open system pages"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3365
+#: includes/class-tpw-flexiclub-admin-menu.php:3367
 msgid "Open settings"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3377
+#: includes/class-tpw-flexiclub-admin-menu.php:3379
 msgid "View logs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3415
+#: includes/class-tpw-flexiclub-admin-menu.php:3417
 msgid "Add New Member"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3420
+#: includes/class-tpw-flexiclub-admin-menu.php:3422
 #: includes/noticeboard/class-tpw-noticeboard.php:23
 #: includes/noticeboard/class-tpw-noticeboard.php:24
 #: includes/noticeboard/shortcodes/noticeboard-list.php:108
@@ -1297,443 +1298,443 @@ msgstr ""
 msgid "Add New Notice"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3425
+#: includes/class-tpw-flexiclub-admin-menu.php:3427
 msgid "Add Gallery Images"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3430
+#: includes/class-tpw-flexiclub-admin-menu.php:3432
 msgid "Create or Check System Pages"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3435
+#: includes/class-tpw-flexiclub-admin-menu.php:3437
 msgid "Review Menu Permissions"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3443
+#: includes/class-tpw-flexiclub-admin-menu.php:3445
 msgid "Configure Payments"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3450
+#: includes/class-tpw-flexiclub-admin-menu.php:3452
 msgid "View Logs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3524
+#: includes/class-tpw-flexiclub-admin-menu.php:3526
 msgid "FlexiEvent"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3525
+#: includes/class-tpw-flexiclub-admin-menu.php:3527
 msgid "Events, scheduling, and club activities."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3536
+#: includes/class-tpw-flexiclub-admin-menu.php:3538
 msgid "Manage events"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3539
+#: includes/class-tpw-flexiclub-admin-menu.php:3541
 msgid "FlexiSubscriptions"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3540
+#: includes/class-tpw-flexiclub-admin-menu.php:3542
 msgid "Membership subscriptions and renewals."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3548
+#: includes/class-tpw-flexiclub-admin-menu.php:3550
 msgid "Manage subscriptions"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3551
+#: includes/class-tpw-flexiclub-admin-menu.php:3553
 msgid "FlexiTicket"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3552
+#: includes/class-tpw-flexiclub-admin-menu.php:3554
 msgid "Ticketing and event sales for members."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3560
+#: includes/class-tpw-flexiclub-admin-menu.php:3562
 msgid "Manage ticketing"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3563
+#: includes/class-tpw-flexiclub-admin-menu.php:3565
 msgid "FlexiLedger"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3564
+#: includes/class-tpw-flexiclub-admin-menu.php:3566
 msgid "Financial tracking and reconciliation tools."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3571
+#: includes/class-tpw-flexiclub-admin-menu.php:3573
 msgid "Manage ledger"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3574
+#: includes/class-tpw-flexiclub-admin-menu.php:3576
 msgid "FlexiGolf"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3575
+#: includes/class-tpw-flexiclub-admin-menu.php:3577
 msgid "Fixtures, results, and match administration."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3585
+#: includes/class-tpw-flexiclub-admin-menu.php:3587
 msgid "FlexiPolicy"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3586
+#: includes/class-tpw-flexiclub-admin-menu.php:3588
 msgid "Club documents, policy delivery, and acknowledgements."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3594
+#: includes/class-tpw-flexiclub-admin-menu.php:3596
 msgid "FlexiRota"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3595
+#: includes/class-tpw-flexiclub-admin-menu.php:3597
 msgid "Volunteer and duty rota planning."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3603
+#: includes/class-tpw-flexiclub-admin-menu.php:3605
 msgid "Lodge RSVP"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3604
+#: includes/class-tpw-flexiclub-admin-menu.php:3606
 msgid "Responses, attendance, and payment-ready RSVPs."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3612
+#: includes/class-tpw-flexiclub-admin-menu.php:3614
 msgid "Manage RSVPs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3632
-#: includes/class-tpw-flexiclub-admin-menu.php:4292
+#: includes/class-tpw-flexiclub-admin-menu.php:3634
+#: includes/class-tpw-flexiclub-admin-menu.php:4294
 msgid "Available"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3639
-#: includes/class-tpw-flexiclub-admin-menu.php:3931
-#: includes/class-tpw-flexiclub-admin-menu.php:3955
-#: includes/class-tpw-flexiclub-admin-menu.php:4129
-#: includes/class-tpw-flexiclub-admin-menu.php:4151
-#: includes/class-tpw-flexiclub-admin-menu.php:4265
+#: includes/class-tpw-flexiclub-admin-menu.php:3641
+#: includes/class-tpw-flexiclub-admin-menu.php:3933
+#: includes/class-tpw-flexiclub-admin-menu.php:3957
+#: includes/class-tpw-flexiclub-admin-menu.php:4131
+#: includes/class-tpw-flexiclub-admin-menu.php:4153
+#: includes/class-tpw-flexiclub-admin-menu.php:4267
 msgid "Active"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3647
+#: includes/class-tpw-flexiclub-admin-menu.php:3649
 msgid "Open plugin"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3655
+#: includes/class-tpw-flexiclub-admin-menu.php:3657
 msgid "Installed"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3659
-#: includes/class-tpw-flexiclub-admin-menu.php:3662
+#: includes/class-tpw-flexiclub-admin-menu.php:3661
+#: includes/class-tpw-flexiclub-admin-menu.php:3664
 msgid "Activate plugin"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3662
-#: includes/class-tpw-flexiclub-admin-menu.php:3665
+#: includes/class-tpw-flexiclub-admin-menu.php:3664
+#: includes/class-tpw-flexiclub-admin-menu.php:3667
 msgid "View plugins"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3673
+#: includes/class-tpw-flexiclub-admin-menu.php:3675
 msgid "Learn more"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3805
+#: includes/class-tpw-flexiclub-admin-menu.php:3807
 msgid "Make sure the required member and control pages are linked and published."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3873
-msgid "Activity will appear here as your club starts using FlexiClub."
+#: includes/class-tpw-flexiclub-admin-menu.php:3875
+msgid "Activity will appear here as your club starts using iLungu Club."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3874
+#: includes/class-tpw-flexiclub-admin-menu.php:3876
 msgid "System activity"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3875
+#: includes/class-tpw-flexiclub-admin-menu.php:3877
 msgid "Just now"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3886
+#: includes/class-tpw-flexiclub-admin-menu.php:3888
 msgid "Members module"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3891
+#: includes/class-tpw-flexiclub-admin-menu.php:3893
 msgid "Required pages"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3896
+#: includes/class-tpw-flexiclub-admin-menu.php:3898
 msgid "Recent logs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3909
+#: includes/class-tpw-flexiclub-admin-menu.php:3911
 msgid "Payment methods"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3934
+#: includes/class-tpw-flexiclub-admin-menu.php:3936
 msgid "Members are not set up on this site yet."
 msgstr ""
 
 #. translators: %s: total members
-#: includes/class-tpw-flexiclub-admin-menu.php:3937
+#: includes/class-tpw-flexiclub-admin-menu.php:3939
 #, php-format
 msgid "%s member recorded"
 msgid_plural "%s members recorded"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3941
+#: includes/class-tpw-flexiclub-admin-menu.php:3943
 msgid "The member register is not available yet."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3942
+#: includes/class-tpw-flexiclub-admin-menu.php:3944
 msgid "Member records are ready to manage across the club workspace."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3958
+#: includes/class-tpw-flexiclub-admin-menu.php:3960
 msgid "Noticeboard data is currently unavailable."
 msgstr ""
 
 #. translators: %s: published notices
-#: includes/class-tpw-flexiclub-admin-menu.php:3961
+#: includes/class-tpw-flexiclub-admin-menu.php:3963
 #, php-format
 msgid "%s published notice"
 msgid_plural "%s published notices"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3965
+#: includes/class-tpw-flexiclub-admin-menu.php:3967
 msgid "Open the Noticeboard when the content type is available."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3967
+#: includes/class-tpw-flexiclub-admin-menu.php:3969
 msgid "Share updates, reminders, and club announcements from one place."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3968
+#: includes/class-tpw-flexiclub-admin-menu.php:3970
 msgid "The Noticeboard is ready for your next club update."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3978
+#: includes/class-tpw-flexiclub-admin-menu.php:3980
 msgid "Not installed"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3979
+#: includes/class-tpw-flexiclub-admin-menu.php:3981
 msgid "Install FlexiEvent to manage club events."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3980
+#: includes/class-tpw-flexiclub-admin-menu.php:3982
 msgid "Add FlexiEvent"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3984
-#: includes/class-tpw-flexiclub-admin-menu.php:4015
+#: includes/class-tpw-flexiclub-admin-menu.php:3986
+#: includes/class-tpw-flexiclub-admin-menu.php:4017
 msgid "FlexiEvent active"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3985
+#: includes/class-tpw-flexiclub-admin-menu.php:3987
 msgid "FlexiEvent is active."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:3986
+#: includes/class-tpw-flexiclub-admin-menu.php:3988
 msgid "View events"
 msgstr ""
 
 #. translators: %s: number of upcoming events
-#: includes/class-tpw-flexiclub-admin-menu.php:4010
+#: includes/class-tpw-flexiclub-admin-menu.php:4012
 #, php-format
 msgid "%s upcoming events scheduled."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4013
+#: includes/class-tpw-flexiclub-admin-menu.php:4015
 msgid "No upcoming events at this time."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4016
+#: includes/class-tpw-flexiclub-admin-menu.php:4018
 msgid "FlexiEvent is active, but the upcoming event count is not available right now."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4036
-#: includes/class-tpw-flexiclub-admin-menu.php:4067
-msgid "Review the current system page assignments for FlexiClub and add-on features."
+#: includes/class-tpw-flexiclub-admin-menu.php:4038
+#: includes/class-tpw-flexiclub-admin-menu.php:4069
+msgid "Review the current system page assignments for iLungu Club and add-on features."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4038
+#: includes/class-tpw-flexiclub-admin-menu.php:4040
 msgid "The full registered system-page set could not be resolved safely on this request."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4069
+#: includes/class-tpw-flexiclub-admin-menu.php:4071
 msgid "No registered system pages were found in the resolved ecosystem registry."
 msgstr ""
 
 #. translators: 1: configured pages, 2: registered pages
-#: includes/class-tpw-flexiclub-admin-menu.php:4079
+#: includes/class-tpw-flexiclub-admin-menu.php:4081
 #, php-format
 msgid "%1$s / %2$s"
 msgstr ""
 
 #. translators: 1: configured pages, 2: registered pages
-#: includes/class-tpw-flexiclub-admin-menu.php:4092
+#: includes/class-tpw-flexiclub-admin-menu.php:4094
 #, php-format
 msgid "%1$s of %2$s registered system pages are linked."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4098
+#: includes/class-tpw-flexiclub-admin-menu.php:4100
 msgid "All required system pages are published and ready to use."
 msgstr ""
 
 #. translators: 1: configured pages, 2: missing pages
-#: includes/class-tpw-flexiclub-admin-menu.php:4101
+#: includes/class-tpw-flexiclub-admin-menu.php:4103
 #, php-format
 msgid "%1$s required page is ready and %2$s still needs review."
 msgid_plural "%1$s required pages are ready and %2$s still need review."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4133
+#: includes/class-tpw-flexiclub-admin-menu.php:4135
 msgid "Manage gallery collections and image libraries for club content."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4134
+#: includes/class-tpw-flexiclub-admin-menu.php:4136
 msgid "The Gallery Admin page needs to be checked before launch."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4155
+#: includes/class-tpw-flexiclub-admin-menu.php:4157
 msgid "The archive tools need review before members can rely on them."
 msgstr ""
 
 #. translators: 1: archive pages count, 2: archived file count
-#: includes/class-tpw-flexiclub-admin-menu.php:4159
+#: includes/class-tpw-flexiclub-admin-menu.php:4161
 #, php-format
 msgid "%1$s archive pages and %2$s files are currently in use."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4163
+#: includes/class-tpw-flexiclub-admin-menu.php:4165
 msgid "Archive tools are available whenever you need to add upload and archive pages."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4215
+#: includes/class-tpw-flexiclub-admin-menu.php:4217
 msgid "In use"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4220
+#: includes/class-tpw-flexiclub-admin-menu.php:4222
 msgid "Some menu permission rules could not be read and should be reviewed."
 msgstr ""
 
 #. translators: %s: count of protected menu items
-#: includes/class-tpw-flexiclub-admin-menu.php:4224
+#: includes/class-tpw-flexiclub-admin-menu.php:4226
 #, php-format
 msgid "%s menu item uses permission rules."
 msgid_plural "%s menu items use permission rules."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4227
+#: includes/class-tpw-flexiclub-admin-menu.php:4229
 msgid "Menu permissions are available when you need to restrict navigation."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4257
+#: includes/class-tpw-flexiclub-admin-menu.php:4259
 msgid "Inactive"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4260
+#: includes/class-tpw-flexiclub-admin-menu.php:4262
 msgid "No payment-enabled modules are currently active."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4276
+#: includes/class-tpw-flexiclub-admin-menu.php:4278
 msgid "Club payment methods are configured for member payments and checkout."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4277
+#: includes/class-tpw-flexiclub-admin-menu.php:4279
 msgid "No payment methods have been configured yet."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4294
+#: includes/class-tpw-flexiclub-admin-menu.php:4296
 msgid "Core branding, login, and platform settings are ready to review or refine."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4295
-msgid "Review the main FlexiClub settings to tailor the platform for your club."
+#: includes/class-tpw-flexiclub-admin-menu.php:4297
+msgid "Review the main iLungu Club settings to tailor the platform for your club."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4325
+#: includes/class-tpw-flexiclub-admin-menu.php:4327
 msgid "Recent operational logs need review for email or payment issues."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4326
+#: includes/class-tpw-flexiclub-admin-menu.php:4328
 msgid "Email and payment logs are available for operational review."
 msgstr ""
 
 #. translators: %s: member name
-#: includes/class-tpw-flexiclub-admin-menu.php:4415
+#: includes/class-tpw-flexiclub-admin-menu.php:4417
 #, php-format
 msgid "%s profile updated"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4416
+#: includes/class-tpw-flexiclub-admin-menu.php:4418
 #: modules/members/admin/class-tpw-identity-audit-admin.php:1129
 #: modules/members/includes/class-tpw-member-admin-actions.php:529
 msgid "Member"
 msgstr ""
 
 #. translators: %s: notice title
-#: includes/class-tpw-flexiclub-admin-menu.php:4452
+#: includes/class-tpw-flexiclub-admin-menu.php:4454
 #, php-format
 msgid "Notice published: %s"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4482
+#: includes/class-tpw-flexiclub-admin-menu.php:4484
 msgid "Email delivery failed"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4483
+#: includes/class-tpw-flexiclub-admin-menu.php:4485
 msgid "Email sent successfully"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4484
+#: includes/class-tpw-flexiclub-admin-menu.php:4486
 #, php-format
 msgid "Email to %s"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4484
+#: includes/class-tpw-flexiclub-admin-menu.php:4486
 msgid "Email logs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4511
+#: includes/class-tpw-flexiclub-admin-menu.php:4513
 msgid "Payment log requires review"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4512
+#: includes/class-tpw-flexiclub-admin-menu.php:4514
 msgid "Payment activity recorded"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4513
+#: includes/class-tpw-flexiclub-admin-menu.php:4515
 #, php-format
 msgid "Reference %s"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4513
+#: includes/class-tpw-flexiclub-admin-menu.php:4515
 msgid "Payment logs"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4556
+#: includes/class-tpw-flexiclub-admin-menu.php:4558
 msgid "Not available"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4569
+#: includes/class-tpw-flexiclub-admin-menu.php:4571
 msgid "Recently"
 msgstr ""
 
 #. translators: %s: relative time string
-#: includes/class-tpw-flexiclub-admin-menu.php:4574
+#: includes/class-tpw-flexiclub-admin-menu.php:4576
 #, php-format
 msgid "%s ago"
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4600
+#: includes/class-tpw-flexiclub-admin-menu.php:4602
 msgid "The front-end page was created or repaired."
 msgstr ""
 
-#: includes/class-tpw-flexiclub-admin-menu.php:4605
+#: includes/class-tpw-flexiclub-admin-menu.php:4607
 msgid "The front-end page could not be created or repaired."
 msgstr ""
 
@@ -1915,7 +1916,7 @@ msgid "Read More"
 msgstr ""
 
 #: includes/noticeboard/shortcodes/noticeboard-list.php:131
-#: includes/tpw-core-settings.php:961
+#: includes/tpw-core-settings.php:988
 #: modules/gallery/templates/list.php:51
 #: modules/members/shortcodes/member-profile.php:258
 #: modules/members/shortcodes/member-profile.php:431
@@ -1952,48 +1953,56 @@ msgstr ""
 msgid "No notices found."
 msgstr ""
 
+#: includes/tpw-core-loader.php:654
+#: includes/tpw-core-settings.php:2209
+#: includes/tpw-core-settings.php:2710
+#: includes/tpw-core-settings.php:3047
+#: modules/members/shortcodes/member-profile.php:13
+#: modules/members/shortcodes/member-profile.php:375
+msgid "My Profile"
+msgstr ""
+
 #: includes/tpw-core-settings.php:19
 msgid "TPW Member Menu"
 msgstr ""
 
 #: includes/tpw-core-settings.php:26
-#: includes/tpw-core-settings.php:473
-msgid "FlexiClub Settings"
+msgid "iLungu™ Club Settings"
 msgstr ""
 
 #: includes/tpw-core-settings.php:64
-#: includes/tpw-core-settings.php:347
+#: includes/tpw-core-settings.php:374
 msgid "Email settings saved."
 msgstr ""
 
 #: includes/tpw-core-settings.php:65
-#: includes/tpw-core-settings.php:348
+#: includes/tpw-core-settings.php:375
 msgid "Settings saved."
 msgstr ""
 
 #: includes/tpw-core-settings.php:76
-#: includes/tpw-core-settings.php:355
+#: includes/tpw-core-settings.php:382
 msgid "Base64 copy not created – image too large or incompatible format."
 msgstr ""
 
 #: includes/tpw-core-settings.php:78
-#: includes/tpw-core-settings.php:360
+#: includes/tpw-core-settings.php:387
 msgid "Could not save. Email settings class missing."
 msgstr ""
 
 #: includes/tpw-core-settings.php:80
-#: includes/tpw-core-settings.php:365
+#: includes/tpw-core-settings.php:392
 msgid "Could not save. Email Templates DB class missing."
 msgstr ""
 
 #: includes/tpw-core-settings.php:82
-#: includes/tpw-core-settings.php:370
+#: includes/tpw-core-settings.php:397
 msgid "Email logs cleared."
 msgstr ""
 
 #: includes/tpw-core-settings.php:84
-#: includes/tpw-core-settings.php:375
-msgid "Email logs are unavailable. Please ensure FlexiClub is fully updated."
+#: includes/tpw-core-settings.php:402
+msgid "Email logs are unavailable. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:93
@@ -2001,11 +2010,11 @@ msgid "System Pages template not found."
 msgstr ""
 
 #: includes/tpw-core-settings.php:98
-msgid "Email settings class not found. Please ensure FlexiClub is fully updated."
+msgid "Email settings class not found. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:102
-msgid "Email logs class not found. Please ensure FlexiClub is fully updated."
+msgid "Email logs class not found. Please ensure iLungu Club is fully updated."
 msgstr ""
 
 #: includes/tpw-core-settings.php:107
@@ -2017,20 +2026,22 @@ msgid "Unknown template key."
 msgstr ""
 
 #: includes/tpw-core-settings.php:124
-msgid "FlexiClub: The Member Profile page is not configured. "
+#: includes/tpw-core-settings.php:2926
+msgid "iLungu Club: The Member Profile page is not configured. "
 msgstr ""
 
 #: includes/tpw-core-settings.php:125
-#: includes/tpw-core-settings.php:2900
+#: includes/tpw-core-settings.php:2927
 msgid "Select a Profile page now"
 msgstr ""
 
 #: includes/tpw-core-settings.php:134
-msgid "FlexiClub: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
+#: includes/tpw-core-settings.php:2938
+msgid "iLungu Club: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
 msgstr ""
 
 #: includes/tpw-core-settings.php:135
-#: includes/tpw-core-settings.php:2912
+#: includes/tpw-core-settings.php:2939
 msgid "Edit page"
 msgstr ""
 
@@ -2054,101 +2065,109 @@ msgstr ""
 msgid "Email Templates"
 msgstr ""
 
-#: includes/tpw-core-settings.php:440
+#: includes/tpw-core-settings.php:467
 msgid "No content registered for this tab."
 msgstr ""
 
-#: includes/tpw-core-settings.php:475
+#: includes/tpw-core-settings.php:500
+msgid "iLungu Club Settings"
+msgstr ""
+
+#: includes/tpw-core-settings.php:502
 msgid "Configure branding, menus, email, payment methods, and system pages."
 msgstr ""
 
-#: includes/tpw-core-settings.php:476
+#: includes/tpw-core-settings.php:503
 msgid "Configure branding, menus, email, and system pages."
 msgstr ""
 
-#: includes/tpw-core-settings.php:522
+#: includes/tpw-core-settings.php:549
 msgid "Default Login Page"
 msgstr ""
 
-#: includes/tpw-core-settings.php:533
-#: includes/tpw-core-settings.php:550
+#: includes/tpw-core-settings.php:560
+#: includes/tpw-core-settings.php:577
 msgid "No published pages found."
 msgstr ""
 
-#: includes/tpw-core-settings.php:535
+#: includes/tpw-core-settings.php:562
 msgid "Select the page members should be redirected to when login is required. Used by FlexiEvent and other TPW modules."
 msgstr ""
 
-#: includes/tpw-core-settings.php:539
+#: includes/tpw-core-settings.php:566
 msgid "Redirect After Login"
 msgstr ""
 
-#: includes/tpw-core-settings.php:552
+#: includes/tpw-core-settings.php:579
 msgid "Choose a page to send members to immediately after they log in. Leave as “No redirect” to go to the site home."
 msgstr ""
 
-#: includes/tpw-core-settings.php:557
+#: includes/tpw-core-settings.php:584
 msgid "Save Features"
 msgstr ""
 
-#: includes/tpw-core-settings.php:576
+#: includes/tpw-core-settings.php:603
 msgid "Members Menu repair completed. Missing default items were added without duplicating existing entries."
 msgstr ""
 
-#: includes/tpw-core-settings.php:579
+#: includes/tpw-core-settings.php:606
 msgid "Members Menu repair could not complete. Check that WordPress nav menu functions are available and try again."
 msgstr ""
 
-#: includes/tpw-core-settings.php:592
+#: includes/tpw-core-settings.php:619
 msgid "Replace Which Menu Location for Members?"
 msgstr ""
 
-#: includes/tpw-core-settings.php:599
-#: includes/tpw-core-settings.php:1902
+#: includes/tpw-core-settings.php:626
+#: includes/tpw-core-settings.php:1929
 msgid "Logged-in users will see the TPW Member Menu at this location if a menu is assigned to it."
 msgstr ""
 
-#: includes/tpw-core-settings.php:604
+#: includes/tpw-core-settings.php:631
 msgid "Save Member Menu"
 msgstr ""
 
-#: includes/tpw-core-settings.php:611
+#: includes/tpw-core-settings.php:638
 msgid "Repair Members Menu"
 msgstr ""
 
-#: includes/tpw-core-settings.php:612
-msgid "Safely add any missing default FlexiClub member-menu items on existing installs without deactivating or reactivating the plugin."
+#: includes/tpw-core-settings.php:639
+msgid "Safely add any missing default iLungu Club member-menu items on existing installs without deactivating or reactivating the plugin."
 msgstr ""
 
-#: includes/tpw-core-settings.php:658
+#: includes/tpw-core-settings.php:685
 msgid "Recent email dispatch attempts recorded by the central core dispatcher. The latest 100 entries are shown, newest first, and logs older than 30 days are removed automatically."
 msgstr ""
 
-#: includes/tpw-core-settings.php:664
+#: includes/tpw-core-settings.php:691
 msgid "Clear Logs"
 msgstr ""
 
-#: includes/tpw-core-settings.php:670
+#: includes/tpw-core-settings.php:697
 msgid "Timestamp"
 msgstr ""
 
-#: includes/tpw-core-settings.php:671
+#: includes/tpw-core-settings.php:698
+#: modules/email/class-tpw-email-queue.php:701
 msgid "Recipient"
 msgstr ""
 
-#: includes/tpw-core-settings.php:672
-#: includes/tpw-core-settings.php:896
-#: includes/tpw-core-settings.php:901
+#: includes/tpw-core-settings.php:699
+#: includes/tpw-core-settings.php:923
+#: includes/tpw-core-settings.php:928
+#: modules/email/class-tpw-email-queue.php:702
 #: modules/email/templates/email-form.php:48
 #: modules/email/templates/email-form.php:49
 msgid "Subject"
 msgstr ""
 
-#: includes/tpw-core-settings.php:673
+#: includes/tpw-core-settings.php:700
+#: modules/email/class-tpw-email-queue.php:703
 msgid "Context"
 msgstr ""
 
-#: includes/tpw-core-settings.php:674
+#: includes/tpw-core-settings.php:701
+#: modules/email/class-tpw-email-queue.php:704
 #: modules/members/admin/class-tpw-identity-audit-admin.php:990
 #: modules/members/includes/class-tpw-member-csv-importer.php:803
 #: modules/members/signups/class-tpw-signup-attempts-admin.php:111
@@ -2159,174 +2178,175 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-#: includes/tpw-core-settings.php:675
+#: includes/tpw-core-settings.php:702
 msgid "Error"
 msgstr ""
 
-#: includes/tpw-core-settings.php:732
+#: includes/tpw-core-settings.php:759
 msgid "Displayed in email headers. Leave blank to use your Site Title."
 msgstr ""
 
-#: includes/tpw-core-settings.php:736
+#: includes/tpw-core-settings.php:763
 msgid "Enable Throttling"
 msgstr ""
 
-#: includes/tpw-core-settings.php:740
+#: includes/tpw-core-settings.php:767
 msgid "Limit the rate of outgoing emails"
 msgstr ""
 
-#: includes/tpw-core-settings.php:745
+#: includes/tpw-core-settings.php:772
 msgid "Max Emails Per Minute"
 msgstr ""
 
-#: includes/tpw-core-settings.php:751
+#: includes/tpw-core-settings.php:778
 msgid "Delay Between Emails (sec)"
 msgstr ""
 
-#: includes/tpw-core-settings.php:757
+#: includes/tpw-core-settings.php:784
 msgid "Enable Logging"
 msgstr ""
 
-#: includes/tpw-core-settings.php:761
+#: includes/tpw-core-settings.php:788
 msgid "Record email activity (via hooks)"
 msgstr ""
 
-#: includes/tpw-core-settings.php:766
+#: includes/tpw-core-settings.php:793
 msgid "Enable Test Mode"
 msgstr ""
 
-#: includes/tpw-core-settings.php:770
+#: includes/tpw-core-settings.php:797
 msgid "Send all emails to a single test address"
 msgstr ""
 
-#: includes/tpw-core-settings.php:775
+#: includes/tpw-core-settings.php:802
 msgid "Test Email Recipient"
 msgstr ""
 
-#: includes/tpw-core-settings.php:778
+#: includes/tpw-core-settings.php:805
 msgid "Used only when Test Mode is enabled."
 msgstr ""
 
-#: includes/tpw-core-settings.php:782
+#: includes/tpw-core-settings.php:809
 msgid "Fallback Logo URL"
 msgstr ""
 
-#: includes/tpw-core-settings.php:785
+#: includes/tpw-core-settings.php:812
 msgid "Select Image"
 msgstr ""
 
-#: includes/tpw-core-settings.php:786
+#: includes/tpw-core-settings.php:813
 msgid "Clear"
 msgstr ""
 
-#: includes/tpw-core-settings.php:787
+#: includes/tpw-core-settings.php:814
 msgid "Optional fallback logo displayed in email templates. PNG/JPG only for base64 copy."
 msgstr ""
 
-#: includes/tpw-core-settings.php:790
+#: includes/tpw-core-settings.php:817
 msgid "Current Logo Preview"
 msgstr ""
 
-#: includes/tpw-core-settings.php:797
+#: includes/tpw-core-settings.php:824
 msgid "Embed Logo as Inline Image (base64)"
 msgstr ""
 
-#: includes/tpw-core-settings.php:799
+#: includes/tpw-core-settings.php:826
 msgid "Use this if you want to embed the logo directly in the email for clients that block remote images. Not recommended for large images."
 msgstr ""
 
-#: includes/tpw-core-settings.php:802
+#: includes/tpw-core-settings.php:829
 msgid "Base64 copy is stored."
 msgstr ""
 
-#: includes/tpw-core-settings.php:803
+#: includes/tpw-core-settings.php:830
 msgid "Reset"
 msgstr ""
 
-#: includes/tpw-core-settings.php:806
+#: includes/tpw-core-settings.php:833
 msgid "No base64 copy stored yet. It will be created automatically when you select a compatible image (PNG/JPG, ≤50KB, ≤400px wide)."
 msgstr ""
 
-#: includes/tpw-core-settings.php:813
+#: includes/tpw-core-settings.php:840
 msgid "Save Email Settings"
 msgstr ""
 
-#: includes/tpw-core-settings.php:884
+#: includes/tpw-core-settings.php:911
 msgid "Back to list"
 msgstr ""
 
-#: includes/tpw-core-settings.php:893
+#: includes/tpw-core-settings.php:920
 msgid "Template"
 msgstr ""
 
-#: includes/tpw-core-settings.php:894
+#: includes/tpw-core-settings.php:921
 msgid "Group"
 msgstr ""
 
-#: includes/tpw-core-settings.php:898
+#: includes/tpw-core-settings.php:925
 msgid "Use placeholders below in the subject."
 msgstr ""
 
-#: includes/tpw-core-settings.php:901
+#: includes/tpw-core-settings.php:928
 msgid "Subject is not editable for this template."
 msgstr ""
 
-#: includes/tpw-core-settings.php:904
-#: includes/tpw-core-settings.php:913
+#: includes/tpw-core-settings.php:931
+#: includes/tpw-core-settings.php:940
 msgid "Body"
 msgstr ""
 
-#: includes/tpw-core-settings.php:910
+#: includes/tpw-core-settings.php:937
 msgid "You can use the placeholders below in the body."
 msgstr ""
 
-#: includes/tpw-core-settings.php:913
+#: includes/tpw-core-settings.php:940
 msgid "Body is not editable for this template."
 msgstr ""
 
-#: includes/tpw-core-settings.php:916
+#: includes/tpw-core-settings.php:943
 msgid "Include fallback logo"
 msgstr ""
 
-#: includes/tpw-core-settings.php:917
+#: includes/tpw-core-settings.php:944
 msgid "Show the configured fallback logo at the top of this email"
 msgstr ""
 
-#: includes/tpw-core-settings.php:921
+#: includes/tpw-core-settings.php:948
 msgid "Available placeholders"
 msgstr ""
 
-#: includes/tpw-core-settings.php:929
+#: includes/tpw-core-settings.php:956
 msgid "No placeholders defined for this template."
 msgstr ""
 
-#: includes/tpw-core-settings.php:934
+#: includes/tpw-core-settings.php:961
 msgid "Save Template"
 msgstr ""
 
-#: includes/tpw-core-settings.php:935
+#: includes/tpw-core-settings.php:962
 msgid "Reset to Default"
 msgstr ""
 
-#: includes/tpw-core-settings.php:943
+#: includes/tpw-core-settings.php:970
 msgid "Registered email templates from TPW plugins. Edit to override the default subject/body and choose whether to include the fallback logo."
 msgstr ""
 
-#: includes/tpw-core-settings.php:945
+#: includes/tpw-core-settings.php:972
 msgid "No templates registered yet."
 msgstr ""
 
-#: includes/tpw-core-settings.php:952
+#: includes/tpw-core-settings.php:979
 #: modules/members/settings/member-signups-settings.php:151
 #: modules/payments/class-tpw-card-on-the-day-settings.php:83
 msgid "Label"
 msgstr ""
 
-#: includes/tpw-core-settings.php:953
+#: includes/tpw-core-settings.php:980
 msgid "Key"
 msgstr ""
 
-#: includes/tpw-core-settings.php:954
+#: includes/tpw-core-settings.php:981
+#: modules/email/class-tpw-email-queue.php:708
 #: modules/gallery/templates/categories.php:28
 #: modules/gallery/templates/list.php:35
 #: modules/menus/class-tpw-menus-frontend-admin.php:370
@@ -2339,175 +2359,171 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1231
+#: includes/tpw-core-settings.php:1258
 msgid "Heading font family"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1234
+#: includes/tpw-core-settings.php:1261
 msgid "Leave empty to inherit the UI Theme font. Applies to h1–h6 within TPW UIs."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1244
+#: includes/tpw-core-settings.php:1271
 msgid "colour / size / weight"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1252
+#: includes/tpw-core-settings.php:1279
 msgid "Default"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1256
+#: includes/tpw-core-settings.php:1283
 msgid "Leave colour empty to inherit. Size accepts px, rem, or em. Weight: choose Default to use the built-in scale."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1295
+#: includes/tpw-core-settings.php:1322
 msgid "Used for .tpw-action-edit buttons in admin module lists."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1311
+#: includes/tpw-core-settings.php:1338
 msgid "Large buttons font size"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1312
+#: includes/tpw-core-settings.php:1339
 msgid "Used by .tpw-btn-lg."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1315
+#: includes/tpw-core-settings.php:1342
 msgid "Large buttons padding"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1316
+#: includes/tpw-core-settings.php:1343
 msgid "CSS shorthand accepted. Used by .tpw-btn-lg."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1319
+#: includes/tpw-core-settings.php:1346
 msgid "Large buttons height"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1320
+#: includes/tpw-core-settings.php:1347
 msgid "Minimum height for .tpw-btn-lg. Use a unit such as px, rem, or em."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1327
+#: includes/tpw-core-settings.php:1354
 msgid "Background/base colour for success states. Supports CSS functions (color-mix, var())."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1334
+#: includes/tpw-core-settings.php:1361
 msgid "Base colour for informational notices. Typically uses the UI accent."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1342
+#: includes/tpw-core-settings.php:1369
 msgid "High-attention but non-fatal states."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1349
+#: includes/tpw-core-settings.php:1376
 msgid "Critical / failure state colour, usually matches Danger button."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1353
+#: includes/tpw-core-settings.php:1380
 msgid "Buttons Height"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1356
+#: includes/tpw-core-settings.php:1383
 msgid "Optional. Sets a fixed height for TPW buttons. Use a unit (e.g., 32px). Leave blank or set to “auto” to size by padding."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1360
+#: includes/tpw-core-settings.php:1387
 msgid "Buttons Font Weight"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1368
+#: includes/tpw-core-settings.php:1395
 msgid "Overrides UI weight for TPW buttons only. Leave as 600 for the default."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1372
+#: includes/tpw-core-settings.php:1399
 msgid "Buttons Font Family"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1375
+#: includes/tpw-core-settings.php:1402
 msgid "Optional. Overrides UI font for TPW buttons only. If empty, buttons use the UI Theme font or the system stack."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1380
+#: includes/tpw-core-settings.php:1407
 msgid "Font family"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1383
+#: includes/tpw-core-settings.php:1410
 msgid "Applies within .tpw-admin-ui only."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1387
+#: includes/tpw-core-settings.php:1414
 msgid "Font weight"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1398
+#: includes/tpw-core-settings.php:1425
 msgid "Text transform"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1409
+#: includes/tpw-core-settings.php:1436
 msgid "Letter spacing"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1415
+#: includes/tpw-core-settings.php:1442
 msgid "Text shadow"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1421
+#: includes/tpw-core-settings.php:1448
 msgid "Button background colour"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1428
+#: includes/tpw-core-settings.php:1455
 msgid "Button text colour"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1435
+#: includes/tpw-core-settings.php:1462
 msgid "Accent colour"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1442
-#: includes/tpw-core-settings.php:1458
+#: includes/tpw-core-settings.php:1469
+#: includes/tpw-core-settings.php:1485
 msgid "Inherit global site styles on admin screens (front-end only)"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1447
-#: includes/tpw-core-settings.php:1467
+#: includes/tpw-core-settings.php:1474
+#: includes/tpw-core-settings.php:1494
 msgid "Do not apply TPW Admin UI wrapper/styles on front-end shortcodes. Useful when using Elementor/Theme global styles."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1449
+#: includes/tpw-core-settings.php:1476
 msgid "Does not affect wp-admin. Only front-end admin-like pages (shortcodes) are affected."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1469
+#: includes/tpw-core-settings.php:1496
 msgid "This does not affect wp-admin. It applies only to front-end admin-like pages powered by TPW shortcodes."
 msgstr ""
 
-#: includes/tpw-core-settings.php:1474
+#: includes/tpw-core-settings.php:1501
 msgid "Save Branding"
 msgstr ""
 
-#: includes/tpw-core-settings.php:1802
-#: includes/tpw-core-settings.php:1867
+#: includes/tpw-core-settings.php:1829
+#: includes/tpw-core-settings.php:1894
+#: modules/email/class-tpw-email-queue.php:752
+#: modules/email/class-tpw-email-queue.php:762
+#: modules/email/class-tpw-email-queue.php:775
+#: modules/email/class-tpw-email-queue.php:788
 msgid "You do not have permission to manage settings."
 msgstr ""
 
-#: includes/tpw-core-settings.php:2157
+#: includes/tpw-core-settings.php:2184
 #: modules/gallery/elementor/class-tpw-elementor-widget-gallery.php:39
 msgid "Gallery"
 msgstr ""
 
-#: includes/tpw-core-settings.php:2204
-#: includes/tpw-core-settings.php:2684
+#: includes/tpw-core-settings.php:2231
+#: includes/tpw-core-settings.php:2711
 #: modules/members/members-init.php:210
 #: modules/members/members-init.php:223
 msgid "Logout"
-msgstr ""
-
-#: includes/tpw-core-settings.php:2899
-msgid "TPW Core: The Member Profile page is not configured. "
-msgstr ""
-
-#: includes/tpw-core-settings.php:2911
-msgid "TPW Core: The selected Member Profile page is not published. Members cannot view it until it is Public and Published."
 msgstr ""
 
 #: modules/email/class-tpw-email-form.php:23
@@ -2527,98 +2543,252 @@ msgstr ""
 msgid "Email sent."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:56
+#: modules/email/class-tpw-email-queue.php:46
+msgid "Email Queue"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:222
+msgid "Failed to insert email queue row."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:303
+#: modules/email/class-tpw-email-queue.php:860
+#: modules/email/class-tpw-email-queue.php:887
+#: modules/email/class-tpw-email-queue.php:1037
+msgid "Failed to schedule queued email processing."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:412
+msgid "Immediate dispatch returned false."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:415
+msgid "TPW_Email dispatcher unavailable."
+msgstr ""
+
+#. translators: %s: original send failure message
+#: modules/email/class-tpw-email-queue.php:473
+#, php-format
+msgid "Retry scheduling failed after email send failure: %s"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:474
+msgid "Unknown send failure."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:645
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1963
+msgid "All"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:646
+msgid "Pending"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:647
+msgid "Processing"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:648
+msgid "Sent"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:649
+msgid "Failed"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:650
+msgid "Cancelled"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:658
+msgid "Email queue reconciliation triggered."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:660
+msgid "Queued email moved back to pending and rescheduled."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:662
+msgid "Queued email cancelled."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:664
+msgid "Old sent queue items cleared."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:666
+msgid "Email queue action completed."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:673
+msgid "Queued outbound emails are stored durably before delivery. This screen is the business-level email payload and status view. Scheduled Actions remains the infrastructure view for job execution."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:674
+msgid "View Scheduled Actions"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:687
+msgid "Reconcile Queue Now"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:694
+msgid "Clear Sent Queue Items"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:700
+#: modules/gallery/templates/list.php:33
+#: modules/members/includes/class-tpw-member-ajax.php:717
+msgid "Created"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:705
+msgid "Attempts"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:706
+msgid "Scheduled Action"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:707
+msgid "Last Error"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:713
+msgid "No queue items found."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:727
+msgid "Retry"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:730
+#: modules/gallery/gallery-loader.php:95
+#: modules/gallery/templates/form.php:99
+#: modules/menus/class-tpw-menus-frontend-admin.php:511
+#: modules/menus/class-tpw-menus-frontend-admin.php:730
+msgid "Cancel"
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:859
+msgid "Failed to schedule queued email processing. Scheduler wrapper unavailable."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:869
+#: modules/email/class-tpw-email-queue.php:880
+msgid "Email queued for sending. Processing will begin when Action Scheduler is ready."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:888
+msgid "Failed to schedule queued email processing. The queue row is still pending and includes scheduler diagnostics."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:896
+msgid "Email queued for sending."
+msgstr ""
+
+#: modules/email/class-tpw-email-queue.php:1022
+msgid "Queued email is waiting for Action Scheduler initialization."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:71
 msgid "wp_mail() returned false."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:104
+#: modules/email/class-tpw-email.php:118
+#: modules/email/class-tpw-email.php:119
+msgid "Email queue service unavailable."
+msgstr ""
+
+#: modules/email/class-tpw-email.php:153
 msgid "Invalid recipient email."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:107
+#: modules/email/class-tpw-email.php:156
 msgid "Invalid sender email."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:110
+#: modules/email/class-tpw-email.php:159
 msgid "Subject is required."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:113
+#: modules/email/class-tpw-email.php:162
 msgid "Message is required."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:144
+#: modules/email/class-tpw-email.php:193
 msgid "Failed to send email."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:150
+#: modules/email/class-tpw-email.php:199
 msgid "This is a copy of your message."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:161
+#: modules/email/class-tpw-email.php:210
 msgid "Email sent successfully."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:375
-#: modules/email/class-tpw-email.php:425
+#: modules/email/class-tpw-email.php:424
+#: modules/email/class-tpw-email.php:474
 msgid "The uploaded file exceeds the upload_max_filesize directive."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:376
-#: modules/email/class-tpw-email.php:426
+#: modules/email/class-tpw-email.php:425
+#: modules/email/class-tpw-email.php:475
 msgid "The uploaded file exceeds the MAX_FILE_SIZE directive."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:377
-#: modules/email/class-tpw-email.php:427
+#: modules/email/class-tpw-email.php:426
+#: modules/email/class-tpw-email.php:476
 msgid "The uploaded file was only partially uploaded."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:378
-#: modules/email/class-tpw-email.php:428
+#: modules/email/class-tpw-email.php:427
+#: modules/email/class-tpw-email.php:477
 msgid "No file was uploaded."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:379
-#: modules/email/class-tpw-email.php:429
+#: modules/email/class-tpw-email.php:428
+#: modules/email/class-tpw-email.php:478
 msgid "Missing a temporary folder on the server."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:380
-#: modules/email/class-tpw-email.php:430
+#: modules/email/class-tpw-email.php:429
+#: modules/email/class-tpw-email.php:479
 msgid "Failed to write file to disk."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:381
-#: modules/email/class-tpw-email.php:431
+#: modules/email/class-tpw-email.php:430
+#: modules/email/class-tpw-email.php:480
 msgid "A PHP extension stopped the file upload."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:383
-#: modules/email/class-tpw-email.php:433
+#: modules/email/class-tpw-email.php:432
+#: modules/email/class-tpw-email.php:482
 msgid "Upload error."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:388
-#: modules/email/class-tpw-email.php:405
-#: modules/email/class-tpw-email.php:438
+#: modules/email/class-tpw-email.php:437
+#: modules/email/class-tpw-email.php:454
+#: modules/email/class-tpw-email.php:487
 #, php-format
 msgid "File type not allowed: %s"
 msgstr ""
 
-#: modules/email/class-tpw-email.php:391
-#: modules/email/class-tpw-email.php:408
-#: modules/email/class-tpw-email.php:441
+#: modules/email/class-tpw-email.php:440
+#: modules/email/class-tpw-email.php:457
+#: modules/email/class-tpw-email.php:490
 #, php-format
 msgid "File too large: %s"
 msgstr ""
 
-#: modules/email/class-tpw-email.php:395
-#: modules/email/class-tpw-email.php:445
+#: modules/email/class-tpw-email.php:444
+#: modules/email/class-tpw-email.php:494
 msgid "Unable to store uploaded file. Please try again or contact support."
 msgstr ""
 
-#: modules/email/class-tpw-email.php:588
+#: modules/email/class-tpw-email.php:637
 msgid "Email template manager unavailable."
 msgstr ""
 
@@ -2928,13 +3098,6 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: modules/gallery/gallery-loader.php:95
-#: modules/gallery/templates/form.php:99
-#: modules/menus/class-tpw-menus-frontend-admin.php:511
-#: modules/menus/class-tpw-menus-frontend-admin.php:730
-msgid "Cancel"
-msgstr ""
-
 #: modules/gallery/gallery-loader.php:97
 #: modules/gallery/templates/categories.php:19
 #: modules/notices/templates/form.php:31
@@ -3027,7 +3190,7 @@ msgid "Category"
 msgstr ""
 
 #: modules/gallery/templates/form.php:30
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1957
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1985
 msgid "Uncategorised"
 msgstr ""
 
@@ -3250,11 +3413,6 @@ msgstr ""
 
 #: modules/gallery/templates/list.php:30
 msgid "Cat ID"
-msgstr ""
-
-#: modules/gallery/templates/list.php:33
-#: modules/members/includes/class-tpw-member-ajax.php:717
-msgid "Created"
 msgstr ""
 
 #: modules/gallery/templates/list.php:40
@@ -3906,12 +4064,12 @@ msgstr ""
 msgid "Download Sample CSV Template"
 msgstr ""
 
-#: modules/members/includes/class-tpw-member-form-handler.php:334
-#: modules/members/includes/class-tpw-member-form-handler.php:656
+#: modules/members/includes/class-tpw-member-form-handler.php:348
+#: modules/members/includes/class-tpw-member-form-handler.php:677
 msgid "Invalid member ID."
 msgstr ""
 
-#: modules/members/includes/class-tpw-member-form-handler.php:664
+#: modules/members/includes/class-tpw-member-form-handler.php:685
 msgid "Member not found."
 msgstr ""
 
@@ -3957,7 +4115,7 @@ msgid "Join Page"
 msgstr ""
 
 #: modules/members/settings/member-signups-settings.php:42
-msgid "When Sign-Ups are enabled, TPW Core will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed."
+msgid "When Sign-Ups are enabled, iLungu Club will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed."
 msgstr ""
 
 #: modules/members/settings/member-signups-settings.php:46
@@ -4216,7 +4374,7 @@ msgstr ""
 
 #: modules/members/shortcodes/member-profile.php:648
 #: modules/members/shortcodes/member-profile.php:669
-#: modules/members/shortcodes/members-admin.php:497
+#: modules/members/shortcodes/members-admin.php:508
 #: modules/notices/shortcodes/noticeboard-list.php:63
 msgid "Access Denied"
 msgstr ""
@@ -4261,11 +4419,19 @@ msgstr ""
 msgid "Password setup email is blocked because the member email and linked WordPress account email do not match. Resolve the mismatch first."
 msgstr ""
 
-#: modules/members/shortcodes/members-admin.php:486
+#: modules/members/shortcodes/members-admin.php:487
+msgid "Administrator access was not removed because this would leave the site without any other effective Administrator who can recover member management."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:488
+msgid "Your Administrator access was not removed because no other effective Administrator currently exists to recover the system."
+msgstr ""
+
+#: modules/members/shortcodes/members-admin.php:497
 msgid "WordPress user successfully created and linked."
 msgstr ""
 
-#: modules/members/shortcodes/members-admin.php:490
+#: modules/members/shortcodes/members-admin.php:501
 msgid "Email address added — you can now create a WordPress user for this member."
 msgstr ""
 
@@ -4274,7 +4440,6 @@ msgid "Core"
 msgstr ""
 
 #: modules/members/signups/class-tpw-join-page.php:170
-#: modules/members/signups/class-tpw-join-page.php:375
 #: modules/members/signups/class-tpw-signup-field-schema.php:275
 #: modules/members/signups/class-tpw-signup-form-renderer.php:82
 msgid "Join"
@@ -4936,7 +5101,7 @@ msgid "This payment method is registered, but a front-end-safe configuration scr
 msgstr ""
 
 #: modules/payments/admin-settings.php:277
-msgid "Configure this payment method without leaving the FlexiClub Settings workspace."
+msgid "Configure this payment method without leaving the iLungu Club Settings workspace."
 msgstr ""
 
 #: modules/payments/admin-settings.php:280
@@ -5265,55 +5430,51 @@ msgstr ""
 msgid "Menu Manager coming soon…"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1147
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1175
 #, php-format
 msgid "Moved %d file to Trash"
 msgid_plural "Moved %d files to Trash"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1152
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1180
 #, php-format
 msgid "Deleted %d file permanently"
 msgid_plural "Deleted %d files permanently"
 msgstr[0] ""
 msgstr[1] ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1865
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1893
 msgid "Edit Upload Page"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1875
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1903
 msgid "No files uploaded yet."
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1926
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1954
 msgid "Category:"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1935
-msgid "All"
-msgstr ""
-
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1947
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1975
 msgid "Year:"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:1950
+#: modules/tpw-control/class-tpw-control-upload-pages.php:1978
 msgid "Show all years"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:2050
-#: modules/tpw-control/class-tpw-control-upload-pages.php:2075
-#: modules/tpw-control/class-tpw-control-upload-pages.php:2098
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2078
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2103
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2126
 msgid "Documents"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:2114
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2142
 msgid "Download"
 msgstr ""
 
-#: modules/tpw-control/class-tpw-control-upload-pages.php:2350
+#: modules/tpw-control/class-tpw-control-upload-pages.php:2378
 msgid "Upload Pages module not available."
 msgstr ""
 
@@ -5326,7 +5487,7 @@ msgid "Menu Manager"
 msgstr ""
 
 #: modules/tpw-control/templates/dashboard.php:25
-msgid "FlexiClub Control has been split into separate FE workspaces"
+msgid "iLungu Club Control has been split into separate FE workspaces"
 msgstr ""
 
 #: modules/tpw-control/templates/dashboard.php:26
@@ -5445,7 +5606,7 @@ msgid "System Status"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:10
-msgid "FlexiClub navigation"
+msgid "iLungu Club navigation"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:20
@@ -5457,7 +5618,7 @@ msgid "Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:31
-msgid "FlexiClub workspace navigation"
+msgid "iLungu Club workspace navigation"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:50
@@ -5465,7 +5626,7 @@ msgid "On This Page"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:51
-msgid "FlexiClub dashboard sections"
+msgid "iLungu Club dashboard sections"
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:67
@@ -5517,7 +5678,7 @@ msgid "Monitor setup progress, jump into the right tool, and keep the club works
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:174
-msgid "A launch checklist for the FlexiClub front-end workspace and connected pages."
+msgid "A launch checklist for the iLungu Club front-end workspace and connected pages."
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:185
@@ -5529,11 +5690,11 @@ msgid "Open the current club tools without absorbing or replacing their existing
 msgstr ""
 
 #: templates/frontend/flexiclub-dashboard.php:265
-msgid "Add-on products stay plugin-owned. The FlexiClub hub links out to them and reports current availability."
+msgid "Add-on products stay plugin-owned. The iLungu Club hub links out to them and reports current availability."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:15
-msgid "Manage the current front-end archive tools from the FlexiClub portal."
+msgid "Manage the current front-end archive tools from the iLungu Club portal."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:19
@@ -5546,12 +5707,12 @@ msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:39
 #: templates/frontend/flexiclub-workspace-menu-management.php:39
-msgid "FlexiClub Control remains available during the transition."
+msgid "iLungu Club Control remains available during the transition."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-archival-system.php:41
 #: templates/frontend/flexiclub-workspace-menu-management.php:41
-msgid "Open legacy FlexiClub Control"
+msgid "Open legacy iLungu Club Control"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:41
@@ -5559,7 +5720,7 @@ msgid "Logs Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:42
-msgid "Review operational email and payment logs from the FlexiClub portal without leaving the front end. Sensitive payloads and secrets remain hidden."
+msgid "Review operational email and payment logs from the iLungu Club portal without leaving the front end. Sensitive payloads and secrets remain hidden."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:49
@@ -5567,7 +5728,7 @@ msgid "Open Settings workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:68
-msgid "Switch between the existing log sources that FlexiClub currently exposes through shared Core tooling."
+msgid "Switch between the existing log sources that iLungu Club currently exposes through shared Core tooling."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:73
@@ -5575,7 +5736,7 @@ msgid "No front-end-safe log sources are currently available."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:75
-msgid "FlexiClub log sources"
+msgid "iLungu Club log sources"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-logs.php:106
@@ -5612,7 +5773,7 @@ msgid "Log pagination"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-menu-management.php:15
-msgid "Manage the current front-end menu permissions tools from the FlexiClub portal."
+msgid "Manage the current front-end menu permissions tools from the iLungu Club portal."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:9
@@ -5624,7 +5785,7 @@ msgid "Settings Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:33
-msgid "Manage the existing FlexiClub settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen."
+msgid "Manage the existing iLungu Club settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:40
@@ -5632,11 +5793,11 @@ msgid "Open System Pages workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:50
-msgid "Switch between the existing FlexiClub settings areas without leaving the front-end workspace."
+msgid "Switch between the existing iLungu Club settings areas without leaving the front-end workspace."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:54
-msgid "FlexiClub settings areas"
+msgid "iLungu Club settings areas"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:78
@@ -5644,7 +5805,7 @@ msgid "Portal Settings"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-settings.php:91
-msgid "The shared FlexiClub settings renderer is unavailable on this request."
+msgid "The shared iLungu Club settings renderer is unavailable on this request."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:18
@@ -5652,7 +5813,7 @@ msgid "System Pages Workspace"
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:19
-msgid "Review every registered FlexiClub and add-on page, then repair or recreate only the pages that actually need intervention."
+msgid "Review every registered iLungu Club and add-on page, then repair or recreate only the pages that actually need intervention."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:42
@@ -5684,7 +5845,7 @@ msgid "If a published page is missing the expected shortcode, edit that page to 
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:53
-msgid "Only authorised FlexiClub admins and member managers can access this workspace and run these actions."
+msgid "Only authorised iLungu Club admins and member managers can access this workspace and run these actions."
 msgstr ""
 
 #: templates/frontend/flexiclub-workspace-system-pages.php:69

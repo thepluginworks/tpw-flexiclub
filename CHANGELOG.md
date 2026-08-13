@@ -2,6 +2,22 @@
 
 ## [Unreleased]
 
+## [2.11.0] - 2026-08-13
+
+### Added
+- Club Management: introduced the canonical `/club-management/` System Page and front-end management workspaces for settings, system pages, logs, menu management, and archival tools.
+
+### Changed
+- Distribution: renamed the physical plugin identity, updater channel, release package, and GitHub release artifacts to iLungu Club while retaining shared TPW Core identifiers, stored contracts, and legacy compatibility paths.
+- System Pages: the front-end workspace now displays the product-facing iLungu Club owner label while preserving `tpw-core` as the technical ownership marker.
+
+### Fixed
+- System Pages: canonical page provisioning now rejects unrelated occupied paths and maintains collision-safe ownership checks.
+- Club Management: restored full-width portal layout and front-end-compatible settings form submission.
+
+### Changed
+- Branding: renamed the public product from FlexiClub to iLungu™ Club. Existing technical identifiers, directory names, shortcodes, and database keys remain unchanged for backwards compatibility; this change introduces no functional or data migration.
+
 ## [2.10.2] - 2026-06-19
 
 ### Fixed

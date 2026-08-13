@@ -1,7 +1,7 @@
 # Address Lookup
 
 ## Overview
-The Core address lookup helper normalizes provider selection and lookup behavior for manual-entry-aware forms. Core now supports only None, Ideal Postcodes, and Fetchify, with manual address entry remaining the fallback for every form.
+The shared plugin framework address lookup helper normalizes provider selection and lookup behavior for manual-entry-aware forms. The shared framework now supports only None, Ideal Postcodes, and Fetchify, with manual address entry remaining the fallback for every form.
 
 ## Key Screens / Shortcodes
 - Front‑end: used by TPW screens and shortcodes that offer address lookup.
@@ -21,4 +21,4 @@ The Core address lookup helper normalizes provider selection and lookup behavior
 - Helper: modules/postcodes/class-tpw-postcode-helper.php
 - AJAX: modules/postcodes/postcode-ajax.php
 
-See also: Core Hooks Index → ../developer-guide.md#core-hooks-index
+See also: Shared Framework Hooks Index → ../developer-guide.md#core-hooks-index

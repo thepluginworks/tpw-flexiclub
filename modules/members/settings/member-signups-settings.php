@@ -39,7 +39,7 @@ $join_providers  = class_exists( 'TPW_Join_Page' ) ? TPW_Join_Page::get_register
 	);
 	?>
 	<br>
-	<small class="description"><?php echo esc_html__( 'When Sign-Ups are enabled, TPW Core will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed.', 'tpw-core' ); ?></small>
+	<small class="description"><?php echo esc_html__( 'When Sign-Ups are enabled, iLungu Club will provision or reuse a Join page automatically and store it here. You can also point the feature at an existing page and the Join shortcode will be added if needed.', 'tpw-core' ); ?></small>
 </p>
 
 <p>

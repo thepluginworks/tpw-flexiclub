@@ -21,6 +21,6 @@ TPW Control is a front‑end admin hub that aggregates society tools (e.g., Uplo
 ## References
 - Admin guide → ./admin-guide-tpw-control.md
 - Developer guide → ./developer-guide-tpw-control.md
-- Core Developer Guide → ../developer-guide.md
+- Shared Framework Developer Guide → ../developer-guide.md
 
-See also: Core Hooks Index → ../developer-guide.md#core-hooks-index
+See also: Shared Framework Hooks Index → ../developer-guide.md#core-hooks-index

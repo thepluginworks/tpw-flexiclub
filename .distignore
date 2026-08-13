@@ -6,8 +6,20 @@
 /security
 /scripts
 /node_modules
+/test-results
+/playwright-report
+/blob-report
+/.env
+/.env.*
 /ai-session.md
+/CODING_STANDARDS.md
 /RELEASE.md
+
+# Development-only Node test tooling
+/package.json
+/package-lock.json
+/tests/playwright
+
 /.git
 /.gitattributes
 /.distignore

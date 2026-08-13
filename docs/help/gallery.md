@@ -16,7 +16,7 @@ The Gallery module renders image collections from registered sources. It is opti
 
 ## Elementor: TPW Gallery widget
 
-If Elementor is installed and active, TPW Core provides an Elementor widget named **TPW Gallery**.
+If Elementor is installed and active, the shared plugin framework provides an Elementor widget named **TPW Gallery**.
 
 - **Gallery**: Type-to-search dropdown to select a gallery by title. The displayed label is `Title (Category)` when a category exists.
 - **View**:

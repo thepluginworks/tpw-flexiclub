@@ -559,11 +559,26 @@ class TPW_Control_Upload_Pages {
     }
 
     protected static function create_linked_wp_page( $title, $slug ) {
+        $slug = sanitize_title( $slug );
+        $existing = get_page_by_path( $slug, OBJECT, 'page' );
+        if ( $existing instanceof WP_Post ) {
+            $expected_content = self::make_wp_page_content( $slug );
+            $is_owned = get_post_meta( $existing->ID, '_tpw_page_type', true ) === 'upload_page'
+                && false !== strpos( (string) $existing->post_content, $expected_content );
+
+            if ( $is_owned ) {
+                return (int) $existing->ID;
+            }
+
+            if ( defined('WP_DEBUG') && WP_DEBUG ) error_log('[TPW Control][upload-pages] Refused to create a linked page because an unrelated page already uses slug ' . $slug . '.');
+            return 0;
+        }
+
         $args = [
             'post_type'    => 'page',
             'post_status'  => 'publish',
             'post_title'   => wp_strip_all_tags( (string)$title ),
-            'post_name'    => sanitize_title( $slug ),
+            'post_name'    => $slug,
             'post_content' => self::make_wp_page_content( $slug ),
         ];
         $post_id = wp_insert_post( $args, true );
@@ -571,6 +586,16 @@ class TPW_Control_Upload_Pages {
             if ( defined('WP_DEBUG') && WP_DEBUG ) error_log('[TPW Control][upload-pages] Failed to create WP Page: ' . $post_id->get_error_message());
             return 0;
         }
+
+        $created = get_post( (int) $post_id );
+        if ( ! ( $created instanceof WP_Post ) || $slug !== $created->post_name ) {
+            if ( $created instanceof WP_Post ) {
+                wp_delete_post( (int) $post_id, true );
+            }
+            if ( defined('WP_DEBUG') && WP_DEBUG ) error_log('[TPW Control][upload-pages] Refused a non-canonical fallback page for slug ' . $slug . '.');
+            return 0;
+        }
+
         // Tag page so other features can recognise it
         add_post_meta( (int)$post_id, '_tpw_page_type', 'upload_page', true );
         return (int) $post_id;
@@ -602,12 +627,15 @@ class TPW_Control_Upload_Pages {
         $layout = self::sanitize_layout( $data['layout'] ?? 'table' );
         // Create linked WP Page first
         $wp_page_id = self::create_linked_wp_page( ( $data['title'] ?? '' ), $slug );
+        if ( $wp_page_id <= 0 ) {
+            return 0;
+        }
         $ok = $wpdb->insert( $table, [
             'slug' => $slug,
             'title' => sanitize_text_field( $data['title'] ?? '' ),
             'description' => wp_kses_post( $data['description'] ?? '' ),
             'visibility' => wp_json_encode( $vis ),
-            'wp_page_id' => $wp_page_id ?: null,
+            'wp_page_id' => $wp_page_id,
             'layout' => $layout,
         ], [ '%s','%s','%s','%s','%d','%s' ] );
         $new_id = $ok ? (int)$wpdb->insert_id : 0;

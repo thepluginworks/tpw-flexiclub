@@ -5,7 +5,7 @@ The `tpw_profile_badge` shortcode renders a compact circular badge that links me
 ## What It Does
 When inserted as `[tpw_profile_badge]`, the shortcode outputs a 36px circular badge:
 
-- Logged out users see a Login badge linking to the TPW Core System Page `member-login`.
+- Logged out users see a Login badge linking to the shared plugin framework System Page `member-login`.
 - Logged in users see their member photo (if enabled & uploaded), else WordPress avatar, else initials derived from their display name or login.
 - The badge links to the System Page `my-profile`.
 - Nothing is rendered inside wp‑admin (suppressed to avoid layout noise in editors).
@@ -54,7 +54,7 @@ The output structure:
 </div>
 ```
 
-Core CSS defines:
+The shared framework CSS defines:
 - `.tpw-profile-badge` – outer wrapper
 - `.tpw-profile-badge__link` – interactive circular area (36px)
 - `.tpw-profile-avatar` – image style (cover & rounded)
@@ -80,10 +80,10 @@ Avoid targeting generic selectors (e.g. `img` or `a`) to prevent conflicts. The 
 ## Caching & Visibility Notes
 - Badge output is user‑specific but very small; full page caching solutions should be configured to bypass or vary cache for logged‑in users (standard WP practice). The shortcode itself sets no cache headers.
 - Logged out state is static and safe to cache.
-- The underlying profile and login pages are already protected by TPW Core’s system page and cache‑control logic.
+- The underlying profile and login pages are already protected by the shared framework’s system page and cache-control logic.
 
 ## Related Documentation
-- System Pages overview: see `docs/help/system-pages.md` (or the System Pages section in TPW Core settings) for how `my-profile` and `member-login` are registered and overridden.
+- System Pages overview: see `docs/help/system-pages.md` (or the System Pages section in iLungu Club settings) for how `my-profile` and `member-login` are registered and overridden.
 - Member Photos configuration: Member Settings → General / Profile tabs.
 
 ## Accessibility
@@ -113,7 +113,7 @@ Mobile / touch (devices matching `(hover: none)`):
 
 ### Links Included
 - My Profile → System Page `my-profile`
-- Logout → `wp_logout_url( home_url('/') )` (same pattern used elsewhere in Core)
+- Logout → `wp_logout_url( home_url('/') )` (same pattern used elsewhere in the shared framework)
 
 ### Accessibility
 - Badge link has `aria-haspopup="true"` and `aria-expanded` updated by JS on touch devices.

@@ -1106,14 +1106,10 @@ body.tpw-flexiclub-portal-page .secondary-sidebar {
 .tpw-frontend-ui.flexiclub-dashboard--frontend.flexiclub-portal-page {
   --tpw-flexiclub-page-gutter: clamp(16px, 2vw, 32px);
   --tpw-flexiclub-page-max-width: 1720px;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  width: min(var(--tpw-flexiclub-page-max-width), calc(100vw - (var(--tpw-flexiclub-page-gutter) * 2)));
-  max-width: none;
-  margin-left: calc(-50vw + var(--tpw-flexiclub-page-gutter));
-  margin-right: calc(-50vw + var(--tpw-flexiclub-page-gutter));
-  padding: 32px 0 48px;
+  width: min(100%, var(--tpw-flexiclub-page-max-width));
+  max-width: var(--tpw-flexiclub-page-max-width);
+  margin: 0 auto;
+  padding: 32px var(--tpw-flexiclub-page-gutter) 48px;
   box-sizing: border-box;
 }
 
@@ -1496,11 +1492,13 @@ body.tpw-flexiclub-portal-page .secondary-sidebar {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .tpw-frontend-ui.flexiclub-dashboard--frontend.flexiclub-portal-page .tpw-flexiclub-system-pages__row {
   display: grid;
-  grid-template-columns: minmax(170px, 1.1fr) minmax(128px, 0.72fr) minmax(110px, 0.62fr) minmax(160px, 0.92fr) minmax(190px, 1.02fr) minmax(210px, 1.12fr) minmax(230px, 1.16fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.72fr) minmax(0, 0.62fr) minmax(0, 0.92fr) minmax(0, 1.02fr) minmax(0, 1.12fr) minmax(0, 1.16fr);
   gap: 14px;
   border: 1px solid rgba(203, 213, 225, 0.72);
   border-radius: 16px;

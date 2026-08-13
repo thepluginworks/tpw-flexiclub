@@ -1,6 +1,6 @@
 # Gallery Admin — User Guide
 
-This guide helps site administrators manage image galleries using TPW Core’s Gallery Admin.
+This guide helps site administrators manage image galleries using the shared plugin framework’s Gallery Admin.
 
 ## Access
 - Route: `/gallery-admin/` (front‑end admin system page)
@@ -51,7 +51,7 @@ This guide helps site administrators manage image galleries using TPW Core’s G
 
 ## Elementor Widget (Optional)
 
-If Elementor is installed and active, TPW Core provides an Elementor widget named **TPW Gallery**. This is often the easiest way to add a gallery to a page without writing shortcodes.
+If Elementor is installed and active, the shared framework provides an Elementor widget named **TPW Gallery**. This is often the easiest way to add a gallery to a page without writing shortcodes.
 
 How to use:
 1. Edit the page in Elementor.

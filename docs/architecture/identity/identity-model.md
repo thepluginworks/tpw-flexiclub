@@ -1,7 +1,7 @@
 # TPW Identity Architecture Specification
 
 **Status:** Current architectural direction (subject to ecosystem audit and migration validation).  
-**Applies to:** TPW Core and all dependent TPW plugins  
+**Applies to:** the shared plugin framework and all dependent TPW plugins
 **Audience:** Developers, maintainers, architects, QA
 
 ## 1. Purpose
@@ -19,15 +19,15 @@ These are related concerns, but they are not the same concern and must not be de
 
 ## 2. Scope
 
-This document applies to TPW Core and to every dependent TPW plugin that relies on Core member, onboarding, or user-linking behaviour.
+This document applies to the shared plugin framework and to every dependent TPW plugin that relies on shared member, onboarding, or user-linking behaviour.
 
 Feature plugins may extend workflows, responsibilities, and operational rules, but they must do so within the identity model defined here.
 
-## 3. Core Principle
+## 3. Shared Framework Principle
 
 The platform identity model is based on a strict ownership split:
 
-- TPW Core owns identity.
+- The shared plugin framework owns identity.
 - Feature plugins own permission roles and capabilities.
 
 This rule exists so that personhood, membership state, and canonical account linkage remain consistent across the ecosystem, even when multiple plugins add their own operational responsibilities.
@@ -38,9 +38,9 @@ The canonical member record lives in `tpw_members`.
 
 The `tpw_members` table is the source of truth for platform membership identity.
 
-A WordPress user account may exist for a person, and that user account may be linked to a Core member record, but the authoritative identity record for TPW membership remains the Core member record.
+A WordPress user account may exist for a person, and that user account may be linked to a shared-framework member record, but the authoritative identity record for TPW membership remains the shared-framework member record.
 
-Where WordPress user data and Core member data differ, Core member data is authoritative for TPW identity decisions.
+Where WordPress user data and shared-framework member data differ, shared-framework member data is authoritative for TPW identity decisions.
 
 ## 5. Identity vs Permissions
 
@@ -71,12 +71,12 @@ A person may be a member and also hold one or more responsibilities. A person ma
 
 A person counts as a current TPW member only when both of the following are true:
 
-- they are linked to a canonical TPW Core member record
+- they are linked to a canonical shared-framework member record
 - that record has a status that confers membership
 
 `tpw_members.status` is the primary business signal used to determine whether the person currently carries membership status.
 
-Membership identity is therefore not derived from WordPress roles alone, from feature-plugin permissions, or from the existence of a user account. It is determined from the Core member record plus a membership-bearing status.
+Membership identity is therefore not derived from WordPress roles alone, from feature-plugin permissions, or from the existence of a user account. It is determined from the shared-framework member record plus a membership-bearing status.
 
 ## 7. Status Mapping
 
@@ -108,15 +108,15 @@ The current proposed WordPress identity roles are:
 
 `guest` should not be introduced yet unless a clear business need arises and the lifecycle implications are defined.
 
-WordPress identity roles are a synchronised projection of Core identity. They are not the source of truth.
+WordPress identity roles are a synchronised projection of shared-framework identity. They are not the source of truth.
 
-Their purpose is to provide a practical WordPress-facing representation of Core identity where that projection is needed for platform integration, login experience, or compatibility.
+Their purpose is to provide a practical WordPress-facing representation of shared-framework identity where that projection is needed for platform integration, login experience, or compatibility.
 
 ### Lifecycle Ownership of Identity Projection
 
-Projected identity roles are managed exclusively by TPW Core.
+Projected identity roles are managed exclusively by the shared framework.
 
-If identity projection roles such as `member` are retained, Core owns their lifecycle, including projection, synchronisation, repair, and cleanup.
+If identity projection roles such as `member` are retained, the shared framework owns their lifecycle, including projection, synchronisation, repair, and cleanup.
 
 See [Identity & Permissions Decisions](identity-permissions-decisions.md) for the detailed lifecycle-ownership rule.
 
@@ -135,16 +135,16 @@ These are responsibility or permission roles owned by feature plugins and relate
 
 The ownership rules for identity and permissions are:
 
-- Core owns identity roles.
+- The shared framework owns identity roles.
 - Feature plugins own permission roles.
 - Feature plugins must not create or own `member`.
 - Feature plugins must not infer membership solely from their own permission roles.
 
-If a plugin needs to know whether a person is a TPW member, it must rely on Core identity and membership-state signals rather than on plugin-local role assignments.
+If a plugin needs to know whether a person is a TPW member, it must rely on shared-framework identity and membership-state signals rather than on plugin-local role assignments.
 
 ## 11. Lifecycle Rules
 
-Identity synchronisation is expected to occur when Core identity facts are created, changed, repaired, or re-linked.
+Identity synchronisation is expected to occur when shared-framework identity facts are created, changed, repaired, or re-linked.
 
 The intended lifecycle triggers include:
 
@@ -155,7 +155,7 @@ The intended lifecycle triggers include:
 - user/member link changes
 - manual sync or repair tools
 
-These are architecture rules, not implementation details. The exact mechanisms may evolve, but the platform must treat identity projection as a synchronised outcome of canonical Core identity changes.
+These are architecture rules, not implementation details. The exact mechanisms may evolve, but the platform must treat identity projection as a synchronised outcome of canonical shared-framework identity changes.
 
 ## 12. Legacy Role Deprecation
 

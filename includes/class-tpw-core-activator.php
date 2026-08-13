@@ -256,69 +256,6 @@ class TPW_Core_Activator {
             }
         }
 
-        // Ensure a front-end "My Profile" page exists with the [tpw_member_profile] shortcode
-        try {
-            // If a valid page is already configured, keep it
-            $configured_id = (int) get_option( 'tpw_member_profile_page_id', 0 );
-            $configured_ok = false;
-            if ( $configured_id > 0 ) {
-                $p = get_post( $configured_id );
-                if ( $p && 'publish' === $p->post_status && 'page' === $p->post_type ) {
-                    // Consider it valid regardless of content to respect admin edits
-                    $configured_ok = true;
-                }
-            }
-
-            if ( ! $configured_ok ) {
-                // Try to find an existing published page containing the shortcode
-                $found_id = 0;
-                if ( class_exists('WP_Query') ) {
-                    $q = new WP_Query([
-                        'post_type'      => 'page',
-                        'post_status'    => 'publish',
-                        'posts_per_page' => 25,
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
-                        'fields'         => 'ids',
-                    ]);
-                    if ( $q->have_posts() ) {
-                        foreach ( $q->posts as $pid ) {
-                            $content = get_post_field( 'post_content', $pid );
-                            if ( is_string($content) && false !== strpos( $content, '[tpw_member_profile' ) ) {
-                                $found_id = (int) $pid;
-                                break;
-                            }
-                        }
-                    }
-                    wp_reset_postdata();
-                }
-
-                if ( $found_id ) {
-                    update_option( 'tpw_member_profile_page_id', $found_id );
-                } else {
-                    // Create a new My Profile page
-                    $author = function_exists('get_current_user_id') ? (int) get_current_user_id() : 0;
-                    $post_id = wp_insert_post([
-                        'post_title'   => __( 'My Profile', 'tpw-core' ),
-                        'post_name'    => 'my-profile',
-                        'post_status'  => 'publish',
-                        'post_type'    => 'page',
-                        'post_author'  => $author,
-                        'post_content' => '[tpw_member_profile]',
-                        'comment_status' => 'closed',
-                        'ping_status'    => 'closed',
-                    ]);
-                    if ( $post_id && ! is_wp_error( $post_id ) ) {
-                        update_option( 'tpw_member_profile_page_id', (int) $post_id );
-                    }
-                }
-            }
-        } catch ( \Throwable $e ) {
-            if ( function_exists( 'error_log' ) ) {
-                error_log( 'TPW Core activation: profile page setup skipped due to error - ' . $e->getMessage() );
-            }
-        }
-
         if ( class_exists( 'TPW_Core_System_Pages' ) ) {
             TPW_Core_System_Pages::ensure_tables();
             // Ensure key system pages exist
@@ -336,11 +273,14 @@ class TPW_Core_Activator {
                     'required'  => 1,
                 ] );
                 TPW_Core_System_Pages::ensure_page( 'member-login' );
-                TPW_Core_System_Pages::ensure_page( 'my-profile' );
+                $profile_page_id = (int) TPW_Core_System_Pages::ensure_page( 'my-profile' );
+                if ( 0 < $profile_page_id && 0 >= (int) get_option( 'tpw_member_profile_page_id', 0 ) ) {
+                    update_option( 'tpw_member_profile_page_id', $profile_page_id );
+                }
 
                 $flexiclub_pages = [
-                    'flexiclub' => [
-                        'title'     => 'FlexiClub',
+                    'club-management' => [
+                        'title'     => 'Club Management',
                         'shortcode' => '[flexiclub]',
                         'required'  => 1,
                     ],
@@ -360,7 +300,7 @@ class TPW_Core_Activator {
                         'required'  => 0,
                     ],
                     'tpw-control' => [
-                        'title'     => 'FlexiClub Control',
+                        'title'     => 'iLungu Club Control',
                         'shortcode' => '[tpw-control]',
                         'required'  => 0,
                     ],
@@ -376,7 +316,7 @@ class TPW_Core_Activator {
 
 					if ( 'logs' === $slug && method_exists( 'TPW_Core_System_Pages', 'unlink' ) ) {
 						$logs_page_id      = (int) TPW_Core_System_Pages::get_page_id( 'logs' );
-						$dashboard_page_id = (int) TPW_Core_System_Pages::get_page_id( 'flexiclub' );
+                        $dashboard_page_id = (int) TPW_Core_System_Pages::get_page_id( 'club-management' );
 
 						if ( $logs_page_id > 0 && $logs_page_id === $dashboard_page_id ) {
 							TPW_Core_System_Pages::unlink( 'logs' );
@@ -388,6 +328,10 @@ class TPW_Core_Activator {
                     } else {
                         TPW_Core_System_Pages::ensure_page( $slug );
                     }
+
+					if ( 'club-management' === $slug && function_exists( 'tpw_core_maybe_update_club_management_page_title' ) ) {
+						tpw_core_maybe_update_club_management_page_title();
+					}
                 }
             } catch ( \Throwable $e ) {
                 if ( function_exists( 'error_log' ) ) {

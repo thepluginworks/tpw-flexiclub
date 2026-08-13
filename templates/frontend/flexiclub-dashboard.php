@@ -7,15 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<details class="tpw-flexiclub-dashboard__portal-sidebar-shell">
 		<summary class="tpw-flexiclub-dashboard__portal-nav-toggle">
 			<span class="dashicons dashicons-menu-alt3" aria-hidden="true"></span>
-			<span><?php esc_html_e( 'FlexiClub navigation', 'tpw-core' ); ?></span>
+			<span><?php esc_html_e( 'iLungu Club navigation', 'tpw-core' ); ?></span>
 		</summary>
 
 		<aside class="tpw-flexiclub-dashboard__portal-sidebar">
 			<section class="tpw-card tpw-flexiclub-dashboard__portal-brand-card">
 				<?php if ( ! empty( $dashboard['logo_url'] ) ) : ?>
-					<img class="tpw-flexiclub-dashboard__portal-logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'FlexiClub', 'tpw-core' ); ?>" />
+					<img class="tpw-flexiclub-dashboard__portal-logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'iLungu™ Club', 'tpw-core' ); ?>" />
 				<?php else : ?>
-					<h1><?php esc_html_e( 'FlexiClub', 'tpw-core' ); ?></h1>
+					<h1><?php esc_html_e( 'iLungu™ Club', 'tpw-core' ); ?></h1>
 				<?php endif; ?>
 				<p class="tpw-flexiclub-dashboard__portal-tagline"><?php esc_html_e( 'Club workspace for member operations, setup, and connected tools.', 'tpw-core' ); ?></p>
 				<?php if ( ! empty( $dashboard['version'] ) ) : ?>
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<section class="tpw-card tpw-flexiclub-dashboard__portal-nav-group">
 				<h2><?php esc_html_e( 'Workspace', 'tpw-core' ); ?></h2>
-				<nav class="tpw-flexiclub-dashboard__portal-nav-list" aria-label="<?php esc_attr_e( 'FlexiClub workspace navigation', 'tpw-core' ); ?>">
+				<nav class="tpw-flexiclub-dashboard__portal-nav-list" aria-label="<?php esc_attr_e( 'iLungu Club workspace navigation', 'tpw-core' ); ?>">
 					<?php foreach ( $dashboard['portal_nav_items'] as $item ) : ?>
 						<?php $item_classes = 'tpw-flexiclub-dashboard__portal-nav-link'; ?>
 						<?php if ( ! empty( $item['current'] ) ) : ?>
@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<section class="tpw-card tpw-flexiclub-dashboard__portal-nav-group">
 				<h2><?php esc_html_e( 'On This Page', 'tpw-core' ); ?></h2>
-				<nav class="tpw-flexiclub-dashboard__portal-nav-list" aria-label="<?php esc_attr_e( 'FlexiClub dashboard sections', 'tpw-core' ); ?>">
+				<nav class="tpw-flexiclub-dashboard__portal-nav-list" aria-label="<?php esc_attr_e( 'iLungu Club dashboard sections', 'tpw-core' ); ?>">
 					<?php foreach ( $dashboard['section_nav_items'] as $item ) : ?>
 						<a class="tpw-flexiclub-dashboard__portal-nav-link tpw-flexiclub-dashboard__portal-nav-link--section" href="<?php echo esc_url( $item['url'] ); ?>"><span><?php echo esc_html( $item['label'] ); ?></span></a>
 					<?php endforeach; ?>
@@ -113,9 +113,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="tpw-flexiclub-dashboard__brand-row">
 				<div class="tpw-flexiclub-dashboard__brand">
 					<?php if ( ! empty( $dashboard['logo_url'] ) ) : ?>
-						<img class="tpw-flexiclub-dashboard__logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'FlexiClub', 'tpw-core' ); ?>" />
+						<img class="tpw-flexiclub-dashboard__logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'iLungu™ Club', 'tpw-core' ); ?>" />
 					<?php else : ?>
-						<h1><?php esc_html_e( 'FlexiClub', 'tpw-core' ); ?></h1>
+						<h1><?php esc_html_e( 'iLungu™ Club', 'tpw-core' ); ?></h1>
 					<?php endif; ?>
 					<div class="tpw-flexiclub-dashboard__brand-copy">
 						<p class="tpw-flexiclub-dashboard__tagline"><?php esc_html_e( 'Your front-end workspace for club administration and setup.', 'tpw-core' ); ?></p>
@@ -171,7 +171,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="tpw-flexiclub-dashboard__section-head">
 							<div>
 								<h2><?php esc_html_e( 'Getting Started', 'tpw-core' ); ?></h2>
-								<p><?php esc_html_e( 'A launch checklist for the FlexiClub front-end workspace and connected pages.', 'tpw-core' ); ?></p>
+								<p><?php esc_html_e( 'A launch checklist for the iLungu Club front-end workspace and connected pages.', 'tpw-core' ); ?></p>
 							</div>
 						</div>
 
@@ -261,8 +261,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<section id="tpw-flexiclub-extend" class="tpw-flexiclub-dashboard__section tpw-card">
 					<div class="tpw-flexiclub-dashboard__section-head">
 						<div>
-							<h2><?php esc_html_e( 'Extend FlexiClub', 'tpw-core' ); ?></h2>
-							<p><?php esc_html_e( 'Add-on products stay plugin-owned. The FlexiClub hub links out to them and reports current availability.', 'tpw-core' ); ?></p>
+								<h2><?php esc_html_e( 'Extend iLungu Club', 'tpw-core' ); ?></h2>
+								<p><?php esc_html_e( 'Add-on products stay plugin-owned. The iLungu Club hub links out to them and reports current availability.', 'tpw-core' ); ?></p>
 						</div>
 					</div>
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * FlexiClub Settings and Member Menu swapper.
+ * iLungu Club Settings and Member Menu swapper.
  *
- * Registers the Settings → FlexiClub page with tabbed content for Branding,
+ * Registers the Settings → iLungu Club page with tabbed content for Branding,
  * Member Menu, Features, Email, Email Templates, and System Pages.
  *
  * @since 1.0.0
@@ -23,8 +23,8 @@ add_action( 'init', function () {
 // 2) Add Settings page under Settings
 add_action( 'admin_menu', function () {
     add_options_page(
-        __( 'FlexiClub Settings', 'tpw-core' ),
-        __( 'FlexiClub', 'tpw-core' ),
+        __( 'iLungu™ Club Settings', 'tpw-core' ),
+        __( 'iLungu™ Club', 'tpw-core' ),
         'manage_options',
         'tpw-core-settings',
         'tpw_core_render_settings_page'
@@ -81,7 +81,7 @@ if ( ! function_exists( 'tpw_core_output_core_settings_warnings' ) ) {
             } elseif ( $redirect_notice === 'email_logs_cleared' ) {
                 echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Email logs cleared.', 'tpw-core' ) . '</p></div>';
             } elseif ( $redirect_notice === 'email_logs_class_missing' ) {
-                echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email logs are unavailable. Please ensure FlexiClub is fully updated.', 'tpw-core' ) . '</p></div>';
+                echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email logs are unavailable. Please ensure iLungu Club is fully updated.', 'tpw-core' ) . '</p></div>';
             }
         }
 
@@ -95,11 +95,11 @@ if ( ! function_exists( 'tpw_core_output_core_settings_warnings' ) ) {
         }
 
         if ( $current_tab === 'email' && ! class_exists( 'TPW_Core_Email_Settings' ) ) {
-            echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email settings class not found. Please ensure FlexiClub is fully updated.', 'tpw-core' ) . '</p></div>';
+            echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email settings class not found. Please ensure iLungu Club is fully updated.', 'tpw-core' ) . '</p></div>';
         }
 
 		if ( $current_tab === 'email-logs' && ! class_exists( 'TPW_Email_Logs' ) ) {
-            echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email logs class not found. Please ensure FlexiClub is fully updated.', 'tpw-core' ) . '</p></div>';
+            echo '<div class="notice notice-error is-dismissible"><p>' . esc_html__( 'Email logs class not found. Please ensure iLungu Club is fully updated.', 'tpw-core' ) . '</p></div>';
 		}
 
         if ( $current_tab === 'email-templates' ) {
@@ -121,7 +121,7 @@ if ( ! function_exists( 'tpw_core_output_core_settings_warnings' ) ) {
             if ( ! tpw_core_profile_page_is_configured() ) {
                 $url = add_query_arg( 'tab', 'profile', admin_url( 'options-general.php?page=tpw-core-settings' ) );
                 echo '<div class="notice notice-warning is-dismissible"><p>'
-                    . esc_html__( 'FlexiClub: The Member Profile page is not configured. ', 'tpw-core' )
+                    . esc_html__( 'iLungu Club: The Member Profile page is not configured. ', 'tpw-core' )
                     . '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Select a Profile page now', 'tpw-core' ) . '</a>'
                     . '</p></div>';
             } else {
@@ -131,7 +131,7 @@ if ( ! function_exists( 'tpw_core_output_core_settings_warnings' ) ) {
                     if ( $p && 'page' === $p->post_type && 'publish' !== $p->post_status ) {
                         $edit = get_edit_post_link( $pid, '' );
                         echo '<div class="notice notice-error is-dismissible"><p>'
-                            . esc_html__( 'FlexiClub: The selected Member Profile page is not published. Members cannot view it until it is Public and Published.', 'tpw-core' )
+                            . esc_html__( 'iLungu Club: The selected Member Profile page is not published. Members cannot view it until it is Public and Published.', 'tpw-core' )
                             . ( $edit ? ' <a href="' . esc_url( $edit ) . '">' . esc_html__( 'Edit page', 'tpw-core' ) . '</a>' : '' )
                             . '</p></div>';
                     }
@@ -309,6 +309,33 @@ if ( ! function_exists( 'tpw_core_render_settings_context_fields' ) ) {
     }
 }
 
+if ( ! function_exists( 'tpw_core_render_settings_submit_button' ) ) {
+    function tpw_core_render_settings_submit_button( $text, $type = 'primary', $name = 'submit', $wrap = true, array $attributes = array() ) {
+        if ( function_exists( 'submit_button' ) ) {
+            submit_button( $text, $type, $name, $wrap, $attributes );
+            return;
+        }
+
+        $classes = array( 'tpw-btn' );
+        if ( 'delete' === $type ) {
+            $classes[] = 'tpw-btn-danger';
+        } elseif ( 'secondary' === $type ) {
+            $classes[] = 'tpw-btn-secondary';
+        } else {
+            $classes[] = 'tpw-btn-primary';
+        }
+
+        $attribute_html = '';
+        foreach ( $attributes as $attribute => $value ) {
+            $attribute_html .= ' ' . esc_attr( $attribute ) . '="' . esc_attr( $value ) . '"';
+        }
+
+        $button = '<button type="submit" name="' . esc_attr( $name ) . '" class="' . esc_attr( implode( ' ', $classes ) ) . '"' . $attribute_html . '>' . esc_html( $text ) . '</button>';
+
+        echo $wrap ? '<p class="submit">' . $button . '</p>' : $button; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Values are escaped while building markup.
+    }
+}
+
 if ( ! function_exists( 'tpw_core_get_settings_redirect_url' ) ) {
     function tpw_core_get_settings_redirect_url( $tab = '', array $args = [] ) {
         $fallback_url = tpw_core_build_settings_tab_url( $tab );
@@ -372,7 +399,7 @@ if ( ! function_exists( 'tpw_core_get_settings_request_notices' ) ) {
         } elseif ( 'email_logs_class_missing' === $redirect_notice ) {
             $notices[] = [
                 'type'    => 'error',
-                'message' => __( 'Email logs are unavailable. Please ensure FlexiClub is fully updated.', 'tpw-core' ),
+                'message' => __( 'Email logs are unavailable. Please ensure iLungu Club is fully updated.', 'tpw-core' ),
             ];
         }
 
@@ -470,7 +497,7 @@ if ( ! function_exists( 'tpw_core_render_settings_page' ) ) {
         <?php
         if ( function_exists( 'tpw_core_render_settings_header' ) ) {
             tpw_core_render_settings_header(
-                __( 'FlexiClub Settings', 'tpw-core' ),
+                __( 'iLungu Club Settings', 'tpw-core' ),
 				$payments_required
 					? __( 'Configure branding, menus, email, payment methods, and system pages.', 'tpw-core' )
 					: __( 'Configure branding, menus, email, and system pages.', 'tpw-core' )
@@ -554,7 +581,7 @@ if ( ! function_exists( 'tpw_core_render_features_tab' ) ) {
                     </tr>
                 </tbody>
             </table>
-            <?php submit_button( __( 'Save Features', 'tpw-core' ) ); ?>
+            <?php tpw_core_render_settings_submit_button( __( 'Save Features', 'tpw-core' ) ); ?>
         </form>
         <?php
     }
@@ -601,15 +628,15 @@ if ( ! function_exists( 'tpw_core_render_member_menu_tab' ) ) {
                     </tr>
                 </tbody>
             </table>
-            <?php submit_button( __( 'Save Member Menu', 'tpw-core' ) ); ?>
+            <?php tpw_core_render_settings_submit_button( __( 'Save Member Menu', 'tpw-core' ) ); ?>
         </form>
         <form method="post" action="<?php echo $action; ?>">
             <?php wp_nonce_field( 'tpw_core_repair_member_menu', 'tpw_core_repair_member_menu_nonce' ); ?>
             <input type="hidden" name="action" value="tpw_core_repair_member_menu" />
             <?php tpw_core_render_settings_context_fields( 'member-menu' ); ?>
             <p>
-                <?php submit_button( __( 'Repair Members Menu', 'tpw-core' ), 'secondary', 'submit', false ); ?>
-                <span class="description"><?php esc_html_e( 'Safely add any missing default FlexiClub member-menu items on existing installs without deactivating or reactivating the plugin.', 'tpw-core' ); ?></span>
+                <?php tpw_core_render_settings_submit_button( __( 'Repair Members Menu', 'tpw-core' ), 'secondary', 'submit', false ); ?>
+                <span class="description"><?php esc_html_e( 'Safely add any missing default iLungu Club member-menu items on existing installs without deactivating or reactivating the plugin.', 'tpw-core' ); ?></span>
             </p>
         </form>
         <?php
@@ -661,7 +688,7 @@ if ( ! function_exists( 'tpw_core_render_email_logs_tab' ) ) {
                 <?php wp_nonce_field( 'tpw_core_clear_email_logs', 'tpw_core_email_logs_nonce' ); ?>
                 <input type="hidden" name="action" value="tpw_core_clear_email_logs" />
                 <?php tpw_core_render_settings_context_fields( 'email-logs' ); ?>
-                <?php submit_button( __( 'Clear Logs', 'tpw-core' ), 'delete', 'tpw_clear_email_logs', false, [ 'onclick' => "return confirm('Are you sure you want to clear all email logs?');" ] ); ?>
+                <?php tpw_core_render_settings_submit_button( __( 'Clear Logs', 'tpw-core' ), 'delete', 'tpw_clear_email_logs', false, [ 'onclick' => "return confirm('Are you sure you want to clear all email logs?');" ] ); ?>
             </form>
 
             <table class="widefat fixed striped">
@@ -810,7 +837,7 @@ if ( ! function_exists( 'tpw_core_render_email_settings_tab' ) ) {
                     </tr>
                 </tbody>
             </table>
-            <?php submit_button( __( 'Save Email Settings', 'tpw-core' ) ); ?>
+            <?php tpw_core_render_settings_submit_button( __( 'Save Email Settings', 'tpw-core' ) ); ?>
         </form>
         <script>
         (function(){
@@ -931,7 +958,7 @@ if ( ! function_exists( 'tpw_core_render_email_templates_tab' ) ) {
             echo '</td></tr>';
 
             echo '</tbody></table>';
-            submit_button( __( 'Save Template', 'tpw-core' ) );
+            tpw_core_render_settings_submit_button( __( 'Save Template', 'tpw-core' ) );
             echo ' <a class="button button-secondary" href="' . esc_url( wp_nonce_url( add_query_arg( [ 'action' => 'tpw_core_reset_email_template', 'template_key' => $tpl['key'], 'tpw_settings_context' => isset( tpw_core_get_settings_view_context()['mode'] ) ? tpw_core_get_settings_view_context()['mode'] : 'admin', 'tpw_settings_return_url' => tpw_core_build_settings_tab_url( 'email-templates', [ 'edit_template' => $tpl['key'] ] ) ], admin_url( 'admin-post.php' ) ), 'tpw_reset_email_template', 'tpw_email_tmpl_nonce' ) ) . '">' . esc_html__( 'Reset to Default', 'tpw-core' ) . '</a>';
             echo '</form>';
 
@@ -1471,7 +1498,7 @@ if ( ! function_exists( 'tpw_core_render_branding_tab' ) ) {
                     </tr>
                 </tbody>
             </table>
-            <?php submit_button( __( 'Save Branding', 'tpw-core' ) ); ?>
+            <?php tpw_core_render_settings_submit_button( __( 'Save Branding', 'tpw-core' ) ); ?>
             <button type="submit" name="tpw_branding_reset" value="1" class="button button-secondary" onclick="return confirm('Reset all branding values to defaults?');">Reset to Defaults</button>
         </form>
 
@@ -2190,9 +2217,9 @@ if ( ! function_exists( 'tpw_core_get_member_menu_core_default_items' ) ) {
                 'key'            => 'admin',
                 'provider'       => 'tpw-core',
                 'title'          => __( 'Admin', 'tpw-core' ),
-                'system_slug'    => 'flexiclub',
+                'system_slug'    => 'club-management',
                 'shortcode_tag'  => 'flexiclub',
-                'fallback_slug'  => 'flexiclub',
+                'fallback_slug'  => 'club-management',
                 'requires_login' => true,
                 'visibility'     => [
                     'is_admin' => true,
@@ -2896,7 +2923,7 @@ add_action( 'admin_notices', function() {
     if ( ! tpw_core_profile_page_is_configured() ) {
         $url = add_query_arg( 'tab', 'profile', admin_url( 'options-general.php?page=tpw-core-settings' ) );
         echo '<div class="notice notice-warning is-dismissible"><p>'
-            . esc_html__( 'TPW Core: The Member Profile page is not configured. ', 'tpw-core' )
+            . esc_html__( 'iLungu Club: The Member Profile page is not configured. ', 'tpw-core' )
             . '<a href="' . esc_url( $url ) . '">' . esc_html__( 'Select a Profile page now', 'tpw-core' ) . '</a>'
             . '</p></div>';
         return;
@@ -2908,7 +2935,7 @@ add_action( 'admin_notices', function() {
         if ( $p && 'page' === $p->post_type && 'publish' !== $p->post_status ) {
             $edit = get_edit_post_link( $pid, '' );
             echo '<div class="notice notice-error is-dismissible"><p>'
-                . esc_html__( 'TPW Core: The selected Member Profile page is not published. Members cannot view it until it is Public and Published.', 'tpw-core' )
+                . esc_html__( 'iLungu Club: The selected Member Profile page is not published. Members cannot view it until it is Public and Published.', 'tpw-core' )
                 . ( $edit ? ' <a href="' . esc_url( $edit ) . '">' . esc_html__( 'Edit page', 'tpw-core' ) . '</a>' : '' )
                 . '</p></div>';
         }

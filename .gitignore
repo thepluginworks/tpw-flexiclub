@@ -12,7 +12,6 @@ yarn-debug.log*
 yarn-error.log*
 ai-session.md
 phpcs.xml
-CODING_STANDARDS.md
 release-workflow.agent.md
 core-testing.agent.md
 
@@ -20,9 +19,16 @@ core-testing.agent.md
 *.zip
 *.log
 
+# Playwright local credentials and generated output
+/tests/playwright/.env.local
+/tests/playwright/test-results/
+/tests/playwright/playwright-report/
+/tests/playwright/blob-report/
+
 # === Environment files ===
 .env
 .env.*
+!/tests/playwright/.env.example
 
 # === Composer installer files ===
 composer.phar

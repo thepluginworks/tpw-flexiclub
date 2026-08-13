@@ -1,4 +1,4 @@
-# TPW Core Sign-Up System
+# Shared Plugin Framework Sign-Up System
 
 ## Design Specification
 
@@ -8,11 +8,11 @@ Owner: ThePluginWorks
 
 ## 1. Purpose
 
-The TPW Core Sign-Up System defines a reusable onboarding engine for organisations using ThePluginWorks plugins. It exists to solve a common problem across subscriptions, lodges, clubs, events, and volunteer onboarding: collect structured signup data, take payment where required, and only create durable user and member records once the commercial or administrative preconditions have been met.
+The shared plugin framework Sign-Up System defines a reusable onboarding engine for organisations using ThePluginWorks plugins. It exists to solve a common problem across subscriptions, lodges, clubs, events, and volunteer onboarding: collect structured signup data, take payment where required, and only create durable user and member records once the commercial or administrative preconditions have been met.
 
 Today, different onboarding flows tend to mix form rendering, payment handling, account creation, and plugin-specific business rules into a single path. That makes recovery difficult when payment fails, when a customer abandons the process, or when an administrator needs to resume a partially completed signup. The new sign-up system separates lifecycle management from plugin-specific form content so that onboarding can be retried, resumed, audited, and extended consistently.
 
-The system is designed as a generic onboarding engine for organisations using ThePluginWorks plugins. TPW Core provides the lifecycle, storage, and recovery framework. Plugins such as FlexiSubscriptions add domain-specific sections, validations, payment behaviours, and finalization actions without owning the underlying lifecycle state.
+The system is designed as a generic onboarding engine for organisations using ThePluginWorks plugins. The shared framework provides the lifecycle, storage, and recovery framework. Plugins such as FlexiSubscriptions add domain-specific sections, validations, payment behaviours, and finalization actions without owning the underlying lifecycle state.
 
 ## 2. Design Principles
 
@@ -20,7 +20,7 @@ The architecture is based on the following principles:
 
 - No WordPress user or TPW member record is created until payment succeeds.
 - The signup lifecycle must be recoverable and resumable at every meaningful stage.
-- TPW Core owns the lifecycle engine, persistence model, and status transitions.
+- The shared framework owns the lifecycle engine, persistence model, and status transitions.
 - Plugins can extend the signup form, but they do not control lifecycle storage.
 - Passwords are not collected before payment. Users set their password after successful payment.
 - Signup forms must support plugin-defined sections and repeatable groups from day one.
@@ -33,7 +33,7 @@ The high-level signup flow is:
 
 Signup form -> signup attempt created -> payment gateway called -> payment result stored -> finalization executed -> WordPress user and TPW member records created
 
-The signup form gathers core fields, signup-safe custom member fields, plugin-defined sections, and repeatable group data. Submission creates a signup attempt record that becomes the source of truth for the transaction. Payment is then initiated using the plugin-defined flow. TPW Core stores the payment outcome and either advances to finalization or records the failure state.
+The signup form gathers core fields, signup-safe custom member fields, plugin-defined sections, and repeatable group data. Submission creates a signup attempt record that becomes the source of truth for the transaction. Payment is then initiated using the plugin-defined flow. The shared framework stores the payment outcome and either advances to finalization or records the failure state.
 
 If payment succeeds, finalization creates the WordPress user, creates the TPW member record, persists signup-safe field values, invokes plugin finalization callbacks, and redirects the user into the password setup process. If payment fails, the attempt remains available for retry using sanitized retry data. If finalization fails after payment succeeds, the attempt is marked for recovery so an administrator can resume the process without charging the user again. The durable outputs of finalization should be recorded primarily in `result_payload_json`, including references to created records, plugin-owned resources, and downstream result metadata.
 
@@ -41,9 +41,9 @@ Retries work by reusing the existing signup attempt with an updated payment acti
 
 ## 4. Architecture Layers
 
-### TPW Core Layer
+### Shared Plugin Framework Layer
 
-TPW Core is responsible for the generic signup lifecycle and shared framework services, including:
+The shared framework is responsible for the generic signup lifecycle and shared services, including:
 
 - signup attempts
 - lifecycle engine
@@ -90,7 +90,7 @@ Payment has been confirmed and the system is ready to finalize account creation 
 
 ### `finalizing`
 
-Core finalization has started. This status prevents duplicate processing while user creation, member creation, field persistence, and plugin callbacks are running.
+Shared-framework finalization has started. This status prevents duplicate processing while user creation, member creation, field persistence, and plugin callbacks are running.
 
 ### `completed`
 
@@ -114,7 +114,7 @@ The sign-up system stores lifecycle records in a dedicated table named `wp_tpw_s
 
 The purpose of this table is to hold the canonical state of every signup journey before permanent account creation occurs. It captures the current lifecycle status, flow ownership, payer identity, safe request data, retry data, payment outcome data, locking state, operational counters, and timestamps needed for auditing, retries, recovery, and expiry.
 
-The table is intentionally generic. It should not be overfitted to a single consumer such as Members or FlexiSubscriptions. Core owns the top-level lifecycle columns. Plugins contribute payload content and finalization behaviour, while references to created records such as `wp_user_id` or `member_id` should typically be stored in `result_payload_json` rather than guaranteed as dedicated top-level columns. Core keeps lifecycle metadata in top-level columns while plugins and finalization routines record domain-specific references in the result payload.
+The table is intentionally generic. It should not be overfitted to a single consumer such as Members or FlexiSubscriptions. The shared framework owns the top-level lifecycle columns. Plugins contribute payload content and finalization behaviour, while references to created records such as `wp_user_id` or `member_id` should typically be stored in `result_payload_json` rather than guaranteed as dedicated top-level columns. The shared framework keeps lifecycle metadata in top-level columns while plugins and finalization routines record domain-specific references in the result payload.
 
 ### Logical Columns
 
@@ -137,9 +137,9 @@ The table is intentionally generic. It should not be overfitted to a single cons
 | `result_payload_json` | Sanitized result data from payment and finalization outcomes. |
 | `payment_provider` | Payment provider identifier used by the flow. |
 | `payment_reference` | Provider-specific transaction or intent reference. |
-| `payment_status` | Generic normalized payment state recorded by Core for lifecycle routing. |
+| `payment_status` | Generic normalized payment state recorded by the shared framework for lifecycle routing. |
 | `payment_receipt_reference` | Provider receipt or settlement reference if one is returned. |
-| `payment_result_code` | Machine-readable payment outcome code normalized by Core where possible. |
+| `payment_result_code` | Machine-readable payment outcome code normalized by the shared framework where possible. |
 | `last_error_code` | Machine-readable summary of the latest failure state. |
 | `last_error_message` | Human-readable summary of the latest failure state for recovery workflows. |
 | `payment_attempt_count` | Number of payment attempts initiated for the signup attempt. |
@@ -226,7 +226,7 @@ Top-level columns should remain limited to generic lifecycle concerns. Created e
 
 ## 7. Field Registry System
 
-The field registry is the source of truth for all fields that can appear in the signup form. TPW Core uses it to determine rendering order, validation, persistence rules, and whether a field is safe to capture before payment completes.
+The field registry is the source of truth for all fields that can appear in the signup form. The shared framework uses it to determine rendering order, validation, persistence rules, and whether a field is safe to capture before payment completes.
 
 The registry supports three broad categories of fields:
 
@@ -234,9 +234,9 @@ The registry supports three broad categories of fields:
 - signup-safe custom fields
 - plugin-defined fields inside custom sections and repeatable groups
 
-Standard core fields cover universal identity and contact information used by most onboarding flows and are owned directly by TPW Core. Signup-safe custom fields are configurable Members fields that have been explicitly approved for pre-payment capture and lifecycle storage. Plugin-defined fields are introduced through plugin-owned sections and repeatable groups; they are rendered through the Core registry pipeline but remain domain-specific in meaning.
+Standard core fields cover universal identity and contact information used by most onboarding flows and are owned directly by the shared framework. Signup-safe custom fields are configurable Members fields that have been explicitly approved for pre-payment capture and lifecycle storage. Plugin-defined fields are introduced through plugin-owned sections and repeatable groups; they are rendered through the shared-framework registry pipeline but remain domain-specific in meaning.
 
-This distinction is important. Core fields define the baseline onboarding contract. Signup-safe custom fields extend that contract through Members configuration without bypassing Core safety rules. Plugin-defined fields do not become generic Core fields simply because they appear in the same form; they remain attached to plugin-owned sections or groups and are interpreted by plugin validation and finalization logic.
+This distinction is important. Shared-framework fields define the baseline onboarding contract. Signup-safe custom fields extend that contract through Members configuration without bypassing shared-framework safety rules. Plugin-defined fields do not become generic shared-framework fields simply because they appear in the same form; they remain attached to plugin-owned sections or groups and are interpreted by plugin validation and finalization logic.
 
 Each field definition should include the following metadata:
 
@@ -251,13 +251,13 @@ Each field definition should include the following metadata:
 - storage target
 - display order
 
-This metadata allows Core to determine whether the field is rendered on the public signup form, which section it belongs to, whether it is mandatory during signup, how it should be validated, and where its value should be written during finalization. Storage targets may include the signup attempt payload, WordPress user data, TPW member data, plugin-owned records, or a combination of those where explicitly permitted.
+This metadata allows the shared framework to determine whether the field is rendered on the public signup form, which section it belongs to, whether it is mandatory during signup, how it should be validated, and where its value should be written during finalization. Storage targets may include the signup attempt payload, WordPress user data, TPW member data, plugin-owned records, or a combination of those where explicitly permitted.
 
-Fields appear in the signup form only when signup is enabled for that field and the field is valid for the active flow. Core fields and eligible signup-safe custom fields render through the same registry pipeline. Plugin-defined fields must be attached to registered plugin sections or repeatable groups rather than injected as unstructured standalone fields.
+Fields appear in the signup form only when signup is enabled for that field and the field is valid for the active flow. Shared-framework fields and eligible signup-safe custom fields render through the same registry pipeline. Plugin-defined fields must be attached to registered plugin sections or repeatable groups rather than injected as unstructured standalone fields.
 
 ## 8. Section System
 
-Sections group related fields into coherent blocks within the signup form. They provide a stable rendering structure for both core and plugin-defined fields.
+Sections group related fields into coherent blocks within the signup form. They provide a stable rendering structure for both shared-framework and plugin-defined fields.
 
 Example sections include:
 
@@ -276,7 +276,7 @@ Each section definition should include the following metadata:
 - conditional rules
 - repeatable flag
 
-The section key provides a stable identifier. The label and description support UI rendering and documentation. The owner identifies whether the section belongs to TPW Core or a plugin. Sort order controls rendering sequence. Conditional rules determine whether the section should be displayed for a given flow or based on prior user choices. The repeatable flag indicates whether the section is a normal single instance block or a repeatable container handled by the repeatable group framework.
+The section key provides a stable identifier. The label and description support UI rendering and documentation. The owner identifies whether the section belongs to the shared framework or a plugin. Sort order controls rendering sequence. Conditional rules determine whether the section should be displayed for a given flow or based on prior user choices. The repeatable flag indicates whether the section is a normal single instance block or a repeatable container handled by the repeatable group framework.
 
 ## 9. Repeatable Groups
 
@@ -299,13 +299,13 @@ Each repeatable group definition should include the following metadata:
 - conditional rules
 - row label pattern
 
-The group key uniquely identifies the group within the flow. The owner indicates whether the group is registered by Core or a plugin. The fields list defines the row schema. Minimum and maximum row counts constrain the number of entries. Conditional rules determine when the group is shown. The row label pattern defines how rows are presented in the UI, for example `Child 1`, `Child 2`, or `Dependant 1`.
+The group key uniquely identifies the group within the flow. The owner indicates whether the group is registered by the shared framework or a plugin. The fields list defines the row schema. Minimum and maximum row counts constrain the number of entries. Conditional rules determine when the group is shown. The row label pattern defines how rows are presented in the UI, for example `Child 1`, `Child 2`, or `Dependant 1`.
 
-Plugins define repeatable groups through the same extension model used for sections and fields. Core owns the rendering, request normalization, validation pipeline, and safe payload storage so repeatable data behaves consistently across products.
+Plugins define repeatable groups through the same extension model used for sections and fields. The shared framework owns the rendering, request normalization, validation pipeline, and safe payload storage so repeatable data behaves consistently across products.
 
 ## 10. Plugin Extension API
 
-Plugins extend the signup system by registering lifecycle-safe metadata and callbacks with TPW Core. Plugins can register:
+Plugins extend the signup system by registering lifecycle-safe metadata and callbacks with the shared framework. Plugins can register:
 
 - custom sections
 - repeatable groups
@@ -315,7 +315,7 @@ Plugins extend the signup system by registering lifecycle-safe metadata and call
 
 Each plugin flow is identified by a flow key such as `tpw-subscriptions:join`. The flow key acts as the routing key for form composition, validation, payment orchestration, and finalization dispatch.
 
-Core receives the active flow key, resolves all registered sections, groups, and fields for that flow, and then executes lifecycle processing using Core-owned storage and status transitions. Plugins may contribute request and retry payload fragments, but Core decides how those payloads are normalized, persisted, and advanced through lifecycle states. When finalization is reached, Core dispatches to plugin finalization callbacks associated with the flow key. This keeps plugin business rules pluggable while ensuring the lifecycle engine remains centralised and recoverable.
+The shared framework receives the active flow key, resolves all registered sections, groups, and fields for that flow, and then executes lifecycle processing using shared-framework storage and status transitions. Plugins may contribute request and retry payload fragments, but the shared framework decides how those payloads are normalized, persisted, and advanced through lifecycle states. When finalization is reached, the shared framework dispatches to plugin finalization callbacks associated with the flow key. This keeps plugin business rules pluggable while ensuring the lifecycle engine remains centralised and recoverable.
 
 ## 11. Payload System
 
@@ -339,7 +339,7 @@ Payload storage is subject to strict security restrictions. The following data m
 - card tokens
 - recaptcha tokens
 
-More broadly, Core should store only the minimum data required to resume, finalize, or audit the lifecycle. Sensitive values that are single-use, secret-bearing, or not required after immediate validation should be discarded.
+More broadly, the shared framework should store only the minimum data required to resume, finalize, or audit the lifecycle. Sensitive values that are single-use, secret-bearing, or not required after immediate validation should be discarded.
 
 ## 12. Password Flow
 
@@ -359,7 +359,7 @@ Signup configuration should appear inside the Members settings area at:
 
 Members -> Settings -> Sign-Ups
 
-For Phase 1, this should be presented as a dedicated Sign-Up Form tab or equivalent Sign-Ups settings surface within Members settings. The intent is to give administrators a focused place to control what appears on the public signup form while still making it clear that lifecycle behaviour is owned by Core.
+For Phase 1, this should be presented as a dedicated Sign-Up Form tab or equivalent Sign-Ups settings surface within Members settings. The intent is to give administrators a focused place to control what appears on the public signup form while still making it clear that lifecycle behaviour is owned by the shared framework.
 
 Phase 1 configuration options should include:
 
@@ -384,14 +384,14 @@ The public signup form is rendered using the shortcode `[tpw_member_signup]`.
 
 The rendering order is:
 
-1. Core fields
+1. Shared-framework fields
 2. Signup-safe custom fields
 3. Plugin sections
 4. Payment section
 
-Core fields render first to guarantee consistent identity and contact capture. Eligible signup-safe custom member fields render next so existing Members configuration is respected without weakening pre-payment data safety rules. Plugin sections then add domain-specific data. The payment section always renders last because it depends on the validated signup state and represents the transition into lifecycle processing.
+Shared-framework fields render first to guarantee consistent identity and contact capture. Eligible signup-safe custom member fields render next so existing Members configuration is respected without weakening pre-payment data safety rules. Plugin sections then add domain-specific data. The payment section always renders last because it depends on the validated signup state and represents the transition into lifecycle processing.
 
-Conditional visibility rules apply at both field and section level. A field or section may be hidden based on the active flow, prior answers, membership plan selection, or plugin-defined conditions. Core evaluates these rules during rendering and validation so hidden fields do not create inconsistent submission requirements.
+Conditional visibility rules apply at both field and section level. A field or section may be hidden based on the active flow, prior answers, membership plan selection, or plugin-defined conditions. The shared framework evaluates these rules during rendering and validation so hidden fields do not create inconsistent submission requirements.
 
 ## 15. Admin Management Screens
 
@@ -418,15 +418,15 @@ FlexiSubscriptions will use the sign-up system as a plugin consumer rather than 
 - partner section
 - children repeatable group
 
-For example, a subscription join flow may require a plan selector, collect a partner's personal details for a family membership, and allow multiple child rows through a repeatable group. FlexiSubscriptions defines those sections, validations, and finalization hooks, while TPW Core remains responsible for creating and managing the signup attempt, tracking payment outcome, handling retries, and completing account creation.
+For example, a subscription join flow may require a plan selector, collect a partner's personal details for a family membership, and allow multiple child rows through a repeatable group. FlexiSubscriptions defines those sections, validations, and finalization hooks, while the shared framework remains responsible for creating and managing the signup attempt, tracking payment outcome, handling retries, and completing account creation.
 
 ## 17. Phase 1 Scope
 
-Phase 1 will implement the minimum architecture required to establish the sign-up framework inside TPW Core and support a first production integration with FlexiSubscriptions. Plugin-defined sections and repeatable groups are a day-one requirement in this phase, not a later enhancement, because the generic lifecycle engine is only useful if plugins can extend the form structure from the start.
+Phase 1 will implement the minimum architecture required to establish the sign-up framework inside the shared plugin framework and support a first production integration with FlexiSubscriptions. Plugin-defined sections and repeatable groups are a day-one requirement in this phase, not a later enhancement, because the generic lifecycle engine is only useful if plugins can extend the form structure from the start.
 
 Included in Phase 1:
 
-- Core lifecycle engine
+- Shared-framework lifecycle engine
 - signup attempts table
 - field registry integration
 - plugin-defined sections from day one

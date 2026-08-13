@@ -274,7 +274,7 @@ if ( ! function_exists( 'tpw_core_payments_render_frontend_method_detail' ) ) {
         echo '<div class="tpw-payment-method-detail__header-row">';
         echo '<div>';
         echo '<h4 class="tpw-payment-method-detail__title">' . esc_html( $method_label ) . '</h4>';
-        echo '<p class="tpw-payment-method-detail__intro">' . esc_html__( 'Configure this payment method without leaving the FlexiClub Settings workspace.', 'tpw-core' ) . '</p>';
+        echo '<p class="tpw-payment-method-detail__intro">' . esc_html__( 'Configure this payment method without leaving the iLungu Club Settings workspace.', 'tpw-core' ) . '</p>';
         echo '</div>';
         if ( '' !== $back_url ) {
             echo '<a class="button button-secondary" href="' . esc_url( $back_url ) . '">' . esc_html__( 'Back to Payment Methods', 'tpw-core' ) . '</a>';

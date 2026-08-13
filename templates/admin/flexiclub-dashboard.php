@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<div class="tpw-flexiclub-dashboard__brand-row">
 		<div class="tpw-flexiclub-dashboard__brand">
 			<?php if ( ! empty( $dashboard['logo_url'] ) ) : ?>
-				<img class="tpw-flexiclub-dashboard__logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'FlexiClub', 'tpw-core' ); ?>" />
+				<img class="tpw-flexiclub-dashboard__logo" src="<?php echo esc_url( $dashboard['logo_url'] ); ?>" alt="<?php esc_attr_e( 'iLungu™ Club', 'tpw-core' ); ?>" />
 			<?php else : ?>
-				<h1><?php esc_html_e( 'FlexiClub', 'tpw-core' ); ?></h1>
+				<h1><?php esc_html_e( 'iLungu™ Club', 'tpw-core' ); ?></h1>
 			<?php endif; ?>
 			<div class="tpw-flexiclub-dashboard__brand-copy">
 				<p class="tpw-flexiclub-dashboard__tagline"><?php esc_html_e( 'Your club. Your members. Your community.', 'tpw-core' ); ?></p>
@@ -172,7 +172,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<section id="tpw-flexiclub-extend" class="tpw-flexiclub-dashboard__section tpw-card">
 			<div class="tpw-flexiclub-dashboard__section-head">
 				<div>
-					<h2><?php esc_html_e( 'Extend FlexiClub', 'tpw-core' ); ?></h2>
+									<h2><?php esc_html_e( 'Extend iLungu Club', 'tpw-core' ); ?></h2>
 					<p><?php esc_html_e( 'Add powerful add-ons to grow your club.', 'tpw-core' ); ?></p>
 				</div>
 			</div>

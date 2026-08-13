@@ -1,12 +1,12 @@
 # TPW Platform Architecture
 
-This section contains the architecture documentation for TPW Core and the wider TPW platform.
+This section contains the architecture documentation for the shared plugin framework and the wider TPW platform.
 
-TPW Core is the shared foundation of the TPW plugin ecosystem. The architecture documentation is organised into separate domains so platform rules can be defined clearly and maintained independently as the system evolves.
+The shared plugin framework is the shared foundation of the TPW plugin ecosystem. The architecture documentation is organised into separate domains so platform rules can be defined clearly and maintained independently as the system evolves.
 
 ## Identity Architecture
 
-Identity architecture defines who a person is in the platform and how identity is derived from Core data.
+Identity architecture defines who a person is in the platform and how identity is derived from shared-framework data.
 
 Identity determines who a person is.
 
@@ -35,19 +35,19 @@ Supporting permissions architecture references include:
 
 ## System Page Protection Architecture
 
-System page protection architecture defines how TPW Core identifies private FlexiClub pages, hides them from logged-out automatic page listings, and delegates direct access enforcement to the owning route or shortcode.
+System page protection architecture defines how the shared framework identifies private iLungu Club pages, hides them from logged-out automatic page listings, and delegates direct access enforcement to the owning route or shortcode.
 
 The canonical system page protection contract is [docs/architecture/system-pages/tpw-core-system-page-protection-contract.md](system-pages/tpw-core-system-page-protection-contract.md).
 
 ## Navigation Architecture
 
-Navigation architecture defines how TPW Core manages shared menu surfaces such as the FlexiClub Members Menu and how add-on plugins contribute managed items safely.
+Navigation architecture defines how the shared framework manages shared menu surfaces such as the iLungu Club Members Menu and how add-on plugins contribute managed items safely.
 
 The canonical Members Menu registration contract is [docs/architecture/navigation/tpw-core-members-menu-registration-contract.md](navigation/tpw-core-members-menu-registration-contract.md).
 
 ## UI Architecture
 
-UI architecture defines the canonical wrapper, shared component, and enqueue contract for TPW Core and consumer plugins.
+UI architecture defines the canonical wrapper, shared component, and enqueue contract for the shared framework and consumer plugins.
 
 The canonical shared UI contract is [docs/architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](ui/tpw-core-ui-wrapper-enqueue-contract.md).
 

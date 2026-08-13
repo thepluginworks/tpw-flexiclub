@@ -76,7 +76,7 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
                 'my-profile',
                 'manage-members',
                 'noticeboard',
-                'flexiclub',
+                'club-management',
                 'logs',
                 'menu-management',
                 'archival-system',
@@ -188,17 +188,11 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
                 }
             }
 
-            // 2) Discover by path (get_page_by_path prefers hierarchical slugs)
+            // 2) Discover only pages already marked as owned by this registry entry.
             $page = get_page_by_path( $slug );
-            if ( $page && $page->post_type === 'page' && $page->post_status === 'publish' ) {
+            $def  = self::$registry[ $slug ] ?? [];
+            if ( $page && $page->post_status === 'publish' && self::is_owned_page( $page, $slug, $def ) ) {
                 return (int) $page->ID;
-            }
-
-            // 3) Optionally discover by shortcode content if default has one
-            $def = self::$registry[ $slug ] ?? [];
-            if ( ! empty( $def['shortcode'] ) ) {
-                $found = self::find_page_with_shortcode( (string) $def['shortcode'] );
-                if ( $found > 0 ) return $found;
             }
 
             return 0;
@@ -259,6 +253,52 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
         }
 
         /**
+         * Determine whether a page is already owned by this registry entry.
+         *
+         * An explicit option mapping is an administrator-approved assignment.
+         * Unmapped pages must carry the complete System Pages ownership marker.
+         *
+         * @param WP_Post $page Registered page candidate.
+         * @param string  $slug Registered system-page slug.
+         * @param array   $def  Registered system-page definition.
+         * @param int     $mapped_id Explicitly mapped page ID, if any.
+         * @return bool
+         */
+        protected static function is_owned_page( $page, $slug, $def, $mapped_id = 0 ) {
+            if ( ! ( $page instanceof WP_Post ) || 'page' !== $page->post_type ) {
+                return false;
+            }
+
+            if ( (int) $page->ID === (int) $mapped_id && 0 < (int) $mapped_id ) {
+                return true;
+            }
+
+            if ( sanitize_key( (string) get_post_meta( $page->ID, '_tpw_system_page_slug', true ) ) !== $slug ) {
+                return false;
+            }
+
+            $plugin = isset( $def['plugin'] ) ? sanitize_key( (string) $def['plugin'] ) : '';
+            return '' === $plugin || $plugin === sanitize_key( (string) get_post_meta( $page->ID, '_tpw_system_page_plugin', true ) );
+        }
+
+        /**
+         * Return a clear error instead of adopting an unrelated page at a canonical path.
+         *
+         * @param string $slug Registered system-page slug.
+         * @return WP_Error
+         */
+        protected static function page_conflict_error( $slug ) {
+            return new WP_Error(
+                'tpw_system_page_slug_conflict',
+                sprintf(
+                    /* translators: %s: system page slug */
+                    __( 'Cannot create or recreate the system page at "/%s/" because an unrelated WordPress page already uses that path. Reassign or rename that page before continuing.', 'tpw-core' ),
+                    $slug
+                )
+            );
+        }
+
+        /**
          * Determine whether a slug has been explicitly unlinked.
          *
          * @param string $slug System page slug.
@@ -276,7 +316,7 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
          * @param string $slug System page slug.
          * @return int|WP_Error Page ID on success, or WP_Error on failure.
          */
-        protected static function ensure_page_result( $slug ) {
+        protected static function ensure_page_result( $slug, $recreate = false ) {
             $s = sanitize_key( (string) $slug );
             if ( '' === $s ) {
                 return new WP_Error( 'tpw_system_page_missing_slug', __( 'Missing system page slug.', 'tpw-core' ) );
@@ -290,7 +330,9 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
                 $def = self::$registry[ $s ];
             }
 
-            $id = self::get_id( $s );
+            $override  = self::get_override_entry( $s );
+            $mapped_id = isset( $override['wp_page_id'] ) ? (int) $override['wp_page_id'] : 0;
+            $id        = $recreate ? 0 : self::get_id( $s );
             if ( 0 < $id ) {
                 self::mark_system_page( (int) $id, $s, $def );
                 self::persist_override( $s, (int) $id );
@@ -310,6 +352,10 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
 
             $maybe = get_page_by_path( $s );
             if ( $maybe && 'page' === $maybe->post_type ) {
+                if ( ! self::is_owned_page( $maybe, $s, $def, $mapped_id ) ) {
+                    return self::page_conflict_error( $s );
+                }
+
                 if ( 'trash' === $maybe->post_status ) {
                     return new WP_Error(
                         'tpw_system_page_in_trash',
@@ -350,6 +396,14 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
 
                 if ( is_wp_error( $id ) ) {
                     return $id;
+                }
+
+                $created = get_post( (int) $id );
+                if ( ! ( $created instanceof WP_Post ) || $s !== $created->post_name ) {
+                    if ( $created instanceof WP_Post ) {
+                        wp_delete_post( (int) $id, true );
+                    }
+                    return self::page_conflict_error( $s );
                 }
             }
 
@@ -428,9 +482,7 @@ if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
                 return new WP_Error( 'tpw_system_page_missing_slug', __( 'Missing system page slug.', 'tpw-core' ) );
             }
 
-            self::unlink( $s );
-
-            return self::ensure_page_result( $s );
+            return self::ensure_page_result( $s, true );
         }
 
         /**

@@ -3,7 +3,7 @@
 # TPW Platform – Default Role ↔ Capability Matrix
 
 **Status:** Authoritative (Human‑readable reference)  
-**Location:** TPW Core (single source of truth)  
+**Location:** Shared plugin framework (single source of truth)
 **Audience:** Product, Sales, QA, Developers (VC)  
 
 This document defines the **default capability mapping** for TPW platform roles.
@@ -21,7 +21,7 @@ This matrix explains the *default intent*.
 
 ---
 
-## 1. Core Principles
+## 1. Shared Framework Principles
 
 1. **WordPress Administrator is absolute**
    - Existing WP Administrators are never demoted.
@@ -29,9 +29,9 @@ This matrix explains the *default intent*.
 
 2. **Capabilities, not roles, are enforced**
    - Plugin-facing TPW checks use `tpw_core_user_can( 'tpw_xxx', $user_id )`.
-   - Roles map to capabilities via TPW Core logic.
+   - Roles map to capabilities via shared-framework logic.
 
-Current Phase 1 Core note:
+Current Phase 1 shared-framework note:
 - Secretary and Treasurer remain compatibility-era storage in `tpw_members`; plugins must not query raw flags directly.
 
 3. **Defaults are adjustable**
@@ -60,7 +60,7 @@ Current Phase 1 Core note:
 
 ---
 
-## 3. TPW Core – Default Capability Mapping
+## 3. Shared Plugin Framework – Default Capability Mapping
 
 ### Members
 | Capability | Admin | Secretary | Treasurer | Membership Admin | Committee | Auditor |
@@ -76,14 +76,14 @@ Current Phase 1 Core note:
 
 ---
 
-### Payments (Core runtime)
+### Payments (shared-framework runtime)
 | Capability | Admin | Secretary | Treasurer | Committee | Auditor |
 |-----------|------|-----------|-----------|-----------|---------|
 | `tpw_payments_view` | ✔ | ✔ | ✔ | ✖ | ✔ |
 | `tpw_payments_manage` | ✔ | ✖ | ✔ | ✖ | ✖ |
 | `tpw_payments_export` | ✔ | ✔ | ✔ | ✖ | ✔ |
 
-Current Core compatibility bridge note:
+Current shared-framework compatibility bridge note:
 - `tpw_payments_manage` currently resolves through WordPress Administrator, `is_admin`, or `is_treasurer`.
 
 ---
@@ -179,7 +179,7 @@ Current Core compatibility bridge note:
 | `tpw_venues_manage` | ✔ | ✔ |
 | `tpw_events_settings_manage` | ✔ | ✖ |
 
-Current Core compatibility bridge note:
+Current shared-framework compatibility bridge note:
 - `tpw_events_manage` currently resolves through WordPress Administrator, `is_admin`, or `is_secretary` until later events-module migration work defines a dedicated long-term owner.
 
 ---

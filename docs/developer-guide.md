@@ -1,10 +1,10 @@
-## Core Hooks Index
+## Shared Framework Hooks Index
 
-Reference for actions and filters provided by TPW Core modules. For usage examples, see the relevant sections below.
+Reference for actions and filters provided by the shared plugin framework modules. For usage examples, see the relevant sections below.
 
 ## Permissions Compatibility
 
-TPW Core's current plugin-facing permission bridge is:
+The shared plugin framework's current plugin-facing permission bridge is:
 
 ```php
 tpw_core_user_can( string $ability, int $user_id = 0 )
@@ -23,20 +23,20 @@ Protected Manage Members permission fields are currently `is_admin`, `is_manage_
 
 `is_admin` remains special because it synchronises with the linked WordPress `administrator` role.
 
-### Core
-- tpw_core_loaded — Fires when core initialization finishes.
+### Shared Framework
+- tpw_core_loaded — Fires when shared-framework initialization finishes.
 	- File: `includes/class-tpw-core.php`
 	- Since: 1.0.0
 	- Description: Bootstrap point for add-ons to hook into after dependencies are loaded.
-- tpw_core/member_menu_items (filter) — Register managed FlexiClub Members Menu item specs.
+- tpw_core/member_menu_items (filter) — Register managed iLungu™ Club Members Menu item specs.
 	- File: `includes/tpw-core-settings.php`
 	- Since: Unreleased
-	- Description: Add-on plugins append managed Members Menu items through the shared Core registry instead of writing nav-menu items directly.
+	- Description: Add-on plugins append managed Members Menu items through the shared-framework registry instead of writing nav-menu items directly.
 	- Contract: `docs/architecture/navigation/tpw-core-members-menu-registration-contract.md`
 - tpw_core/login_url (filter) — Resolve the front-end login URL.
-	- File: `tpw-flexiclub.php` and `includes/tpw-core-loader.php` (consumer)
+	- File: `ilungu-club.php` and `includes/tpw-core-loader.php` (consumer)
 	- Since: 1.0.0
-	- Description: Return a login URL; core provides defaults and honours redirect_to.
+	- Description: Return a login URL; the shared framework provides defaults and honours redirect_to.
 - tpw_core_is_admin_screen (filter) — Identify TPW admin screens.
 	- File: `includes/admin-functions.php`
 	- Since: 1.0.0
@@ -57,18 +57,18 @@ Protected Manage Members permission fields are currently `is_admin`, `is_manage_
 	- File: `includes/admin-functions.php`
 	- Since: 1.0.0
 	- Description: Append help links or notices next to the title.
-- tpw_core_settings_tabs (filter) — Alter or extend TPW Core settings tabs.
+- tpw_core_settings_tabs (filter) — Alter or extend iLungu Club settings tabs.
 	- File: `includes/tpw-core-settings.php`
 	- Since: 1.0.0
 	- Description: Add new tabs or change labels/order.
 
-### FlexiClub wp-admin dashboard
+### iLungu Club wp-admin dashboard
 
-The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary screen. Current behaviour is intentionally conservative:
+The top-level iLungu Club wp-admin dashboard is a shared-framework-owned operational summary screen. Current behaviour is intentionally conservative:
 
 - Dashboard status pills use shared semantic meanings across Club Overview and System Status: `Active`, `Complete`, `Healthy`, and `In use` use the green success tone, `Ready` uses the neutral grey tone, `Needs review` and `Inactive` use the warning tone, and `Missing` or required unavailable states use the error tone.
 - Overview card background tints and icon colours express module identity only. They must not override the shared semantic pill colours.
-- The `Extend FlexiClub` add-on cards only show real actions. Active plugins may show a safe management/admin URL when one is known, installed inactive plugins may show an activation action, and available plugins may show `Learn more` only when a real product URL exists. Do not add placeholder links, dead buttons, or fake management destinations.
+- The `Extend iLungu Club` add-on cards only show real actions. Active plugins may show a safe management/admin URL when one is known, installed inactive plugins may show an activation action, and available plugins may show `Learn more` only when a real product URL exists. Do not add placeholder links, dead buttons, or fake management destinations.
 
 ### System Pages
 - tpw/system_pages/defaults (filter) — Default registry rows.
@@ -83,7 +83,7 @@ The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary s
 
 ### Members
 - tpw_member_login_redirect (filter) — Post-login redirect URL.
-	- File: `tpw-flexiclub.php` (default implementation), `modules/members/shortcodes/member-login.php` (consumers)
+	- File: `ilungu-club.php` (default implementation), `modules/members/shortcodes/member-login.php` (consumers)
 	- Since: 1.0.0
 	- Description: Decide where members land after login.
 - tpw_members/allowed_statuses (filter) — Valid statuses for visibility.
@@ -150,10 +150,10 @@ The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary s
 	- Description: Inject API credentials per provider key.
 
 ### Payments
-- tpw_core/payments_required (filter) — Declare that shared Core payment settings are required.
+- tpw_core/payments_required (filter) — Declare that shared-framework payment settings are required.
 	- File: `includes/tpw-core-functions.php`, `includes/tpw-core-settings.php`, `includes/tpw-core-loader.php`
 	- Since: 2.0.2
-	- Description: Return true from a consumer plugin when FlexiClub Payment Methods settings and admin wiring should be available. Legacy `tpw_show_payment_settings` remains honored as a compatibility signal.
+	- Description: Return true from a consumer plugin when iLungu Club Payment Methods settings and admin wiring should be available. Legacy `tpw_show_payment_settings` remains honored as a compatibility signal.
 - tpw_payment_completed (action) — Payment completed webhook event.
 	- File: `modules/payments/webhook.php`
 	- Since: 1.0.0
@@ -221,8 +221,8 @@ The top-level FlexiClub wp-admin dashboard is a Core-owned operational summary s
 
 ### Email Logging
 
-TPW Core provides a central outbound email dispatcher in `TPW_Email::dispatch_mail()`.
-All TPW Core email sends should pass through this method directly, or through helpers such as `TPW_Email::send_email()` and `TPW_Email::send_with_template()` that eventually call the dispatcher.
+The shared plugin framework provides a central outbound email dispatcher in `TPW_Email::dispatch_mail()`.
+All shared-framework email sends should pass through this method directly, or through helpers such as `TPW_Email::send_email()` and `TPW_Email::send_with_template()` that eventually call the dispatcher.
 
 Immediate send APIs:
 
@@ -234,22 +234,22 @@ Immediate send APIs:
 Dispatcher flow:
 
 - Sanitizes the subject and normalizes headers and attachments.
-- Applies the shared throttling rules from Core Email Settings.
+- Applies the shared throttling rules from shared-framework Email Settings.
 - Calls WordPress `wp_mail()` during the current request.
-- Records a lightweight operational log entry when Email Logging is enabled in Core Email Settings.
+- Records a lightweight operational log entry when Email Logging is enabled in shared-framework Email Settings.
 
 Queue behaviour:
 
 - Queue storage table: `{$wpdb->prefix}tpw_email_queue`
 - Durable queueing is opt-in through the explicit queue API, not the default behaviour of `TPW_Email::dispatch_mail()`.
 - `TPW_Email::enqueue_mail()` is the explicit durable queue API.
-- One queued email row schedules one Action Scheduler job through the Core scheduler wrapper once Action Scheduler is fully ready.
-- Core distinguishes scheduler availability from scheduler readiness: loaded symbols alone are not treated as a safe scheduling signal.
+- One queued email row schedules one Action Scheduler job through the shared-framework scheduler wrapper once Action Scheduler is fully ready.
+- The shared framework distinguishes scheduler availability from scheduler readiness: loaded symbols alone are not treated as a safe scheduling signal.
 - If a queue row is created before Action Scheduler reaches `action_scheduler_init`, the row remains `pending` and scheduling is deferred until a safe lifecycle point.
 - In that deferred state, `TPW_Email::enqueue_mail()` still returns a successful queue result, but `action_id` may remain `0` until the deferred scheduling pass runs.
 - Queued emails are processed asynchronously by Action Scheduler.
 - Failed queued sends remain in queue state and are retried with backoff until `max_attempts` is reached.
-- WordPress Admin → Settings → TPW Core → Email Queue is the business-level payload and status view.
+- WordPress Admin → Settings → iLungu Club → Email Queue is the business-level payload and status view.
 - Tools → Scheduled Actions is the infrastructure and job-execution view.
 - Email Logs remain an operational attempt log only; they are not the queue store.
 - Email Logs are written when an actual send attempt happens, not when a queue row is created.
@@ -270,13 +270,13 @@ Guidance for add-on plugins:
 
 - Add-on plugins such as FlexiSubscriptions should treat `TPW_Email::enqueue_mail()` as the default choice for durable notification workflows that do not need to block the current request.
 - Add-on plugins should continue to use the immediate APIs for transactional or interactive flows where the plugin must know whether `wp_mail()` succeeded during the request.
-- Queue-safe add-on notifications should pass a clear `context` and `source` label so queue entries and send-attempt logs remain traceable across Core and consumer plugins.
-- Add-on plugins should not implement their own parallel durable queue when Core queueing semantics are sufficient.
+- Queue-safe add-on notifications should pass a clear `context` and `source` label so queue entries and send-attempt logs remain traceable across the shared framework and consumer plugins.
+- Add-on plugins should not implement their own parallel durable queue when shared-framework queueing semantics are sufficient.
 
 Optional context:
 
 The dispatcher accepts an optional context argument as either a string or an array.
-For logging, Core stores a single context label using `context` when present, otherwise `source` when present.
+For logging, the shared framework stores a single context label using `context` when present, otherwise `source` when present.
 
 Example:
 
@@ -319,33 +319,33 @@ Logged fields:
 Storage:
 
 - Table: `{$wpdb->prefix}tpw_email_logs`
-- Core does not store full email bodies in the log table.
+- The shared framework does not store full email bodies in the log table.
 - The table is intended for operational troubleshooting only.
 
 Retention:
 
-- Core keeps email logs for 30 days by default.
+- The shared framework keeps email logs for 30 days by default.
 - A daily scheduled cleanup removes rows older than the retention window.
 
 Admin access:
 
-- WordPress Admin → Settings → TPW Core → Email Logs
+- WordPress Admin → Settings → iLungu Club → Email Logs
 - The screen shows the latest 100 log entries, newest first.
 - Administrators can clear the log table from this tab.
-- WordPress Admin → Settings → TPW Core → Email Queue
+- WordPress Admin → Settings → iLungu Club → Email Queue
 - The queue tab shows pending, processing, sent, failed, and cancelled items and supports reconciliation, retry, cancel, and sent-item cleanup actions.
 
 Local testing note:
 
 - Local Mailpit verification depends on `wp_mail()` reaching the local mail transport.
-- If Site Mailer, SMTP, or similar mail-intercept plugins are active, Mailpit may not receive the message even though Core called `wp_mail()` correctly.
+- If Site Mailer, SMTP, or similar mail-intercept plugins are active, Mailpit may not receive the message even though the shared framework called `wp_mail()` correctly.
 - When validating local delivery, confirm that no mail-routing plugin is overriding the expected local Mailpit path.
 
 ---
 
 ### Reusable Email Module
 
-TPW Core includes a reusable Email module intended to be shared by features like Members, FlexiGolf, and Candidates. It provides:
+The shared plugin framework includes a reusable Email module intended to be shared by features like Members, FlexiGolf, and Candidates. It provides:
 
 - HTML email sending with a simple wrapper and Reply-To headers
 - A contact form UI (modal) with TinyMCE-enabled message and attachment support
@@ -380,7 +380,7 @@ echo TPW_Email_Form::render([
 
 On submission, the form posts to the secured `tpw_email_send` AJAX action. The handler validates the request and calls `TPW_Email::send_email()` with sanitized data. Errors are surfaced to the user and success is acknowledged.
 
-If Email Logging is enabled in Core Email Settings, sends routed through these helpers are also recorded in the central email log.
+If Email Logging is enabled in shared-framework Email Settings, sends routed through these helpers are also recorded in the central email log.
 
 Programmatic send:
 
@@ -443,13 +443,13 @@ $currency_code = $settings['currency_code'] ?? 'GBP';
 | `currency_code`   | `GBP`          | ISO 4217 currency code used for integrations or display |
 
 
-## Core Email Settings (TPW_Core_Email_Settings)
+## Shared Framework Email Settings (TPW_Core_Email_Settings)
 
-TPW Core provides a centralised email settings manager that other modules/plugins can consume.
+The shared plugin framework provides a centralised email settings manager that other modules/plugins can consume.
 
 - Storage: WordPress option `tpw_core_email_settings` (array)
 - Class: `TPW_Core_Email_Settings`
-- Availability: Autoloaded by the core loader; no extra includes necessary
+- Availability: Autoloaded by the shared-framework loader; no extra includes necessary
 
 ### Defaults
 
@@ -490,7 +490,7 @@ Notes:
 
 ## Email Templating System
 
-TPW Core provides a reusable email templating system so plugins can register templates that site admins can customise (subject/body) and render them with dynamic tokens.
+The shared plugin framework provides a reusable email templating system so plugins can register templates that site admins can customise (subject/body) and render them with dynamic tokens.
 
 ### Registering Templates
 
@@ -527,7 +527,7 @@ Templates are stored in memory only (static registry). Admin overrides are store
 
 #### RSVP plugin — registering templates
 
-To expose RSVP-related templates in Settings → TPW Core → Email Templates (`/wp-admin/options-general.php?page=tpw-core-settings&tab=email-templates`), register them from your RSVP plugin on `init` (or after `tpw_core_loaded`). Use a stable group key for tidy grouping in the UI, e.g. `tpw-rsvp-lodge-meetings`.
+To expose RSVP-related templates in Settings → iLungu Club → Email Templates (`/wp-admin/options-general.php?page=tpw-core-settings&tab=email-templates`), register them from your RSVP plugin on `init` (or after `tpw_core_loaded`). Use a stable group key for tidy grouping in the UI, e.g. `tpw-rsvp-lodge-meetings`.
 
 Example bootstrap in your RSVP plugin:
 
@@ -573,7 +573,7 @@ add_action( 'init', function() {
 ```
 
 Notes:
-- If your plugin must run strictly after Core, hook to `tpw_core_loaded` instead of `init`.
+- If your plugin must run strictly after the shared framework, hook to `tpw_core_loaded` instead of `init`.
 - Choose a unique group string to avoid mixing templates from unrelated plugins.
 - When sending, use `TPW_Email_Template_Manager::get_rendered_template( 'rsvp-meeting-invite', $tokens )` to merge admin overrides and replace placeholders.
 
@@ -589,7 +589,7 @@ $rendered = TPW_Email_Template_Manager::get_rendered_template(
 		'{fixture-date}' => '25 Sept 2025',
 	### System Pages Manager
 
-	TPW Core provides a lightweight registry for front-end WordPress pages required by TPW plugins (e.g., My Profile, Manage Members, Noticeboard, TPW Control). It stores page definitions in a single table and ensures the linked WP pages exist.
+	The shared plugin framework provides a lightweight registry for front-end WordPress pages required by TPW plugins (e.g., My Profile, Manage Members, Noticeboard, TPW Control). It stores page definitions in a single table and ensures the linked WP pages exist.
 
 	Key API (class `TPW_Core_System_Pages`):
 	- `register_page( $slug, [ 'title' => 'My Title', 'shortcode' => '[my_shortcode]', 'plugin' => 'tpw-core', 'required' => 1 ] )` – register or update the page meta.
@@ -601,9 +601,9 @@ $rendered = TPW_Email_Template_Manager::get_rendered_template(
 	Tables are auto-created on plugin load and activation. Other TPW plugins can call `register_page` on `plugins_loaded` to declare their pages.
 
 	Note — My Profile registration:
-	- TPW Core now registers the Members “My Profile” page in the System Pages table under slug `my-profile` with shortcode `[tpw_member_profile]`.
-	- Existing logic remains: Core still creates the WP page on activation where needed and keeps using the `tpw_member_profile_page_id` option.
-	- Where Core resolves the profile URL, it first tries `TPW_Core_System_Pages::get_permalink( 'my-profile' )` and falls back to `get_permalink( get_option( 'tpw_member_profile_page_id' ) )` or the front‑end route. This provides a safe migration path without breaking existing menus or links.
+	- The shared framework now registers the Members “My Profile” page in the System Pages table under slug `my-profile` with shortcode `[tpw_member_profile]`.
+	- Existing logic remains: the shared framework still creates the WP page on activation where needed and keeps using the `tpw_member_profile_page_id` option.
+	- Where the shared framework resolves the profile URL, it first tries `TPW_Core_System_Pages::get_permalink( 'my-profile' )` and falls back to `get_permalink( get_option( 'tpw_member_profile_page_id' ) )` or the front-end route. This provides a safe migration path without breaking existing menus or links.
 	- For the canonical logged-out menu-hiding and direct-access contract, see `docs/architecture/system-pages/tpw-core-system-page-protection-contract.md`.
 
 		'{member-name}'  => 'Stuart Moodey',
@@ -624,7 +624,7 @@ Notes:
 
 ### Admin Editing
 
-Under Settings → TPW Core → Email Templates, site admins can:
+Under Settings → iLungu Club → Email Templates, site admins can:
 - See all registered templates grouped by plugin/scope
 - Edit subject/body (only if the template marked them as editable)
 - Toggle “Include fallback logo” for that template
@@ -633,7 +633,7 @@ Under Settings → TPW Core → Email Templates, site admins can:
 
 ## Members Admin Form Extension Hooks
 
-You can extend the Core Members module admin forms at:
+You can extend the shared-framework Members module admin forms at:
 
 - `/manage-members/?action=add`
 - `/manage-members/?action=edit&id=123`
@@ -676,7 +676,7 @@ Runs after core fields and meta are saved for both add and edit submissions, all
 
 ## My Profile Tab Extension Hook
 
-Add-on plugins can register new tabs on the front-end My Profile screen by filtering the profile sections registry used by Core.
+Add-on plugins can register new tabs on the front-end My Profile screen by filtering the profile sections registry used by the shared framework.
 
 ### Register Hook
 
@@ -688,7 +688,7 @@ Signature:
 apply_filters( 'tpw_core_register_profile_sections', array $sections )
 ```
 
-Core treats `profile` as a built-in section and may also register other built-in sections such as `payments`. Add-on plugins should append their own keyed entry and return the full array.
+The shared framework treats `profile` as a built-in section and may also register other built-in sections such as `payments`. Add-on plugins should append their own keyed entry and return the full array.
 
 ### Supported Section Shape
 
@@ -712,11 +712,11 @@ Field contract:
 - `icon` — optional icon HTML or CSS classes. Prefer Dashicons class strings when needed.
 - `priority` — optional integer sort order; lower values render first.
 - `callback` — recommended. A callable that renders the tab content.
-- `template` — optional alternative to `callback`; intended for Core-safe template resolution.
+- `template` — optional alternative to `callback`; intended for shared-framework-safe template resolution.
 - `capability` — optional; section is hidden when the current user lacks the capability.
 - `show` — optional boolean; set false to suppress a section.
 
-Invalid sections are skipped safely. If the requested tab slug is unknown, Core falls back to `profile`.
+Invalid sections are skipped safely. If the requested tab slug is unknown, the shared framework falls back to `profile`.
 
 ### Callback Contract
 
@@ -728,7 +728,7 @@ Practical guarantees:
 - Other direct properties map to columns on `tpw_members`.
 - Member meta is not merged into the object automatically; load it separately when needed.
 
-Core will pass up to three callback arguments depending on what your callable accepts:
+The shared framework will pass up to three callback arguments depending on what your callable accepts:
 
 ```php
 function your_plugin_render_policy_section( $member, $section = [], $sections = [] ) {
@@ -787,20 +787,20 @@ Do not place this integration in an admin-only file, because the My Profile scre
 
 ## Members module activation and system pages
 
-- To enable the Members module UI from an add-on plugin, define the constant `TPW_MEMBERS_ACTIVE` as true as early as possible in your plugin bootstrap. Core provides a convenience helper:
+- To enable the Members module UI from an add-on plugin, define the constant `TPW_MEMBERS_ACTIVE` as true as early as possible in your plugin bootstrap. The shared framework provides a convenience helper:
 
 ```php
 // Returns true when Members module is active
 tpw_members_module_enabled(): bool
 ```
 
-- System Pages: Core registers the "My Profile" page under slug `my-profile` and shortcode `[tpw_member_profile]`. Core also owns the canonical `manage-members` and `noticeboard` system pages under shortcodes `[tpw_manage_members]` and `[tpw_noticeboard_list]`, and runtime provisioning will reuse existing published slug or shortcode pages before creating new ones. Add-on plugins can ensure the My Profile page exists by calling:
+- System Pages: The shared framework registers the "My Profile" page under slug `my-profile` and shortcode `[tpw_member_profile]`. The shared framework also owns the canonical `manage-members` and `noticeboard` system pages under shortcodes `[tpw_manage_members]` and `[tpw_noticeboard_list]`, and runtime provisioning will reuse existing published slug or shortcode pages before creating new ones. Add-on plugins can ensure the My Profile page exists by calling:
 
 ```php
 TPW_Core_System_Pages::ensure_page( 'my-profile' );
 ```
 
-- Add-on owned pages: If an add-on provides its own separate front-end management UI, it should register its own System Page row so Core can manage the linked WP page. Example:
+- Add-on owned pages: If an add-on provides its own separate front-end management UI, it should register its own System Page row so the shared framework can manage the linked WP page. Example:
 
 ```php
 TPW_Core_System_Pages::register_page( 'lodge-members-admin', [
@@ -924,18 +924,18 @@ Buttons are inline within a flex container, so keep labels short. Use `role="but
 
 Imported members are created with no WordPress role (wp_capabilities = none). This is intentional.
 
-- WordPress roles are not used for access control in TPW Core or FlexiGolf.
+- WordPress roles are not used for access control in the shared plugin framework or FlexiGolf.
 - Members with no role can still log in to WordPress.
 - Front-end access (e.g., FlexiGolf screens) is determined by `tpw_members` table values such as `status` (Active, Honorary, Life Member).
 - Leaving role = none prevents unwanted backend access while still allowing front-end login.
 - Do not assign default roles (e.g., Subscriber) unless there is a specific need to grant WordPress dashboard access.
 
-This ensures that login and permissions remain managed entirely by TPW Core and related plugins, not by native WordPress roles.
+This ensures that login and permissions remain managed entirely by the shared framework and related plugins, not by native WordPress roles.
 
 
 ## Address Lookup
 
-The Core address lookup helper supports two modes:
+The shared-framework address lookup helper supports two modes:
 
 - basic: Returns normalized address metadata for the requested postcode using the active provider.
 - full: Returns a list of normalized address options when the active provider supports full address lists.
@@ -943,7 +943,7 @@ The Core address lookup helper supports two modes:
 Settings
 
 - Stored under `tpw_postcode_settings` with `provider` set to one of `none`, `ideal_postcodes`, or `fetchify`.
-- Core normalizes removed legacy provider values back to `none`.
+- The shared framework normalizes removed legacy provider values back to `none`.
 - The shared runtime also exposes whether lookup is enabled at all and whether full address lists are available for the active provider.
 
 Server API
@@ -955,7 +955,7 @@ Server API
 	- `mode` (string, `basic`|`full`, optional, default `basic`)
 	- `street_prefix` (string, optional, used to filter addresses starting with a number prefix)
 - Behavior:
-	- If lookup is disabled or the selected provider is scaffolded-only, Core returns a clear non-fatal message and forms remain in manual-entry mode.
+	- If lookup is disabled or the selected provider is scaffolded-only, the shared framework returns a clear non-fatal message and forms remain in manual-entry mode.
 	- Ideal Postcodes is wired for live GB address lookup and returns a shared `addresses` array shape when `mode=full`.
 
 Frontend behavior
@@ -963,23 +963,23 @@ Frontend behavior
 - When the user clicks "Lookup" with a postcode and live lookup is enabled:
 	- A "Select Address" dropdown is shown when the provider returns multiple address options.
 	- On selection, the following fields are populated when present: `address1`, `address2`, `town`, `county`, `postcode`, and `country`.
-- When lookup is disabled, Core does not render the lookup button, helper messages, or address selector markup.
+- When lookup is disabled, the shared framework does not render the lookup button, helper messages, or address selector markup.
 - The postcode input remains editable and changing it hides the dropdown and clears any inline warning.
 
 Provider status
 
 - `none`: manual address entry only.
 - `ideal_postcodes`: fully wired for live GB address lookup when configured.
-- `fetchify`: settings scaffold only in this Core release; lookup UI stays hidden.
+- `fetchify`: settings scaffold only in this shared-framework release; lookup UI stays hidden.
 
 Notes
 
-- Manual address entry remains the first-class fallback for all Core forms.
+- Manual address entry remains the first-class fallback for all shared-framework forms.
 
 ## TPW Control (Front-end Admin Hub)
 
 TPW Control centralizes front‑end admin tools behind a single shortcode and routed sub‑pages.
-FlexiClub now also exposes FE-first workspace shells for the same operational areas so the old Control hub can remain as a compatibility layer instead of the only entry point.
+iLungu Club now also exposes FE-first workspace shells for the same operational areas so the old Control hub can remain as a compatibility layer instead of the only entry point.
 
 - Shortcode: `[tpw-control]`
 - Route format: `/tpw-control/?action=` where `action` matches a registered section key.
@@ -994,8 +994,8 @@ Conventions
 - Sections can be added by other plugins via filter and action hooks.
 
 Autocreate Control and FE Workspace Pages
-- TPW Core should register and safely ensure the canonical FE portal pages `flexiclub`, `menu-management`, and `archival-system` using their dedicated shortcodes.
-- TPW Core should also keep the legacy `tpw-control` page registered and available on activation when it is missing, but treat it as a transition workspace rather than the primary long-term entry point.
+- The shared framework should register and safely ensure the canonical FE portal pages `flexiclub`, `menu-management`, and `archival-system` using their dedicated shortcodes.
+- The shared framework should also keep the legacy `tpw-control` page registered and available on activation when it is missing, but treat it as a transition workspace rather than the primary long-term entry point.
 - Use duplicate-safe creation checks so existing slug pages or shortcode pages are preserved instead of being recreated.
 
 Sections Registry
@@ -1040,7 +1040,7 @@ Assets
 - CSS: `modules/tpw-control/assets/css/tpw-control.css`
 - JS: `modules/tpw-control/assets/js/tpw-control.js`
 - FE workspace wrapper CSS: `assets/css/flexiclub-dashboard.css`
-- TPW Control assets may be enqueued from FE workspace shells via `TPW_Control::enqueue_workspace_assets()` when the legacy sections are embedded inside the FlexiClub portal.
+- TPW Control assets may be enqueued from FE workspace shells via `TPW_Control::enqueue_workspace_assets()` when the legacy sections are embedded inside the iLungu Club portal.
 
 Shortcode Routing
 - The shortcode renders the layout and content for the section indicated by `?action=`.
@@ -1048,10 +1048,10 @@ Shortcode Routing
 	- `https://example.com/tpw-control/?action=upload-pages`
 	- `https://example.com/tpw-control/?action=menu-manager`
 
-FlexiClub FE Workspace Routing
-- `[flexiclub]` remains the main FE portal and can route to additive workspace views such as `?workspace=menu-management` and `?workspace=archival-system`.
+iLungu Club FE Workspace Routing
+- `[flexiclub]` remains the main iLungu Club FE portal and can route to additive workspace views such as `?workspace=menu-management` and `?workspace=archival-system`.
 - `[flexiclub_menu_management]` and `[flexiclub_archival_system]` render the same FE shell directly on dedicated system pages.
-- When reusing TPW Control sections inside FlexiClub FE workspaces, preserve the original section callbacks and legacy routes rather than duplicating their business logic.
+- When reusing TPW Control sections inside iLungu Club FE workspaces, preserve the original section callbacks and legacy routes rather than duplicating their business logic.
 
 ### Developer helpers (Phase 5)
 

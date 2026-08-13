@@ -1,7 +1,7 @@
 # TPW Identity & Permissions Implementation Roadmap
 
 **Status:** Planning roadmap  
-**Applies to:** TPW Core and all dependent TPW plugins  
+**Applies to:** the shared plugin framework and all dependent TPW plugins
 **Audience:** Developers, maintainers, architects, QA
 
 ## 1. Purpose
@@ -19,7 +19,7 @@ Implementation should follow these principles throughout:
 - no access-changing refactor without migration visibility
 - compatibility before cleanup
 - audit before enforcement
-- Core-first identity hardening
+- shared-framework-first identity hardening
 - plugin migration only after central identity rules are frozen
 - incremental delivery over ecosystem-wide rewrites
 
@@ -40,23 +40,23 @@ Priority outputs in this phase include:
 
 The goal of this phase is to make current-state reality visible across live clubs and development environments. No later permissions or identity cleanup should start until the migration surface is measurable.
 
-Initial TPW Core implementation note:
+Initial shared-plugin-framework implementation note:
 
-- TPW Core now provides a read-only Identity Audit screen under TPW Core Settings to report user/member linkage, weak-linkage fallback, projected identity roles, unknown roles, member status distribution, and drift indicators without changing runtime identity behaviour.
+- The shared plugin framework now provides a read-only Identity Audit screen under iLungu Club Settings to report user/member linkage, weak-linkage fallback, projected identity roles, unknown roles, member status distribution, and drift indicators without changing runtime identity behaviour.
 
-## 4. Phase 2 - Core Identity Hardening
+## 4. Phase 2 - Shared Framework Identity Hardening
 
-The second phase should harden TPW Core as the sole canonical identity owner before feature plugins are migrated.
+The second phase should harden the shared plugin framework as the sole canonical identity owner before feature plugins are migrated.
 
 Priority work in this phase includes:
 
 - freezing the final status vocabulary
-- defining Core-only ownership of identity projection
+- defining shared-framework-only ownership of identity projection
 - defining role-sync lifecycle rules
 - defining weak-linkage compatibility handling
 - creating repair and sync tooling for linkage and projection issues
 
-This phase should produce explicit rules for how Core determines canonical membership identity, how projection is synchronised into WordPress, and how broken or ambiguous links are surfaced and repaired without unsafe lockouts.
+This phase should produce explicit rules for how the shared framework determines canonical membership identity, how projection is synchronised into WordPress, and how broken or ambiguous links are surfaced and repaired without unsafe lockouts.
 
 ### Legacy Flag Compatibility Guardrails
 
@@ -70,7 +70,7 @@ The compatibility layer introduced in Phase 2 should centralise interpretation o
 
 This guardrail reduces the risk of privilege escalation caused by responsibility flags being reused inconsistently across the ecosystem.
 
-Current TPW Core Phase 1 implementation note:
+Current shared-framework Phase 1 implementation note:
 
 - Secretary and Treasurer are now stored in `tpw_members` as compatibility-era office-role columns only
 - plugin-facing permission reads should use `tpw_core_user_can()` rather than raw flag reads
@@ -90,11 +90,11 @@ This phase should define:
 - how they map to capabilities
 - how live legacy role usage is preserved during transition
 
-Until that phase is complete, Secretary and Treasurer should be treated as office roles with compatibility-era storage in TPW Core, not as a stable raw-schema contract for plugins.
+Until that phase is complete, Secretary and Treasurer should be treated as office roles with compatibility-era storage in the shared framework, not as a stable raw-schema contract for plugins.
 
 ## 6. Phase 4 - Permissions Migration by Plugin
 
-Once Core identity rules and responsibility-role boundaries are frozen, plugins should be migrated in priority order.
+Once shared-framework identity rules and responsibility-role boundaries are frozen, plugins should be migrated in priority order.
 
 Recommended migration order:
 
@@ -111,7 +111,7 @@ TPW Access Control should move first because it currently owns or influences sev
 
 TPW RSVP Lodge Meetings should move early because the audit found direct role-slug checks in a live access path.
 
-TPW Subscriptions should move early because it currently influences `tpw_members.status`, which creates direct architectural tension with Core-owned identity.
+TPW Subscriptions should move early because it currently influences `tpw_members.status`, which creates direct architectural tension with shared-framework-owned identity.
 
 FlexiGolf and FlexiPolicy should follow because they are likely to rely on mixed legacy role and permission assumptions, and they may be sensitive to responsibility-role modelling.
 
@@ -160,7 +160,7 @@ This tooling requirement is a safety gate, not an optional enhancement.
 
 The recommended first implementation group is:
 
-- TPW Core
+- the shared plugin framework
 - TPW Access Control
 - TPW RSVP Lodge Meetings
 
@@ -183,7 +183,7 @@ Early phases should aim to reveal and contain migration risk, not to maximise cl
 
 Before later cleanup phases begin, success should mean:
 
-- TPW Core identity rules are frozen and documented clearly enough to drive implementation
+- shared-framework identity rules are frozen and documented clearly enough to drive implementation
 - current live role and linkage drift can be reported reliably
 - weak or ambiguous linkage can be identified and repaired safely
 - responsibility-role ownership is explicit

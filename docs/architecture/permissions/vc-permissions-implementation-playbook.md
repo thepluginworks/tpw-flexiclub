@@ -69,7 +69,7 @@ Before changing any code, Visual Core MUST:
 1. Add capability checks **in addition to** existing checks.
 2. Preserve `manage_options` and other legacy access paths.
 3. Ensure WP Admin access still works.
-4. Where TPW Core already exposes a compatibility helper mapping, prefer `tpw_core_user_can()` over new raw-flag reads.
+4. Where the shared framework already exposes a compatibility helper mapping, prefer `tpw_core_user_can()` over new raw-flag reads.
 
 ### Step B — Server‑Side Before UI
 1. Enforce capabilities on:

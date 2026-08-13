@@ -1,7 +1,7 @@
 # TPW Identity & Permissions Decisions
 
 **Status:** Decision pack for implementation planning  
-**Applies to:** TPW Core and all dependent TPW plugins  
+**Applies to:** the shared plugin framework and all dependent TPW plugins
 **Audience:** Developers, maintainers, architects, QA
 
 ## 1. Purpose
@@ -14,7 +14,7 @@ This is a decision document, not a discussion paper. It records the current agre
 
 ## 2. Scope
 
-This document applies to TPW Core and all dependent TPW plugins.
+This document applies to the shared plugin framework and all dependent TPW plugins.
 
 It covers the architectural boundary between identity and permissions, the canonical source of membership identity, the intended direction for identity-role projection, and the migration constraints that must shape later implementation work.
 
@@ -22,11 +22,11 @@ It covers the architectural boundary between identity and permissions, the canon
 
 The completed audit confirms the following architectural direction:
 
-- TPW Core is the canonical owner of identity.
+- The shared plugin framework is the canonical owner of identity.
 - Feature plugins must not own canonical membership identity.
 - Identity and permissions are separate but related architectural layers.
 
-This means TPW Core owns the rules that determine who a person is in the platform, while feature plugins must increasingly align to a shared permissions model for what that person can do.
+This means the shared framework owns the rules that determine who a person is in the platform, while feature plugins must increasingly align to a shared permissions model for what that person can do.
 
 ## 4. Canonical Identity Rule
 
@@ -34,7 +34,7 @@ The canonical identity rule is frozen as follows:
 
 A person counts as a current TPW member only when both of the following are true:
 
-- they are linked to a canonical TPW Core member record
+- they are linked to a canonical shared-framework member record
 - that record has a membership-bearing status
 
 WordPress roles are a projection of identity, not the source of truth.
@@ -43,7 +43,7 @@ Neither a WordPress user account nor a WordPress role assignment is sufficient o
 
 ## 5. Membership-Bearing Statuses
 
-The current architectural direction is that membership-bearing statuses are the statuses that represent a current member in TPW Core.
+The current architectural direction is that membership-bearing statuses are the statuses that represent a current member in the shared framework.
 
 Based on the audit and current live-code terminology, the intended membership-bearing set is:
 
@@ -62,13 +62,13 @@ The intended identity role direction is frozen as follows:
 - the canonical projected WordPress identity role is `member`
 - `tpw_member` is legacy and should be treated as a deprecation target
 - status projection roles must not remain ownerless if they are retained
-- TPW Core must be the sole owner of any projected identity roles
+- The shared framework must be the sole owner of any projected identity roles
 
-This means identity projection remains a Core concern. No feature plugin should create, own, or redefine the canonical WordPress-facing identity projection for TPW membership.
+This means identity projection remains a shared-framework concern. No feature plugin should create, own, or redefine the canonical WordPress-facing identity projection for TPW membership.
 
 ### Identity Role Lifecycle Ownership
 
-If projected identity roles are retained in the TPW platform, their full lifecycle must be owned by TPW Core.
+If projected identity roles are retained in the TPW platform, their full lifecycle must be owned by the shared framework.
 
 That lifecycle includes:
 
@@ -77,17 +77,17 @@ That lifecycle includes:
 - role repair if drift occurs
 - role cleanup when identity changes
 
-Identity roles are projections of canonical Core identity. Because of that, their lifecycle must be controlled centrally by Core rather than by feature plugins.
+Identity roles are projections of canonical shared-framework identity. Because of that, their lifecycle must be controlled centrally by the shared framework rather than by feature plugins.
 
 Feature plugins must not create or manage identity roles.
 
-Plugins should instead rely on Core identity checks or capabilities where they need to determine membership state or enforce authority.
+Plugins should instead rely on shared-framework identity checks or capabilities where they need to determine membership state or enforce authority.
 
 This rule does not apply to plugin-specific responsibility roles.
 
 Responsibility roles such as Match Manager, Secretary, Treasurer, or Committee may be owned by their respective plugins if they represent operational permissions rather than identity.
 
-For the current Core Phase 1 compatibility slice, Secretary and Treasurer are stored in `tpw_members` as `is_secretary` and `is_treasurer`. Those columns are compatibility-era storage only and are not the long-term plugin-facing contract.
+For the current shared-framework Phase 1 compatibility slice, Secretary and Treasurer are stored in `tpw_members` as `is_secretary` and `is_treasurer`. Those columns are compatibility-era storage only and are not the long-term plugin-facing contract.
 
 ## 7. Responsibility / Permission Role Direction
 
@@ -101,11 +101,11 @@ The audit indicates that current ownership sits largely in TPW Access Control, b
 
 ### Legacy Responsibility Flags
 
-Certain responsibility indicators currently exist as fields on the TPW Core member record, including examples such as `is_committee`, `is_match_manager`, `is_secretary`, `is_treasurer`, and `is_admin`.
+Certain responsibility indicators currently exist as fields on the shared-framework member record, including examples such as `is_committee`, `is_match_manager`, `is_secretary`, `is_treasurer`, and `is_admin`.
 
 These fields are not identity signals.
 
-They are historical responsibility markers used by earlier plugin designs, and their presence in the Core schema reflects historical convenience rather than architectural ownership.
+They are historical responsibility markers used by earlier plugin designs, and their presence in the shared-framework schema reflects historical convenience rather than architectural ownership.
 
 During Phase 2 migration, these fields must be treated as compatibility-era signals.
 
@@ -115,7 +115,7 @@ Plugins must use `tpw_core_user_can( string $ability, int $user_id = 0 )` and ot
 
 This abstraction is required so the ecosystem can later relocate, normalise, or redesign responsibility storage without breaking plugin behaviour.
 
-### Core Administrative Elevation Signal
+### Shared Framework Administrative Elevation Signal
 
 The `is_admin` field in `tpw_members` is a special-case administrative elevation signal.
 
@@ -127,7 +127,7 @@ It indicates that the linked TPW member should be granted WordPress `administrat
 
 Because of that, this signal affects site-level authority rather than only plugin behaviour.
 
-This signal remains owned by TPW Core.
+This signal remains owned by the shared framework.
 
 Its semantics must remain behaviour-preserving during migration phases.
 
@@ -154,8 +154,8 @@ This is an unresolved architectural tension because it means a feature plugin is
 
 The current reality is:
 
-- TPW Core is intended to own identity
-- TPW Subscriptions currently participates in changing the Core membership-status field
+- The shared framework is intended to own identity
+- TPW Subscriptions currently participates in changing the shared-framework membership-status field
 
 The architectural problem is that canonical identity ownership and real implementation responsibility are not yet fully aligned.
 
@@ -163,7 +163,7 @@ This issue is not treated as already solved. It must be resolved explicitly befo
 
 ## 9. Weak Linkage Compatibility
 
-The audit confirmed that TPW Core currently falls back from direct `user_id` linkage to email and username matching in some identity resolution paths.
+The audit confirmed that the shared framework currently falls back from direct `user_id` linkage to email and username matching in some identity resolution paths.
 
 This behaviour is to be treated as temporary compatibility behaviour pending repair tooling.
 
@@ -191,14 +191,14 @@ Implementation work must therefore:
 
 The audit confirmed that the current ecosystem uses a mixture of:
 
-- the dynamic Core capability bridge
+- the dynamic shared-framework capability bridge
 - direct role checks
 - direct member-table flag checks
 - documented plugin capabilities that are not yet fully provisioned through native WordPress capability assignment
 
 The target direction is frozen as follows:
 
-- identity should come from Core identity rules
+- identity should come from shared-framework identity rules
 - permissions should increasingly be enforced through a defined capability model
 - direct role-slug checks are legacy and should be migrated carefully
 
@@ -208,7 +208,7 @@ This migration must be incremental and compatibility-aware. The existence of doc
 
 The following decisions are frozen enough to guide implementation:
 
-- TPW Core owns canonical identity.
+- The shared framework owns canonical identity.
 - `member` is the target projected WordPress identity role.
 - `tpw_member` is legacy and is a deprecation target.
 - Identity roles and responsibility / permission roles must remain separate.
@@ -232,6 +232,6 @@ The following decisions are not yet fully frozen:
 This document should be read together with the broader identity and permissions architecture set.
 
 - The canonical identity model remains defined in [identity-model.md](identity-model.md).
-- The current Core permissions specification is [../permissions/tpw-core.permissions.md](../permissions/tpw-core.permissions.md).
+- The current shared-framework permissions specification is [../permissions/tpw-core.permissions.md](../permissions/tpw-core.permissions.md).
 - The default role-to-capability reference is [../permissions/role-capability-matrix.md](../permissions/role-capability-matrix.md).
 - The implementation-facing permissions migration guidance is [../permissions/vc-permissions-implementation-playbook.md](../permissions/vc-permissions-implementation-playbook.md).

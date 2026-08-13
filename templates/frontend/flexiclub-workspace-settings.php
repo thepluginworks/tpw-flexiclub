@@ -30,7 +30,7 @@ if ( function_exists( 'tpw_core_set_settings_view_context' ) ) {
 	<div class="tpw-flexiclub-dashboard__brand-row tpw-flexiclub-settings__hero-head">
 		<div class="tpw-flexiclub-dashboard__welcome tpw-flexiclub-settings__hero-copy">
 			<h2><?php esc_html_e( 'Settings Workspace', 'tpw-core' ); ?></h2>
-			<p><?php esc_html_e( 'Manage the existing FlexiClub settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen.', 'tpw-core' ); ?></p>
+			<p><?php esc_html_e( 'Manage the existing iLungu Club settings from the portal using the same shared forms, validation, and save flows that already power the wp-admin settings screen.', 'tpw-core' ); ?></p>
 		</div>
 		<div class="tpw-flexiclub-settings__hero-actions">
 			<?php if ( '' !== $dashboard_url ) : ?>
@@ -47,11 +47,11 @@ if ( function_exists( 'tpw_core_set_settings_view_context' ) ) {
 	<div class="tpw-flexiclub-dashboard__section-head tpw-flexiclub-settings__section-head">
 		<div>
 			<h2><?php esc_html_e( 'Settings Areas', 'tpw-core' ); ?></h2>
-			<p><?php esc_html_e( 'Switch between the existing FlexiClub settings areas without leaving the front-end workspace.', 'tpw-core' ); ?></p>
+			<p><?php esc_html_e( 'Switch between the existing iLungu Club settings areas without leaving the front-end workspace.', 'tpw-core' ); ?></p>
 		</div>
 	</div>
 
-	<nav class="tpw-flexiclub-settings__tabs" aria-label="<?php esc_attr_e( 'FlexiClub settings areas', 'tpw-core' ); ?>">
+	<nav class="tpw-flexiclub-settings__tabs" aria-label="<?php esc_attr_e( 'iLungu Club settings areas', 'tpw-core' ); ?>">
 		<?php foreach ( $tabs as $item ) : ?>
 			<?php
 			$item_classes = 'tpw-flexiclub-settings__tab-link';
@@ -88,7 +88,7 @@ if ( function_exists( 'tpw_core_set_settings_view_context' ) ) {
 				<?php if ( function_exists( 'tpw_core_render_settings_tab_content' ) ) : ?>
 					<?php tpw_core_render_settings_tab_content( $active_tab ); ?>
 				<?php else : ?>
-					<p><?php esc_html_e( 'The shared FlexiClub settings renderer is unavailable on this request.', 'tpw-core' ); ?></p>
+						<p><?php esc_html_e( 'The shared iLungu Club settings renderer is unavailable on this request.', 'tpw-core' ); ?></p>
 				<?php endif; ?>
 			</div>
 		</div>

@@ -1,6 +1,6 @@
 ---
-name: Core Release Workflow
-description: Execute the TPW Core release workflow including version bumping, tagging, and triggering the automated release packaging pipeline.
+name: iLungu Club Release Workflow
+description: Execute the iLungu Club release workflow including version bumping, tagging, and triggering the automated release packaging pipeline.
 tools: [search, read, edit, execute]
 user-invocable: true
 ---
@@ -9,7 +9,7 @@ Execute the workflow immediately when invoked.
 Do not wait for further instructions.
 Assume the task is to release the current repository state.
 
-You are executing the FlexiClub repository release workflow now for the current repository.
+You are executing the iLungu Club repository release workflow now for the current repository.
 
 Before choosing any semantic version, first determine whether the current repository state represents:
 • a production distributable plugin change
@@ -65,7 +65,8 @@ Release efficiency rules:
 • do not perform repository-wide searches
 • do not read runtime source files unless required to identify version constants or release metadata
 • do not inspect CSS, JS, PHP, templates, or includes to judge implementation quality
-• if a required command fails or produces noisy output, retry once only, then stop and report the blocker
+• for a genuine command or environment failure, use at most one corrective or retry invocation, then stop and report the blocker if it still fails
+• distinguish tooling noise from command failure; do not investigate PHPCS or WP-CLI internals
 • once release safety has been established, proceed with the workflow rather than continuing investigation
 
 ⸻
@@ -222,11 +223,27 @@ If no changes:
 - do not force a commit
 
 • If POT generation is required:
-• run the configured POT generation command once
-• if it fails, produces excessive warnings, or the output cannot be captured cleanly, retry once only with output redirected to a temporary log
-• if the second attempt fails or remains noisy, stop and report the POT generation blocker
-• do not continue repeated WP-CLI attempts
-• do not investigate WP-CLI internals, plugin bootstrap warnings, PHP deprecations, or translation tooling unless explicitly instructed
+• use the active repository's maintained POT filename, translation identity, and configured generation command; do not assume a universal POT path or filename
+• if the repository has no POT template or does not require POT generation, report this step as not applicable
+• run the configured command once and capture both its exit status and output
+• if the command returns non-zero, retry once with output redirected to a temporary log; if the retry also returns non-zero, stop and report the real POT-generation blocker
+• when the command returns exit code 0, do not rerun it because output is noisy
+• deprecation notices, warnings, or noise from WP-CLI, Symfony, Composer dependencies, PHP compatibility layers, or other third-party tooling do not block release by themselves
+• after a successful command, narrowly validate that the expected repository-specific POT exists, is non-empty, has a normal POT header, and has no obvious fatal or error output embedded in it
+• if that validation passes, continue the release; if the command output identifies a genuine plugin extraction error, the POT is malformed or missing, or generation failed, stop and report that real blocker
+• do not investigate or repair WP-CLI or PHP deprecation warnings during release preparation, and do not create `.po` or `.mo` files
+
+2.30 Release validation policy
+
+• PHP syntax validation is required: run `php -l` for changed PHP files where applicable.
+• `git diff --check` is required before commit, tag, or release handoff.
+• Run relevant maintained functional tests and required Playwright/browser tests where applicable; an explicitly accepted manual handoff may satisfy an unavailable required test.
+• PHPCS and WordPress Coding Standards analysis are advisory by default. When a maintained repository-specific configuration and local executable exist, PHPCS may be run only against files changed by the current task.
+• Do not run repository-wide PHPCS, create or repair a PHPCS configuration, automatically remediate legacy findings, or perform broad coding-standard cleanup during a release.
+• PHPCS style, formatting, documentation, naming, and other legacy coding-standard findings do not independently block versioning, commits, push, tags, GitHub Releases, Freemius deployment, or other repository-configured release handoff.
+• Escalate PHPCS only when it clearly identifies a material release-safety concern, such as an obvious security issue, broken escaping or sanitisation, an invalid runtime construct, or a similarly material defect.
+• If PHPCS is unavailable, report advisory tooling unavailable and continue. If no maintained configuration exists, report PHPCS not configured and continue. Missing WordPress stubs in editor diagnostics are neither PHPCS nor PHP syntax failures.
+• A release may proceed when changed PHP passes syntax validation, required maintained tests pass or have an explicitly accepted/manual handoff, release or package validation passes, `git diff --check` passes, and no genuine material defect has been identified.
 
 ⸻
 
@@ -341,7 +358,7 @@ Then create and push the tag using the exact required format:
 After pushing the tag:
 - do NOT manually create a GitHub Release when the workflow is configured to do it automatically.
 - do NOT upload release assets manually unless explicitly asked.
-- rely on `.github/workflows/publish-release.yml` to build the package, upload `tpw-flexiclub.zip`, and publish the version manifest.
+- rely on `.github/workflows/publish-release.yml` to build the package, upload `tpw-ilungu-club.zip`, and publish the version manifest.
 - treat the pushed version tag as the handoff point to the automated packaging workflow.
 
 Configured deployment workflow to monitor when applicable:

@@ -5,7 +5,7 @@ The Notices module powers a simple noticeboard, allowing admins to publish time�
 
 Default access note: `[tpw_noticeboard_list]` is members-only by default. Logged-out visitors are denied direct access, standard viewing requires a logged-in member with an allowed status, and notice creation, editing, duplication, and deletion remain restricted to authorised admins or noticeboard managers.
 
-If a future public Noticeboard mode is introduced, it must be implemented and documented explicitly. The default Core behaviour remains private.
+If a future public Noticeboard mode is introduced, it must be implemented and documented explicitly. The default shared-framework behaviour remains private.
 
 ## Canonical Implementation
 - Canonical shortcode loader: `modules/notices/shortcodes/noticeboard-list.php`
@@ -15,11 +15,11 @@ If a future public Noticeboard mode is introduced, it must be implemented and do
 
 Individual `tpw_notice` permalinks follow normal WordPress single-template resolution by default, so active themes and Elementor Single templates can control the single-notice layout. Sites that still need the legacy bundled fallback can opt in with the `tpw_notice_use_legacy_single_template_fallback` filter; the legacy `notice-single.css` asset is only enqueued when that compatibility fallback is active.
 
-Legacy compatibility copies currently remain at `assets/css/noticeboard.css` and `assets/js/noticeboard.js`, but those root assets are not the canonical implementation and are not used by the normal Core loader path for `[tpw_noticeboard_list]`.
+Legacy compatibility copies currently remain at `assets/css/noticeboard.css` and `assets/js/noticeboard.js`, but those root assets are not the canonical implementation and are not used by the normal shared-framework loader path for `[tpw_noticeboard_list]`.
 
 ## Key Screens / Shortcodes
 - Shortcode: `[tpw_noticeboard_list]`
-- Legacy shortcode note: older references to `[tpw-noticeboard]` may still exist in site content or historical notes, but current Core loading for the front-end noticeboard list is owned by `modules/notices/shortcodes/noticeboard-list.php`.
+- Legacy shortcode note: older references to `[tpw-noticeboard]` may still exist in site content or historical notes, but current shared-framework loading for the front-end noticeboard list is owned by `modules/notices/shortcodes/noticeboard-list.php`.
 
 ## Hooks
 - (Theme/plugin specific) Filter notice queries or output using your theme/plugin hooks if you wrap the shortcode.
@@ -36,4 +36,4 @@ Legacy compatibility copies currently remain at `assets/css/noticeboard.css` and
 - Active template: `modules/notices/templates/form.php`
 - Active shortcode loader: `modules/notices/shortcodes/noticeboard-list.php`
 
-See also: Core Hooks Index → ../developer-guide.md#core-hooks-index
+See also: Shared Framework Hooks Index → ../developer-guide.md#core-hooks-index

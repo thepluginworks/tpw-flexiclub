@@ -1,7 +1,7 @@
 # TPW Role Classification Model
 
 **Status:** Current architectural reference  
-**Applies to:** TPW Core and all dependent TPW plugins  
+**Applies to:** the shared plugin framework and all dependent TPW plugins
 **Audience:** Developers, maintainers, architects, QA
 
 ## 1. Purpose
@@ -14,7 +14,7 @@ In TPW architecture, not every construct described as a role answers the same qu
 
 ## 2. Scope
 
-This model applies across TPW Core and all dependent TPW plugins.
+This model applies across the shared plugin framework and all dependent TPW plugins.
 
 It exists to provide a shared classification reference so future design, migration, and implementation work uses consistent language when discussing identity roles, responsibility roles, capabilities, assignments, and third-party role systems.
 
@@ -41,11 +41,11 @@ These roles are part of TPW platform identity.
 
 They are:
 
-- owned by TPW Core
-- derived from canonical Core identity
+- owned by the shared plugin framework
+- derived from canonical shared-framework identity
 - projected to WordPress only if required
 
-If platform identity roles are retained, TPW Core owns their full lifecycle, including:
+If platform identity roles are retained, the shared framework owns their full lifecycle, including:
 
 - create
 - assign
@@ -77,19 +77,19 @@ They must not be used to infer membership identity.
 
 Current ownership of these roles is mixed across the ecosystem. The exact long-term ownership model remains subject to implementation planning.
 
-In the current Core compatibility layer, Secretary and Treasurer also exist as `tpw_members.is_secretary` and `tpw_members.is_treasurer`. Those columns are compatibility-era storage, not the long-term contract plugins should read.
+In the current shared-framework compatibility layer, Secretary and Treasurer also exist as `tpw_members.is_secretary` and `tpw_members.is_treasurer`. Those columns are compatibility-era storage, not the long-term contract plugins should read.
 
-### Historical Responsibility Flags in Core
+### Historical Responsibility Flags in the Shared Framework
 
-Some responsibility indicators currently exist as fields in the TPW Core members table, including examples such as secretary, treasurer, committee membership, and match manager status.
+Some responsibility indicators currently exist as fields in the shared-framework members table, including examples such as secretary, treasurer, committee membership, and match manager status.
 
-Their current storage location does not imply long-term architectural ownership by TPW Core.
+Their current storage location does not imply long-term architectural ownership by the shared framework.
 
 These fields are treated as legacy compatibility signals rather than the target responsibility-role model.
 
 Responsibility roles may ultimately move to plugin-owned storage or to more structured assignment models where that better reflects the domain.
 
-During migration, the compatibility layer should abstract access to these signals so plugins are no longer coupled directly to the Core schema.
+During migration, the compatibility layer should abstract access to these signals so plugins are no longer coupled directly to the shared-framework schema.
 
 For current plugin code, that abstraction point is `tpw_core_user_can()` rather than direct raw-flag reads.
 
@@ -182,7 +182,7 @@ They must not be removed casually.
 
 Migration planning must treat them as live-site compatibility concerns until they are classified, owned, and handled safely.
 
-## 11. Core Administrative Elevation Signals
+## 11. Shared Framework Administrative Elevation Signals
 
 Some signals in the TPW ecosystem represent privileged elevation into site-level authority rather than identity or responsibility.
 
@@ -192,7 +192,7 @@ These signals control elevation into WordPress administrative roles.
 
 They must be treated as security-sensitive signals.
 
-They remain owned by TPW Core.
+They remain owned by the shared framework.
 
 They are not interchangeable with responsibility roles or capabilities.
 
@@ -225,13 +225,13 @@ If the concept is owned by WordPress core or another plugin, classify it under C
 
 If it already exists on live sites but has no clear current owner or classification, treat it as Category 7 - Legacy / Unknown Roles until audit work resolves it.
 
-Signals that elevate a person into WordPress `administrator` authority are not classified by the role flow above. They must instead be treated as Core administrative elevation signals and assessed with explicit security and architecture review.
+Signals that elevate a person into WordPress `administrator` authority are not classified by the role flow above. They must instead be treated as shared-framework administrative elevation signals and assessed with explicit security and architecture review.
 
 ## 13. Design Guidance
 
 Future design work should follow these rules:
 
-- prefer Core identity rules for identity
+- prefer shared-framework identity rules for identity
 - prefer capabilities for permissions
 - prefer domain assignments for record-level responsibility
 - avoid creating new global roles unless clearly justified

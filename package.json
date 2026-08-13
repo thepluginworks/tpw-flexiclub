@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "test:ilungu-smoke": "playwright test --config=tests/playwright/playwright.config.ts tests/playwright/smoke/ilungu-branding-smoke.spec.ts"
+  },
   "dependencies": {
     "@playwright/test": "^1.60.0",
     "playwright": "^1.60.0"

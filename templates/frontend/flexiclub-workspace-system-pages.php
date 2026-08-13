@@ -16,7 +16,7 @@ $notice_text    = isset( $workspace['notice_text'] ) ? (string) $workspace['noti
 	<div class="tpw-flexiclub-dashboard__brand-row tpw-flexiclub-system-pages__hero-head">
 		<div class="tpw-flexiclub-dashboard__welcome tpw-flexiclub-system-pages__hero-copy">
 			<h2><?php esc_html_e( 'System Pages Workspace', 'tpw-core' ); ?></h2>
-			<p><?php esc_html_e( 'Review every registered FlexiClub and add-on page, then repair or recreate only the pages that actually need intervention.', 'tpw-core' ); ?></p>
+			<p><?php esc_html_e( 'Review every registered iLungu Club and add-on page, then repair or recreate only the pages that actually need intervention.', 'tpw-core' ); ?></p>
 		</div>
 		<div class="tpw-flexiclub-system-pages__hero-actions">
 			<?php if ( '' !== $dashboard_url ) : ?>
@@ -50,7 +50,7 @@ $notice_text    = isset( $workspace['notice_text'] ) ? (string) $workspace['noti
 					<li><?php esc_html_e( 'Unlink uses the existing System Pages unlink action. It clears the stored mapping without deleting the WordPress page itself.', 'tpw-core' ); ?></li>
 					<li><?php esc_html_e( 'Recreate uses the existing System Pages recreate action. Use it when a registered page is missing or when the current logic can safely repair an unpublished page.', 'tpw-core' ); ?></li>
 					<li><?php esc_html_e( 'If a published page is missing the expected shortcode, edit that page to repair it. The current System Pages logic does not overwrite published content automatically.', 'tpw-core' ); ?></li>
-					<li><?php esc_html_e( 'Only authorised FlexiClub admins and member managers can access this workspace and run these actions.', 'tpw-core' ); ?></li>
+					<li><?php esc_html_e( 'Only authorised iLungu Club admins and member managers can access this workspace and run these actions.', 'tpw-core' ); ?></li>
 				</ul>
 			</div>
 		</details>
@@ -84,7 +84,7 @@ $notice_text    = isset( $workspace['notice_text'] ) ? (string) $workspace['noti
 					<div class="table-cell tpw-flexiclub-system-pages__cell" role="cell" data-label="<?php esc_attr_e( 'Page', 'tpw-core' ); ?>">
 						<div class="tpw-flexiclub-system-pages__page-title"><?php echo esc_html( $row['title'] ); ?></div>
 						<div class="tpw-flexiclub-system-pages__page-meta">
-							<span class="tpw-flexiclub-system-pages__page-chip tpw-flexiclub-system-pages__page-chip--plugin"><?php echo esc_html( $row['plugin'] ); ?></span>
+							<span class="tpw-flexiclub-system-pages__page-chip tpw-flexiclub-system-pages__page-chip--plugin"><?php echo esc_html( $row['plugin_label'] ); ?></span>
 							<?php if ( ! empty( $row['legacy_label'] ) ) : ?>
 								<span class="tpw-flexiclub-system-pages__page-chip tpw-flexiclub-system-pages__page-chip--legacy"><?php echo esc_html( $row['legacy_label'] ); ?></span>
 							<?php endif; ?>

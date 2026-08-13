@@ -1,6 +1,6 @@
 # Payments Integration (for external plugins)
 
-This page shows how an external plugin (e.g., FlexiTicket or RSVP) can plug into TPW Core’s Payments system — with a focus on Square — using Core’s styling, data contracts, and helper methods.
+This page shows how an external plugin (e.g., FlexiTicket or RSVP) can plug into the shared plugin framework’s payments system — with a focus on Square — using the shared framework’s styling, data contracts, and helper methods.
 
 Applies to: front‑end forms and custom wp‑admin pages you own.
 
@@ -8,23 +8,23 @@ Canonical contract: [../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md]
 
 ---
 
-## 0) Declare that your plugin requires Core payment settings
+## 0) Declare that your plugin requires shared-framework payment settings
 
-If your plugin depends on FlexiClub-managed payment methods, declare that requirement during bootstrap so the shared Payment Methods settings tab and admin wiring are available:
+If your plugin depends on iLungu Club-managed payment methods, declare that requirement during bootstrap so the shared Payment Methods settings tab and admin wiring are available:
 
 ```php
 add_filter( 'tpw_core/payments_required', '__return_true' );
 ```
 
 Backwards compatibility:
-- FlexiClub still honors the legacy `tpw_show_payment_settings` signal.
+- iLungu Club still honors the legacy `tpw_show_payment_settings` signal.
 - New integrations should prefer `tpw_core/payments_required`.
 
 ---
 
-## 1) Enqueue Core UI + Payments bootstrap
+## 1) Enqueue shared-framework UI + payments bootstrap
 
-Use Core CSS for consistent UI and the tiny JS bootstrap that mounts Square:
+Use shared-framework CSS for consistent UI and the tiny JS bootstrap that mounts Square:
 
 - CSS
   - `tpw-ui`        → front-end/base TPW UI layer for public/member screens
@@ -45,19 +45,19 @@ if ( defined('TPW_CORE_URL') ) {
 // Square Web Payments SDK (client-side UI)
 wp_enqueue_script('square-web-payments', 'https://sandbox.web.squarecdn.com/v1/square.js', [], null, true);
 
-// TPW Core Payments bootstrap (registered by Core; you enqueue it)
+// Shared framework payments bootstrap (registered by the framework; you enqueue it)
 wp_enqueue_script('tpw-core-payments');
 
 // Option A: Localize config for your page manually (see section 6)
 wp_localize_script('tpw-core-payments', 'tpwPaymentsConfig', $cfg);
 
-// Option B: Use Core helper to enqueue SDK + bootstrap and localize default config
+// Option B: Use the shared-framework helper to enqueue SDK + bootstrap and localize default config
 if ( function_exists('tpw_core_enqueue_payments_assets') ) {
   tpw_core_enqueue_payments_assets(); // or pass your own $cfg array
 }
 ```
 
-Wrap your full TPW checkout screen with the Core scope required by the contract:
+Wrap your full TPW checkout screen with the shared-framework scope required by the contract:
 
 ```html
 <div class="tpw-frontend-ui tpw-admin-ui">
@@ -65,14 +65,14 @@ Wrap your full TPW checkout screen with the Core scope required by the contract:
 </div>
 ```
 
-Use `.tpw-frontend-ui` for public/member-facing payment screens. Add `.tpw-admin-ui` only when the screen intentionally consumes the admin-like shared component scope documented by Core.
+Use `.tpw-frontend-ui` for public/member-facing payment screens. Add `.tpw-admin-ui` only when the screen intentionally consumes the admin-like shared component scope documented by the shared framework.
 
 ---
 
 ## 2) Payment method picker contract
 
-- Radio inputs must use name="tpw_payment_method" and a slug value that matches the currently exposed Core methods (e.g., `square`, `bacs`, `cheque`, `cash`, `card-on-the-day`).
-- `sumup` and `woocommerce` remain reserved compatibility or development slugs in Core, but they are intentionally hidden from the current shared FE and BE Payment Methods configuration UI and should not be treated as current club-facing options.
+- Radio inputs must use name="tpw_payment_method" and a slug value that matches the currently exposed shared-framework methods (e.g., `square`, `bacs`, `cheque`, `cash`, `card-on-the-day`).
+- `sumup` and `woocommerce` remain reserved compatibility or development slugs in the shared framework, but they are intentionally hidden from the current shared FE and BE Payment Methods configuration UI and should not be treated as current club-facing options.
 - Show/hide method-specific UI based on the selected radio.
 
 Minimal structure:
@@ -90,7 +90,7 @@ Minimal structure:
 <div id="tpw-square-errors" role="alert" aria-live="polite"></div>
 ```
 
-Container IDs (conventions used by Core-compatible UIs):
+Container IDs (conventions used by shared-framework-compatible UIs):
 - `#tpw-square-container` — mount the Square “Card”/“Payment” element here.
 - `#tpw-square-errors` — surface validation or SDK errors.
 
@@ -98,9 +98,9 @@ Tip: Read active methods via `TPW_Payments_Manager::get_active_methods()` to sho
 
 ---
 
-## 3) JS events Core-compatible code listens for
+## 3) JS events shared-framework-compatible code listens for
 
-Fire this event whenever the selected method changes so any Core-compatible UI can react:
+Fire this event whenever the selected method changes so any shared-framework-compatible UI can react:
 
 - Event name: `tpw_payment_method_changed`
 - Target: `document`
@@ -124,14 +124,14 @@ With the bootstrap, you don’t need to manually mount/unmount Square; the boots
 
 ## 4) Create a payment record (server side)
 
-Use Core’s helper to persist a payment row that your plugin controls. This does not call gateway APIs; it stores the payment intent/metadata for your own flow.
+Use the shared framework’s helper to persist a payment row that your plugin controls. This does not call gateway APIs; it stores the payment intent/metadata for your own flow.
 
 Method: `TPW_Core_Payments::create_payment( array $args )`
 
 Args (subset):
 - `submission_id` (int) — your owning object ID (order/entry/etc.)
 - `guest_id` (int|null) — optional sub‑entity
-- `amount` (float) — base amount (Core will apply offline surcharges automatically for BACS/Cheque/Cash/Card-on-the-day)
+- `amount` (float) — base amount (the shared framework will apply offline surcharges automatically for BACS/Cheque/Cash/Card-on-the-day)
 - `payment_method` (string) — slug (e.g., `square`)
 - `paid_by` (string) — email/name for traceability
 - Optional: `payment_reference`, `checkout_url`, `notes`
@@ -158,11 +158,11 @@ if (!$result['success']) {
 ```
 
 Notes:
-- For online “on-page” gateways like Square, you’ll typically capture on the same page (via the SDK) and then store the gateway reference back into the Core record (set `payment_reference`).
+- For online “on-page” gateways like Square, you’ll typically capture on the same page (via the SDK) and then store the gateway reference back into the shared-framework record (set `payment_reference`).
 
 ---
 
-## 5) Square capture flow (with Core bootstrap)
+## 5) Square capture flow (with shared-framework bootstrap)
 
 Client side (browser):
 1) Enqueue Square Web Payments SDK and `tpw-core-payments`.
@@ -174,7 +174,7 @@ Server side (your endpoint, PHP):
 2) On success, call `TPW_Core_Payments::create_payment()` (or update your own domain records) with the `payment_reference` returned by Square and redirect to a thank‑you page.
 
 Important:
-- Core does not enqueue the Square SDK for you.
+- The shared framework does not enqueue the Square SDK for you.
 - Use `TPW_Core_Payments::tpw_core_calculate_payable_total($amount, 'square')` if you want to preview surcharges client‑side (server remains source of truth).
 
 Bootstrap API (summary):
@@ -281,7 +281,7 @@ JS (outline using the bootstrap):
 
 ## 8) Webhooks and completion
 
-- Core exposes a lightweight webhook example under `modules/payments/webhook.php` and a central action: `tpw_payment_completed`.
+- The shared framework exposes a lightweight webhook example under `modules/payments/webhook.php` and a central action: `tpw_payment_completed`.
 - Listen to `tpw_payment_completed` in your plugin to update domain models (orders/entries). Validate payloads and idempotency in your handler.
 
 See also:

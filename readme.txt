@@ -1,22 +1,22 @@
-=== FlexiClub ===
+=== iLungu™ Club ===
 Contributors: thepluginworks
 Tags: members, payments, rsvp, admin-tools, tpw
 Requires at least: 5.8
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 2.10.2
+Stable tag: 2.11.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Free base platform for shared member, payment, page, and admin tools across FlexiClub-powered WordPress sites and add-on plugins.
+Free base platform for shared member, payment, page, and admin tools across iLungu Club-powered WordPress sites and add-on plugins.
 
 == Description ==
 
-FlexiClub is the free base platform that powers the FlexiClub plugin ecosystem.
+iLungu™ Club is the free base platform that powers the iLungu Club plugin ecosystem.
 
 It provides shared functionality used across add-ons and integrations, ensuring everything works together consistently and reliably.
 
-With FlexiClub installed, your plugins can:
+With iLungu Club installed, your plugins can:
 
 - manage member accounts, roles, and profiles
 - handle login, registration, and access control
@@ -24,34 +24,35 @@ With FlexiClub installed, your plugins can:
 - apply consistent branding and UI styles
 - share system pages and common functionality across modules
 
-FlexiClub is required by many ecosystem plugins and is typically installed automatically when needed.
+iLungu Club is required by many ecosystem plugins and is typically installed automatically when needed.
 
-You do not use FlexiClub directly in the same way as a feature add-on — it works behind the scenes to support the plugins you install.
+You do not use iLungu Club directly in the same way as a feature add-on — it works behind the scenes to support the plugins you install.
 
 Learn more about ThePluginWorks ecosystem:
 https://www.thepluginworks.com
 
 == Installation ==
 
-1. Upload the plugin folder to `/wp-content/plugins/tpw-flexiclub/` or install it using your normal plugin deployment process.
-2. Activate FlexiClub in WordPress.
-3. Activate any add-on plugins that require FlexiClub.
-4. Review shared settings under Settings > FlexiClub.
-5. Check that your required login, profile, join, or thank-you pages are set up for the TPW modules you use.
+1. Upload the plugin folder to `/wp-content/plugins/tpw-ilungu-club/` or install it using your normal plugin deployment process.
+2. Activate `tpw-ilungu-club/ilungu-club.php` as iLungu™ Club in WordPress.
+3. When replacing the previous physical plugin identity, deactivate `tpw-flexiclub/tpw-flexiclub.php` first at the same single-site or network scope. Never activate both copies together.
+4. Activate any add-on plugins that require iLungu Club.
+5. Review shared settings under Settings > iLungu Club.
+6. Check that your required login, profile, join, or thank-you pages are set up for the TPW modules you use.
 
 == Frequently Asked Questions ==
 
-= What is FlexiClub used for? =
-FlexiClub provides the shared services and admin tools used by ecosystem plugins, including member flows, payments, shared pages, and common settings.
+= What is iLungu Club used for? =
+iLungu Club provides the shared services and admin tools used by ecosystem plugins, including member flows, payments, shared pages, and common settings.
 
-= Can I use FlexiClub on its own? =
-Usually it is used together with other FlexiClub add-ons. Some shared screens and shortcodes may still be available on their own, but its main role is to support the wider plugin set.
+= Can I use iLungu Club on its own? =
+Usually it is used together with other iLungu Club add-ons. Some shared screens and shortcodes may still be available on their own, but its main role is to support the wider plugin set.
 
 = Where do I manage core settings? =
-Go to Settings > FlexiClub in the WordPress admin area.
+Go to Settings > iLungu Club in the WordPress admin area.
 
 = Do I need to create any pages? =
-Many FlexiClub setups use shared pages such as login, profile, join, control, or thank-you pages. The exact pages depend on which plugins are active on your site.
+Many iLungu Club setups use shared pages such as login, profile, join, control, or thank-you pages. The exact pages depend on which plugins are active on your site.
 
 == Shortcodes ==
 
@@ -71,6 +72,11 @@ Displays a thank-you or confirmation view for supported TPW payment and RSVP flo
 Displays the TPW Control front-end admin hub where this is enabled for your site.
 
 == Changelog ==
+
+= 2.11.0 =
+- Renamed the distributed plugin identity to iLungu Club, including the plugin package, updater channel, and release artifacts, while preserving existing technical identifiers for compatibility.
+- Added the Club Management front-end workspace and canonical System Pages route, including safer page ownership and collision handling.
+- Improved Club Management settings and System Pages rendering, including the current iLungu Club owner label.
 
 = 2.10.2 =
 - Payments: fixed Square/Core checkout frontend errors so mount, config, or SDK failures shown in `#tpw-square-errors` are visible instead of staying hidden behind inline `display:none`.

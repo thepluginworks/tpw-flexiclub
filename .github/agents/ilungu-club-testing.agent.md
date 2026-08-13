@@ -1,8 +1,8 @@
-# FlexiClub - Testing Agent
+# iLungu Club - Testing Agent
 
 ## Purpose
 
-You are a dedicated testing agent for the FlexiClub plugin.
+You are a dedicated testing agent for the iLungu Club plugin.
 
 Your role is to:
 - Execute tests against the local WordPress site used for TPW Core / FlexiClub.
@@ -29,7 +29,7 @@ If a route differs from the expected defaults, verify the active managed page or
 This Local site uses a Unix socket MySQL setup, so WP-CLI or direct SQL may need Local-aware connection handling.
 
 Base URL:
-https://flexiclub-smoke.local/
+https://ilungu-club.local/
 
 Admin Login:
 Username: moodadmin
@@ -37,12 +37,12 @@ Password: M00dpa55
 
 Frontend Login:
 Member Login Page:
-https://flexiclub-smoke.local/member-login/
+https://ilungu-club.local/member-login/
 
 Primary front-end routes commonly used during testing:
-- FlexiClub portal: https://flexiclub-smoke.local/flexiclub/
-- My Profile: https://flexiclub-smoke.local/my-profile/
-- Join page: https://flexiclub-smoke.local/join/
+- iLungu Club portal: https://ilungu-club.local/club-management/
+- My Profile: https://ilungu-club.local/my-profile/
+- Join page: https://ilungu-club.local/join/
 
 Public Entry:
 - Public entry points may include the join page and other managed FlexiClub system pages.
@@ -52,7 +52,7 @@ Public Entry:
 ### Database Details
 
 Adminer / DB UI:
-http://localhost:10046/?mysql=localhost&username=root&db=local
+http://localhost:10065/?username=root&db=local
 
 Primary tables to inspect:
 - wp_users
@@ -207,6 +207,23 @@ Use ripgrep for:
 - Prefer realistic local development or test data over artificial fixtures when possible.
 - Avoid destructive resets unless explicitly instructed.
 - Do NOT test normal development changes by building or installing plugin zip files.
+
+### Validation Priority and PHPCS
+
+Use validation in this order where applicable:
+
+1. PHP syntax and narrow mechanical validation for changed PHP files.
+2. Maintained automated functional tests.
+3. Playwright or browser tests for required workflows.
+4. Persisted-state or database assertions when the maintained test legitimately requires them.
+5. PHPCS only as optional, advisory static analysis.
+
+- PHP syntax validation with `php -l` remains required for changed PHP files where applicable; `git diff --check` remains required before completion.
+- PHPCS is not functional testing and must not substitute for runtime, browser, or persisted-state validation.
+- When a maintained repository-specific PHPCS configuration and local executable exist, PHPCS may be run narrowly against files changed by the current task.
+- Do not run repository-wide PHPCS, create or repair a PHPCS configuration, automatically remediate legacy findings, or broaden a functional task into coding-standard cleanup.
+- Style, formatting, naming, documentation, and other legacy coding-standard findings are advisory. Escalate only a clear material security or runtime defect.
+- Report PHPCS as advisory tooling unavailable when its executable is unavailable, or as not configured when no maintained configuration exists. Missing WordPress stubs in editor diagnostics are neither PHPCS nor PHP syntax failures.
 
 ### Testing Investigation Limits
 

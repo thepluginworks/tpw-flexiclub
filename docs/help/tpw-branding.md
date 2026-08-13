@@ -1,6 +1,6 @@
 # TPW Branding: Use across other plugins
 
-This guide shows how to consume the TPW Core Branding and UI Theme settings from your own plugins or wp-admin pages. It covers which assets to enqueue, what wrapper/classes to use, and the CSS variables the Branding tab emits.
+This guide shows how to consume the shared plugin framework Branding and UI Theme settings from your own plugins or wp-admin pages. It covers which assets to enqueue, what wrapper/classes to use, and the CSS variables the Branding tab emits.
 
 Applies to: wp-admin and front-end pages.
 
@@ -10,7 +10,7 @@ Canonical contract: [../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md]
 
 ## What the Branding tab configures
 
-The Branding tab at: Settings → TPW Core → Branding (`/wp-admin/options-general.php?page=tpw-core-settings&tab=branding`) lets admins set:
+The Branding tab at: Settings → iLungu Club → Branding (`/wp-admin/options-general.php?page=tpw-core-settings&tab=branding`) lets admins set:
 
 - Button system tokens used by `.tpw-btn` variants
   - `--tpw-btn-primary`, `--tpw-btn-secondary`, `--tpw-btn-danger`, `--tpw-btn-light`, `--tpw-btn-dark`
@@ -34,7 +34,7 @@ That means other plugins only need to enqueue the relevant CSS and use the class
 
 ## New: Semantic notice colours (global tokens)
 
-TPW Core now emits global CSS variables for common notice states that other TPW plugins can consume:
+The shared plugin framework now emits global CSS variables for common notice states that other TPW plugins can consume:
 
 - `--tpw-color-success`
 - `--tpw-color-info`
@@ -48,7 +48,7 @@ Defaults/derivations:
 - Error: `var(--tpw-btn-danger)`
 
 Where they come from:
-- Defined in Branding tab (Settings → TPW Core → Branding) with optional overrides.
+- Defined in Branding tab (Settings → iLungu Club → Branding) with optional overrides.
 - Emitted in the same inline `<style id="tpw-core-branding-vars">` block as other Branding tokens (admin and front-end heads).
 
 Integration guidance will follow separately; for now, other TPW plugins can reference these variables directly in their CSS with sensible fallbacks.
@@ -59,7 +59,7 @@ Integration guidance will follow separately; for now, other TPW plugins can refe
 
 This section is usage guidance. The canonical contract for wrapper selection, handle stability, and migration rules lives in [../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md).
 
-Use these handles/paths exposed by TPW Core.
+Use these handles/paths exposed by the shared plugin framework.
 
 0) Front-end/base TPW UI layer
 - Handle: `tpw-ui`
@@ -72,7 +72,7 @@ Use these handles/paths exposed by TPW Core.
 - Purpose: provides `.tpw-btn` base + variants and consumes Branding tokens
 - Example (admin or front-end):
 ```php
-$base = defined('TPW_CORE_URL') ? TPW_CORE_URL : plugin_dir_url( __FILE__ ) . '../tpw-flexiclub/';
+$base = defined('TPW_CORE_URL') ? TPW_CORE_URL : plugin_dir_url( __FILE__ ) . '../tpw-ilungu-club/';
 wp_enqueue_style( 'tpw-buttons', trailingslashit( $base ) . 'assets/css/tpw-buttons.css', [], null );
 ```
 
@@ -82,11 +82,11 @@ wp_enqueue_style( 'tpw-buttons', trailingslashit( $base ) . 'assets/css/tpw-butt
 - Purpose: resets and styles for TPW admin-like layouts under `.tpw-admin-ui`
 - Example:
 ```php
-$base = TPW_CORE_URL; // when TPW Core is active
+$base = TPW_CORE_URL; // when the shared plugin framework is active
 wp_enqueue_style( 'tpw-admin-ui', trailingslashit( $base ) . 'assets/css/tpw-admin-ui.css', [], null );
 ```
 
-3) Optional general admin styling helpers (used by Core pages)
+3) Optional general admin styling helpers (used by shared-framework pages)
 - Handle: `tpw-core-admin-css`
 - File: `assets/css/admin-style.css`
 - Purpose: small admin complements (buttons, forms) when body has `tpw-origin`/`tpw-fe-embed`
@@ -96,7 +96,7 @@ wp_enqueue_style( 'tpw-admin-ui', trailingslashit( $base ) . 'assets/css/tpw-adm
 - File: `assets/css/tpw-admin-tabs.css` (no core handle registered globally)
 - Purpose: the minimal `.tpw-tabs` pattern; often unnecessary if you use WP’s `nav-tab` UI. If you need it, enqueue manually from your plugin.
 
-Note: On many TPW admin screens, TPW Core already enqueues #2 automatically. If you control a different plugin’s settings page, enqueue `tpw-admin-ui` yourself.
+Note: On many TPW admin screens, the shared framework already enqueues #2 automatically. If you control a different plugin’s settings page, enqueue `tpw-admin-ui` yourself.
 
 ---
 
@@ -127,7 +127,7 @@ echo '</div>';
  
 ### Tokens the Branding tab controls
 
-- Optional admin body classes (wp-admin only): if your screen should inherit Core’s admin tweaks, add body classes `tpw-origin tpw-fe-embed`. Core does this automatically on its own pages via `admin_body_class` filter, but external plugins can mimic it when appropriate.
+- Optional admin body classes (wp-admin only): if your screen should inherit shared-framework admin tweaks, add body classes `tpw-origin tpw-fe-embed`. The shared framework does this automatically on its own pages via `admin_body_class` filter, but external plugins can mimic it when appropriate.
 
 - Developer Guide → ../developer-guide.md
 - Admin helpers: includes/admin-functions.php
@@ -183,13 +183,13 @@ Available in `includes/admin-functions.php` and `includes/tpw-core-settings.php`
   - Place it inside your `.tpw-admin-ui .wrap` before your content.
 
 - `tpw_core_build_branding_css( $only_if_not_empty = true ): string`
-  - Returns a CSS string of `:root{...}` variables from Branding + UI Theme. Core already inserts this into both `admin_head` and `wp_head`. Call it yourself only for custom injection scenarios.
+  - Returns a CSS string of `:root{...}` variables from Branding + UI Theme. The shared framework already inserts this into both `admin_head` and `wp_head`. Call it yourself only for custom injection scenarios.
 
 - `tpw_core_build_heading_css( $only_if_not_empty = true ): string`
-  - Returns h1–h6 tokens. Also injected automatically by Core into heads.
+  - Returns h1–h6 tokens. Also injected automatically by the shared framework into heads.
 
 - Front-end detection/auto enqueue
-  - Core enqueues `tpw-buttons` automatically on selected front-end routes/shortcodes. If your plugin needs TPW buttons on the front-end elsewhere, explicitly enqueue `tpw-buttons`.
+  - The shared framework enqueues `tpw-buttons` automatically on selected front-end routes/shortcodes. If your plugin needs TPW buttons on the front-end elsewhere, explicitly enqueue `tpw-buttons`.
 
 ---
 
@@ -236,7 +236,7 @@ add_shortcode( 'my_action_link', function(){
 
 ## Notes and conventions
 
-- You do not need to re-emit tokens: Core prints them in heads on both admin and front-end. You only need to load the CSS that uses them.
+- You do not need to re-emit tokens: the shared framework prints them in heads on both admin and front-end. You only need to load the CSS that uses them.
 - If Elementor or themes override typography, the `.tpw-admin-ui` scope neutralizes most globals using `@layer` + `all: revert-layer`. Keep your admin markup inside that wrapper.
 - For public/member-facing wrapper behaviour and migration safety, treat `.tpw-frontend-ui` and `.tpw-admin-ui` as contract-defined roots from [../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md).
 - For WordPress native button elements (`<button>`, `<input type=submit>`), also add `tpw-btn` + variant classes to get consistent styling.
@@ -246,4 +246,4 @@ If you need more examples, check usages in:
 - `modules/payments/views/payment-settings-page.php` for `.tpw-admin-ui`
 - `assets/css/tpw-buttons.css` for available button variants
 
-See also: Core Hooks Index → ../developer-guide.md#core-hooks-index
+See also: Shared Framework Hooks Index → ../developer-guide.md#core-hooks-index

@@ -14,14 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 class TPW_Core_Updater {
-	const MANIFEST_URL = 'https://thepluginworks.github.io/tpw-flexiclub/tpw-flexiclub.json';
-	const PLUGIN_SLUG = 'tpw-flexiclub';
-	const PLUGIN_BASENAME = 'tpw-flexiclub/tpw-flexiclub.php';
+	const MANIFEST_URL = 'https://thepluginworks.github.io/tpw-ilungu-club/tpw-ilungu-club.json';
+	const PLUGIN_SLUG = 'tpw-ilungu-club';
+	const PLUGIN_BASENAME = 'tpw-ilungu-club/ilungu-club.php';
+	const LEGACY_PLUGIN_BASENAME = 'tpw-flexiclub/tpw-flexiclub.php';
 	const CACHE_KEY = 'tpw_core_update_manifest';
 	const CACHE_TTL = 12 * HOUR_IN_SECONDS;
 	const FAILURE_CACHE_TTL = HOUR_IN_SECONDS;
 	const HOMEPAGE = 'https://thepluginworks.com/';
-	const DOWNLOAD_URL = 'https://github.com/thepluginworks/tpw-flexiclub/releases/latest/download/tpw-flexiclub.zip';
+	const DOWNLOAD_URL = 'https://github.com/thepluginworks/tpw-ilungu-club/releases/latest/download/tpw-ilungu-club.zip';
 
 	/**
 	 * Per-request manifest cache so a forced refresh only performs one remote request.
@@ -89,7 +90,7 @@ class TPW_Core_Updater {
 				'new_version' => $installed_version,
 				'package'     => '',
 				'url'         => self::HOMEPAGE,
-				'id'          => self::HOMEPAGE . '#tpw-flexiclub',
+				'id'          => self::HOMEPAGE . '#tpw-ilungu-club',
 			);
 			return $transient;
 		}
@@ -100,7 +101,7 @@ class TPW_Core_Updater {
 			'new_version' => $manifest['version'],
 			'package'     => $manifest['download_url'],
 			'url'         => self::HOMEPAGE,
-			'id'          => self::HOMEPAGE . '#tpw-flexiclub',
+			'id'          => self::HOMEPAGE . '#tpw-ilungu-club',
 		);
 
 		if ( isset( $transient->no_update[ self::PLUGIN_BASENAME ] ) ) {
@@ -133,9 +134,9 @@ class TPW_Core_Updater {
 		$sections = self::get_plugin_information_sections();
 
 		return (object) array(
-			'name'          => 'FlexiClub',
+			'name'          => 'iLungu™ Club',
 			'slug'          => self::PLUGIN_SLUG,
-			'plugin_name'   => 'FlexiClub',
+			'plugin_name'   => 'iLungu™ Club',
 			'version'       => $version,
 			'author'        => '<a href="' . esc_url( self::HOMEPAGE ) . '">ThePluginWorks</a>',
 			'homepage'      => self::HOMEPAGE,
@@ -171,7 +172,7 @@ class TPW_Core_Updater {
 			return;
 		}
 
-		if ( in_array( self::PLUGIN_BASENAME, $options['plugins'], true ) ) {
+		if ( in_array( self::PLUGIN_BASENAME, $options['plugins'], true ) || in_array( self::LEGACY_PLUGIN_BASENAME, $options['plugins'], true ) ) {
 			self::clear_update_caches();
 		}
 	}
@@ -385,6 +386,10 @@ class TPW_Core_Updater {
 			if ( ! empty( $transient->checked[ self::PLUGIN_BASENAME ] ) ) {
 				return trim( (string) $transient->checked[ self::PLUGIN_BASENAME ] );
 			}
+
+			if ( ! empty( $transient->checked[ self::LEGACY_PLUGIN_BASENAME ] ) ) {
+				return trim( (string) $transient->checked[ self::LEGACY_PLUGIN_BASENAME ] );
+			}
 		}
 
 		if ( ! function_exists( 'get_plugin_data' ) ) {
@@ -394,6 +399,14 @@ class TPW_Core_Updater {
 		$plugin_file = trailingslashit( WP_PLUGIN_DIR ) . self::PLUGIN_BASENAME;
 		if ( file_exists( $plugin_file ) && is_readable( $plugin_file ) ) {
 			$plugin_data = get_plugin_data( $plugin_file, false, false );
+			if ( ! empty( $plugin_data['Version'] ) ) {
+				return trim( (string) $plugin_data['Version'] );
+			}
+		}
+
+		$legacy_plugin_file = trailingslashit( WP_PLUGIN_DIR ) . self::LEGACY_PLUGIN_BASENAME;
+		if ( file_exists( $legacy_plugin_file ) && is_readable( $legacy_plugin_file ) ) {
+			$plugin_data = get_plugin_data( $legacy_plugin_file, false, false );
 			if ( ! empty( $plugin_data['Version'] ) ) {
 				return trim( (string) $plugin_data['Version'] );
 			}
@@ -419,6 +432,14 @@ class TPW_Core_Updater {
 
 		if ( isset( $transient->no_update[ self::PLUGIN_BASENAME ] ) ) {
 			unset( $transient->no_update[ self::PLUGIN_BASENAME ] );
+		}
+
+		if ( isset( $transient->response[ self::LEGACY_PLUGIN_BASENAME ] ) ) {
+			unset( $transient->response[ self::LEGACY_PLUGIN_BASENAME ] );
+		}
+
+		if ( isset( $transient->no_update[ self::LEGACY_PLUGIN_BASENAME ] ) ) {
+			unset( $transient->no_update[ self::LEGACY_PLUGIN_BASENAME ] );
 		}
 	}
 
@@ -448,7 +469,7 @@ class TPW_Core_Updater {
 
 		$description = ! empty( $sections['description'] )
 			? self::format_readme_section_html( $sections['description'] )
-			: '<p>FlexiClub provides the free shared member, payment, branding, and system-page platform for the wider plugin ecosystem.</p>';
+			: '<p>iLungu™ Club provides the free shared member, payment, branding, and system-page platform for the wider plugin ecosystem.</p>';
 
 		$changelog = ! empty( $sections['changelog'] )
 			? self::format_readme_section_html( $sections['changelog'] )

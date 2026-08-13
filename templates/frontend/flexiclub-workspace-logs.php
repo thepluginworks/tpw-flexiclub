@@ -39,7 +39,7 @@ $render_status_tone = static function( $status ) {
 	<div class="tpw-flexiclub-dashboard__brand-row tpw-flexiclub-logs__hero-head">
 		<div class="tpw-flexiclub-dashboard__welcome tpw-flexiclub-logs__hero-copy">
 			<h2><?php esc_html_e( 'Logs Workspace', 'tpw-core' ); ?></h2>
-			<p><?php esc_html_e( 'Review operational email and payment logs from the FlexiClub portal without leaving the front end. Sensitive payloads and secrets remain hidden.', 'tpw-core' ); ?></p>
+			<p><?php esc_html_e( 'Review operational email and payment logs from the iLungu Club portal without leaving the front end. Sensitive payloads and secrets remain hidden.', 'tpw-core' ); ?></p>
 		</div>
 		<div class="tpw-flexiclub-logs__hero-actions">
 			<?php if ( '' !== $dashboard_url ) : ?>
@@ -65,14 +65,14 @@ $render_status_tone = static function( $status ) {
 	<div class="tpw-flexiclub-dashboard__section-head tpw-flexiclub-logs__section-head">
 		<div>
 			<h2><?php esc_html_e( 'Log Sources', 'tpw-core' ); ?></h2>
-			<p><?php esc_html_e( 'Switch between the existing log sources that FlexiClub currently exposes through shared Core tooling.', 'tpw-core' ); ?></p>
+			<p><?php esc_html_e( 'Switch between the existing log sources that iLungu Club currently exposes through shared Core tooling.', 'tpw-core' ); ?></p>
 		</div>
 	</div>
 
 	<?php if ( empty( $sources ) ) : ?>
 		<p class="tpw-flexiclub-logs__empty"><?php esc_html_e( 'No front-end-safe log sources are currently available.', 'tpw-core' ); ?></p>
 	<?php else : ?>
-		<nav class="tpw-flexiclub-logs__tabs" aria-label="<?php esc_attr_e( 'FlexiClub log sources', 'tpw-core' ); ?>">
+		<nav class="tpw-flexiclub-logs__tabs" aria-label="<?php esc_attr_e( 'iLungu Club log sources', 'tpw-core' ); ?>">
 			<?php foreach ( $sources as $source ) : ?>
 				<?php
 				$tab_classes = 'tpw-flexiclub-logs__tab-link';

@@ -1,7 +1,7 @@
-# TPW Core UI Wrapper and Enqueue Contract
+# Shared Plugin Framework UI Wrapper and Enqueue Contract
 
 **Status:** Authoritative  
-**Applies to:** TPW Core and all dependent TPW consumer plugins  
+**Applies to:** the shared plugin framework and all dependent TPW consumer plugins
 **Audience:** Developers, maintainers, QA  
 **Do not deviate from this document when implementing shared TPW UI wrappers, shared component usage, or shared asset-loading behaviour.**
 
@@ -9,7 +9,7 @@
 
 ## 1. Purpose
 
-This document defines the canonical TPW Core contract for:
+This document defines the canonical shared plugin framework contract for:
 
 - UI root wrappers
 - shared UI component scope
@@ -18,23 +18,23 @@ This document defines the canonical TPW Core contract for:
 - consumer-plugin integration rules
 - backwards compatibility during UI migration
 
-TPW Core is shared infrastructure. Shared UI changes must work for TPW Core and its consumer plugins as a platform, not as a one-plugin patch surface.
+The shared plugin framework is shared infrastructure. Shared UI changes must work for the shared framework and its consumer plugins as a platform, not as a one-plugin patch surface.
 
 ---
 
-## 2. Core Principles
+## 2. Shared Framework Principles
 
-1. **Core owns the shared UI contract**
-   - Shared wrappers, shared component classes, shared asset handles, and shared compatibility rules are owned by TPW Core.
-   - Consumer plugins must not invent alternate Core contracts.
+1. **The shared plugin framework owns the shared UI contract**
+  - Shared wrappers, shared component classes, shared asset handles, and shared compatibility rules are owned by the shared framework.
+  - Consumer plugins must not invent alternate shared-framework contracts.
 
 2. **Wrappers are screen-level contracts**
    - The canonical wrapper must sit around the full rendered TPW screen.
    - Do not wrap only a card, panel, widget, or inner fragment and treat that as contract-compliant.
 
-3. **Core is not a one-plugin patch layer**
+3. **The shared framework is not a one-plugin patch layer**
    - Shared UI changes must support current and future consumer plugins.
-   - Do not reshape Core wrappers or selectors only to match one consumer plugin's current DOM.
+  - Do not reshape shared-framework wrappers or selectors only to match one consumer plugin's current DOM.
 
 4. **Backwards compatibility is mandatory**
    - Existing shared handles, wrappers, selectors, and helper entry points must remain stable during migration unless a documented breaking change is explicitly approved.
@@ -43,7 +43,7 @@ TPW Core is shared infrastructure. Shared UI changes must work for TPW Core and 
    - Add new selectors, wrapper support, and compatibility layers before removing or renaming existing shared classes.
 
 6. **Document first, then roll out**
-   - Shared UI contract changes must be documented in Core before they are implemented broadly in Core or consumer plugins.
+  - Shared UI contract changes must be documented in the shared framework before they are implemented broadly in the shared framework or consumer plugins.
 
 ---
 
@@ -71,8 +71,8 @@ If the required behaviour is not clearly documented after reading these sources,
 
 Use `.tpw-admin-ui` for:
 
-- wp-admin pages rendered by TPW Core
-- wp-admin pages rendered by TPW consumer plugins that intentionally adopt Core UI
+- wp-admin pages rendered by the shared framework
+- wp-admin pages rendered by TPW consumer plugins that intentionally adopt shared-framework UI
 - intentionally admin-like screens embedded outside normal wp-admin where the admin UI scope is the intended presentation layer
 
 ### 4.2 `.tpw-frontend-ui`
@@ -81,7 +81,7 @@ Use `.tpw-frontend-ui` for:
 
 - public-facing member screens
 - front-end account, profile, join, payment, and similar TPW experiences
-- other non-admin screens that need TPW front-end wrapper semantics while still consuming shared Core components
+- other non-admin screens that need TPW front-end wrapper semantics while still consuming shared-framework components
 
 ### 4.3 Root Placement Rule
 
@@ -112,13 +112,13 @@ Plugin-specific wrapper classes may:
 - appear on the same root element as `.tpw-admin-ui` or `.tpw-frontend-ui`, or
 - appear on descendants inside the root wrapper
 
-Consumer plugins must not replace the canonical Core wrapper with a plugin-specific root class.
+Consumer plugins must not replace the canonical shared-framework wrapper with a plugin-specific root class.
 
 ---
 
-## 5. Core-Owned Shared Components
+## 5. Shared-Framework-Owned Components
 
-The following are Core-owned shared UI component families and must follow Core wrapper and compatibility rules:
+The following are shared-framework-owned UI component families and must follow shared-framework wrapper and compatibility rules:
 
 - buttons
 - cards and panel surfaces
@@ -127,7 +127,7 @@ The following are Core-owned shared UI component families and must follow Core w
 - notices and semantic notice states
 - app navigation
 
-When changing shared component behaviour, treat the change as a Core-wide contract change, not a local module tweak.
+When changing shared component behaviour, treat the change as a shared-framework-wide contract change, not a local module tweak.
 
 ---
 
@@ -135,7 +135,7 @@ When changing shared component behaviour, treat the change as a Core-wide contra
 
 ### 6.1 Canonical stylesheet handles
 
-The canonical Core stylesheet handles are:
+The canonical shared-framework stylesheet handles are:
 
 - `tpw-ui`
   - front-end/base TPW UI layer
@@ -149,7 +149,7 @@ The canonical Core stylesheet handles are:
 
 ### 6.2 Canonical helper functions
 
-Current documented Core helper entry points include:
+Current documented shared-framework helper entry points include:
 
 - `tpw_core_build_ui_theme_style_attr()`
   - injects current UI theme variables onto the wrapper root when needed
@@ -164,9 +164,9 @@ This contract does not invent undocumented generic enqueue helpers. If a generic
 
 ### 6.3 Consumer-plugin asset-loading rule
 
-Consumer plugins should use documented Core handles and documented Core helper functions rather than inventing their own handle names or treating random Core file paths as the contract.
+Consumer plugins should use documented shared-framework handles and documented shared-framework helper functions rather than inventing their own handle names or treating random shared-framework file paths as the contract.
 
-If current implementation reality still requires a direct enqueue by URL in a specific integration surface, that usage must align with the documented Core handle names and this contract. Do not create alternate path conventions or alternate handle names.
+If current implementation reality still requires a direct enqueue by URL in a specific integration surface, that usage must align with the documented shared-framework handle names and this contract. Do not create alternate path conventions or alternate handle names.
 
 ---
 
@@ -183,7 +183,7 @@ If current implementation reality still requires a direct enqueue by URL in a sp
 - root wrapper: `.tpw-frontend-ui`
 - canonical base style: `tpw-ui`
 - add `tpw-buttons` when TPW buttons are rendered
-- add `tpw-admin-ui` only where the screen intentionally consumes shared admin-like component scope documented by Core
+- add `tpw-admin-ui` only where the screen intentionally consumes shared admin-like component scope documented by the shared framework
 
 ### 7.3 Wrapper completeness rule
 
@@ -201,11 +201,11 @@ Do not place notices, navigation, or major layout containers outside the canonic
 
 ## 8. Theme and Builder Isolation
 
-Theme, Elementor, and inherited style isolation for shared TPW UI is a Core wrapper concern.
+Theme, Elementor, and inherited style isolation for shared TPW UI is a shared-framework wrapper concern.
 
-- Consumer plugins should rely on the documented Core wrappers and Core styles.
+- Consumer plugins should rely on the documented shared-framework wrappers and styles.
 - Do not work around theme leakage by inventing alternate root wrappers or one-off selector forks in consumer plugins.
-- If wrapper isolation is insufficient, fix the Core contract and Core implementation additively.
+- If wrapper isolation is insufficient, fix the shared-framework contract and implementation additively.
 
 ---
 
@@ -236,12 +236,12 @@ Avoid:
 
 ### 9.3 Consumer-plugin safety check
 
-Before changing shared UI behaviour in Core, check likely impact on:
+Before changing shared UI behaviour in the shared framework, check likely impact on:
 
 - current consumer-plugin markup
 - front-end shortcodes and embeds
-- wp-admin screens using Core wrappers
-- payment and checkout flows using Core handles or helper bundles
+- wp-admin screens using shared-framework wrappers
+- payment and checkout flows using shared-framework handles or helper bundles
 
 ---
 
@@ -254,7 +254,7 @@ A shared UI change counts as breaking if it does any of the following without a 
 - changes the required root wrapper for an existing screen class of integration
 - moves shared component semantics to a new class name without additive support for the old one
 - requires consumer plugins to change enqueue logic or DOM structure to keep current behaviour
-- narrows selector support so previously valid Core consumer markup no longer renders correctly
+- narrows selector support so previously valid shared-framework consumer markup no longer renders correctly
 - changes helper entry points or their expected responsibility in a way that breaks existing consumers
 
 Breaking changes require explicit documentation, migration guidance, and rollout planning before implementation.
@@ -265,13 +265,13 @@ Breaking changes require explicit documentation, migration guidance, and rollout
 
 Shared UI rollout order must be:
 
-1. update the Core contract document
-2. update discoverability links in Core docs
-3. make additive Core changes first
+1. update the shared-framework contract document
+2. update discoverability links in shared-framework docs
+3. make additive shared-framework changes first
 4. validate likely impact on current consumer plugins
-5. update consumer plugins only after Core is ready, and only when those plugin updates are explicitly in scope
+5. update consumer plugins only after the shared framework is ready, and only when those plugin updates are explicitly in scope
 
-Do not require consumer plugins to move first in order to preserve current Core behaviour.
+Do not require consumer plugins to move first in order to preserve current shared-framework behaviour.
 
 ---
 
@@ -281,7 +281,7 @@ Before implementation, confirm:
 
 - the correct root wrapper has been chosen
 - the wrapper covers the full TPW screen, not just an inner card
-- documented Core handles are being used
+- documented shared-framework handles are being used
 - no undocumented helper, handle, or selector has been invented
 - additive compatibility has been considered first
 - likely consumer-plugin impact has been reviewed

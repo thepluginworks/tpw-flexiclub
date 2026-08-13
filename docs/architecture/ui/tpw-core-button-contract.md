@@ -1,7 +1,7 @@
-# TPW Core Button Contract
+# Shared Plugin Framework Button Contract
 
 Status: Authoritative  
-Applies to: TPW Core and all TPW consumer plugins  
+Applies to: the shared plugin framework and all TPW consumer plugins
 Audience: Developers, maintainers, QA
 
 ---
@@ -21,8 +21,8 @@ This contract defines the canonical TPW button system, including:
 
 ## 2. Ownership and Scope
 
-- TPW Core owns the shared button contract.
-- Consumer plugins must use Core button classes rather than inventing alternate shared button classes.
+- The shared plugin framework owns the shared button contract.
+- Consumer plugins must use shared-framework button classes rather than inventing alternate shared button classes.
 - This document is authoritative for button class naming and expected behavior.
 - Styling source of truth is [assets/css/tpw-buttons.css](../../../assets/css/tpw-buttons.css).
 

@@ -1,6 +1,6 @@
-# TPW Core – Gallery Module
+# Shared Plugin Framework – Gallery Module
 
-A modular, hybrid gallery system for TPW Core. New uploads can be stored in `uploads/tpw-galleries/{slug}/` while also creating WordPress Media Library attachments; attaching existing images keeps them in WordPress’ standard uploads structure. Provides admin UI, public shortcodes, and an integration API so other TPW plugins can register gallery sources or attach galleries to domain objects (e.g., events).
+A modular, hybrid gallery system for the shared plugin framework. New uploads can be stored in `uploads/tpw-galleries/{slug}/` while also creating WordPress Media Library attachments; attaching existing images keeps them in WordPress’ standard uploads structure. Provides admin UI, public shortcodes, and an integration API so other TPW plugins can register gallery sources or attach galleries to domain objects (e.g., events).
 
 - Status: stable
 - Version: 0.6.0

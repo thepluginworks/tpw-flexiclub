@@ -1,4 +1,4 @@
-# FlexiClub Plugin – Release Checklist
+# iLungu™ Club Plugin – Release Checklist
 
 Use this guide whenever you're releasing a new version to GitHub.
 
@@ -41,7 +41,7 @@ This will trigger GitHub Actions to build the release zip, attach it to the GitH
 
 Add this to `.bash_profile` or `.zshrc`:
 ```bash
-alias tpw-release='git add . && git commit -m "Release update" && git tag v$(grep "Version:" tpw-flexiclub.php | awk "{ print \$3 }") && git push origin main --tags'
+alias tpw-release='git add . && git commit -m "Release update" && git tag v$(grep "Version:" ilungu-club.php | awk "{ print \$3 }") && git push origin main --tags'
 ```
 
 Then use:

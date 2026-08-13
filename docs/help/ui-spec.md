@@ -48,7 +48,7 @@ Responsive behaviour and spacing expectations:
 
 Use a flexible container pattern for list and table-like layouts.
 
-Core conventions:
+Shared framework conventions:
 - `.tpw-table-container` — outer wrapper that manages scrolling and responsive behaviour
 - `.table-row` — a single row or item
 - `.table-cell` — a cell/column inside a row
@@ -178,8 +178,8 @@ if ( defined('TPW_CORE_URL') ) {
 
 - Wrap the page with `.tpw-admin-ui`.
 - Use `.tpw-table-container` for listings with `.table-row` and `.table-cell`.
-- Use TPW Core button classes for actions.
-- Enqueue TPW Core assets (`tpw-admin-ui` and `tpw-buttons`).
+- Use shared-framework button classes for actions.
+- Enqueue shared-framework assets (`tpw-admin-ui` and `tpw-buttons`).
 - Verify responsive layout, including stacked header and list/table behaviour.
 
 ---

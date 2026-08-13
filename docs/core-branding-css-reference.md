@@ -1,6 +1,6 @@
-# TPW Core Branding CSS Reference
+# Shared Plugin Framework Branding CSS Reference
 
-This document explains where TPW Core's branding and typography CSS Custom Properties ("tokens") are defined, how they are injected into pages, and how to extend them (e.g. adding semantic notice colors such as `--tpw-color-success`).
+This document explains where the shared plugin framework's branding and typography CSS Custom Properties ("tokens") are defined, how they are injected into pages, and how to extend them (e.g. adding semantic notice colors such as `--tpw-color-success`).
 
 Canonical wrapper and enqueue contract: [architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md). This file is an implementation reference, not the primary contract for wrapper placement, handle stability, or migration rules.
 
@@ -8,7 +8,7 @@ Canonical wrapper and enqueue contract: [architecture/ui/tpw-core-ui-wrapper-enq
 
 ## Overview
 
-TPW Core exposes a set of CSS variables that unify button styling, UI theme typography, and headings across admin and (future) frontend UIs. These are generated dynamically from saved WordPress options rather than a dedicated class file (the old `class-tpw-core-branding.php` no longer exists).
+The shared plugin framework exposes a set of CSS variables that unify button styling, UI theme typography, and headings across admin and (future) frontend UIs. These are generated dynamically from saved WordPress options rather than a dedicated class file (the old `class-tpw-core-branding.php` no longer exists).
 
 All generation and output now live inside `includes/tpw-core-settings.php` via helper functions and anonymous hooks on `admin_head` and `wp_head`.
 
@@ -133,7 +133,7 @@ See also: `docs/help/tpw-branding.md` for the live defaults and admin override d
 
 ### Scoped Notice Styling
 
-To make semantic notice colours work consistently in both admin screens and public-facing UIs, TPW Core styles notices under both `.tpw-admin-ui` and `.tpw-frontend-ui` scopes using the same variables. For example:
+To make semantic notice colours work consistently in both admin screens and public-facing UIs, the shared framework styles notices under both `.tpw-admin-ui` and `.tpw-frontend-ui` scopes using the same variables. For example:
 
 ```css
 .tpw-admin-ui :where(.tpw-notice-warning),
@@ -146,7 +146,7 @@ This ensures consistent appearance between admin and public-facing RSVP pages.
 
 ### Frontend: Universal field validation
 
-TPW Core provides a universal style for invalid required fields on TPW-styled forms, scoped to `.tpw-frontend-ui` and using the semantic warning token. These rules live in `assets/css/tpw-admin-ui.css`:
+The shared framework provides a universal style for invalid required fields on TPW-styled forms, scoped to `.tpw-frontend-ui` and using the semantic warning token. These rules live in `assets/css/tpw-admin-ui.css`:
 
 ```css
 /* Universal field validation warning */

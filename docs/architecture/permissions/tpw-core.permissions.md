@@ -1,9 +1,9 @@
 
 
-# TPW Core – Permissions Specification
+# Shared Plugin Framework – Permissions Specification
 
 **Status:** Authoritative  
-**Applies to:** TPW Core (Members, Payments, Gallery, Menus, Notices, TPW Control)  
+**Applies to:** the shared plugin framework (Members, Payments, Gallery, Menus, Notices, TPW Control)
 **Audience:** Developers (VC), Maintainers, QA  
 **Do not deviate from this document when implementing permissions.**
 
@@ -11,9 +11,9 @@
 
 ## 1. Purpose
 
-This document defines the **permission model for TPW Core**.
+This document defines the **permission model for the shared plugin framework**.
 
-TPW Core provides shared infrastructure used by all TPW plugins.  
+The shared framework provides infrastructure used by all TPW plugins.
 It establishes:
 - the **canonical role definitions** (club-facing roles)
 - the **capability contract** used by all code
@@ -50,7 +50,7 @@ All TPW plugins **must rely on these definitions** and must not invent their own
 
 ### Phase 1 Core Compatibility Mapping
 
-The current TPW Core compatibility layer exposes these office-role aligned checks:
+The current shared-framework compatibility layer exposes these office-role aligned checks:
 
 - `tpw_members_manage` = WordPress Administrator / `is_admin` / `is_manage_members` / `is_secretary`
 - `tpw_payments_manage` = WordPress Administrator / `is_admin` / `is_treasurer`
@@ -82,14 +82,14 @@ These are **club-facing roles**, not capabilities.
 - Noticeboard Editor
 - Auditor (read-only)
 
-These roles are mapped to capabilities by TPW Core logic.  
+These roles are mapped to capabilities by shared-framework logic.
 Plugins must never infer behaviour directly from these role names.
 
 ---
 
 ## 4. Capability Naming Rules
 
-All TPW Core capabilities follow this pattern:
+All shared-framework capabilities follow this pattern:
 
 ```
 tpw_<module>_<area>_<verb>
@@ -103,7 +103,7 @@ Rules:
 
 ---
 
-## 5. Capability Register – TPW Core
+## 5. Capability Register – Shared Plugin Framework
 
 ### 5.1 Members
 
@@ -272,7 +272,7 @@ Special regression focus:
 
 ## 10. Enforcement for VC
 
-When implementing or modifying TPW Core:
+When implementing or modifying the shared framework:
 
 - ❌ Do NOT check WP role slugs
 - ❌ Do NOT check TPW member flags directly in plugins

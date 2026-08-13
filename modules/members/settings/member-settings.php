@@ -226,7 +226,7 @@ $profile_page_id = (int) get_option( 'tpw_member_profile_page_id', 0 );
 
             <p>
                 <strong>Members management access</strong><br>
-                <small class="description">Access to the members management interface is granted to WordPress admins, TPW Core admins with the is_admin flag, and members with the Members Manager flag. Directory visibility remains controlled separately.</small>
+                <small class="description">Access to the members management interface is granted to WordPress admins, shared-framework administrators with the is_admin flag, and members with the Members Manager flag. Directory visibility remains controlled separately.</small>
             </p>
 
             <p>

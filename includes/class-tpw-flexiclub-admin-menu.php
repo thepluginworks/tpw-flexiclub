@@ -78,8 +78,8 @@ class TPW_FlexiClub_Admin_Menu {
 		}
 
 		add_menu_page(
-			__( 'FlexiClub', 'tpw-core' ),
-			__( 'FlexiClub', 'tpw-core' ),
+			__( 'iLungu™ Club', 'tpw-core' ),
+			__( 'iLungu™ Club', 'tpw-core' ),
 			'read',
 			self::TOP_LEVEL_SLUG,
 			[ __CLASS__, 'render_dashboard' ],
@@ -210,7 +210,7 @@ class TPW_FlexiClub_Admin_Menu {
 		if ( $template && file_exists( $template ) ) {
 			include $template;
 		} else {
-			echo '<div class="notice notice-error"><p>' . esc_html__( 'FlexiClub Dashboard template is missing.', 'tpw-core' ) . '</p></div>';
+			echo '<div class="notice notice-error"><p>' . esc_html__( 'iLungu Club Dashboard template is missing.', 'tpw-core' ) . '</p></div>';
 		}
 
 		echo '</div>';
@@ -250,13 +250,13 @@ class TPW_FlexiClub_Admin_Menu {
 
 		if ( ! is_user_logged_in() ) {
 			return self::render_frontend_permission_state(
-				esc_html__( 'Please sign in with a club administrator account to access the FlexiClub workspace.', 'tpw-core' )
+				esc_html__( 'Please sign in with a club administrator account to access the iLungu Club workspace.', 'tpw-core' )
 			);
 		}
 
 		if ( ! self::current_user_can_frontend_dashboard() ) {
 			return self::render_frontend_permission_state(
-				esc_html__( 'You do not have permission to access the FlexiClub workspace.', 'tpw-core' )
+				esc_html__( 'You do not have permission to access the iLungu Club workspace.', 'tpw-core' )
 			);
 		}
 
@@ -286,7 +286,7 @@ class TPW_FlexiClub_Admin_Menu {
 		if ( $template && file_exists( $template ) ) {
 			include $template;
 		} else {
-			echo '<div class="tpw-card tpw-flexiclub-dashboard__permission-state"><h2>' . esc_html__( 'FlexiClub workspace unavailable', 'tpw-core' ) . '</h2><p>' . esc_html__( 'The front-end FlexiClub dashboard template could not be found.', 'tpw-core' ) . '</p></div>';
+			echo '<div class="tpw-card tpw-flexiclub-dashboard__permission-state"><h2>' . esc_html__( 'iLungu Club workspace unavailable', 'tpw-core' ) . '</h2><p>' . esc_html__( 'The front-end iLungu Club dashboard template could not be found.', 'tpw-core' ) . '</p></div>';
 		}
 
 		echo '</div>';
@@ -299,7 +299,7 @@ class TPW_FlexiClub_Admin_Menu {
 		echo '<div class="tpw-frontend-ui tpw-flexiclub-dashboard flexiclub-dashboard flexiclub-dashboard--frontend flexiclub-portal-page" style="' . esc_attr( function_exists( 'tpw_core_build_ui_theme_style_attr' ) ? tpw_core_build_ui_theme_style_attr() : '' ) . '">';
 		echo '<div class="tpw-card tpw-flexiclub-dashboard__permission-state">';
 		echo '<span class="tpw-flexiclub-dashboard__status tpw-flexiclub-dashboard__status--warning">' . esc_html__( 'Access restricted', 'tpw-core' ) . '</span>';
-		echo '<h2>' . esc_html__( 'FlexiClub workspace', 'tpw-core' ) . '</h2>';
+		echo '<h2>' . esc_html__( 'iLungu Club workspace', 'tpw-core' ) . '</h2>';
 		echo '<p>' . esc_html( $message ) . '</p>';
 		echo '</div>';
 		echo '</div>';
@@ -310,13 +310,13 @@ class TPW_FlexiClub_Admin_Menu {
 	public static function render_bridge_page() {
 		$config = self::get_current_bridge_config();
 		if ( empty( $config ) ) {
-			wp_die( esc_html__( 'Unknown FlexiClub bridge page.', 'tpw-core' ) );
+			wp_die( esc_html__( 'Unknown iLungu Club bridge page.', 'tpw-core' ) );
 		}
 
 		if ( ! self::current_user_can_bridge( $config ) ) {
 			self::render_page_start(
 				$config['title'],
-				esc_html__( 'You do not have permission to access this FlexiClub bridge page.', 'tpw-core' )
+				esc_html__( 'You do not have permission to access this iLungu Club bridge page.', 'tpw-core' )
 			);
 			echo '<div class="notice notice-error"><p>' . esc_html__( 'Access denied.', 'tpw-core' ) . '</p></div>';
 			self::render_page_end();
@@ -381,7 +381,7 @@ class TPW_FlexiClub_Admin_Menu {
 		}
 
 		self::render_page_start(
-			__( 'FlexiClub Logs', 'tpw-core' ),
+			__( 'iLungu Club Logs', 'tpw-core' ),
 			__( 'Open the existing log screens without duplicating their implementations.', 'tpw-core' )
 		);
 
@@ -394,7 +394,7 @@ class TPW_FlexiClub_Admin_Menu {
 		echo '</tr></thead>';
 		echo '<tbody>';
 		echo '<tr>';
-		echo '<td><strong>' . esc_html__( 'Email Logs', 'tpw-core' ) . '</strong><br />' . esc_html__( 'Existing FlexiClub settings tab for outbound email diagnostics.', 'tpw-core' ) . '</td>';
+		echo '<td><strong>' . esc_html__( 'Email Logs', 'tpw-core' ) . '</strong><br />' . esc_html__( 'Existing iLungu Club settings tab for outbound email diagnostics.', 'tpw-core' ) . '</td>';
 		echo '<td>' . esc_html( 'options-general.php?page=tpw-core-settings&tab=email-logs' ) . '</td>';
 		echo '<td><a class="button button-secondary" href="' . esc_url( admin_url( self::EMAIL_LOGS_ROUTE ) ) . '">' . esc_html__( 'Open', 'tpw-core' ) . '</a></td>';
 		echo '</tr>';
@@ -647,7 +647,7 @@ class TPW_FlexiClub_Admin_Menu {
 		if ( in_array( self::PAGE_MENU_MANAGER, $visible, true ) ) {
 			$items[] = [
 				'label'       => __( 'Menu Permissions', 'tpw-core' ),
-				'description' => __( 'Bridge to the front-end feature that controls WordPress menu visibility and permissions across the FlexiClub ecosystem.', 'tpw-core' ),
+				'description' => __( 'Bridge to the front-end feature that controls WordPress menu visibility and permissions across the iLungu Club ecosystem.', 'tpw-core' ),
 				'type'        => __( 'Bridge', 'tpw-core' ),
 				'url'         => self::get_menu_item_url( self::PAGE_MENU_MANAGER ),
 			];
@@ -656,7 +656,7 @@ class TPW_FlexiClub_Admin_Menu {
 		if ( in_array( self::SYSTEM_PAGES_ROUTE, $visible, true ) ) {
 			$items[] = [
 				'label'       => __( 'System Pages', 'tpw-core' ),
-				'description' => __( 'Existing System Pages tab inside FlexiClub Settings.', 'tpw-core' ),
+				'description' => __( 'Existing System Pages tab inside iLungu Club Settings.', 'tpw-core' ),
 				'type'        => __( 'WP Admin', 'tpw-core' ),
 				'url'         => admin_url( self::SYSTEM_PAGES_ROUTE ),
 			];
@@ -674,7 +674,7 @@ class TPW_FlexiClub_Admin_Menu {
 		if ( in_array( self::SETTINGS_ROUTE, $visible, true ) ) {
 			$items[] = [
 				'label'       => __( 'Settings', 'tpw-core' ),
-				'description' => __( 'Existing FlexiClub settings screen.', 'tpw-core' ),
+				'description' => __( 'Existing iLungu Club settings screen.', 'tpw-core' ),
 				'type'        => __( 'WP Admin', 'tpw-core' ),
 				'url'         => self::get_settings_admin_url(),
 			];
@@ -730,7 +730,7 @@ class TPW_FlexiClub_Admin_Menu {
 			self::PAGE_MENU_MANAGER => [
 				'page_slug'      => self::PAGE_MENU_MANAGER,
 				'title'          => __( 'Menu Permissions', 'tpw-core' ),
-				'description'    => __( 'This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the FlexiClub ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin.', 'tpw-core' ),
+				'description'    => __( 'This bridge describes the menu-permissions feature that controls WordPress menu visibility and access across the iLungu Club ecosystem, then opens the existing front-end implementation without duplicating it in wp-admin.', 'tpw-core' ),
 				'open_label'     => __( 'Open Menu Permissions', 'tpw-core' ),
 				'detector'       => 'tpw-control-section',
 				'shortcode'      => '[tpw-control]',
@@ -1063,7 +1063,7 @@ class TPW_FlexiClub_Admin_Menu {
 			return 0;
 		}
 
-		return (int) TPW_Core_System_Pages::get_page_id( 'flexiclub' );
+		return (int) TPW_Core_System_Pages::get_page_id( 'club-management' );
 	}
 
 	protected static function maybe_assign_frontend_dashboard_page_template() {
@@ -1878,7 +1878,7 @@ class TPW_FlexiClub_Admin_Menu {
 			return '';
 		}
 
-		$page_id = (int) TPW_Core_System_Pages::get_page_id( 'flexiclub' );
+		$page_id = (int) TPW_Core_System_Pages::get_page_id( 'club-management' );
 		if ( $page_id < 1 ) {
 			return '';
 		}
@@ -2110,7 +2110,7 @@ class TPW_FlexiClub_Admin_Menu {
 		}
 
 		$items[] = [
-			'label' => __( 'Extend FlexiClub', 'tpw-core' ),
+			'label' => __( 'Extend iLungu Club', 'tpw-core' ),
 			'url'   => '#tpw-flexiclub-extend',
 		];
 
@@ -2200,7 +2200,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'label'        => __( 'Configure settings', 'tpw-core' ),
 				'description'  => self::append_frontend_route_note(
-					__( 'Review branding, login, and shared FlexiClub platform settings.', 'tpw-core' ),
+					__( 'Review branding, login, and shared iLungu Club platform settings.', 'tpw-core' ),
 					isset( $settings_route['message'] ) ? (string) $settings_route['message'] : ''
 				),
 				'done'         => ! empty( $settings_summary['configured'] ),
@@ -2262,7 +2262,7 @@ class TPW_FlexiClub_Admin_Menu {
 
 		if ( '' === $workspace_url ) {
 			return self::build_frontend_pending_route_state(
-				__( 'The FlexiClub portal page must be available before the front-end System Pages workspace can be opened.', 'tpw-core' )
+				__( 'The iLungu Club portal page must be available before the front-end System Pages workspace can be opened.', 'tpw-core' )
 			);
 		}
 
@@ -2270,7 +2270,7 @@ class TPW_FlexiClub_Admin_Menu {
 			'configured'   => true,
 			'url'          => $workspace_url,
 			'action_label' => __( 'Open System Pages', 'tpw-core' ),
-			'message'      => __( 'Validate, repair, and recreate registered system pages from the FlexiClub portal.', 'tpw-core' ),
+			'message'      => __( 'Validate, repair, and recreate registered system pages from the iLungu Club portal.', 'tpw-core' ),
 			'status_label' => __( 'Ready', 'tpw-core' ),
 			'status_tone'  => 'neutral',
 		];
@@ -2285,7 +2285,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'configured'   => true,
 				'url'          => $workspace_url,
 				'action_label' => __( 'Open Logs', 'tpw-core' ),
-				'message'      => __( 'Review email and payment logs from the FlexiClub portal.', 'tpw-core' ),
+				'message'      => __( 'Review email and payment logs from the iLungu Club portal.', 'tpw-core' ),
 				'status_label' => __( 'Ready', 'tpw-core' ),
 				'status_tone'  => 'neutral',
 			];
@@ -2296,14 +2296,14 @@ class TPW_FlexiClub_Admin_Menu {
 				'configured'   => true,
 				'url'          => (string) $direct_status['open_url'],
 				'action_label' => __( 'Open Logs page', 'tpw-core' ),
-				'message'      => __( 'Dedicated front-end Logs page using the FlexiClub portal shell.', 'tpw-core' ),
+				'message'      => __( 'Dedicated front-end Logs page using the iLungu Club portal shell.', 'tpw-core' ),
 				'status_label' => __( 'Ready', 'tpw-core' ),
 				'status_tone'  => 'neutral',
 			];
 		}
 
 		return self::build_frontend_pending_route_state(
-			__( 'The FlexiClub portal page must be available before the front-end Logs workspace can be opened.', 'tpw-core' ),
+			__( 'The iLungu Club portal page must be available before the front-end Logs workspace can be opened.', 'tpw-core' ),
 			__( 'Open admin logs (temporary)', 'tpw-core' ),
 			admin_url( 'admin.php?page=' . self::PAGE_LOGS )
 		);
@@ -2314,7 +2314,7 @@ class TPW_FlexiClub_Admin_Menu {
 
 		if ( '' === $workspace_url ) {
 			return self::build_frontend_pending_route_state(
-				__( 'The FlexiClub portal page must be available before the front-end Settings workspace can be opened.', 'tpw-core' ),
+				__( 'The iLungu Club portal page must be available before the front-end Settings workspace can be opened.', 'tpw-core' ),
 				__( 'Open admin settings (temporary)', 'tpw-core' ),
 				self::get_settings_admin_url( 'payment-methods' === $tab ? 'payment-methods' : '' )
 			);
@@ -2329,7 +2329,7 @@ class TPW_FlexiClub_Admin_Menu {
 			'action_label' => 'payment-methods' === $tab ? __( 'Open Payments', 'tpw-core' ) : __( 'Open Settings', 'tpw-core' ),
 			'message'      => 'payment-methods' === $tab
 				? __( 'Manage payment methods from the front-end Settings workspace.', 'tpw-core' )
-				: __( 'Review branding, login, email, and shared FlexiClub platform settings from the portal.', 'tpw-core' ),
+				: __( 'Review branding, login, email, and shared iLungu Club platform settings from the portal.', 'tpw-core' ),
 			'status_label' => __( 'Ready', 'tpw-core' ),
 			'status_tone'  => 'neutral',
 		];
@@ -2383,7 +2383,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'configured'   => true,
 				'url'          => $workspace_url,
 				'action_label' => $workspace_label,
-				'message'      => __( 'Preferred front-end workspace route inside the FlexiClub portal.', 'tpw-core' ),
+				'message'      => __( 'Preferred front-end workspace route inside the iLungu Club portal.', 'tpw-core' ),
 				'status_label' => __( 'Ready', 'tpw-core' ),
 				'status_tone'  => 'neutral',
 				'direct_url'   => $direct_url,
@@ -2395,7 +2395,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'configured'   => false,
 				'url'          => $direct_url,
 				'action_label' => __( 'Open dedicated page', 'tpw-core' ),
-				'message'      => __( 'The FlexiClub portal page is not currently available, so the dedicated workspace page is being used instead.', 'tpw-core' ),
+				'message'      => __( 'The iLungu Club portal page is not currently available, so the dedicated workspace page is being used instead.', 'tpw-core' ),
 				'status_label' => __( 'Needs review', 'tpw-core' ),
 				'status_tone'  => 'warning',
 				'direct_url'   => $direct_url,
@@ -2406,7 +2406,7 @@ class TPW_FlexiClub_Admin_Menu {
 			'configured'   => false,
 			'url'          => $diagnostics_url,
 			'action_label' => __( 'Open diagnostics', 'tpw-core' ),
-			'message'      => __( 'The FlexiClub portal page must be available before this front-end workspace can be opened.', 'tpw-core' ),
+			'message'      => __( 'The iLungu Club portal page must be available before this front-end workspace can be opened.', 'tpw-core' ),
 			'status_label' => __( 'Needs review', 'tpw-core' ),
 			'status_tone'  => 'warning',
 			'direct_url'   => '',
@@ -2735,7 +2735,7 @@ class TPW_FlexiClub_Admin_Menu {
 
 			if ( 0 === $summary['registered'] ) {
 				$notice_tone = 'warning';
-				$notice_text = __( 'No registered system pages were found in the current FlexiClub ecosystem registry.', 'tpw-core' );
+				$notice_text = __( 'No registered system pages were found in the current iLungu Club ecosystem registry.', 'tpw-core' );
 			} elseif ( 0 === $summary['missing'] && 0 === $summary['needs_attention'] ) {
 				$notice_tone = 'success';
 				$notice_text = __( 'All registered system pages are linked, published, and ready to use.', 'tpw-core' );
@@ -2879,6 +2879,7 @@ class TPW_FlexiClub_Admin_Menu {
 		$slug              = isset( $row->slug ) ? sanitize_key( (string) $row->slug ) : '';
 		$registered_title  = isset( $row->title ) ? (string) $row->title : $slug;
 		$registered_plugin = isset( $row->plugin ) ? (string) $row->plugin : '';
+		$plugin_label      = 'tpw-core' === $registered_plugin ? __( 'iLungu Club', 'tpw-core' ) : $registered_plugin;
 		$shortcode         = isset( $row->shortcode ) ? trim( (string) $row->shortcode ) : '';
 		$is_legacy_workspace = 'tpw-control' === $slug;
 		$required          = ! empty( $row->required );
@@ -3003,6 +3004,7 @@ class TPW_FlexiClub_Admin_Menu {
 			'slug'             => $slug,
 			'title'            => $registered_title,
 			'plugin'           => '' !== $registered_plugin ? $registered_plugin : __( 'tpw-core', 'tpw-core' ),
+			'plugin_label'     => '' !== $plugin_label ? $plugin_label : __( 'tpw-core', 'tpw-core' ),
 			'legacy_label'     => $legacy_label,
 			'legacy_message'   => $legacy_message,
 			'shortcode'        => '' !== $shortcode ? $shortcode : __( 'No shortcode registered', 'tpw-core' ),
@@ -3075,8 +3077,8 @@ class TPW_FlexiClub_Admin_Menu {
 			'title'               => $is_menu ? __( 'Menu Management', 'tpw-core' ) : __( 'Archival System', 'tpw-core' ),
 			'hero_title'          => $is_menu ? __( 'Menu Management Workspace', 'tpw-core' ) : __( 'Archival System Workspace', 'tpw-core' ),
 			'hero_copy'           => $is_menu
-				? __( 'Manage the existing front-end menu visibility and navigation controls from the FlexiClub portal without changing the underlying permissions engine.', 'tpw-core' )
-				: __( 'Manage the existing archive pages and file uploads from the FlexiClub portal without changing the underlying archive logic.', 'tpw-core' ),
+				? __( 'Manage the existing front-end menu visibility and navigation controls from the iLungu Club portal without changing the underlying permissions engine.', 'tpw-core' )
+				: __( 'Manage the existing archive pages and file uploads from the iLungu Club portal without changing the underlying archive logic.', 'tpw-core' ),
 			'status_label'        => isset( $summary['status_label'] ) ? (string) $summary['status_label'] : ( isset( $route['status_label'] ) ? (string) $route['status_label'] : __( 'Ready', 'tpw-core' ) ),
 			'status_tone'         => isset( $summary['status_tone'] ) ? (string) $summary['status_tone'] : ( isset( $route['status_tone'] ) ? (string) $route['status_tone'] : 'neutral' ),
 			'metric_label'        => $is_menu ? __( 'Menus', 'tpw-core' ) : __( 'Archive Pages', 'tpw-core' ),
@@ -3087,12 +3089,12 @@ class TPW_FlexiClub_Admin_Menu {
 			'dedicated_label'     => $is_menu ? __( 'Open dedicated Menu Management page', 'tpw-core' ) : __( 'Open dedicated Archival System page', 'tpw-core' ),
 			'legacy_url'          => $legacy_url,
 			'legacy_notice_label' => __( 'Legacy Workspace', 'tpw-core' ),
-			'legacy_notice_text'  => __( 'FlexiClub Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces.', 'tpw-core' ),
+			'legacy_notice_text'  => __( 'iLungu Club Control has been split. Keep the legacy combined page only for compatibility during the transition; new launches should use the separate workspaces.', 'tpw-core' ),
 			'section_key'         => $is_menu ? 'menu-manager' : 'upload-pages',
 			'tool_heading'        => $is_menu ? __( 'Current Menu Management tool', 'tpw-core' ) : __( 'Current Archival System tool', 'tpw-core' ),
 			'tool_copy'           => $is_menu
-				? __( 'This workspace embeds the existing front-end menu-management section inside the FlexiClub portal shell.', 'tpw-core' )
-				: __( 'This workspace embeds the existing front-end archive section inside the FlexiClub portal shell.', 'tpw-core' ),
+				? __( 'This workspace embeds the existing front-end menu-management section inside the iLungu Club portal shell.', 'tpw-core' )
+				: __( 'This workspace embeds the existing front-end archive section inside the iLungu Club portal shell.', 'tpw-core' ),
 		];
 	}
 
@@ -3118,17 +3120,17 @@ class TPW_FlexiClub_Admin_Menu {
 
 		$message = '';
 		if ( empty( $section_keys ) ) {
-			$message = __( 'No FlexiClub Control admin sections are currently available for your role.', 'tpw-core' );
+			$message = __( 'No iLungu Club Control admin sections are currently available for your role.', 'tpw-core' );
 		} elseif ( ! empty( $status['page_exists'] ) && empty( $status['shortcode_present'] ) ) {
-			$message = __( 'A compatible FlexiClub Control page exists, but the expected shortcode is missing from its content.', 'tpw-core' );
+			$message = __( 'A compatible iLungu Club Control page exists, but the expected shortcode is missing from its content.', 'tpw-core' );
 		} elseif ( empty( $status['page_exists'] ) ) {
-			$message = __( 'No compatible FlexiClub Control page is currently configured.', 'tpw-core' );
+			$message = __( 'No compatible iLungu Club Control page is currently configured.', 'tpw-core' );
 		}
 
 		return [
 			'configured'    => $configured,
 			'url'           => $configured ? (string) $status['page_url'] : $diagnostics_url,
-			'action_label'  => $configured ? __( 'Open FlexiClub Control', 'tpw-core' ) : ( '' !== $diagnostics_url ? __( 'Open diagnostics', 'tpw-core' ) : '' ),
+			'action_label'  => $configured ? __( 'Open iLungu Club Control', 'tpw-core' ) : ( '' !== $diagnostics_url ? __( 'Open diagnostics', 'tpw-core' ) : '' ),
 			'message'       => $message,
 			'status_label'  => '' !== $diagnostics_url ? __( 'Needs review', 'tpw-core' ) : __( 'Missing', 'tpw-core' ),
 			'status_tone'   => '' !== $diagnostics_url ? 'warning' : 'error',
@@ -3523,7 +3525,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'             => __( 'FlexiEvent', 'tpw-core' ),
 				'description'      => __( 'Events, scheduling, and club activities.', 'tpw-core' ),
-				'icon_url'         => self::get_plugin_icon_url( 'flexievent-icon.svg' ),
+				'icon_url'         => self::get_plugin_icon_url( 'ilunguevent-icon.svg' ),
 				'plugin_names'     => [ 'FlexiEvent', 'TPW FlexiEvent' ],
 				'text_domains'     => [ 'flexievent', 'tpw-flexievent' ],
 				'basenames'        => [ 'flexievent/flexievent.php', 'tpw-flexievent/flexievent.php', 'tpw-flexievent/tpw-flexievent.php' ],
@@ -3538,7 +3540,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'FlexiSubscriptions', 'tpw-core' ),
 				'description'  => __( 'Membership subscriptions and renewals.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexisubscriptions-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilungusubscriptions-icon.svg' ),
 				'plugin_names' => [ 'FlexiSubscriptions', 'TPW FlexiSubscriptions' ],
 				'text_domains' => [ 'flexisubscriptions', 'tpw-flexisubscriptions' ],
 				'basenames'    => [ 'flexisubscriptions/flexisubscriptions.php', 'tpw-flexisubscriptions/flexisubscriptions.php', 'tpw-flexisubscriptions/tpw-flexisubscriptions.php' ],
@@ -3550,7 +3552,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'FlexiTicket', 'tpw-core' ),
 				'description'  => __( 'Ticketing and event sales for members.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexiticket-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilunguticket-icon.svg' ),
 				'plugin_names' => [ 'FlexiTicket', 'TPW FlexiTicket' ],
 				'text_domains' => [ 'flexiticket', 'tpw-flexiticket' ],
 				'basenames'    => [ 'flexiticket/flexiticket.php', 'tpw-flexiticket/flexiticket.php', 'tpw-flexiticket/tpw-flexiticket.php' ],
@@ -3562,7 +3564,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'FlexiLedger', 'tpw-core' ),
 				'description'  => __( 'Financial tracking and reconciliation tools.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexiledger-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilunguledger-icon.svg' ),
 				'plugin_names' => [ 'FlexiLedger', 'TPW FlexiLedger' ],
 				'text_domains' => [ 'flexiledger', 'tpw-flexiledger' ],
 				'basenames'    => [ 'flexiledger/flexiledger.php', 'tpw-flexiledger/flexiledger.php', 'tpw-flexiledger/tpw-flexiledger.php' ],
@@ -3573,7 +3575,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'             => __( 'FlexiGolf', 'tpw-core' ),
 				'description'      => __( 'Fixtures, results, and match administration.', 'tpw-core' ),
-				'icon_url'         => self::get_plugin_icon_url( 'flexigolf-icon.svg' ),
+				'icon_url'         => self::get_plugin_icon_url( 'ilungugolf-icon.svg' ),
 				'plugin_names'     => [ 'FlexiGolf', 'TPW FlexiGolf' ],
 				'text_domains'     => [ 'flexigolf', 'tpw-flexigolf' ],
 				'basenames'        => [ 'flexigolf/flexigolf.php', 'flexigolf/flexigolf-main.php', 'tpw-flexigolf/tpw-flexigolf.php', 'tpw-flexigolf/tpw-flexigolf-main.php' ],
@@ -3584,7 +3586,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'FlexiPolicy', 'tpw-core' ),
 				'description'  => __( 'Club documents, policy delivery, and acknowledgements.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexipolicy-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilungupolicy-icon.svg' ),
 				'plugin_names' => [ 'FlexiPolicy', 'TPW FlexiPolicy' ],
 				'text_domains' => [ 'flexipolicy', 'tpw-flexipolicy' ],
 				'basenames'    => [ 'flexipolicy/flexipolicy.php', 'tpw-flexipolicy/flexipolicy.php', 'tpw-flexipolicy/tpw-flexipolicy.php' ],
@@ -3593,7 +3595,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'FlexiRota', 'tpw-core' ),
 				'description'  => __( 'Volunteer and duty rota planning.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexirota-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilungurota-icon.svg' ),
 				'plugin_names' => [ 'FlexiRota', 'TPW FlexiRota' ],
 				'text_domains' => [ 'flexirota', 'tpw-flexirota' ],
 				'basenames'    => [ 'flexirota/flexirota.php', 'tpw-flexirota/flexirota.php', 'tpw-flexirota/tpw-flexirota.php' ],
@@ -3602,7 +3604,7 @@ class TPW_FlexiClub_Admin_Menu {
 			[
 				'name'         => __( 'Lodge RSVP', 'tpw-core' ),
 				'description'  => __( 'Responses, attendance, and payment-ready RSVPs.', 'tpw-core' ),
-				'icon_url'     => self::get_plugin_icon_url( 'flexilodgersvp-icon.svg' ),
+				'icon_url'     => self::get_plugin_icon_url( 'ilungulodgersvp-icon.svg' ),
 				'plugin_names' => [ 'Lodge RSVP', 'TPW RSVP Lodge Meetings', 'RSVP Lodge Meetings' ],
 				'text_domains' => [ 'lodge-rsvp', 'tpw-lodge-rsvp', 'tpw-rsvp-lodge-meetings' ],
 				'basenames'    => [ 'lodge-rsvp/lodge-rsvp.php', 'tpw-lodge-rsvp/tpw-lodge-rsvp.php', 'tpw-rsvp-lodge-meetings/tpw-rsvp-lodge-meetings.php' ],
@@ -3820,7 +3822,7 @@ class TPW_FlexiClub_Admin_Menu {
 			],
 			[
 				'label'       => __( 'Configure settings', 'tpw-core' ),
-				'description' => __( 'Review branding, login, and shared FlexiClub platform settings.', 'tpw-core' ),
+				'description' => __( 'Review branding, login, and shared iLungu Club platform settings.', 'tpw-core' ),
 				'done'        => ! empty( $settings_summary['configured'] ),
 				'url'         => self::get_settings_admin_url(),
 			],
@@ -3870,7 +3872,7 @@ class TPW_FlexiClub_Admin_Menu {
 
 		if ( empty( $items ) ) {
 			$items[] = [
-				'title'     => __( 'Activity will appear here as your club starts using FlexiClub.', 'tpw-core' ),
+				'title'     => __( 'Activity will appear here as your club starts using iLungu Club.', 'tpw-core' ),
 				'meta'      => __( 'System activity', 'tpw-core' ),
 				'time'      => __( 'Just now', 'tpw-core' ),
 				'timestamp' => time(),
@@ -4033,7 +4035,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'required_complete'=> false,
 				'status_label'     => __( 'Missing', 'tpw-core' ),
 				'status_tone'      => 'error',
-				'metric_text'      => __( 'Review the current system page assignments for FlexiClub and add-on features.', 'tpw-core' ),
+				'metric_text'      => __( 'Review the current system page assignments for iLungu Club and add-on features.', 'tpw-core' ),
 				'metric_value'     => __( 'Missing', 'tpw-core' ),
 				'card_text'        => __( 'The full registered system-page set could not be resolved safely on this request.', 'tpw-core' ),
 			];
@@ -4064,7 +4066,7 @@ class TPW_FlexiClub_Admin_Menu {
 				'required_complete'=> false,
 				'status_label'     => __( 'Missing', 'tpw-core' ),
 				'status_tone'      => 'error',
-				'metric_text'      => __( 'Review the current system page assignments for FlexiClub and add-on features.', 'tpw-core' ),
+				'metric_text'      => __( 'Review the current system page assignments for iLungu Club and add-on features.', 'tpw-core' ),
 				'metric_value'     => __( 'Missing', 'tpw-core' ),
 				'card_text'        => __( 'No registered system pages were found in the resolved ecosystem registry.', 'tpw-core' ),
 			];
@@ -4292,7 +4294,7 @@ class TPW_FlexiClub_Admin_Menu {
 			'metric_value' => __( 'Available', 'tpw-core' ),
 			'card_text'    => $configured
 				? __( 'Core branding, login, and platform settings are ready to review or refine.', 'tpw-core' )
-				: __( 'Review the main FlexiClub settings to tailor the platform for your club.', 'tpw-core' ),
+				: __( 'Review the main iLungu Club settings to tailor the platform for your club.', 'tpw-core' ),
 		];
 	}
 
@@ -4520,16 +4522,16 @@ class TPW_FlexiClub_Admin_Menu {
 	}
 
 	protected static function get_dashboard_logo_url() {
-		return self::get_plugin_icon_url( 'flexiclub-logo-horizontal.svg' );
+		return self::get_plugin_icon_url( 'iLunguclub-logo-horizontal.svg' );
 	}
 
 	protected static function get_dashboard_icon_url() {
-		$icon = self::get_plugin_icon_url( 'flexiclub-logo-icon.svg' );
+		$icon = self::get_plugin_icon_url( 'ilunguclub-icon.svg' );
 		if ( '' !== $icon ) {
 			return $icon;
 		}
 
-		return self::get_plugin_icon_url( 'flexiclub-icon.svg' );
+		return self::get_plugin_icon_url( 'ilunguclub-icon-300.png' );
 	}
 
 	protected static function get_plugin_icon_url( $filename ) {

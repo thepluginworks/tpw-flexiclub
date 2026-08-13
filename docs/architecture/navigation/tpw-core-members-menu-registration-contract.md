@@ -1,29 +1,29 @@
-# TPW Core – Members Menu Registration Contract
+# Shared Plugin Framework – Members Menu Registration Contract
 
 **Status:** Authoritative  
-**Applies to:** The Core-managed FlexiClub Members Menu and add-on plugins that contribute managed member-facing items  
+**Applies to:** The shared-framework-managed iLungu™ Club Members Menu and add-on plugins that contribute managed member-facing items
 **Audience:** Developers, Maintainers, QA
 
 ## 1. Purpose
 
-This contract defines how TPW Core and add-on plugins register managed items into the FlexiClub Members Menu without writing nav-menu items directly.
+This contract defines how the shared plugin framework and add-on plugins register managed items into the iLungu Club Members Menu without writing nav-menu items directly.
 
-The Members Menu is a Core-managed menu surface. Add-on plugins must contribute item specifications through the Core registration filter so seeding, repair, visibility, duplicate prevention, and provider lifecycle stay consistent.
+The Members Menu is a shared-framework-managed menu surface. Add-on plugins must contribute item specifications through the shared-framework registration filter so seeding, repair, visibility, duplicate prevention, and provider lifecycle stay consistent.
 
 ## 2. Ownership Model
 
-The FlexiClub Members Menu is managed by Core.
+The iLungu Club Members Menu is managed by the shared plugin framework.
 
 That means:
 
-- Core seeds and repairs the menu items
-- Core stores the item metadata used for duplicate prevention and visibility
-- Core evaluates managed Members Menu visibility on the front end
-- add-ons register item specifications through the Core filter
+- The shared framework seeds and repairs the menu items
+- The shared framework stores the item metadata used for duplicate prevention and visibility
+- The shared framework evaluates managed Members Menu visibility on the front end
+- add-ons register item specifications through the shared-framework filter
 - add-ons must not call `wp_update_nav_menu_item()` directly for managed Members Menu entries
 - add-ons must not filter `wp_nav_menu_objects` to hide or show their own managed Members Menu items
 
-Site-owned custom menu items may still exist in the same menu, but Core must not rewrite or delete those custom items.
+Site-owned custom menu items may still exist in the same menu, but the shared framework must not rewrite or delete those custom items.
 
 ## 3. Registration Hook
 
@@ -43,10 +43,10 @@ apply_filters( 'tpw_core/member_menu_items', $items, $context )
 
 Where:
 
-- `$items` is the current ordered list of managed item specs, including Core defaults
+- `$items` is the current ordered list of managed item specs, including shared-framework defaults
 - `$context` is an array of shared registration context values, currently including `allowed_statuses`
 
-Core defaults are registered through the same path before the filter runs.
+Shared-framework defaults are registered through the same path before the filter runs.
 
 ## 4. Item Specification
 
@@ -58,7 +58,7 @@ Managed Members Menu items use the following contract fields.
 - `provider` — plugin/provider key, for example `flexievent`
 - `title` — visible menu label
 - `requires_login` — whether the item should be hidden from logged-out users
-- `visibility` — Core visibility rules for the menu item
+- `visibility` — shared-framework visibility rules for the menu item
 
 ### 4.2 Preferred destination field
 
@@ -77,12 +77,12 @@ Managed Members Menu items use the following contract fields.
 
 ## 5. URL Resolution
 
-Core resolves the final menu URL from the item specification.
+The shared framework resolves the final menu URL from the item specification.
 
 Resolution order:
 
-1. explicit Core-managed `url` when present for special internal items such as Logout
-2. special Core route handling where required, such as `my-profile`
+1. explicit shared-framework-managed `url` when present for special internal items such as Logout
+2. special shared-framework route handling where required, such as `my-profile`
 3. `system_slug` via `TPW_Core_System_Pages::get_permalink()`
 4. `shortcode_tag` plus `fallback_slug` via the shared shortcode-page resolver
 5. conventional `site_url( '/{fallback_slug}/' )` fallback
@@ -91,7 +91,7 @@ Add-ons should prefer `system_slug` for new managed plugin screens.
 
 ## 6. Ordering Rules
 
-Core normalizes the final managed item order before repair or seeding.
+The shared framework normalizes the final managed item order before repair or seeding.
 
 Rules:
 
@@ -99,7 +99,7 @@ Rules:
 - `after_key` and `before_key` adjust the managed sequence declaratively
 - `logout` is always forced to the last managed position
 
-Core uses the normalized managed order during repair and seeding.
+The shared framework uses the normalized managed order during repair and seeding.
 
 ## 7. Duplicate Prevention
 
@@ -116,7 +116,7 @@ The item `key` is the canonical unique identifier. Add-ons must keep keys stable
 
 ## 8. Stored Metadata
 
-Core stores the following metadata on managed nav menu items:
+The shared framework stores the following metadata on managed nav menu items:
 
 - `_tpw_member_menu_default_key`
 - `_tpw_member_menu_provider`
@@ -128,30 +128,30 @@ This metadata is used for repair, visibility filtering, and provider lifecycle h
 
 ## 9. Provider Lifecycle
 
-If a previously managed item is no longer present in the current managed-item registry, Core may remove that managed nav-menu item during repair or seeding.
+If a previously managed item is no longer present in the current managed-item registry, the shared framework may remove that managed nav-menu item during repair or seeding.
 
-This rule applies only to Core-managed items carrying managed metadata.
+This rule applies only to shared-framework-managed items carrying managed metadata.
 
-Core must not delete or rewrite arbitrary site-owned custom items.
+The shared framework must not delete or rewrite arbitrary site-owned custom items.
 
 Implications:
 
 - plugin activation: the add-on starts contributing its managed item spec through the filter
-- plugin deactivation: the add-on stops contributing the spec, and the next Core repair or seed pass may remove that stale managed item
-- plugin uninstall: no extra custom-menu cleanup path is required if the managed item is already removed by the normal Core repair flow
+- plugin deactivation: the add-on stops contributing the spec, and the next shared-framework repair or seed pass may remove that stale managed item
+- plugin uninstall: no extra custom-menu cleanup path is required if the managed item is already removed by the normal shared-framework repair flow
 
 ## 10. Visibility Contract
 
-Managed Members Menu items use the current Core menu visibility model:
+Managed Members Menu items use the current shared-framework menu visibility model:
 
 - `requires_login`
 - `visibility`
 
-Core owns the full visibility evaluation path for managed Members Menu items.
+The shared framework owns the full visibility evaluation path for managed Members Menu items.
 
 Add-ons must only declare metadata through the item specification. Add-ons must not implement separate front-end Members Menu visibility guards for those managed items.
 
-Current `visibility` support is the same flat model already used by Core-managed Members Menu items, including:
+Current `visibility` support is the same flat model already used by shared-framework-managed Members Menu items, including:
 
 - status arrays under `status`
 - role or flag booleans such as `is_admin`, `is_committee`, `is_match_manager`, `is_noticeboard_admin`, and `is_gallery_admin`
@@ -165,7 +165,7 @@ Plugin-owned Members Menu destinations should be registry-driven through System 
 Recommended pattern:
 
 1. register the plugin page through `TPW_Core_System_Pages::register_page()`
-2. ensure the page exists through the normal plugin/Core lifecycle
+2. ensure the page exists through the normal plugin/shared-framework lifecycle
 3. reference that route from the Members Menu item via `system_slug`
 
 `shortcode_tag` and `fallback_slug` remain compatibility paths, not the preferred contract for new plugin-owned screens.

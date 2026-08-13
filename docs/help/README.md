@@ -1,21 +1,21 @@
-# TPW Core — Help Topics Index
+# Shared Plugin Framework — Help Topics Index
 
 A quick index of module help topics for browsing in GitHub and for reference from Admin Help.
 
 - [Shared UI Wrapper and Enqueue Contract](../architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md)
-  - Canonical wrapper, component-scope, and asset-loading contract for TPW Core and consumer plugins.
+  - Canonical wrapper, component-scope, and asset-loading contract for the shared plugin framework and consumer plugins.
 
 - [Members](members.md)
   - Manage member records, profile shortcode, login redirect, and extension hooks.
 - [Payments](payments.md)
   - Gateway settings, webhooks, `tpw_payment_completed` action, and logger references.
 - [Payments Integration](payments-integration.md)
-  - For external plugins (e.g., FlexiTicket, RSVP): enqueue Core assets, radio input contract, Square container IDs, JS events, `TPW_Core_Payments::create_payment()`, config localization, and an example checkout flow.
+  - For external plugins (e.g., FlexiTicket, RSVP): enqueue shared-framework assets, radio input contract, Square container IDs, JS events, `TPW_Core_Payments::create_payment()`, config localization, and an example checkout flow.
 - [System Pages](system-pages.md)
   - Register/ensure required front‑end pages and resolve links.
   - Canonical protection contract: [../architecture/system-pages/tpw-core-system-page-protection-contract.md](../architecture/system-pages/tpw-core-system-page-protection-contract.md)
 - [Members Menu Registration Contract](../architecture/navigation/tpw-core-members-menu-registration-contract.md)
-  - Canonical developer contract for Core-managed Members Menu items contributed by add-on plugins.
+  - Canonical developer contract for shared-framework-managed Members Menu items contributed by add-on plugins.
 - [Menus](menus.md)
   - Event menu creation, modal rendering hooks, and template override notes.
 - [Postcodes](postcodes.md)
@@ -34,4 +34,4 @@ A quick index of module help topics for browsing in GitHub and for reference fro
 - [Notices](notices.md)
   - Noticeboard overview, posting workflow, and hooks.
 
-See also: Core Hooks Index → ../developer-guide.md#core-hooks-index
+See also: Shared Framework Hooks Index → ../developer-guide.md#core-hooks-index

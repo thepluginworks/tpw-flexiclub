@@ -5,6 +5,9 @@
 /docs export-ignore
 /ai-session.md export-ignore
 /RELEASE.md export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/tests/playwright export-ignore
 /*.yml export-ignore
 /*.yaml export-ignore
 /*.xml export-ignore

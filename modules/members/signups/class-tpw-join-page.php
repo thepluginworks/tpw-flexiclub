@@ -368,24 +368,11 @@ class TPW_Join_Page {
 	 * @return int
 	 */
 	private static function create_join_page() {
-		$page_id = wp_insert_post(
-			array(
-				'post_type'      => 'page',
-				'post_status'    => 'publish',
-				'post_title'     => __( 'Join', 'tpw-core' ),
-				'post_name'      => self::SYSTEM_PAGE_KEY,
-				'post_content'   => '[' . self::SHORTCODE_TAG . ']',
-				'comment_status' => 'closed',
-				'ping_status'    => 'closed',
-			),
-			true
-		);
-
-		if ( is_wp_error( $page_id ) ) {
+		if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
 			return 0;
 		}
 
-		return (int) $page_id;
+		return (int) TPW_Core_System_Pages::ensure_page( self::SYSTEM_PAGE_KEY );
 	}
 
 	/**

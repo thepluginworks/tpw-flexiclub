@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: FlexiClub
+ * Plugin Name: iLungu™ Club
  * Plugin URI: https://thepluginworks.com/
- * Description: Free base platform for shared member, payment, page, branding, and admin tools across the FlexiClub ecosystem.
+ * Description: Free base platform for shared member, payment, page, branding, and admin tools across the iLungu Club ecosystem.
  * Author: ThePluginWorks
  * Author URI: https://thepluginworks.com/
- * Version: 2.10.2
+ * Version: 2.11.0
  * Text Domain: tpw-core
  * Domain Path: /languages
  */
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( ! defined( 'TPW_CORE_VERSION' ) ) {
-    define( 'TPW_CORE_VERSION', '2.10.2' );
+    define( 'TPW_CORE_VERSION', '2.11.0' );
 }
 
 if ( ! defined( 'TPW_PAYMENTS_DB_VERSION' ) ) {

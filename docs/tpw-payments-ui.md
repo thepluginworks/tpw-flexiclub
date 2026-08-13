@@ -1,6 +1,6 @@
-# TPW Payments UI — My Payments Hub
+# Shared Plugin Framework Payments UI — My Payments Hub
 
-This guide defines the layout, styling, and behaviour standards for the My Payments Hub in TPW Core. It aligns with Core Branding and Admin UI patterns so add‑ons feel consistent across pages.
+This guide defines the layout, styling, and behaviour standards for the My Payments Hub in the shared plugin framework. It aligns with shared-framework Branding and Admin UI patterns so add-ons feel consistent across pages.
 
 Applies to: wp‑admin pages and front‑end pages wrapped with the TPW admin UI scope.
 
@@ -10,7 +10,7 @@ Canonical contract: [architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](ar
 
 ## Enqueue and scope
 
-Use the same Core styles that power other admin‑like UIs.
+Use the same shared-framework styles that power other admin-like UIs.
 
 This document is module-specific guidance for the Payments Hub. The wrapper and enqueue contract itself is defined in [architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md](architecture/ui/tpw-core-ui-wrapper-enqueue-contract.md).
 
@@ -52,7 +52,7 @@ echo '</div>';
 Payments Hub uses a two‑pane structure: a left sidebar for sections and a right content area for the active view.
 
 Required classes
-- `.tpw-admin-wrapper` — optional wrapper when embedding inside other Core modules; inherits Core admin helpers.
+- `.tpw-admin-wrapper` — optional wrapper when embedding inside other shared-framework modules; inherits shared-framework admin helpers.
 - `.tpw-sidebar` — left navigation column; contains the section menu.
 - `.tpw-menu` — vertical list of links/tabs within the sidebar.
 - `.tpw-content` — main content area; scroll host for long tables/forms.
@@ -126,9 +126,9 @@ Keyboard
 
 ## CSS class references
 
-Apply these classes within the `.tpw-admin-ui` scope so you inherit Core tokens and resets.
+Apply these classes within the `.tpw-admin-ui` scope so you inherit shared-framework tokens and resets.
 
-- `.tpw-admin-wrapper` — enables Core admin helpers for buttons, tables, notices.
+- `.tpw-admin-wrapper` — enables shared-framework admin helpers for buttons, tables, notices.
 - `.tpw-sidebar` — left column; use a fixed width (e.g., 240px) with sticky positioning.
 - `.tpw-menu` — unstyled list inside the sidebar; add `.is-active` to the current `<a>`.
 - `.tpw-content` — right column; flexible width; contains cards, forms, tables.
@@ -164,9 +164,9 @@ Example table markup
 
 ---
 
-## Core tokens and theming
+## Shared Framework Tokens and Theming
 
-Use Core CSS Custom Properties for colors, typography, radii, and component styling. The Branding and UI Theme tabs emit tokens into the page head automatically.
+Use shared-framework CSS Custom Properties for colors, typography, radii, and component styling. The Branding and UI Theme tabs emit tokens into the page head automatically.
 
 Common tokens
 - Colors (front‑end helpers): `--tpw-primary`, `--tpw-accent`, `--tpw-bg-light`, `--tpw-text-dark`, `--tpw-border` (from `assets/css/tpw-ui.css`).
@@ -193,7 +193,7 @@ Examples
 ```
 
 Notes
-- You don’t need to re‑emit tokens; Core injects them into both admin and front‑end heads. Use the wrapper `.tpw-admin-ui` to scope resets and fonts.
+- You do not need to re-emit tokens; the shared framework injects them into both admin and front-end heads. Use the wrapper `.tpw-admin-ui` to scope resets and fonts.
 - Prefer `.tpw-btn` classes for actions; they already consume branding tokens.
 
 ---
@@ -248,7 +248,7 @@ add_filter( 'tpw_core_register_payment_sources', function( array $sources ) {
 
 Rendering
 - If you provide `callback`, it will be called to render the content inside `.tpw-content`.
-- If you omit `callback`, the router should fire `do_action( 'tpw_payments_render_source_' . $slug, $section )` — keep your renderer hooked to that action. This mirrors other Core hubs.
+- If you omit `callback`, the router should fire `do_action( 'tpw_payments_render_source_' . $slug, $section )` — keep your renderer hooked to that action. This mirrors other shared-framework hubs.
 
 Active URL
 - Build links using your hub base (admin or front‑end) and append `?tab=<slug>` or `&source=<slug>` per your router. Keep the `<a>` in the sidebar and mark the current one with `.is-active` and `aria-current="page"`.
@@ -282,7 +282,7 @@ add_filter( 'tpw_core_register_payment_sources', function( $sources ) {
 });
 ```
 
-2) Use Core buttons and tokens in actions
+2) Use shared-framework buttons and tokens in actions
 
 ```html
 <div class="tpw-actions">
@@ -295,7 +295,7 @@ add_filter( 'tpw_core_register_payment_sources', function( $sources ) {
 
 ## Notes and conventions
 
-- Keep your markup inside `.tpw-admin-ui` so Core can apply typography and component tokens.
+- Keep your markup inside `.tpw-admin-ui` so the shared framework can apply typography and component tokens.
 - Use `.tpw-card` for panels; use `.tpw-table-container` for lists.
 - Keep side effects (enqueue, nonces, saving) in your PHP and keep templates free of business logic.
 - For front‑end embeds, prefer adding an outer `.tpw-frontend-ui` class as needed; the admin scope works in both contexts.

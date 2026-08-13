@@ -106,6 +106,28 @@ if ( ! function_exists( 'tpw_core_maybe_ensure_system_page' ) ) {
 	}
 }
 
+if ( ! function_exists( 'tpw_core_maybe_update_club_management_page_title' ) ) {
+    function tpw_core_maybe_update_club_management_page_title() {
+        if ( ! class_exists( 'TPW_Core_System_Pages' ) ) {
+            return;
+        }
+
+        $page_id = (int) TPW_Core_System_Pages::get_page_id( 'club-management' );
+        $page    = $page_id > 0 ? get_post( $page_id ) : null;
+
+        if ( ! ( $page instanceof WP_Post ) || 'iLungu Club' !== (string) $page->post_title ) {
+            return;
+        }
+
+        wp_update_post(
+            array(
+                'ID'         => $page_id,
+                'post_title' => 'Club Management',
+            )
+        );
+    }
+}
+
 // Load WP-CLI command if in CLI context (safe to include; will noop outside WP_CLI)
 if ( file_exists( TPW_CORE_PATH . 'modules/system-pages/class-tpw-core-system-pages-cli.php' ) ) {
     require_once TPW_CORE_PATH . 'modules/system-pages/class-tpw-core-system-pages-cli.php';
@@ -136,8 +158,8 @@ add_action( 'init', function() {
                 'shortcode' => '[tpw_noticeboard_list]',
                 'required'  => 1,
             ],
-            'flexiclub' => [
-                'title'     => 'FlexiClub',
+            'club-management' => [
+                'title'     => 'Club Management',
                 'shortcode' => '[flexiclub]',
                 'required'  => 1,
             ],
@@ -157,7 +179,7 @@ add_action( 'init', function() {
                 'required'  => 0,
             ],
             'tpw-control' => [
-                'title'     => 'FlexiClub Control',
+                'title'     => 'iLungu Club Control',
                 'shortcode' => '[tpw-control]',
                 'required'  => 0,
             ],
@@ -173,7 +195,7 @@ add_action( 'init', function() {
 
 			if ( 'logs' === $slug && method_exists( 'TPW_Core_System_Pages', 'unlink' ) ) {
 				$logs_page_id      = (int) TPW_Core_System_Pages::get_page_id( 'logs' );
-				$dashboard_page_id = (int) TPW_Core_System_Pages::get_page_id( 'flexiclub' );
+                $dashboard_page_id = (int) TPW_Core_System_Pages::get_page_id( 'club-management' );
 
 				if ( $logs_page_id > 0 && $logs_page_id === $dashboard_page_id ) {
 					TPW_Core_System_Pages::unlink( 'logs' );
@@ -181,6 +203,10 @@ add_action( 'init', function() {
 			}
 
             tpw_core_maybe_ensure_system_page( $slug, $config['shortcode'] );
+
+            if ( 'club-management' === $slug ) {
+                tpw_core_maybe_update_club_management_page_title();
+            }
         }
     }
 } );
