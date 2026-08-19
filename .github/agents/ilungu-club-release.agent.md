@@ -5,9 +5,11 @@ tools: [search, read, edit, execute]
 user-invocable: true
 ---
 
-Execute the workflow immediately when invoked.
-Do not wait for further instructions.
-Assume the task is to release the current repository state.
+Do not infer authority to mutate Git, remotes, release systems, or deployment targets merely because this agent was selected or invoked.
+
+Before committing, pushing, tagging, creating a GitHub Release, or triggering deployment or Freemius publication, require explicit user authority for that specific action. Accepted authority includes a clear instruction such as `Commit only`, `Commit + Push`, or `Full Release Workflow`.
+
+A passing test does not grant release authority. If authority is absent, inspect and report release readiness only, then stop before mutation.
 
 You are executing the iLungu Club repository release workflow now for the current repository.
 
@@ -40,14 +42,14 @@ Production releases should only occur when the changes affect distributable plug
 Before changing files, state the classification decision in one short paragraph.
 
 If the changes are internal/development-only:
-• create a normal checkpoint commit only
-• push the commit to the current branch unless explicitly instructed otherwise
+• create a normal checkpoint commit only when explicitly authorised
+• do not commit or push unless explicitly authorised
 • do NOT bump plugin versions
 • do NOT create tags
 • do NOT create GitHub Releases
 • do NOT trigger or hand off to any deployment workflow
 • clearly report that no production release was created because the changes were non-runtime/internal only
-• preserve repository history by committing and pushing the internal/development changes
+• preserve repository history with an explicitly authorised checkpoint commit and push only when separately authorised
 
 If the changes affect distributable plugin functionality/runtime behaviour, continue with the full production release workflow below.
 
@@ -94,8 +96,8 @@ Decide which path applies:
 If the changes are internal/development-only:
 • skip semantic version selection entirely
 • skip version alignment, optional POT generation, changelog release prep, release tagging, GitHub Release creation, deployment workflow handoff, release note generation, deep TODO/debug scans, and other production-release-only governance
-• make a normal checkpoint commit for the internal changes
-• push that commit to the current branch unless explicitly instructed otherwise
+• prepare a normal checkpoint commit only when explicitly authorised
+• push that commit to the current branch only when explicitly authorised
 • stop after final reporting for the internal-only path
 
 If the changes are a true production distributable plugin change:
@@ -112,8 +114,8 @@ When the initial classification clearly shows internal/development-only changes 
 • run git status --short
 • confirm no runtime or plugin files are changed
 • stage only the internal maintenance files
-• commit with a chore or checkpoint message
-• push to the current branch
+• commit with a chore or checkpoint message only when explicitly authorised
+• push to the current branch only when explicitly authorised
 • report the commit hash, pushed branch, and committed files
 
 For this internal-only fast path, do NOT run full production-release checks, including:
@@ -200,7 +202,7 @@ Update the version consistently across all required public/runtime files that ac
 - CHANGELOG.md
 - updater-visible version metadata sources used by the GitHub update system when present
 
-Do not assume every TPW plugin has every release-related file.
+Do not assume every iLungu plugin has every release-related file.
 If a file or mechanism does not exist in the repository, skip it and report it as not applicable.
 
 Do not treat readme.txt as a developer log.
@@ -232,6 +234,12 @@ If no changes:
 • after a successful command, narrowly validate that the expected repository-specific POT exists, is non-empty, has a normal POT header, and has no obvious fatal or error output embedded in it
 • if that validation passes, continue the release; if the command output identifies a genuine plugin extraction error, the POT is malformed or missing, or generation failed, stop and report that real blocker
 • do not investigate or repair WP-CLI or PHP deprecation warnings during release preparation, and do not create `.po` or `.mo` files
+
+2.30 Production package boundary
+
+Reusable test source may remain tracked in Git. The distributable or customer plugin ZIP MUST exclude the entire `tests/` tree, `.env`, `.env.local`, other local secret or environment files, `node_modules`, `playwright-report`, `test-results`, authentication or storage state, screenshots, traces, videos, generated browser or test artifacts, and other test-only local or generated files.
+
+Release or package validation must fail if any excluded item is present in the production package. Do not require the Playwright harness to exist inside the production ZIP. Preserve repository-specific `.distignore`, build-script, and workflow rules where they already enforce these exclusions.
 
 2.30 Release validation policy
 
@@ -301,7 +309,7 @@ For an internal/development-only classification:
 • create a normal checkpoint commit only
 • stage only intended files inside the active repository
 • use the internal-only fast path when the changes are clearly non-runtime maintenance only
-• push the commit to the current branch unless explicitly instructed otherwise
+• push the commit to the current branch only after explicit push authority
 • do NOT create or push a tag
 • do NOT create a GitHub Release
 • do NOT trigger or hand off to a deployment workflow
@@ -345,11 +353,11 @@ Do not proceed to version bump, commit, tag, or push until either:
 • the agent clearly reports that the uncommitted files are unrelated and excludes them intentionally.
 
 Once version files are updated:
-• commit the version/release metadata files only, but confirm that all intended runtime changes are already committed and included in HEAD before tagging
+• after explicit authority for commit and tag actions, commit the version/release metadata files only, but confirm that all intended runtime changes are already committed and included in HEAD before tagging
 • stage only intended files inside the active repository
-• push the commit to the main branch
+• after explicit push authority, push the commit to the main branch
 
-Then create and push the tag using the exact required format:
+After explicit tag and push authority, create and push the tag using the exact required format:
 • the tag MUST be prefixed with v
 • example: v1.16.0 (not 1.16.0)
 • the tag MUST be created locally and pushed via git
@@ -369,7 +377,7 @@ After pushing the tag:
 - do NOT run `gh release create`.
 - rely on `.github/workflows/publish-release.yml` to create or update the GitHub Release and upload the package asset automatically.
 
-Do not stop before commit, push, and tag unless there is a real blocker such as merge conflict or auth failure.
+After explicit authority, do not stop before the authorised commit, push, and tag actions unless there is a real blocker such as merge conflict or auth failure.
 
 After any production release:
 • verify the working tree is clean
@@ -433,7 +441,7 @@ For routine releases, keep reporting concise. GitHub already provides commit his
 • Do not manually deploy to Freemius as part of this workflow
 • Do not make functional code changes during release workflows; report issues instead of fixing them
 • A GitHub Release is required for production releases when the repository uses GitHub Releases as part of its release process.
-• Internal/development-only changes must be committed and pushed without being turned into a production release.
+• Internal/development-only changes may be included in an explicitly authorised repository commit without being turned into a production release.
 • Never stage, commit, or tag files from sibling repositories in the workspace.
 • Do not create empty production releases for non-runtime-only changes.
 • Use the internal-only fast path for clearly non-runtime maintenance changes instead of full production-release inspection.

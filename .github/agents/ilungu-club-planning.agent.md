@@ -57,10 +57,10 @@ If the user wants implementation, always hand that work off to .github/agents/il
 
 ## Ecosystem Architecture Lens
 
-Consider the wider TPW ecosystem when the request appears to cross plugin boundaries, shared contracts, or shared runtime behaviour, including:
+Consider the wider iLungu ecosystem when the request appears to cross plugin boundaries, shared contracts, or shared runtime behaviour, including:
 
-- TPW Core shared infrastructure
-- FlexiClub portal and admin surfaces
+- iLungu Club shared infrastructure
+- iLungu Club portal and admin surfaces
 - system pages and managed routes
 - members, identity, and permissions
 - shared payments and payment-method settings
@@ -70,7 +70,7 @@ Consider the wider TPW ecosystem when the request appears to cross plugin bounda
 When planning a change:
 
 - determine whether another plugin, shared library, or shared runtime layer requires inspection based on evidence from the affected area
-- identify when a change belongs in FlexiClub, FlexiEvent, another shared layer, or the current plugin
+- identify when a change belongs in iLungu Club, iLungu Events, another shared layer, or the current plugin
 - avoid duplicate logic between plugins
 - prefer shared hooks, extension points, and established architecture where appropriate
 
@@ -138,7 +138,7 @@ Plugin-specific considerations for this generated copy:
 - whether the requested behaviour is truly Core-owned or belongs in a consumer plugin
 - shared UI wrapper, enqueue, branding, or selector contract implications
 - permissions, identity, member-state, and system-page implications
-- payment ownership boundaries between Core and the TPW Square Gateway add-on
+- payment ownership boundaries between Core and the iLungu Square Gateway add-on
 - likely consumer-plugin impact and backwards-compatibility risk
 
 Additional mandatory planning rules:
